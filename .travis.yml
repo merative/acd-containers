@@ -1,23 +1,30 @@
-language: ruby
 
-before_install:
-  - echo "#"
-  - echo "#"
-  - echo "TravisCI is unbelively powerful, but you need to do your research first."
-  - echo "#"
-  - echo "#"
+language: node_js
+node_js:
+  - "12"
+
+group: bluezone
+dist: xenial
+
+install:
+  - npm install -g markdownlint-cli
+  - npm ci
+  - pip install --user linkchecker
+  - sed -i "s/TRAVIS_HOST/$(hostname -f)/" linkcheckerrc
 
 script:
-  - echo "#"
-  - echo "#"
-  - echo "Please take a look https://docs.travis-ci.com/user/tutorial/ for you options."
-  - echo "#"
-  - echo "#"
+  - markdownlint **/*.mdx
+  - npm run build
+  - docker run --rm -d --name gatsby -p 8888:80 -v $(pwd)/public:/usr/local/apache2/htdocs$SITE_PREFIX httpd:2.4
+  - linkchecker http://$(hostname -f):8888$SITE_PREFIX --config=./linkcheckerrc
 
-
-after_success:
-  - echo "#"
-  - echo "#"
-  - echo "Don't forget to enable it in the GitHub repository also.."
-  - echo "#"
-  - echo "#"
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    local_dir: public
+    github_token: $GITHUB_TOKEN
+    github_url: github.com
+    committer_from_gh: true
+    target_branch: gh-pages
+    on:
+      branch: master
