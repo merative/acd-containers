@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>ACD Icon - 32px Outlines</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ACD-Icon---32px-Outlines" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10,18 L18,18 L18,2 L2,2 L2,18 L10,18 Z M20,18 L32,18 L32,20 L18,20 L2,20 C0.8954305,20 0,19.1045695 0,18 L0,2 C0,0.8954305 0.8954305,0 2,0 L18,0 C19.1045695,0 20,0.8954305 20,2 L20,6 L26,6 L26,8 L20,8 L20,12 L32,12 L32,14 L20,14 L20,18 Z M10,24 L27,24 L27,26 L10,26 L10,24 Z M18,30 L30,30 L30,32 L18,32 L18,30 Z" id="Combined-Shape" fill="#3F71B2" fill-rule="nonzero"></path>
+        <path d="M9,9 L9,6 L11,6 L11,9 L14,9 L14,11 L11,11 L11,14 L9,14 L9,11 L6,11 L6,9 L9,9 Z" id="Combined-Shape" fill="#3D70B2"></path>
+    </g>
+</svg>
