@@ -4,15 +4,15 @@ import ResourceLinks from 'gatsby-theme-carbon/src/components/LeftNav/ResourceLi
 const links = [
   {
     title: 'Github',
-    href: 'https://github.com/IBM/spm-kubernetes',
+    href: 'https://github.com/IBM/acd-containers',
   },
-  {
-    title: 'Knowledge Center',
-    href: 'https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.10/com.ibm.curam.nav.doc/spm_welcome.html',
-  },
+//  {
+//    title: 'Knowledge Center',
+//    href: 'https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.10/com.ibm.curam.nav.doc/spm_welcome.html',
+//  },
   {
     title: 'Change Log',
-    href: 'https://github.com/IBM/spm-kubernetes/blob/master/CHANGELOG.md',
+    href: 'https://github.com/IBM/acd-conatainers/blob/master/CHANGELOG.md',
   }
 ];
 

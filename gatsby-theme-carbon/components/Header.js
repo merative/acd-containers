@@ -6,7 +6,7 @@ require('./languages/prism-powershell')
 
 const CustomHeader = props => (
   <Header {...props}>
-    IBM Cúram SPM on Kubernetes Runbook
+    IBM Annotator for Clinical Data Runbook
   </Header>
 );
 
