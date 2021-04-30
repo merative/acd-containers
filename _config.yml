@@ -16,7 +16,7 @@ title_separator          : "-"
 name                     : &name "IBM" # &name is a YAML anchor which can be *referenced later
 description              : &description "ACD Documents"
 url                      : "https://pages.github.ibm.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/IBM" # the subpath of your site, e.g. "/blog"
+baseurl                  : "/acd-containers" # the subpath of your site, e.g. "/blog"
 repository               : "acd-containers"
 relative_permalinks      : false
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
