@@ -27,7 +27,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: '${__dirname}/_1.0',
+        path: '_1.0',
         ignore: ['**/\.*'],
       },
     },
@@ -35,7 +35,7 @@ module.exports = {
       resolve: 'gatsby-plugin-page-creator',
       options: {
         name: 'pages',
-        path: '${__dirname}/_1.0',
+        path: '_1.0',
         ignore: ['**/\.*'],
       },
     },
@@ -43,7 +43,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'data',
-        path: '${__dirname}/_data',
+        path: '_data',
         ignore: ['**/\.*'],
       },
     },
