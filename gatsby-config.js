@@ -9,7 +9,7 @@ module.exports = {
     description: 'IBM Annotator for Clinical Data on Kubernetes Runbook',
     keywords: 'ibm,acd,containers',
   },
-  pathPrefix: sitePrefix,
+  pathPrefix: "/",
   plugins: [
     {
       resolve: 'gatsby-plugin-manifest',
