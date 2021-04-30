@@ -1,7 +1,7 @@
 {
   "name": "acd-containers",
   "private": true,
-  "version": "1.0",
+  "version": "1.0.0",
   "license": "Apache 2.0",
   "scripts": {
     "dev": "gatsby develop -H 0.0.0.0",
