@@ -9,7 +9,7 @@ module.exports = {
     description: 'IBM Annotator for Clinical Data on Kubernetes Runbook',
     keywords: 'ibm,acd,containers',
   },
-  pathPrefix: sitePrefix,
+  pathPrefix: "/",
   plugins: [
     {
       resolve: 'gatsby-plugin-manifest',
@@ -21,6 +21,30 @@ module.exports = {
         theme_color: '#0062ff',
         display: 'browser',
         icon: 'node_modules/gatsby-theme-carbon/src/images/favicon.svg'
+      },
+    },
+    { 
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: '_1.0',
+        ignore: ['**/\.*'],
+      },
+    },
+    { 
+      resolve: 'gatsby-plugin-page-creator',
+      options: {
+        name: 'pages',
+        path: '_1.0',
+        ignore: ['**/\.*'],
+      },
+    },
+    { 
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'data',
+        path: '_data',
+        ignore: ['**/\.*'],
       },
     },
     {
