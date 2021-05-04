@@ -1,13 +1,13 @@
 # main links
 main:
   - title: "Documentation"
-    url: /_1.0/00-home
+    url: /_1.0/00-home/
 #  - title: "Connectors"
 #    url: /connectors
   - title: "Tutorials"
-    url: /tutorials/
+    url: /_1.0/tutorials/
   - title: FAQ
-    url: /faq/
+    url: /_1.0/faq/
 #  - title: APIs...
 #    url: /api/
 #    dropdown:
@@ -16,9 +16,9 @@ main:
 #      - title: Schema Javadoc
 #        url: /schema-api/
   - title: "Support"
-    url: /support/
+    url: /_1.0/support/
   - title: "Search"
-    url: /search/
+    url: /_1.0/search/
 
 # Sidebar navigation for latest version documentation.
 

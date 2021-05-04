@@ -23,30 +23,6 @@ module.exports = {
         icon: 'node_modules/gatsby-theme-carbon/src/images/favicon.svg'
       },
     },
-    { 
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'pages',
-        path: '_1.0',
-        ignore: ['**/\.*'],
-      },
-    },
-    { 
-      resolve: 'gatsby-plugin-page-creator',
-      options: {
-        name: 'pages',
-        path: '_1.0',
-        ignore: ['**/\.*'],
-      },
-    },
-    { 
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'data',
-        path: '_data',
-        ignore: ['**/\.*'],
-      },
-    },
     {
       resolve: 'gatsby-theme-carbon',
       options: {
