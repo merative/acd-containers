@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Documentation"
-    url: /
+    url: /_1.0/00-home
 #  - title: "Connectors"
 #    url: /connectors
   - title: "Tutorials"
