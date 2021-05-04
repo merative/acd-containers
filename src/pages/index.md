@@ -1,0 +1,2 @@
+import HomepageTemplate from 'gatsby-theme-carbon/src/templates/Homepage';
+export default HomepageTemplate;
