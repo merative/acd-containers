@@ -66,7 +66,7 @@ ibm-wh-acd-1.0.0.tgz
 
 #### 3. Configure Registry Auth
 
-1. Create auth secret for the the source image registry
+#### 1. Create auth secret for the the source image registry
 
 Create registry secret for source image registry (if the registry is public which doesn't require credentials, this step can be skipped)
 
@@ -80,7 +80,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-2. Create auth secret for target image registry
+#### 2. Create auth secret for target image registry
 
 ```
 cloudctl case launch \
@@ -144,6 +144,7 @@ cloudctl case launch \
     --args "--registry <target_registry> --inputDir /tmp/cases --recursive" \
     --tolerance 1
 ```
+
 #### 7. Install Operator
 
 See instructions from [Installing ACD](../installing) section
