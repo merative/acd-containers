@@ -14,7 +14,7 @@ ACD can be installed through one of the following install paths:
 
 ## Installing using Openshift Operator Catalog (Online)
 
-#### 1. (Optional) Create a image pull secret and service account (using template under op-cli directory) if installing from authenticated registry.
+### 1. (Optional) Create a image pull secret and service account (using template under op-cli directory) if installing from authenticated registry.
 
 ```
 kubectl create secret docker-registry 'cp.icr.io' \
@@ -29,7 +29,7 @@ kubectl create secret docker-registry 'cp.icr.io' \
 < case/ibm-wh-acd/inventory/whcsServiceClinicalDataAnnotatorOperatorSetup/files/op-cli/service_account.yaml  sed 's|REPLACE_SECRET|cp.icr.io|g' | oc apply --namespace<target_namespace> -f -
 ```
 
-#### 2. Install the operator via Operator Life Cycle Manager (OLM)
+### 2. Install the operator via Operator Life Cycle Manager (OLM)
 
 ```
 cloudctl case launch \
@@ -40,7 +40,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 3. Install the ACD service. By default, this will deploy 3 replicas of all ACD services. Include ``--args "--replicas 1"`` to install a 1 replica ACD instance.
+### 3. Install the ACD service. By default, this will deploy 3 replicas of all ACD services. Include ``--args "--replicas 1"`` to install a 1 replica ACD instance.
 
 ```
 cloudctl case launch \
@@ -53,7 +53,7 @@ cloudctl case launch \
 
 ## Installing using command-line (Online)
 
-#### 1. (Optional) Create image pull secret if installing operator from authenticated registry
+### 1. (Optional) Create image pull secret if installing operator from authenticated registry
 
 ```
 kubectl create secret docker-registry 'cp.icr.io' \
@@ -64,7 +64,7 @@ kubectl create secret docker-registry 'cp.icr.io' \
     --namespace=<target_namespace>
 ```
 
-#### 2. Install the operator via command line specifying image pull secret as argument if installing from authenticated registry
+### 2. Install the operator via command line specifying image pull secret as argument if installing from authenticated registry
 
 ```
 cloudctl case launch \
@@ -87,7 +87,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 3. Install the ACD service. By default, this will deploy 3 replicas of all ACD services. Include ``--args "--replicas 1"`` to install a 1 replica ACD instance.
+### 3. Install the ACD service. By default, this will deploy 3 replicas of all ACD services. Include ``--args "--replicas 1"`` to install a 1 replica ACD instance.
 
 ```
 cloudctl case launch \

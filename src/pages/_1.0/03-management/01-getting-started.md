@@ -21,6 +21,7 @@ curl -k -X POST \
     --header 'X-Watson-UserInfo: bluemix-instance-id=__ibm_supertenant__' \
     --data-binary @<cartridge.zip>
 ```
+
 Use POST to create it the first time, or PUT to update it later. Remove and don't set the X-Watson-UserInfo header if deploying a custom cartridge since that header will create the cartridge under the default supertenant account.
 
 Use GET on the returned statusLocation to get status of the POST or PUT command.

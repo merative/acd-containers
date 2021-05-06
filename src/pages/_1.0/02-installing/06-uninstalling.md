@@ -12,7 +12,7 @@ ACD should be uninstalled using the same interface that was used to install.
 
 ## Uninstalling using Command line
 
-#### 1. Uninstall the ACD service.
+### 1. Uninstall the ACD service.
 
 ```
 cloudctl case launch \
@@ -23,7 +23,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 2. Uninstall the ACD operator.
+### 2. Uninstall the ACD operator.
 
 ```
 cloudctl case launch \

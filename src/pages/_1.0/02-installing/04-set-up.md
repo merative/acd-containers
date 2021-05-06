@@ -38,7 +38,7 @@ ACD and its operator require the following secrets.
 
 Create the secret containing the container registry image pull secret.
 
-For more details on creating a pull secret, see IBM Cloud documentation for 
+For more details on creating a pull secret, see IBM Cloud documentation for
 [using an image pull secret to access images in other IBM Cloud accounts or external private registries from a non-default Kubernetes namespace](https://cloud.ibm.com/docs/containers?topic=containers-registry#other ).
 
 ```
@@ -103,6 +103,7 @@ DNS.1 = <cluster_name>
 Create the self-signed certificate and java keystore.
 
 ```
+
 # Generate key
 openssl genrsa -out whcs-int.key 2048
 
@@ -148,7 +149,7 @@ kubectl create secret generic whcs-acd-certs-truststore-pem \
                               --from-file=whcs-int.pem
 ```
 
-If the deployment is using Cloud Object Storage (COS) as the artifact service provider, the COS credentials need to be inserted as secrets. 
+If the deployment is using Cloud Object Storage (COS) as the artifact service provider, the COS credentials need to be inserted as secrets.
 At present, this is a required secret. It is not used for file backed storage and will be made optional in the near future.
 
 ```
@@ -188,7 +189,7 @@ kubectl delete secret generic whcs-acd-as \
 
 ### Secret Update
 
-To update the secrets, follow the instructions for Secret Removal and Secret Installation, recreating each secret with the desired updates. 
+To update the secrets, follow the instructions for Secret Removal and Secret Installation, recreating each secret with the desired updates.
 Once the secret updates have been made, stop and restart the deployment or delete each pod to force the new containers to pick up the updated secrets.
 
 ## Storage (Optional)
@@ -224,7 +225,7 @@ spec:
 
 Create the persistent volume.
 
-A minimum size of 1 gigabyte is recommended. Access mode must be set to ReadWriteMany. Note that the persistent volume has a `claimRef` field which 
+A minimum size of 1 gigabyte is recommended. Access mode must be set to ReadWriteMany. Note that the persistent volume has a `claimRef` field which
 refers back to the persistent volume claim so ensure its references for name, namespace, and uid are correct.
 
 ```
@@ -286,7 +287,7 @@ PodSecurityPolices are NOT used on OpenShift.
 
 ### SecurityContextConstraints Requirements
 
-This chart requires a [`restricted`](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html#security-context-constraints-about_configuring-internal-oauth) SecurityContextConstraints (SCCs) to be bound to the service account during installation. 
+This chart requires a [`restricted`](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html#security-context-constraints-about_configuring-internal-oauth) SecurityContextConstraints (SCCs) to be bound to the service account during installation.
 To meet this requirement there may be cluster-scoped, as well as namespace-scoped, pre- and post-actions that need to occur.
 
 The predefined SecurityContextConstraints resource named [`restricted`](https://ibm.biz/cpkspec-scc) should be used and applied to pods as the security context for this chart.
