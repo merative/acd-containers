@@ -100,6 +100,7 @@ DNS.1 = <cluster_name>
 -------------------------------------------------------------------------------
 
 ```
+
 Create the self-signed certificate and java keystore.
 
 ```
@@ -287,7 +288,8 @@ PodSecurityPolices are NOT used on OpenShift.
 
 ### SecurityContextConstraints Requirements
 
-This chart requires a [`restricted`](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html#security-context-constraints-about_configuring-internal-oauth) SecurityContextConstraints (SCCs) to be bound to the service account during installation.
+This chart requires a [`restricted`](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html#security-context-constraints-about_configuring-internal-oauth)
+SecurityContextConstraints (SCCs) to be bound to the service account during installation.
 To meet this requirement there may be cluster-scoped, as well as namespace-scoped, pre- and post-actions that need to occur.
 
 The predefined SecurityContextConstraints resource named [`restricted`](https://ibm.biz/cpkspec-scc) should be used and applied to pods as the security context for this chart.

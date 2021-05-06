@@ -11,7 +11,7 @@ toc: true
 - Openshift 4.6.x with Kubernetes 1.19 (operator install)
 - Share storage for ACD configuration storage - This can be:
   - A persistent volume claim against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
-    - This is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports 
+    - This is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
     persisent volume claims of Read Write Many access mode across all zones and nodes of the cluster.
 - An object bucket
   - On IBM Cloud - IBM Cloud Object Storage (COS) with a Regional bucket in the same cloud region as the cluster using Standard Storage Class
