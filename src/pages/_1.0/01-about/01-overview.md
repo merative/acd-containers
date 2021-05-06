@@ -5,7 +5,7 @@ categories: about
 slug: overview
 toc: true
 ---
-# IBM&reg; Watson Annotator for Clinical Data (ACD) Container Edition
+## IBM&reg; Watson Annotator for Clinical Data (ACD) Container Edition
 
 ## Details
 
@@ -16,6 +16,3 @@ toc: true
 ## Features
 
 - Simple bullet list of product features
-
-
-

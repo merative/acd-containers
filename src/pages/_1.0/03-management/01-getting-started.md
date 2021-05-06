@@ -6,11 +6,12 @@ slug: getting-started
 toc: true
 ---
 
-To use the ACD service, deploy a sample cartridge that provides a predefined [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) annotator flow. Two sample cartridges are published [here](https://github.com/IBM/wh-acd-cartridges).
+To use the ACD service, deploy a sample cartridge that provides a predefined [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) annotator flow.
+ Two sample cartridges are published [here](https://github.com/IBM/wh-acd-cartridges).
 
-1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/IBM/wh-acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
+#### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/IBM/wh-acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
 
-2. Use curl to deploy the cartridge.
+#### 2. Use curl to deploy the cartridge.
 
 ```
 curl -k -X POST \
@@ -30,7 +31,7 @@ curl -X GET \
     'https://<route_host>/services/clinical_data_annotator/api/v1/cartridges/wh_acd.ibm_clinical_insights_v1.0?version=2021-03-15'
 ```
 
-3. Use the ACD APIs to get flows and post to analyze to analyze text. Replace {url} with the hostname.
+#### 3. Use the ACD APIs to get flows and post to analyze to analyze text. Replace {url} with the hostname.
 
 ```
 curl -X GET \
