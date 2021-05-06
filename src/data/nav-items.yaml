@@ -1,13 +1,13 @@
 # main links
-main:
-  - title: "Documentation"
-    url: /_1.0/00-home/
+#main:
+#  - title: "Documentation"
+#    url: /_1.0/00-home/
 #  - title: "Connectors"
 #    url: /connectors
-  - title: "Tutorials"
-    url: /_1.0/tutorials/
-  - title: FAQ
-    url: /_1.0/faq/
+#  - title: "Tutorials"
+#    url: /_1.0/tutorials/
+#  - title: FAQ
+#    url: /_1.0/faq/
 #  - title: APIs...
 #    url: /api/
 #    dropdown:
@@ -15,55 +15,63 @@ main:
 #        url: /api/
 #      - title: Schema Javadoc
 #        url: /schema-api/
-  - title: "Support"
-    url: /_1.0/support/
-  - title: "Search"
-    url: /_1.0/search/
+#  - title: "Support"
+#    url: /_1.0/support/
+#  - title: "Search"
+#    url: /_1.0/search/
 
 # Sidebar navigation for latest version documentation.
 
-latestdocs:
-  - title: About
-    children:
-      - title: "Introduction"
-        url: /about/overview/
-      - title: "Notices"
-        url: /about/notices/
+#latestdocs:
+- title: About
+  pages:
+    - title: "Introduction"
+      path: /_1.0/01-about/01-overview/
+    - title: "Notices"
+      path: /_1.0/01-about/02-notices/
         
-  - title: Installation
-    children:
-      - title: "Planning"
-        url: /installing/planning/
-      - title: "Prerequisites"
-        url: /installing/prerequisites/
-      - title: "Setup"
-        url: /installing/set-up/
-      - title: "Installation"
-        url: /installing/installing/
-      - title: "Air-gap Installation"
-        url: /installing/air-gap-installation/
-      - title: "Verifying your installation"
-        url: /installing/verifying/
-      - title: "Uninstalling"
-        url: /installing/uninstalling/
+- title: Installation
+  pages:
+    - title: "Planning"
+      path: /_1.0/02-installing/00-planning/
+    - title: "Prerequisites"
+      path: /_1.0/02-installing/01-prereqs/
+    - title: "Setup"
+      path: /_1.0/02-installing/04-set-up/
+    - title: "Installation"
+      path: /_1.0/02-installing/02-installing/
+    - title: "Air-gap Installation"
+      path: /_1.0/02-installing/03-air-gap-installation/
+    - title: "Verifying your installation"
+      path: /_1.0/02-installing/05-verifying/
+    - title: "Uninstalling"
+      path: /_1.0/02-installing/06-uninstalling/
 
-  - title: Management
-    children:    
-      - title: "Getting started"
-        url: /management/getting-started/
-      - title: "Configuration"
-        url: /management/configuring/  
-      - title: "Backup and Recovery"
-        url: /management/backup-and-recovery/
+- title: Management
+  pages:    
+    - title: "Getting started"
+      path: /_1.0/03-management/01-getting-started/
+    - title: "Configuration"
+      path: /_1.0/03-management/02-configuring/  
+    - title: "Backup and Recovery"
+      path: /_1.0/03-management/03-backup-and-recovery/
  #     - title: "SecurityContextConstraints Requirements"
  #       url: /security/security-context-constraints/
 
-  - title: Security
-    children:   
+- title: Security
+  pages:  
+    - title: "Security"
+      path: /_1.0/04-security/01-security/
+    - title: "Security Constraints"
+      path: /_1.0/04-security/02-security-context-constraints/  
     
-  - title: Troubleshooting
-    children:
-    
-  - title: Using ACD
-    children: 
+#- title: Troubleshooting
+#  pages:
+#  
+- title: Using ACD
+  pages:
+    - title: "API Documentation"
+      path: /_1.0/06-usage/01-apis/
+    - title: "Software Development Kits"
+      path: /_1.0/06-usage/02-sdks/
   

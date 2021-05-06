@@ -1,13 +1,13 @@
 ---
 title: "Home"
 layout: splash
-permalink: /
+permalink: /acd-containers
 mastheadNavItem: Documentation
 collection: 1.0
 quickLinks:
   - link:
     - title: Introduction
-    - url: about/overview/
+    - url: 01-about/01-overview/
   - link:
     - title: Details
     - url: about/whats-new/

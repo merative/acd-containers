@@ -5,9 +5,11 @@ require('./languages/prism-powershell')
 
 
 const CustomHeader = props => (
+
   <Header {...props}>
-    IBM Annotator for Clinical Data Runbook
+    IBM® Annotator for Clinical Data
   </Header>
+
 );
 
 export default CustomHeader;
