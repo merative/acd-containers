@@ -1,42 +1,42 @@
 - title: About
   pages:
     - title: "Introduction"
-      path: /_1.0/01-about/01-overview/
+      path: /about/overview/
     - title: "Notices"
-      path: /_1.0/01-about/02-notices/
+      path: /about/notices/
         
 - title: Installation
   pages:
     - title: "Planning"
-      path: /_1.0/02-installing/00-planning/
+      path: /installing/planning/
     - title: "Prerequisites"
-      path: /_1.0/02-installing/01-prereqs/
+      path: /installing/prereqs/
     - title: "Setup"
-      path: /_1.0/02-installing/04-set-up/
+      path: /installing/set-up/
     - title: "Installation"
-      path: /_1.0/02-installing/02-installing/
+      path: /installing/installing/
     - title: "Air-gap Installation"
-      path: /_1.0/02-installing/03-air-gap-installation/
+      path: /installing/air-gap-installation/
     - title: "Verifying your installation"
-      path: /_1.0/02-installing/05-verifying/
+      path: /installing/verifying/
     - title: "Uninstalling"
-      path: /_1.0/02-installing/06-uninstalling/
+      path: /installing/uninstalling/
 
 - title: Management
   pages:    
     - title: "Getting started"
-      path: /_1.0/03-management/01-getting-started/
+      path: /management/getting-started/
     - title: "Configuration"
-      path: /_1.0/03-management/02-configuring/  
+      path: /management/configuring/  
     - title: "Backup and Recovery"
-      path: /_1.0/03-management/03-backup-and-recovery/
+      path: /management/backup-and-recovery/
 
 - title: Security
   pages:  
     - title: "Security"
-      path: /_1.0/04-security/01-security/
+      path: /security/security/
     - title: "Security Constraints"
-      path: /_1.0/04-security/02-security-context-constraints/  
+      path: /security/security-context-constraints/  
     
 #- title: Troubleshooting
 #  pages:
@@ -44,7 +44,7 @@
 - title: Using ACD
   pages:
     - title: "API Documentation"
-      path: /_1.0/06-usage/01-apis/
+      path: /usage/apis/
     - title: "Software Development Kits"
-      path: /_1.0/06-usage/02-sdks/
+      path: /usage/sdks/
   
