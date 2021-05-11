@@ -4,7 +4,7 @@
       path: /about/overview/
     - title: "Notices"
       path: /about/notices/
-        
+
 - title: Installation
   pages:
     - title: "Planning"
@@ -37,10 +37,10 @@
       path: /security/security/
     - title: "Security Constraints"
       path: /security/security-context-constraints/  
-    
+
 - title: Monitoring and Troubleshooting
   pages:
-    - title: "MustGather data for ACD"
+    - title: "MustGather"
       path: /troubleshooting/mustgather/
 
 - title: Using ACD
@@ -49,4 +49,3 @@
       path: /usage/apis/
     - title: "Software Development Kits"
       path: /usage/sdks/
-  
