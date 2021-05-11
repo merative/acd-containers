@@ -1,5 +1,5 @@
 ---
-title: "Must Gather"
+title: "MustGather data for ACD"
 excerpt: "."
 categories: troubleshooting
 slug: mustgather
