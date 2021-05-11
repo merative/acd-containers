@@ -38,9 +38,11 @@
     - title: "Security Constraints"
       path: /security/security-context-constraints/  
     
-#- title: Troubleshooting
-#  pages:
-#  
+- title: Monitoring and Troubleshooting
+  pages:
+    - title: "MustGather data for ACD"
+      path: /troubleshooting/mustgather/
+
 - title: Using ACD
   pages:
     - title: "API Documentation"
