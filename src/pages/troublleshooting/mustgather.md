@@ -9,11 +9,13 @@ toc: true
 To help IBM Support troubleshoot any issues with your IBM ACD instance, use the oc adm must-gather command with the Cloud Pak Must-Gather image to capture the must gather logs.
 
 To gather diagnostic logs, run the following commands as Cluster Administrator:
+
   1. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the oc CLI.
   2. Run the following command to capture the logs:
     `oc adm must-gather --image=quay.io/opencloudio/must-gather -- gather -m cloudpak -n <namespace>`
 
 To gather additional system level diagnostics in addition to the ACD information:
+
   1. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the oc CLI.
   2. Run the following command to capture the logs:
     `oc adm must-gather --image=quay.io/opencloudio/must-gather -- gather -m overview,system,failure,cloudpak -n <namespace>`
