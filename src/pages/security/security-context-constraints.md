@@ -9,7 +9,7 @@ toc: true
 
 ## SecurityContextConstraints Requirements
 
-By default, the IBM FHIR Server Operator uses the `restricted` SecurityContextConstraints resource.
+By default, the IBM Annotator for Clinical Data Operator uses the `restricted` SecurityContextConstraints resource.
 
 If desired, the following custom SecurityContextConstraints resource can be applied and used instead.
 
@@ -17,9 +17,9 @@ If desired, the following custom SecurityContextConstraints resource can be appl
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
-  name: ibm-fhir-server-operator-scc
+  name: ibm-whhh-server-operator-scc
   annotations:
-    kubernetes.io/description: ibm-fhir-server-operator-scc denies access to all
+    kubernetes.io/description: ibm-wh-server-operator-scc denies access to all
       host features and requires pods to be run with a UID, and SELinux context
       that are allocated to the namespace, enforces readOnlyRootFilesystem, and
       drops all capabilities.
@@ -55,9 +55,9 @@ volumes:
   - secret
 ```
 
-To cause the IBM FHIR Server Operator to use the custom SecurityContextConstraints resource.
+To cause the IBM ACD Operator to use the custom SecurityContextConstraints resource.
 
-1. Find the `ibm-fhir-server-operator-sa` ServiceAccount resource in the same namespace as the Operator.
+1. Find the `acd-sa` ServiceAccount resource in the same namespace as the Operator.
 
 2. Add the following to the rules in the ClusterRole resource that the ServiceAccount resource is bound to, and apply.
 
@@ -65,11 +65,11 @@ To cause the IBM FHIR Server Operator to use the custom SecurityContextConstrain
 - apiGroups:
     - security.openshift.io
   resourceNames:
-    - ibm-fhir-server-operator-scc
+    - ibm-wh-server-operator-scc
   resources:
     - securitycontextconstraints
   verbs:
     - use
 ```
 
-* The IBM FHIR Server Operator also creates custom ClusterRole, ClusterRoleBinding, Role, RoleBinding, SecurityContextConstraints, and ServiceAccount resources to ensure separation of duties.
+* The IBM ACD Operator also creates custom ClusterRole, ClusterRoleBinding, Role, RoleBinding, SecurityContextConstraints, and ServiceAccount resources to ensure separation of duties.
