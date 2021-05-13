@@ -5,6 +5,7 @@
   "MD013": { "line_length": 240, "tables": false },
   "MD026": false,
   "MD033": false,
+  "MD034": false,
   "MD040": false,
   "MD041": false,
   "no-trailing-spaces": true,
