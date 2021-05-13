@@ -7,7 +7,6 @@ toc: true
 ---
 
 ## Legal Notices
-{: #legal-notices}
 
 This program may reference National Library of Medicine (NLM).
 NLM represents that its data was formulated with a reasonable standard of care. Except for this representation, NLM makes no representation or warranties, expressed or implied.
@@ -158,7 +157,7 @@ All rights reserved. SNOMED CT®, was originally created by the College of Ameri
 | UWDA173 | Jose Mejino, M.D., University of Washington Digital Anatomist, (UWDA). Seattle (WA): University of Washington, Version 1.7.3, March, 2003. |
 | VANDF_2020_01_30 (updated) | Veterans Health Administration National Drug File, January 30, 2020 Washington, DC U.S. Department of Veterans Affairs |
 {: caption="Table 1. Additional UMLS Vocabulary Sources" caption-side="top"}
- 
+
 Deidentified clinical records used in the development of this offering were provided by the i2b2 National Center for Biomedical Computing funded by U54LM008748
 and were originally prepared for the Shared Tasks for Challenges in NLP for Clinical Data organized by Dr. Ozlem Uzuner, i2b2 and SUNY
 
