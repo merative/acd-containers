@@ -17,8 +17,8 @@ IBM® Watson Annotator for Clinical Data is an AI-powered service on IBM Cloud t
 Annotator for Clinical Data extracts key clinical concepts from natural language text, such as conditions, medications, allergies, and procedures.
 These features are enriched with deep contextual insights, along with values for key clinical attributes, in order to provide a more complete view of the data at hand.
 Potential data sources include a variety of healthcare and life sciences sources, such as clinical notes, discharge summaries, clinical trial protocols, and literature data.
- 
-This program supports English only text for insight extraction. 
+
+This program supports English only text for insight extraction.
 
 [Try it Now](https://acd-try-it-out.mybluemix.net/preview)
 
@@ -30,7 +30,7 @@ The clinical insights feature is a ready-to-use annotation capability within Wat
 
 ### Clinical Coding
 
-Identify and code clinical concepts with support for SNOMED CT, RxNorm, ICD-10-PCS, CPT, NCI, MESH, and LOINC.   [[Is this correct? While we might use them, should we list what code we find instead (HCC, ICD9,ICD10, etc) Should we remove CPT code since we don't ship? ]]]
+Identify and code clinical concepts with support for SNOMED CT, RxNorm, ICD-10-PCS, CPT, NCI, MESH, and LOINC.
 
 ### Flexible Annotators
 
