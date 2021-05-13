@@ -21,6 +21,8 @@
       path: /installing/air-gap-installation/
     - title: "Verifying your installation"
       path: /installing/verifying/
+    - title: "License Tracking"
+      path: /installing/license-tracking/
     - title: "Uninstalling"
       path: /installing/uninstalling/
 
