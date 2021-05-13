@@ -25,6 +25,7 @@ appearing in the original sources, all of which are hereby incorporated by refer
 The program includes SNOMED Clinical Terms® (SNOMED CT®) which is used by permission of the International Health Terminology Standards Development Organisation (IHTSDO).
 All rights reserved. SNOMED CT®, was originally created by the College of American Pathologists. SNOMED and SNOMED CT are registered trademarks of the IHTSDO.
 
+Table 1. Additional UMLS Vocabulary Sources
 | Vocabulary | Source |
 |------------|--------|
 | AIR93 | AI/RHEUM. Bethesda, MD : National Library of Medicine, Lister Hill Center, 1993|
@@ -156,7 +157,6 @@ All rights reserved. SNOMED CT®, was originally created by the College of Ameri
 | USPMG_2020 | USP Medicare Model Guidelines, Version 6, United States Pharmacopeia February 1, 2020 |
 | UWDA173 | Jose Mejino, M.D., University of Washington Digital Anatomist, (UWDA). Seattle (WA): University of Washington, Version 1.7.3, March, 2003. |
 | VANDF_2020_01_30 (updated) | Veterans Health Administration National Drug File, January 30, 2020 Washington, DC U.S. Department of Veterans Affairs |
-{: caption="Table 1. Additional UMLS Vocabulary Sources" caption-side="top"}
 
 Deidentified clinical records used in the development of this offering were provided by the i2b2 National Center for Biomedical Computing funded by U54LM008748
 and were originally prepared for the Shared Tasks for Challenges in NLP for Clinical Data organized by Dr. Ozlem Uzuner, i2b2 and SUNY

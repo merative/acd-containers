@@ -38,7 +38,9 @@
     - title: "Security"
       path: /security/security/
     - title: "Security Constraints"
-      path: /security/security-context-constraints/  
+      path: /security/security-context-constraints/
+    - title: "Considerations for GDPR"
+      path:  /security/gdpr-considerations/
 
 - title: Monitoring and Troubleshooting
   pages:
