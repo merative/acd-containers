@@ -31,7 +31,7 @@ It is recommended to periodically verify whether it is active.
 To validate whether License Service is deployed and running on the cluster, you can, for example, log into the Red Hat OpenShift Container Platform cluster and run the following command:
 
 ```bash
-$ oc get pods --all-namespaces | grep ibm-licensing | grep -v operator
+oc get pods --all-namespaces | grep ibm-licensing | grep -v operator
 ```
 
 The following response is a confirmation of successful deployment:

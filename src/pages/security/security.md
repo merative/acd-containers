@@ -10,8 +10,6 @@ toc: true
 
 * The IBM ACD Server is a stateless offering. It is the responsibility of the user to ensure that the proper security measures are established when using the server.
 
-### 
-
 ### Data in motion
 
 * All transports used to interact with IBM ACD Server must be encrypted. TLS 1.2 is recommended.
