@@ -38,7 +38,7 @@ The medical domain NLP service features a variety of annotators for detecting me
 and a collection of annotators that detect, normalize, and code medical and social findings from unstructured clinical data. Multiple annotators can be employed
 to analyze unstructured data from a single request.
 
-## How it works
+## How it works
 
 IBM® Watson Annotator for Clinical Data is a REST API service that detects medical concepts within unstructured data.
 When you send unstructured data to the service to be analyzed and designate the desired annotators to employ,
