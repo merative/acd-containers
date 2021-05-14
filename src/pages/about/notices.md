@@ -27,8 +27,8 @@ All rights reserved. SNOMED CT®, was originally created by the College of Ameri
 
 Table 1. Additional UMLS Vocabulary Sources
 | Vocabulary | Source |
-|------------|--------|
-| AIR93 | AI/RHEUM. Bethesda, MD : National Library of Medicine, Lister Hill Center, 1993|
+| ---------- | ------ |
+| AIR93 | AI/RHEUM. Bethesda, MD : National Library of Medicine, Lister Hill Center, 1993 |
 | AOD2000 | Alcohol and Other Drug Thesaurus. 3rd. ed. [4 Volumes.] Bethesda, MD: National Institute on Alcohol Abuse and Alcoholism (NIAAA) and Center for Substance Abuse Prevention (CSAP), 2000 |
 | AOT2003 | Authorized Osteopathic Thesaurus. Educational Council of Osteopathic Principles of the American Association of Colleges of Osteopathic Medicine: Chevy Chase MD, 2004 |
 | ATC_2020_20_03_02 (updated) | WHO Collaborating Centre for Drug Statistics Methodology, Anatomical Therapeutic Chemical (ATC) classification system, 2020 Oslo, Norway |
