@@ -7,7 +7,9 @@ toc: true
 ---
 ### Namespace
 
-IBM® Watson Annotator for Clinical Data Container Edition handles installation and management of the ACD service using an ACD operator. Both the operator and service resources are installed into a dedicated namespace. `ibm-wh-acd-operator-system` is the default namespace used. If a different namespace is desired, it must be created and provided as input to the install process.
+IBM® Watson Annotator for Clinical Data Container Edition handles installation and management of the ACD service using an ACD operator. Both the operator and service resources are installed into a dedicated namespace.
+
+`ibm-wh-acd-operator-system` is the default namespace used. If a different namespace is desired, it must be created and provided as input to the install process.
 
 All resources created for an ACD installation are namespace-scoped with the except the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are non-namespaced and are available to all namespaces.
 
