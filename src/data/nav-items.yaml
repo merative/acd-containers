@@ -36,7 +36,9 @@
       path: /management/backup-and-recovery/
 
 - title: Security
-  pages:  
+  pages:
+    - title: "Manage Access"
+      path: /security/manage-access/
     - title: "Security"
       path: /security/security/
     - title: "Security Constraints"

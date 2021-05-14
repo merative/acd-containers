@@ -26,6 +26,7 @@ The program includes SNOMED Clinical Terms® (SNOMED CT®) which is used by perm
 All rights reserved. SNOMED CT®, was originally created by the College of American Pathologists. SNOMED and SNOMED CT are registered trademarks of the IHTSDO.
 
 Table 1. Additional UMLS Vocabulary Sources
+
 | Vocabulary | Source |
 | ---------- | ------ |
 | AIR93 | AI/RHEUM. Bethesda, MD : National Library of Medicine, Lister Hill Center, 1993 |
