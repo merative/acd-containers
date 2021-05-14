@@ -43,8 +43,8 @@ This document is intended to help you in your preparations for GDPR readiness.
 
 ### Read more about GDPR
 
-- [EU GDPR website](https://gdpr.eu/){:target="_blank"}
-- [IBM GDPR website](https://www.ibm.com/data-responsibility/gdpr/){:target="_blank"}
+- [EU GDPR website](https://gdpr.eu/)
+- [IBM GDPR website](https://www.ibm.com/data-responsibility/gdpr/)
 
 ## Product Configuration for GDPR
 
@@ -78,4 +78,4 @@ ways, primarily:
 - Public issue reporting and feature suggestions via IBM Annotator for Clinical Data Container Edition Git Hub portal
 - Private issue reporting via IBM Support
 
-Typically, only the client name and email address are used to enable personal replies for the subject of the contact. The use of personal data conforms to the [IBM Online Privacy Statement](https://www.ibm.com/privacy/us/en/){:target="_blank"}.
+Typically, only the client name and email address are used to enable personal replies for the subject of the contact. The use of personal data conforms to the [IBM Online Privacy Statement](https://www.ibm.com/privacy/us/en/).
