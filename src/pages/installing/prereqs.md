@@ -6,9 +6,7 @@ slug: prerequisites
 toc: true
 ---
 
-- Helm 3
-- Kubernetes 1.19 or later (helm-based install)
-- Openshift 4.6.x with Kubernetes 1.19 (operator install)
+- Red Hat Openshift Container Platform 4.7 or later
 - Share storage for ACD configuration storage - This can be:
   - A persistent volume claim against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
     - This is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
