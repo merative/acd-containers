@@ -31,6 +31,6 @@ By default, an ACD installation requires the following minimum resources:
 
 **Note** It is recommended to run 3 replicas of ACD and its micro-services for HA on a minimum of 3 nodes that have 16 vCPU/node and 64 GB of memory.
 For a dev/test environment, 1 or 2 replicas can be configured and 8 vcpu/pod can be used.  By default the ACD pods are allowed to use all of the cpus on a node,
-if needed you can limit the ACD deployments CPU usage (see [Configuration](./README.md#configuration)), but this may result in lower availability of the ACD service.
+if needed you can limit the ACD deployments CPU usage (see [Configuration](../../management/configuration)), but this may result in lower availability of the ACD service.
 **Note** These are the requirements for ACD, the cluster itself has additional minimal worker node requirements for  monitoring,
 logging and other components so we recommend adding at least one more worker node to a cluster for that if this is a new cluster.

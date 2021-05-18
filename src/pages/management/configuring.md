@@ -25,8 +25,6 @@ The following tables lists the configurable parameters of the chart and their de
 | `common.environment.artifactstore_tenant_backend`                              | Store private tenant data (`file` or `cos`)            | `file` |
 | `fileBasedPersistence.enabled`   | File based persistence enabled | `false` |
 
-See [Persistent Storage Configuration Examples](#persistent-volume-and-claim-installation) for more information.
-
 These additional configurable parameters may be provided when file based storage (`file`) is used by the artifact store and `fileBasedPersistence.enabled` is `true`.
 
 | Parameter | Description | Default |
