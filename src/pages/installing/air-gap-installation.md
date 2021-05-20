@@ -10,7 +10,7 @@ toc: true
 
 ### Cluster with a Bastion
 
-#### 1. Prepare Bastion Host
+#### Prepare Bastion Host
 
 * Logon to the bastion machine
 
@@ -21,7 +21,7 @@ toc: true
 
 All the following steps should be run from the bastion machine
 
-#### 2. Download CASE
+#### Download CASE
 
 Create a directory to save the CASE to a local directory
 
@@ -64,9 +64,9 @@ ibm-wh-acd-1.0.0-images.csv
 ibm-wh-acd-1.0.0.tgz
 ```
 
-#### 3. Configure Registry Auth
+#### Configure Registry Auth
 
-#### 1. Create auth secret for the the source image registry
+##### Create auth secret for the the source image registry
 
 Create registry secret for source image registry (if the registry is public which doesn't require credentials, this step can be skipped)
 
@@ -80,7 +80,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 2. Create auth secret for target image registry
+##### Create auth secret for target image registry
 
 ```
 cloudctl case launch \
@@ -94,7 +94,7 @@ cloudctl case launch \
 
 The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`
 
-#### 4. Mirror Images
+#### Mirror Images
 
 In this step image from saved CASE (images.csv) are copied to target registry in the airgap environment
 
@@ -108,7 +108,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 5. Configure Cluster for Airgap
+#### Configure Cluster for Airgap
 
 This steps does the following
 
@@ -131,7 +131,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 6. Install Catalog Source
+#### Install Catalog Source
 
 This step installs the operator catalogsource in the openshift-marketplace namespace. And also installs catalogs from dependent subcases.
 
@@ -145,6 +145,23 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-#### 7. Install Operator
+#### Install Operator
 
 See instructions from [Installing ACD](../installing) section
+
+### Cluster without a Bastion
+
+#### Prepare a portable device
+
+Prepare a portable device (such as laptop) that be used to download the case and images can be carried into the air gapped environment
+
+* Verify that the portable device has access
+  * to public internet (to download CASE and images)
+  * a target image registry ( where the images will be mirrored)
+  * a target openshift cluster to install the operator
+
+* Download and install dependent command line tools
+  * [oc](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html#installing-the-cli) - To interact with Openshift Cluster
+  * [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - To download and install CASE
+
+All the following steps should be run from the portable device
