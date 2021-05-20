@@ -5,13 +5,15 @@ categories: installing
 slug: installing
 toc: true
 ---
-The following sections provide instructions about installing IBM Watson Annotator for Clinical Data Container Edition on the Red Hat OpenShift Container Platform. The instructions are based on using the OpenShift Container Platform web console and `oc` command line utility.
+To install IBM Watson Annotator for Clinical Data Container Edition, you may use the OpenShift Container Platform web console, the `oc` command line utility, or scripts using the `cloudctl` tool.
 
 When deploying in an air-gapped environment, see [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
 
 ## Overview
 
-Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration. The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
+Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration.
+
+The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
 Installing ACD has two phases:
 
@@ -45,6 +47,7 @@ To make the ACD operator and related dependencies available in the OpenShift Ope
 ### Add the IBM Operator Catalog using the CLI
 
 1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
+
 ```
 apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
@@ -60,6 +63,7 @@ spec:
      registryPoll:
        interval: 45m
 ```
+
 2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 Apply the source by using the following command:
 
@@ -70,6 +74,7 @@ The IBM Operator Catalog source is added to the OperatorHub catalog, making the 
 ### Add the ACD Catalog using the CLI
 
 1. Create a file for the ACD catalog source with the following content, and save as `acd_catalog_source.yaml`:
+
 ```
 apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
@@ -85,6 +90,7 @@ spec:
     registryPoll:
       interval: 45m
 ```
+
 2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 Apply the source by using the following command:
 
@@ -126,7 +132,11 @@ cloudctl case launch \
 
 ## Install the ACD Service
 
-Instances of ACD can be created after the ACD operator is installed. If the operator was installed into a specific namespace, then it can only be used to manage instances of ACD in that namespace. If the operator was installed for all namespaces, then it can be used to manage instances of ACD in any namespace, including those created after the operator was deployed.
+Instances of ACD can be created after the ACD operator is installed.
+
+If the operator was installed into a specific namespace, then it can only be used to manage instances of ACD in that namespace.
+
+If the operator was installed for all namespaces, then it can be used to manage instances of ACD in any namespace, including those created after the operator was deployed.
 
 When installing an instance of ACD, ensure you are using a namespace that an operator is managing.
 
