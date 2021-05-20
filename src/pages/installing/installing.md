@@ -93,8 +93,7 @@ spec:
       interval: 45m
 ```
 
-Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
-Apply the source by using the following command:
+Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI. Apply the source by using the following command:
 
 `oc apply -f acd_catalog_source.yaml`
 

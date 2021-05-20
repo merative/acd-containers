@@ -66,33 +66,33 @@ ibm-wh-acd-1.0.0.tgz
 
 #### Configure Registry Auth
 
-1. Create auth secret for the the source image registry
+Create auth secret for the the source image registry
 
-  Create registry secret for source image registry (if the registry is public which doesn't require credentials, this step can be skipped)
+Create registry secret for source image registry (if the registry is public which doesn't require credentials, this step can be skipped)
 
-  ```
-  cloudctl case launch \
-      --case case/ibm-wh-acd \
-      --namespace <target_namespace> \
-      --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
-      --action configure-creds-airgap \
-      --args "--registry cp.icr.io --user iamapikey --pass <apikey>" \
-      --tolerance 1
-  ```
+```
+cloudctl case launch \
+    --case case/ibm-wh-acd \
+    --namespace <target_namespace> \
+    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --action configure-creds-airgap \
+    --args "--registry cp.icr.io --user iamapikey --pass <apikey>" \
+    --tolerance 1
+```
 
-2. Create auth secret for target image registry
+Create auth secret for target image registry
 
-  ```
-  cloudctl case launch \
-      --case case/ibm-wh-acd \
-      --namespace <target_namespace> \
-      --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
-      --action configure-creds-airgap \
-      --args "--registry <target_registry> --user <username> --pass <password>" \
-      --tolerance 1
-  ```
+```
+cloudctl case launch \
+    --case case/ibm-wh-acd \
+    --namespace <target_namespace> \
+    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --action configure-creds-airgap \
+    --args "--registry <target_registry> --user <username> --pass <password>" \
+    --tolerance 1
+```
 
-  The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`
+The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`
 
 #### Mirror Images
 
