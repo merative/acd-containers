@@ -5,42 +5,147 @@ categories: installing
 slug: installing
 toc: true
 ---
+The following sections provide instructions about installing IBM Watson Annotator for Clinical Data Container Edition on the Red Hat OpenShift Container Platform. The instructions are based on using the OpenShift Container Platform web console and `oc` command line utility.
 
-ACD can be installed through one of the following install paths:
+When deploying in an air-gapped environment, see [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
 
-1. (Default) Openshift Operator Catalog (Online)
-2. Command line (Online)
-3. Command line (Air-gapped)
+## Overview
 
-## Installing using Openshift Operator Catalog (Online)
+Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration. The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
-### 1. (Optional) Create a image pull secret and service account (using template under op-cli directory) if installing from authenticated registry.
+Installing ACD has two phases:
 
+1. Install the ACD operator: this will deploy the operator that will install and manage your ACD instances.
+2. Install one or more replicas of ACD by using the operator.
+
+## Before you begin
+
+* Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
+* [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+* Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
+
+## Create a project (namespace)
+
+Create a namespace into which the ACD instance will be installed by creating a [project](https://docs.openshift.com/container-platform/4.7/applications/projects/working-with-projects.html). When you create a project, a namespace with the same name is also created.
+
+Ensure you use a namespace that is dedicated to a single instance of ACD.
+
+**Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
+
+## Add the ACD Operator to the catalog
+
+Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog or can be installed with its own catalog source.
+
+If you have other IBM products installed in your cluster, then you may already have the IBM Operator Catalog available, and you can continue to installing the ACD operator from there.
+
+If you are installing ACD as the first IBM operator in your cluster, complete the following steps to install either the IBM Operator Catalog or the ACD operator catalog.
+
+To make the ACD operator and related dependencies available in the OpenShift OperatorHub catalog, chose one of the following install paths to create catalog source YAML files and apply them.
+
+### Add the IBM Operator Catalog using the CLI
+
+1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
 ```
-kubectl create secret docker-registry 'cp.icr.io' \
-    --docker-server='cp.icr.io' \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<user@email> \
-    --namespace=<target_namespace>
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+   name: ibm-operator-catalog
+   namespace: openshift-marketplace
+spec:
+   displayName: "IBM Operator Catalog"
+   publisher: IBM
+   sourceType: grpc
+   image: icr.io/cpopen/ibm-operator-catalog
+   updateStrategy:
+     registryPoll:
+       interval: 45m
 ```
+2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
+Apply the source by using the following command:
 
-```
-< case/ibm-wh-acd/inventory/whcsServiceClinicalDataAnnotatorOperatorSetup/files/op-cli/service_account.yaml  sed 's|REPLACE_SECRET|cp.icr.io|g' | oc apply --namespace<target_namespace> -f -
-```
+`oc apply -f IBMCatalogSource.yaml`
 
-### 2. Install the operator via Operator Life Cycle Manager (OLM)
+The IBM Operator Catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
+
+### Add the ACD Catalog using the CLI
+
+1. Create a file for the ACD catalog source with the following content, and save as `acd_catalog_source.yaml`:
+```
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: ibm-wh-acd-operator-catalog
+  namespace: openshift-marketplace
+spec:
+  displayName: IBM ACD Operator Catalog
+  publisher: IBM
+  sourceType: grpc
+  image: icr.io/cpopen/ibm-wh-acd-operator-catalog
+  updateStrategy:
+    registryPoll:
+      interval: 45m
+```
+2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
+Apply the source by using the following command:
+
+`oc apply -f acd_catalog_source.yaml`
+
+The ACD operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
+
+### Add the ACD Catalog using a script
+
+See the [Air-gap Installation install catalog source](https://ibm.github.io/acd-containers/installing/air-gap-installation/#install-catalog-source) documentation.
+
+## Install the ACD Operator
+
+### Install the ACD Operator using the web console
+
+To install the ACD operator through the OpenShift Container Platform web console, do the following:
+
+1. Log in to the OpenShift Container Platform [web console](https://docs.openshift.com/container-platform/4.7/web_console/web-console.html) using your login credentials.
+2. Expand the **Operators** dropdown and select **OperatorHub** to open the **OperatorHub** dashboard.
+3. Select the project you want to use as the target namespace for your ACD deployment.
+4. In the **All Items** search box enter `ACD` to locate the operator title.
+5. Click the **ACD** tile to open the install side panel.
+6. Click the **Install** button to open the **Create Operator Subscription** dashboard.
+7. Select the chosen installation mode that suits your requirements. If the installation mode is **A specific namespace on the cluster**, select the target namespace you created previously.
+8. Click **Install** to begin the installation.
+
+The installation can take a few minutes to complete.
+
+### Install the ACD Operator using a script
 
 ```
 cloudctl case launch \
     --case case/ibm-wh-acd \
     --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --inventory clinicalDataAnnotatorOperatorSetup \
     --action installOperator \
     --tolerance 1
 ```
 
-### 3. Install the ACD service. By default, this will deploy 3 replicas of all ACD services. Include ``--args "--replicas 1"`` to install a 1 replica ACD instance.
+## Install the ACD Service
+
+Instances of ACD can be created after the ACD operator is installed. If the operator was installed into a specific namespace, then it can only be used to manage instances of ACD in that namespace. If the operator was installed for all namespaces, then it can be used to manage instances of ACD in any namespace, including those created after the operator was deployed.
+
+When installing an instance of ACD, ensure you are using a namespace that an operator is managing.
+
+### Install the ACD Service by using the web console
+
+To install the ACD service through the OpenShift Container Platform web console, do the following:
+
+1. Log in to the OpenShift Container Platform [web console](https://docs.openshift.com/container-platform/4.7/web_console/web-console.html) using your login credentials.
+2. Expand the **Operators** dropdown and select **Installed Operators** to open the **Installed Operators** page.
+3. Expand the **Project** dropdown and select the project the operator is installed in. Select the **Annotator for Clinical Data** operator link in the **Name** column.
+**Note**: If the operator is not shown, it is either not installed or not available for the selected namespace.
+4. In the **Operator Details** dashboard, click the **Annotator for Clinical Data** tab.
+5. Click the **Create Acd** button to open the **Create Acd** panel. You can use this panel to define an `Acd` custom resource.
+
+From here you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
+
+### Install the ACD service using a script
+
+By default, this will deploy 3 replicas of all ACD services. Include `--args "--replicas 1"` to install a 1 replica ACD instance.
 
 ```
 cloudctl case launch \
@@ -50,91 +155,3 @@ cloudctl case launch \
     --action applyCustomResources \
     --tolerance 1
 ```
-
-## Installing using command-line (Online)
-
-### 1. (Optional) Create image pull secret if installing operator from authenticated registry
-
-```
-kubectl create secret docker-registry 'cp.icr.io' \
-    --docker-server='cp.icr.io' \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<user@email> \
-    --namespace=<target_namespace>
-```
-
-### 2. Install the operator via command line specifying image pull secret as argument if installing from authenticated registry
-
-```
-cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
-    --action installOperatorNative \
-    --tolerance 1
-```
-
-Alternatively, the install script can create a image pull secret, when authenticated registry user and token are also provided as arguments
-
-```
-cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
-    --action installOperatorNative \
-    --args "--registry cp.icr.io --secret cp.icr.io --user <username> --pass <password>" \
-    --tolerance 1
-```
-
-### 3. Install the ACD service. By default, this will deploy 3 replicas of all ACD services. Include ``--args "--replicas 1"`` to install a 1 replica ACD instance.
-
-```
-cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperator \
-    --action applyCustomResources \
-    --tolerance 1
-```
-
-### Cluster without a Bastion
-
-#### 1. Prepare a portable device
-
-Prepare a portable device (such as laptop) that be used to download the case and images can be carried into the air gapped environment
-
-* Verify that the portable device has access
-  * to public internet (to download CASE and images)
-  * a target image registry ( where the images will be mirrored)
-  * a target openshift cluster to install the operator
-
-* Download and install dependent command line tools
-  * [oc](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html#installing-the-cli) - To interact with Openshift Cluster
-  * [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - To download and install CASE
-
-All the following steps should be run from the portable device
-
-#### 2. Download CASE
-
-See instructions from previous [Downloading CASE](#2-download-case) section
-
-#### 3. Configure Registry Auth
-
-See instructions from previous [Configure Registry Auth](#3-configure-registry-auth) section
-
-#### 4. Mirror Images
-
-See instructions from previous [Mirror Images](#4-mirror-images) section
-
-#### 5. Configure Cluster for Airgap
-
-See instructions from previous [Configure Cluster for Airgap](#5-configure-cluster-for-airgap) section
-
-#### 6. Install Catalog Source
-
-See instructions from previous [Install Catalog Source](#6-install-catalog-source) section
-
-#### 7. Install the operator
-
-See instructions from previous [Installing ACD](../installing) section
