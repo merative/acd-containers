@@ -28,7 +28,9 @@ Installing ACD has two phases:
 
 ## Create a project (namespace)
 
-Create a namespace into which the ACD instance will be installed by creating a [project](https://docs.openshift.com/container-platform/4.7/applications/projects/working-with-projects.html). When you create a project, a namespace with the same name is also created.
+Create a namespace into which the ACD instance will be installed by creating a [project](https://docs.openshift.com/container-platform/4.7/applications/projects/working-with-projects.html).
+
+When you create a project, a namespace with the same name is also created.
 
 Ensure you use a namespace that is dedicated to a single instance of ACD.
 
@@ -46,7 +48,7 @@ To make the ACD operator and related dependencies available in the OpenShift Ope
 
 ### Add the IBM Operator Catalog using the CLI
 
-1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
+Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
 
 ```
 apiVersion: operators.coreos.com/v1alpha1
@@ -64,7 +66,7 @@ spec:
        interval: 45m
 ```
 
-2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
+Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 Apply the source by using the following command:
 
 `oc apply -f IBMCatalogSource.yaml`
@@ -73,7 +75,7 @@ The IBM Operator Catalog source is added to the OperatorHub catalog, making the 
 
 ### Add the ACD Catalog using the CLI
 
-1. Create a file for the ACD catalog source with the following content, and save as `acd_catalog_source.yaml`:
+Create a file for the ACD catalog source with the following content, and save as `acd_catalog_source.yaml`:
 
 ```
 apiVersion: operators.coreos.com/v1alpha1
@@ -91,7 +93,7 @@ spec:
       interval: 45m
 ```
 
-2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
+Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 Apply the source by using the following command:
 
 `oc apply -f acd_catalog_source.yaml`
