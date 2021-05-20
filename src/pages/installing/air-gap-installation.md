@@ -66,7 +66,7 @@ ibm-wh-acd-1.0.0.tgz
 
 #### Configure Registry Auth
 
-Create auth secret for the the source image registry
+##### Create auth secret for the the source image registry
 
 Create registry secret for source image registry (if the registry is public which doesn't require credentials, this step can be skipped)
 
@@ -80,7 +80,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-Create auth secret for target image registry
+##### Create auth secret for target image registry
 
 ```
 cloudctl case launch \
@@ -91,7 +91,6 @@ cloudctl case launch \
     --args "--registry <target_registry> --user <username> --pass <password>" \
     --tolerance 1
 ```
-
 The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`
 
 #### Mirror Images
