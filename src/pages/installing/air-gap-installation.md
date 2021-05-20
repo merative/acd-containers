@@ -91,6 +91,7 @@ cloudctl case launch \
     --args "--registry <target_registry> --user <username> --pass <password>" \
     --tolerance 1
 ```
+
 The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`
 
 #### Mirror Images
