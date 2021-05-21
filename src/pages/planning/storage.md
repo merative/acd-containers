@@ -6,7 +6,7 @@ slug: storage
 toc: true
 ---
 
-## Store Options
+## Storage Options
 
 IBM® Watson Annotator for Clinical Data Container Edition requires a storage medium if a cartridge is going to be deployed to the environment.  The storage medium persists the specfic verion of each analytic artifact contained in the cartridge and associated metadata.
 
