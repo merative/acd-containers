@@ -26,7 +26,7 @@ This program supports English only text for insight extraction.
 
 ### Clinical Insights
 
-The clinical insights feature is a ready-to-use annotation capability within Watson Annotator for Clinical Data that provides critical contextual information for problems, procedures, and medications identified in the text.
+The [clinical insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview) feature is a ready-to-use annotation capability within Watson Annotator for Clinical Data that provides critical contextual information for problems, procedures, and medications identified in the text.
 
 ### Clinical Coding
 

@@ -7,10 +7,19 @@
     - title: "Notices"
       path: /about/notices/
 
+- title: "Planning"
+  pages:
+    - title: "Namespace Considerations"
+      path: /planning/namespace/
+    - title: "Storage Considerations"
+      path: /planning/storage/
+    - title: "Performance and Capacity Considerations"
+      path: /planning/perf-and-capacity/
+    - title: "Security and Tenancy Considerations"
+      path: /planning/tenancy/
+
 - title: Installation
   pages:
-    - title: "Planning"
-      path: /installing/planning/
     - title: "Prerequisites"
       path: /installing/prereqs/
     - title: "Installation"
