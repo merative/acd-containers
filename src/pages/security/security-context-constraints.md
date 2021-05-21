@@ -11,13 +11,13 @@ toc: true
 
 By default, the IBM Annotator for Clinical Data Operator uses the `restricted` SecurityContextConstraints resource.
 
-If desired, the following custom SecurityContextConstraints resource can be applied and used instead.
+If desired, a custom SecurityContextConstraints resource can be applied and used instead. Here is an example.
 
 ```yaml
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
-  name: ibm-whhh-server-operator-scc
+  name: ibm-wh-server-operator-scc
   annotations:
     kubernetes.io/description: ibm-wh-server-operator-scc denies access to all
       host features and requires pods to be run with a UID, and SELinux context

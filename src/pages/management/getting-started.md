@@ -6,8 +6,7 @@ slug: getting-started
 toc: true
 ---
 
-To use the ACD service, deploy a sample cartridge that provides a predefined [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) annotator flow.
- Two sample cartridges are published [here](https://github.com/IBM/wh-acd-cartridges).
+To use the ACD service, deploy a sample cartridge that provides a predefined [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) annotator flow. Two sample cartridges are published [here](https://github.com/IBM/wh-acd-cartridges).
 
 #### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/IBM/wh-acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
 
@@ -22,7 +21,15 @@ curl -k -X POST \
     --data-binary @<cartridge.zip>
 ```
 
-Use POST to create it the first time, or PUT to update it later. Remove and don't set the X-Watson-UserInfo header if deploying a custom cartridge since that header will create the cartridge under the default supertenant account.
+Use POST to create it the first time, or PUT to update it later.
+
+The example shows the default `X-Watson-UserInfo` header applied when no authentication header is set for ACD, such as when an authorization proxy is not used.
+
+When using an authentication header with a proxy, then the format differs for a specific header. Change the `X-Forwarded-User` to match what was used for the authentication proxy user.
+
+`--header 'X-Forwarded-User: __ibm_supertenant__'`
+
+Remove and don't set the `X-Watson-UserInfo` header if deploying a custom cartridge since that header will create the cartridge under the default supertenant account.
 
 Use GET on the returned statusLocation to get status of the POST or PUT command.
 
