@@ -6,7 +6,9 @@ slug: getting-started
 toc: true
 ---
 
-To use the ACD service, deploy a sample cartridge that provides a predefined [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) annotator flow. Two sample cartridges are published [here](https://github.com/IBM/wh-acd-cartridges).
+To use the ACD service, deploy a sample cartridge that provides a predefined [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) annotator flow.
+
+Two sample cartridges are published [here](https://github.com/IBM/wh-acd-cartridges).
 
 #### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/IBM/wh-acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
 
