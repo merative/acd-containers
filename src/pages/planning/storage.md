@@ -11,6 +11,7 @@ toc: true
 IBM® Watson Annotator for Clinical Data Container Edition requires a storage medium if a cartridge is going to be deployed to the environment.  The storage medium persists the specfic verion of each analytic artifact contained in the cartridge and associated metadata.
 
 Two storage mediums are supported:
+
 - NFS based persisted volumes and claims
 - Object Stoage
 
@@ -29,6 +30,7 @@ It is recommended to have a minimum of 1 gigabyte or free space within the file 
 The configuration for a persistant volume is defined in the file-store-pv.yaml file.
 
 The following is an example of a PV that has been tested with this chart.
+
 ```
 apiVersion: v1
 kind: PersistentVolume
