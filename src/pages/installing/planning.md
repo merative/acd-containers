@@ -11,7 +11,7 @@ IBM® Watson Annotator for Clinical Data Container Edition handles installation 
 
 `ibm-wh-acd-operator-system` is the default namespace used. The ACD operator may be deployed into a different namespace, one per namespace. The ACD service may be deployed into the same namespace as its operator or cluster wide (all namespaces).
 
-All resources created for an ACD installation are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are non-namespaced and are available to all namespaces.
+All resources created for an ACD installation are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces.
 
 ### Storage
 
@@ -97,7 +97,7 @@ spec:
   minAvailable: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: whcs-acd-acd-deployment
+      app.kubernetes.io/name: ibm-wh-acd-acd-acd-deployment
 ```
 
 Check the status of the Pod Disruption Budgets.

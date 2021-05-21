@@ -33,3 +33,15 @@ cloudctl case launch \
     --action uninstallOperatorNative \
     --tolerance 1
 ```
+
+## Remove secrets
+
+To remove the secrets run the following:
+
+```
+oc delete secret cp.stg.icr.io \
+                  --namespace <namespace>
+
+oc delete secret ibm-wh-acd-as \
+                  --namespace <namespace>
+```

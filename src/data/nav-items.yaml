@@ -13,8 +13,6 @@
       path: /installing/planning/
     - title: "Prerequisites"
       path: /installing/prereqs/
-    - title: "Setup"
-      path: /installing/set-up/
     - title: "Installation"
       path: /installing/installing/
     - title: "Air-gap Installation"
@@ -27,11 +25,11 @@
       path: /installing/uninstalling/
 
 - title: Management
-  pages:    
+  pages:
     - title: "Getting started"
       path: /management/getting-started/
     - title: "Configuration"
-      path: /management/configuring/  
+      path: /management/configuring/
     - title: "Backup and Recovery"
       path: /management/backup-and-recovery/
 
