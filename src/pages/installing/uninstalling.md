@@ -33,6 +33,7 @@ cloudctl case launch \
     --action uninstallOperatorNative \
     --tolerance 1
 ```
+
 ## Remove secrets
 
 To remove the secrets run the following:

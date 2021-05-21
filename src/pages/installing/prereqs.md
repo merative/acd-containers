@@ -35,7 +35,6 @@ By default the ACD pods may use all of the CPUs on a node. If needed you can lim
 These are the requirements for ACD. The cluster itself has additional worker node requirements for monitoring,
 logging and other components so we recommend adding at least one more worker node for that if this is a new cluster.
 
-
 ## Storage (Optional)
 
 If the deployment will use persistent file based storage instead of IBM Cloud Object (COS) storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
@@ -134,7 +133,7 @@ ACD and its operator require the following secrets.
 
 Create the secret containing the container registry image pull secret.
 
-For more details on creating a pull secret, see IBM Cloud documentation for [using an image pull secret to access images in other IBM Cloud accounts or external private registries from a non-default Kubernetes namespace](https://cloud.ibm.com/docs/containers?topic=containers-registry#other ).
+See the IBM Cloud documentation for details on [using an image pull secret to access images from a non-default Kubernetes namespace](https://cloud.ibm.com/docs/containers?topic=containers-registry#other).
 
 ```
 kubectl create secret docker-registry cp.stg.icr.io \
