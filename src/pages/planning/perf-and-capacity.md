@@ -1,6 +1,6 @@
 ---
-title: "Performance and Capacity Considerations"
-excerpt: "Performance and Capacity Considerations."
+title: "Performance and Capacity"
+excerpt: "Performance and Capacity."
 categories: planning
 slug: perf-and-capacity
 toc: true

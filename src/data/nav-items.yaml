@@ -13,10 +13,12 @@
       path: /planning/namespace/
     - title: "Storage Considerations"
       path: /planning/storage/
-    - title: "Performance and Capacity Considerations"
+    - title: "Performance and Capacity"
       path: /planning/perf-and-capacity/
-    - title: "Security and Tenancy Considerations"
+    - title: "Security and Tenancy"
       path: /planning/tenancy/
+    - title: "High Availability"
+      path: /planning/hadr/
 
 - title: Installation
   pages:
@@ -39,6 +41,8 @@
       path: /management/getting-started/
     - title: "Configuration"
       path: /management/configuring/
+    - title: "Pod Disruption"
+      path: /management/pod-disruption/
     - title: "Backup and Recovery"
       path: /management/backup-and-recovery/
 
