@@ -140,30 +140,21 @@ ACD and its operator require the following secrets.
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
 oc extract secret/pull-secret -n openshift-config --to=.
-
 2. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
-
-  `printf "iamapikey:<developerkey>" | base64`
-   -or-
-  `printf "cp:<entitlementkey>" | base64`
-
+`printf "iamapikey:<developerkey>" | base64`
+ -or-
+`printf "cp:<entitlementkey>" | base64`
 3. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
-
-  ```
-  "cp.stg.icr.io": {
-      "auth": "aWFtYXBpaxxxxxxxxxxxcGFzc3dvcmQ=",
-      "email": "xxx@nomail.relay.ibm.com"
-  }
-  ```
-
+```
+"cp.stg.icr.io": {
+    "auth": "aWFtYXBpaxxxxxxxxxxxcGFzc3dvcmQ=",
+    "email": "xxx@nomail.relay.ibm.com"
+}
+```
 4. Update the global image pull secret with the updated credentials:
-
-  `oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson`
-
+`oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson`
 5. Monitor the node status using the command:
-
-  `oc get nodes`
-
+`oc get nodes`
 6. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
 
 #### Update the global pull secret using a script
