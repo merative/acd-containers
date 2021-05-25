@@ -161,7 +161,7 @@ oc extract secret/pull-secret -n openshift-config --to=.
 5. Monitor the node status using the command:
 
    `oc get nodes`
-   
+
 6. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
 
 #### Update the global pull secret using a script
