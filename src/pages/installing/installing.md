@@ -60,7 +60,7 @@ spec:
    displayName: "IBM Operator Catalog"
    publisher: IBM
    sourceType: grpc
-   image: icr.io/cpopen/ibm-operator-catalog
+   image: icr.io/cpopen/ibm-operator-catalog@sha256:d0d106a4a8ff88953d3653a02b4c321545e9503bc4cb5db4f1dc6b9f28f39555
    updateStrategy:
      registryPoll:
        interval: 45m
@@ -87,7 +87,7 @@ spec:
   displayName: IBM ACD Operator Catalog
   publisher: IBM
   sourceType: grpc
-  image: icr.io/cpopen/ibm-wh-acd-operator-catalog
+  image: icr.io/cpopen/ibm-wh-acd-operator-catalog@sha256:d0d106a4a8ff88953d3653a02b4c321545e9503bc4cb5db4f1dc6b9f28f39555
   updateStrategy:
     registryPoll:
       interval: 45m
