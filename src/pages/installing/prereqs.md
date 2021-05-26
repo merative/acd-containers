@@ -11,15 +11,15 @@ toc: true
   - A persistent volume claim against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
     - This is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
     persisent volume claims of Read Write Many access mode across all zones and nodes of the cluster.
-- An object bucket
-  - On IBM Cloud - IBM Cloud Object Storage (COS) with a Regional bucket in the same cloud region as the cluster using Standard Storage Class
-  - On AWS - S3 Bucket in the same region
+  - An object bucket
+    - On IBM Cloud - IBM Cloud Object Storage (COS) with a Regional bucket in the same cloud region as the cluster using Standard Storage Class
+    - On AWS - S3 Bucket in the same region
 - Command line tools
   - [oc](https://docs.openshift.com/container-platform) - Openshift CLI for interacting with the cluster
   - [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - CASE CLI for interacting with CASE bundles
-- Dedicated namespace
-- Secrets
-- Image mirroring (for pulling images from different registries)
+- A dedicated openshift project (namespace) to deploy acd into
+- Secrets for pulling images and accessing a storage bucket
+- Image mirroring (optional; for pulling images from different registries or running in airgap mode)
 
 ## Resources Required
 
@@ -29,16 +29,15 @@ By default, an ACD installation requires the following minimum resources:
 | ----------------------- | ---------------------- | -------- | ---------------- |
 | ACD                     | 3                      | 8 min (16 recommended )       | 64              |
 
-For high availability run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 vCPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 vCPU/pod can be used.  
+For high availability run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 vCPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 vCPU/pod may be used.  
 
 By default the ACD pods may use all of the CPUs on a node. If needed you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring), but this may result in lower availability of the ACD service.
 
-These are the requirements for ACD. The cluster itself has additional worker node requirements for monitoring,
-logging and other components so we recommend adding at least one more worker node for that if this is a new cluster.
+These are the requirements for ACD. The cluster itself has additional requirements for mastr, infrastructure and possible worker node requirements for monitoring, logging and other components.  Please see the [OpenShift recommended host practices](https://docs.openshift.com/container-platform/4.7/scalability_and_performance/recommended-host-practices.html) for guidance on adding infrastructure nodes and moving resources to those nodes. 
 
-## Storage (Optional)
+## Storage 
 
-If the deployment will use persistent file based storage instead of IBM Cloud Object (COS) storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
+If the deployment will use persistent file based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
 ### Persistent Volume and Claim Installation
 
