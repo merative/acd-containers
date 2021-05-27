@@ -21,4 +21,4 @@ The [management](../../management/pod-disruption) section provides an example th
 
 Disaster recovery can become a necessity is a region experiences a significant failure that includes the potential loss to data.
 Recovery can be accomplished by deploying into multiple regions or installing in a new region is an existing instance becomes unavailable.
-See [Backup and Recovery](../../manaagement/backup-and-recovery) for more information on data recovery.
+See [Backup and Recovery](../../management/backup-and-recovery) for more information on data recovery.
