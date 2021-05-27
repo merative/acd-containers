@@ -35,10 +35,17 @@
     - title: "Uninstalling"
       path: /installing/uninstalling/
 
-- title: Management
+- title: Using ACD
   pages:
     - title: "Getting started"
-      path: /management/getting-started/
+      path: /usage/getting-started/
+    - title: "API Documentation"
+      path: /usage/apis/
+    - title: "Software Development Kits"
+      path: /usage/sdks/
+
+- title: Management
+  pages:
     - title: "Configuration"
       path: /management/configuring/
     - title: "Pod Disruption"
@@ -61,10 +68,3 @@
   pages:
     - title: "MustGather"
       path: /troubleshooting/mustgather/
-
-- title: Using ACD
-  pages:
-    - title: "API Documentation"
-      path: /usage/apis/
-    - title: "Software Development Kits"
-      path: /usage/sdks/

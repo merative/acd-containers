@@ -17,7 +17,7 @@ Two storage mediums are supported:
 
 All configured storage needs to have encrytion enabled.
 
-## Persistant Volume and Claim Installation
+### Persistant Volume and Claim Installation
 
 File based storage is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports persistent volume claims of Read Write Many access mode across all zones and nodes of the cluster. The persistent volume claim must be against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.7/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
 
@@ -63,27 +63,27 @@ spec:
   volumeMode: Filesystem
 ```
 
-### Persistant Volume and Claim Creation
+#### Persistant Volume and Claim Creation
 
 ```
  oc create -f file-store-pv.yaml
 ```
 
-### Persistant Volume and Claim Removal
+#### Persistant Volume and Claim Removal
 
 ```
 oc delete pvc ibm-wh-acd-file-store-pvc -n <namespace>
 oc delete pv ibm-wh-acd-file-store-pv -n <namespace>
 ```
 
-## Object Storage Configuration
+### Object Storage Configuration
 
 See the [configuration](../../management/configuring) section for enabling object storage.
 
-### IBM Cloud Object Storage (COS)
+#### IBM Cloud Object Storage (COS)
 
 IBM COS encrypts all objects by default. For more information on encryption management including bring your own encryption key, refer to the [Cloud Object Storage documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-encryption)
 
-### Amazon S3 Storage
+#### Amazon S3 Storage
 
 For information on configuring Amazon's S3 server-side encryption, refer to the [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html).
