@@ -57,8 +57,8 @@
   pages:
     - title: "Manage Access"
       path: /security/manage-access/
-    - title: "Security"
-      path: /security/security/
+    - title: "Data Security"
+      path: /security/data-security/
     - title: "Security Constraints"
       path: /security/security-context-constraints/
     - title: "Considerations for GDPR"
