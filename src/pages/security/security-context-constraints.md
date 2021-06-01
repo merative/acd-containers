@@ -9,9 +9,10 @@ toc: true
 
 ## SecurityContextConstraints Requirements
 
-By default, the IBM Annotator for Clinical Data Operator uses the `restricted` SecurityContextConstraints resource.
+Security Context Constraints (or SCCs) set limits on what containers in a pod can do on the cluster.  See [Managing security context contraints](https://docs.openshift.com/container-platform/4.7/authentication/managing-security-context-constraints.html) for more details.
 
-If desired, a custom SecurityContextConstraints resource can be applied and used instead. Here is an example.
+By default, the IBM Annotator for Clinical Data Operator uses the `restricted` SecurityContextConstraints resource for its pod security.
+If desired, a custom SecurityContextConstraints resource can be created and applied instead. Here is an example.
 
 ```yaml
 apiVersion: security.openshift.io/v1
