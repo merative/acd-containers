@@ -17,9 +17,15 @@ toc: true
 - Command line tools
   - [oc](https://docs.openshift.com/container-platform) - Openshift CLI for interacting with the cluster
   - [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - CASE CLI for interacting with CASE bundles
-- A dedicated openshift project (namespace) to deploy acd into
-- Secrets for pulling images and accessing a storage bucket
-- Image mirroring (optional; for pulling images from different registries or running in airgap mode)
+- Login credentials and other cluster connection details from your cluster administrator
+- A [dedicated Openshift project (namespace)](https://ibm.github.io/acd-containers/installing/installing/#create-a-project-(namespace)) per ACD deployment
+- An [entitlement key](https://myibm.ibm.com/products-services/containerlibrary) for pulling images from the entitled registry; used to [create the global pull secret](https://ibm.github.io/acd-containers/installing/installing/#global-pull-secret-installation).
+- A secret for accessing a storage bucket, if [planning to use an object storage bucket](https://ibm.github.io/acd-containers/planning/storage/)
+
+Obtain the connection details for your OpenShift Container Platform cluster from your administrator. For additional planning and installation details, see:
+
+- [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+- [Install ACD](https://ibm.github.io/acd-containers/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](https://ibm.github.io/acd-containers/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator), and [installing the ACD service](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-service).
 
 ## Resources Required
 
@@ -117,103 +123,3 @@ To remove the persistent volume and claim run the following:
 oc delete pvc ibm-wh-acd-acd-file-store-pvc -n ibm-wh-acd-demo
 oc delete pv ibm-wh-acd-acd-file-store-pv -n ibm-wh-acd-demo
 ```
-
-## Dedicated Namespace
-
-See [create a project (namespace)](https://ibm.github.io/acd-containers/installing/installing/#create-a-project-(namespace)) in the Installation section.
-
-## Secrets
-
-ACD and its operator require the following secrets.
-
-1. A pull secret to pull images from the entitled registry account.
-2. (Optional) S3 credentials if S3 is being used as the configuration storage.
-
-### Secret Installation
-
-**Note:** Request access to the staging and/or production entitled registry and get an API or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
-
-#### Update the global pull secret using the CLI
-
-[Update the global cluster pull secret](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets) containing the container registry image pull secret with these steps:
-
-1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
-oc extract secret/pull-secret -n openshift-config --to=.
-
-2. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
-
-   `printf "iamapikey:<developerkey>" | base64`  -or-  `printf "cp:<entitlementkey>" | base64`
-
-3. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
-
-   ```
-   "cp.stg.icr.io": {
-       "auth": "aWFtYXBpaxxxxxxxxxxxcGFzc3dvcmQ=",
-       "email": "xxx@nomail.relay.ibm.com"
-   }
-   ```
-
-4. Update the global image pull secret with the updated credentials:
-
-   `oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson`
-
-5. Monitor the node status using the command:
-
-   `oc get nodes`
-
-6. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
-
-#### Update the global pull secret using a script
-
-See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.
-
-#### (Optional) Create configuration storage secret
-
-If the deployment is using S3 as the configuration storage, the credentials need to be inserted as secrets.
-
-```
-echo '<cos_id>' | tr -d '\n' > username
-echo '<cos_secret>' | tr -d '\n' > password
-kubectl create secret generic ibm-wh-acd-as \
-                              --namespace <namespace> \
-                              --from-file=username \
-                              --from-file=password
-```
-
-## (Optional) Configure Image Registry Repository Mirroring
-
-Configure your OpenShift Container Platform cluster to redirect requests to pull images from a repository on a source image registry and have it resolved by a repository on a mirrored image registry. See [configuring image registry repository mirroring](
-https://docs.openshift.com/container-platform/4.7/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for details.
-
-**Note** This is currently required if you are pulling ACD images from the production entitled registry and want to access the mirrored images in the staging entitled registry.
-
-### Configure mirroring using the CLI
-
-Create an ImageContentSourcePolicy file (for example, mirror-config.yaml) to define the source and mirror locations. Replace the source and mirrors with your own registry and repository pairs and images.
-
-This example mirrors images from production registries `icr.io` and `cp.icr.io` to the same namespace and two different repository locations in the staging registry `cp.stg.icr.io`.
-
-```
-apiVersion: operator.openshift.io/v1alpha1
-kind: ImageContentSourcePolicy
-metadata:
-  name: mirror-config
-spec:
-  repositoryDigestMirrors:
-    - mirrors:
-        - cp.stg.icr.io/cp/wh-acd
-      source: cp.icr.io/cp/wh-acd
-    - mirrors:
-        - cp.stg.icr.io/cp
-      source: icr.io/cpopen
-```
-
-Create the ImageContentSourcePolicy object.
-
-`oc create -f mirror-config.yaml`
-
-**Note** Applying the ImageContentSourcePolicy causes your cluster nodes to recycle and will temporarily limit the usability of the cluster.
-
-### Configure mirroring using a script
-
-See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.

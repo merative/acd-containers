@@ -5,7 +5,7 @@ categories: installing
 slug: installing
 toc: true
 ---
-To install IBM Watson Annotator for Clinical Data Container Edition, you may use the OpenShift Container Platform web console, the `oc` command line utility, or scripts using the `cloudctl` tool.
+To install IBM Watson Annotator for Clinical Data Container Edition, you may use the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
 
 When deploying in an air-gapped environment, see [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
 
@@ -22,8 +22,8 @@ Installing ACD has two phases:
 
 ## Before you begin
 
-* Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
 * [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+* Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
 * Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 
 ## Create a project (namespace)
@@ -35,6 +35,102 @@ When you create a project, a namespace with the same name is also created.
 Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 **Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
+
+## Create Secrets
+
+ACD and its operator require the following secrets.
+
+1. A pull secret to pull images from the entitled registry account.
+2. (Optional) S3 credentials if S3 is being used as the configuration storage.
+
+### Global pull secret installation
+
+Request access to the staging and/or production entitled registry and get an API or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+
+#### Update the global pull secret using the CLI
+
+[Update the global cluster pull secret](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets) containing the container registry image pull secret with these steps:
+
+1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
+oc extract secret/pull-secret -n openshift-config --to=.
+
+2. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
+
+   `printf "iamapikey:<developerkey>" | base64`  -or-  `printf "cp:<entitlementkey>" | base64`
+
+3. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
+
+   ```
+   "cp.stg.icr.io": {
+       "auth": "aWFtYXBpaxxxxxxxxxxxcGFzc3dvcmQ=",
+       "email": "xxx@nomail.relay.ibm.com"
+   }
+   ```
+
+4. Update the global image pull secret with the updated credentials:
+
+   `oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson`
+
+5. Monitor the node status using the command:
+
+   `oc get nodes`
+
+6. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
+
+#### Update the global pull secret using cloudctl
+
+See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.
+
+### (Optional) Create configuration storage secret
+
+If the deployment is using S3 as the configuration storage, the credentials need to be inserted as secrets.
+
+```
+echo '<cos_id>' | tr -d '\n' > username
+echo '<cos_secret>' | tr -d '\n' > password
+kubectl create secret generic ibm-wh-acd-as \
+                              --namespace <namespace> \
+                              --from-file=username \
+                              --from-file=password
+```
+
+## (Optional) Configure Image Registry Repository Mirroring
+
+Configure your OpenShift Container Platform cluster to redirect requests to pull images from a repository on a source image registry and have it resolved by a repository on a mirrored image registry. See [configuring image registry repository mirroring](
+https://docs.openshift.com/container-platform/4.7/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for details.
+
+**Note** This is currently required if you are pulling ACD images from the production entitled registry and want to access the mirrored images in the staging entitled registry.
+
+### Configure mirroring using the CLI
+
+Create an ImageContentSourcePolicy file (for example, mirror-config.yaml) to define the source and mirror locations. Replace the source and mirrors with your own registry and repository pairs and images.
+
+This example mirrors images from production registries `icr.io` and `cp.icr.io` to the same namespace and two different repository locations in the staging registry `cp.stg.icr.io`.
+
+```
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: mirror-config
+spec:
+  repositoryDigestMirrors:
+    - mirrors:
+        - cp.stg.icr.io/cp/wh-acd
+      source: cp.icr.io/cp/wh-acd
+    - mirrors:
+        - cp.stg.icr.io/cp
+      source: icr.io/cpopen
+```
+
+Create the ImageContentSourcePolicy object.
+
+`oc create -f mirror-config.yaml`
+
+**Note** Applying the ImageContentSourcePolicy causes your cluster nodes to recycle and will temporarily limit the usability of the cluster.
+
+### Configure mirroring using cloudctl
+
+See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.
 
 ## Add the ACD Operator to the catalog
 
@@ -99,7 +195,7 @@ Log in to your Red Hat OpenShift Container Platform as a cluster administrator b
 
 The ACD operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
 
-### Add the ACD Catalog using a script
+### Add the ACD Catalog using cloudctl
 
 See the [Air-gap Installation install catalog source](https://ibm.github.io/acd-containers/installing/air-gap-installation/#install-catalog-source) documentation.
 
@@ -120,7 +216,7 @@ To install the ACD operator through the OpenShift Container Platform web console
 
 The installation can take a few minutes to complete.
 
-### Install the ACD Operator using a script
+### Install the ACD Operator using cloudctl
 
 ```
 cloudctl case launch \
@@ -154,7 +250,7 @@ To install the ACD service through the OpenShift Container Platform web console,
 
 From here you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
 
-### Install the ACD service using a script
+### Install the ACD service using cloudctl
 
 By default, this will deploy 3 replicas of all ACD services. Include `--args "--replicas 1"` to install a 1 replica ACD instance.
 
