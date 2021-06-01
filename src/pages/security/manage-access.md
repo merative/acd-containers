@@ -8,6 +8,7 @@ toc: true
 
 
 ## Managing Access to ACD
+
 If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster you can use the Openshift provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do RBAC access to the service.
 In the example below we'll use the latest version of the openshift oauth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
 
