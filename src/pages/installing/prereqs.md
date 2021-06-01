@@ -23,10 +23,9 @@ toc: true
 - A secret for accessing a storage bucket, if [planning to use an object storage bucket](https://ibm.github.io/acd-containers/planning/storage/)
 
 Obtain the connection details for your OpenShift Container Platform cluster from your administrator. For additional planning and installation details, see:
-* [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-* [Install ACD](https://ibm.github.io/acd-containers/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](https://ibm.github.io/acd-containers/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator), and [installing the ACD service](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-service).
-*
 
+- [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+- [Install ACD](https://ibm.github.io/acd-containers/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](https://ibm.github.io/acd-containers/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator), and [installing the ACD service](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-service).
 
 ## Resources Required
 

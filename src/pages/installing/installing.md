@@ -132,7 +132,6 @@ Create the ImageContentSourcePolicy object.
 
 See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.
 
-
 ## Add the ACD Operator to the catalog
 
 Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog or can be installed with its own catalog source.
