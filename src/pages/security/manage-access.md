@@ -17,6 +17,7 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
    * `namespace: acd-oauth-proxy` to the namespace you created in 1.
    * In the args section on this line `--upstream=https://ibm-wh-acd-acd.whcs-acd.svc`  - change the whcs-acd to the namespace your acd instance is running in (the target service)
    * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":"whcs-acd"}}`- change the namespace again to match your target acd namespace.
+   
    ```yaml oauth-proxy.yaml
     kind: List
     apiVersion: v1
@@ -98,6 +99,7 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
               secret:
                 secretName: proxy-tls
    ```
+
 1. Run `oc project acd-oauth-proxy` (change to your project used in  step 1 above).
 1. `oc create -f oauth-proxy.yaml`
    * This should create a deployment for the proxy, a service to that deployment, a route to that service and a proxy service account all in your new project that was created in step 1.
@@ -115,6 +117,7 @@ More options and details for the proxy are availble at [OpenShift OAuth Proxy](h
 ### Troubleshooting
 
 To diagnose problems follow these steps:
+
 1. Ensure the deployment and pod are running in the proxy namespace created in step 1 above.
    * Check the pod logs to ensure it is starting without errors.
 1. Ensure you can login with the token as the service account and view the services in the target acd namespace
