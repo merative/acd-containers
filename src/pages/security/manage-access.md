@@ -17,7 +17,7 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
    * `namespace: acd-oauth-proxy` to the namespace you created in 1.
    * In the args section on this line `--upstream=https://ibm-wh-acd-acd.whcs-acd.svc`  - change the whcs-acd to the namespace your acd instance is running in (the target service)
    * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":"whcs-acd"}}`- change the namespace again to match your target acd namespace.
-   
+
    ```yaml oauth-proxy.yaml
     kind: List
     apiVersion: v1
