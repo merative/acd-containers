@@ -6,162 +6,319 @@ slug: air-gap-installation
 toc: true
 ---
 
-## Installing using command-line (Air-gapped)
+Since air gap environments do not have access to the public internet, and therefore no access to DockerHub, the following preparation steps are necessary to make the required images accessable to the Red Hat OpenShift Container Platform cluster.
 
-### Cluster with a Bastion
+If the Red Hat OpenShift Container Platform cluster has a Bastion host, ensure that the Bastion host can access:
 
-#### Prepare Bastion Host
+- The public internet to download the CASE and images.
+- The target (air gap) image registry where all the images will be mirrored to.
+- The Red Hat OpenShift Container Platform cluster to install the Operator on.
 
-* Logon to the bastion machine
+In the absence of a Bastion host, a portable host with access to the public internet may used. By downloading the CASE and images onto the portable host, and then transporting the portable host into the air gap environment, the images can then be mirrored to the target (air gap) image registry.
 
-* Verify that the bastion machine has access
-  * to public internet (to download CASE and images)
-  * a target image registry ( where the images will be mirrored)
-  * a target openshift cluster to install the operator
+### Verifying entitled registry access
 
-All the following steps should be run from the bastion machine
+Before beginning, verify the entitled registry key or apikey can access the entitled registry. 
 
-#### Download CASE
-
-Create a directory to save the CASE to a local directory
+Example (Docker with apikey):
 
 ```
-mkdir /tmp/cases
+docker login -u iamapikey -p <apikey> cp.icr.io
 ```
 
-Run
+Example (Docker with entitlement key):
+
+```
+docker login -u cp -p <entitlement key> cp.icr.io
+```
+
+If using a Bastion host, refer to [Using a Bastion host](#using-a-bastion-host).
+If using a portable host, refer to [Using a portable host](#using-a-portable-host).
+
+### Using a Bastion host
+
+#### 1. Prepare the Bastion host
+
+Ensure you have the following installed on the Bastion host:
+
+  - [Docker CLI (docker)](https://docker.com)
+  - [IBM Cloud Pak CLI (cloudctl)](https://github.com/IBM/cloud-pak-cli)
+  - [Red Hat OpenShift Container Platform CLI (oc)](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html)
+  - [Skopeo (skopeo)](https://github.com/containers/skopeo)
+
+#### 2. Download the CASE
+
+1. Create a local directory in which to save the CASE.
+
+```
+mkdir -p $HOME/offline
+```
+
+2. Download the CASE from https://github.com/IBM/cloud-pak
+
+2. Save the CASE.
 
 ```
 cloudctl case save \
-    --case case/ibm-wh-acd \
-    --outputdir /tmp/cases \
-    --tolerance 1
-
-Downloading and extracting the CASE ...
-- Success
-Retrieving CASE version ...
-- Success
-Validating the CASE ...
-- Success
-Creating inventory ...
-- Success
-Finding inventory items
-- Success
-Resolving inventory items ...
-Parsing inventory items
-- Success
+    --case <case-path> \
+    --outputdir $HOME/offline
 ```
+  - `<case-path>` is the path or URL to the CASE to save.
 
-Verify the CASE and images csv has been downloaded
+3. Verify the CASE (.tgz) file and images (.csv) file have been downloaded.
 
 ```
-ls /tmp/cases/
+ls $HOME/offline
 
 charts
 ibm-wh-acd
-ibm-wh-acd-1.0.0-charts.csv
-ibm-wh-acd-1.0.0-images.csv
-ibm-wh-acd-1.0.0.tgz
+ibm-wh-acd-2.0.0-charts.csv
+ibm-wh-acd-2.0.0-images.csv
+ibm-wh-acd-2.0.0.tgz
 ```
 
-#### Configure Registry Auth
+#### 3. Log into cluster
 
-##### Create auth secret for the the source image registry
+Log into the Red Hat OpenShift Container Platform cluster as a cluster administrator using the `oc login` command.
 
-Create registry secret for source image registry (if the registry is public which doesn't require credentials, this step can be skipped)
+#### 4. Configure Bastion host's registry authentication secret
+
+1. Create the authentication secret for the entitled registry.
 
 ```
 cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
     --action configure-creds-airgap \
-    --args "--registry cp.icr.io --user iamapikey --pass <apikey>" \
-    --tolerance 1
+    --args "--registry cp.icr.io --user <registry-user> --pass <registry-password>" \
 ```
+  - `<case-file>` is the CASE file.
+  - `<registry-user>` is the username for the entitled registry. This should be either `cp` or `iamapikey`.
+  - `<registry-password>` is the password for the entitled registry.
 
-##### Create auth secret for target image registry
+2. Create the authentication secret for the Bastion host's registry.
 
 ```
 cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
     --action configure-creds-airgap \
-    --args "--registry <target_registry> --user <username> --pass <password>" \
-    --tolerance 1
+    --args "--registry <bastion-registry> --user <registry-user> --pass <registry-password>"
 ```
+  - `<case-file>` is the CASE file.
+  - `<bastion-registry>` is the Bastion host's registry.
+  - `<registry-user>` is the username for the Bastion host's registry.
+  - `<registry-password>` is the password for the Bastion host's registry.
 
-The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`
+The credentials are saved to `$HOME/.airgap/secrets/<target-registry>.json`
 
-#### Mirror Images
+#### 5. Mirror images to Bastion host's registry
 
-In this step image from saved CASE (images.csv) are copied to target registry in the airgap environment
+1. Copy the images in the CASE from the source (public) registry to the Bastion host's (air gap) registry.
 
 ```
 cloudctl case launch \
-    --case stable/ibm-wh-acd-operator-bundle/case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
     --action mirror-images \
-    --args "--registry <target_registry> --inputDir /tmp/cases" \
-    --tolerance 1
+    --args "--registry <bastion-registry> --inputDir $HOME/offline"
 ```
+  - `<case-file>` is the CASE file.
+  - `<bastion-registry>` is the Bastion host's registry.
 
-#### Configure Cluster for Airgap
+#### 6. Configure cluster to access Bastion host's registry
 
-This steps does the following
-
-* creates a global image pull secret for the target registry (skipped if target registry is unauthenticated)
-* creates a imagesourcecontentpolicy
-
-WARNING:
-
-* Cluster resources must adjust to the new pull secret, which can temporarily limit the usability of the cluster. Authorization credentials are stored in $HOME/.airgap/secrets and /tmp/airgap* to support this action
-
-* Applying imagesourcecontentpolicy causes cluster nodes to recycle.
+1. Configure a global image pull secret and ImageContentSourcePolicy resource.
 
 ```
 cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
     --action configure-cluster-airgap \
-    --args "--registry <target_registry> --inputDir /tmp/cases" \
-    --tolerance 1
+    --args "--registry <bastion-registry> --inputDir $HOME/offline"
+```
+  - `<case-file>` is the CASE file.
+  - `<bastion-registry>` is the Bastion host's registry.
+
+*WARNING:* This step may restart all cluster nodes. The cluster resources might be unavailable until the time the new pull secret is applied.
+
+2. Optional: If you are using an insecure Bastion host's registry, you must add the Bastion host's registry to the cluster insecureRegistries list.
+
+```
+oc patch image.config.openshift.io/cluster --type=merge \
+    -p '{"spec":{"registrySources":{"insecureRegistries":["'<bastion-registry>'"]}}}'
+```
+  - `<bastion-registry>` is the Bastion host's registry.
+
+#### 7. Proceed with installation
+
+Now that the air gap installation preparation steps are complete, you may continue with the [Installing ACD](../installing).
+
+
+### Using a portable host
+
+#### 1. Prepare the portable host
+
+Ensure you have the following installed on the portable host:
+
+  - [Docker CLI (docker)](https://docker.com)
+  - [IBM Cloud Pak CLI (cloudctl)](https://github.com/IBM/cloud-pak-cli)
+  - [Red Hat OpenShift Container Platform CLI (oc)](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html)
+  - [Skopeo (skopeo)](https://github.com/containers/skopeo)
+
+#### 2. Download the CASE
+
+1. Create a local directory in which to save the CASE.
+
+```
+mkdir -p $HOME/offline
 ```
 
-#### Install Catalog Source
+2. Download the CASE from https://github.com/IBM/cloud-pak
 
-This step installs the operator catalogsource in the openshift-marketplace namespace. And also installs catalogs from dependent subcases.
+2. Save the CASE.
+
+```
+cloudctl case save \
+    --case <case-path> \
+    --outputdir $HOME/offline
+```
+  - `<case-path>` is the path or URL to the CASE to save.
+
+#### 3. Configure portable registry and authentication secret
+
+1. Initialize the portable registry.
 
 ```
 cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
-    --action install-catalog \
-    --args "--registry <target_registry> --inputDir /tmp/cases --recursive" \
-    --tolerance 1
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action init-registry \
+    --args "--registry localhost --user <registry-user> --pass <registry-password> --dir $HOME/offline/imageregistry"
 ```
+  - `<case-file>` is the CASE file.
+  - `<registry-user>` is the username for the registry, which is initialized to this value.
+  - `<registry-password>` is the password for the registry, which is initialized to this value.
 
-#### Install Operator
+2. Start the portable registry.
 
-See instructions from [Installing ACD](../installing) section
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action start-registry \
+    --args "--registry localhost --port 443 --user <registry-user> --pass <registry-password> --dir $HOME/offline/imageregistry"
+```
+  - `<case-file>` is the CASE file.
+  - `<registry-user>` is the username for the portable device's registry.
+  - `<registry-password>` is the password for the portable device's registry.
 
-### Cluster without a Bastion
+3. Create the authentication secret for the entitled registry.
 
-#### Prepare a portable device
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action configure-creds-airgap \
+    --args "--registry cp.icr.io --user <registry-user> --pass <registry-password>" \
+```
+  - `<case-file>` is the CASE file.
+  - `<registry-user>` is the username for the entitled registry. This should be either `cp` or `iamapikey`.
+  - `<registry-password>` is the password for the entitled registry.
 
-Prepare a portable device (such as laptop) that be used to download the case and images can be carried into the air gapped environment
+4. Create the authentication secret for the portable registry.
 
-* Verify that the portable device has access
-  * to public internet (to download CASE and images)
-  * a target image registry ( where the images will be mirrored)
-  * a target openshift cluster to install the operator
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action configure-creds-airgap \
+    --args "--registry localhost:443 --user <registry-user> --pass <registry-password>"
+```
+  - `<case-file>` is the CASE file.
+  - `<registry-user>` is the username for the portable device's registry.
+  - `<registry-password>` is the password for the portable device's registry.
 
-* Download and install dependent command line tools
-  * [oc](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html#installing-the-cli) - To interact with Openshift Cluster
-  * [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - To download and install CASE
+The credentials are saved to `$HOME/.airgap/secrets/localhost:443.json`
 
-All the following steps should be run from the portable device
+#### 4. Mirror images to portable registry
+
+1. The following step copies the images in the CASE from the source (public) registry to the portable registry.
+
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action mirror-images \
+    --args "--registry localhost:443 --inputDir $HOME/offline"
+```
+  - `<case-file>` is the CASE file.
+
+#### 5. Transport portable device
+
+Now that the images are in the portable registry, transport the portable host into the air gap environment.
+
+#### 6. Log into the cluster
+
+Log into the Red Hat OpenShift Container Platform cluster as a cluster administrator using the `oc login` command.
+
+#### 7. Configure portable device's registry authentication secret
+
+1. Create the authentication secret for the portable device's registry.
+
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action configure-creds-airgap \
+    --args "--registry <portable-registry> --user <registry-user> --pass <registry-password>"
+```
+  - `<case-file>` is the CASE file.
+  - `<portable-registry>` is the portable device's registry.
+  - `<registry-user>` is the username for the portable device's registry.
+  - `<registry-password>` is the password for the portable device's registry.
+
+The credentials are saved to `$HOME/.airgap/secrets/$TARGET_REGISTRY.json`
+
+#### 8. Mirror images to portable device's registry
+
+1. The following step copies the images in the CASE from the portable registry to the portable device's registry.
+
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action mirror-images \
+    --args "--fromRegistry localhost:443 --registry <portable-registry> --inputDir $HOME/offline"
+```
+  - `<case-file>` is the CASE file.
+  - `<portable-registry>` is the portable device's registry.
+
+#### 9. Configure cluster to access portable device's registry
+
+1. Configure a global image pull secret and ImageContentSourcePolicy resource.
+
+```
+cloudctl case launch \
+    --case $HOME/offline/<case-file> \
+    --namespace openshift-marketplace \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action configure-cluster-airgap \
+    --args "--registry <portable-registry> --inputDir $HOME/offline"
+```
+  - `<case-file>` is the CASE file.
+  - `<portable-registry>` is the portable device's registry.
+
+*WARNING:* This step may restart all cluster nodes. The cluster resources might be unavailable until the time the new pull secret is applied.
+
+2. Optional: If you are using an insecure portable device's registry, you must add the portable device's registry to the cluster insecureRegistries list.
+
+```
+oc patch image.config.openshift.io/cluster --type=merge \
+    -p '{"spec":{"registrySources":{"insecureRegistries":["'<portable-registry>'"]}}}'
+```
+  - `<portable-registry>` is the portable device's registry.
+
+#### 10. Proceed with installation
+
+Now that the air gap installation preparation steps are complete, you may continue with the installation [Installing ACD](../installing).
