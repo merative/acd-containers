@@ -66,5 +66,9 @@
 
 - title: Monitoring and Troubleshooting
   pages:
+    - title: "Logging and Monitoring"
+      path: /troubleshooting/logging-monitoring/
+    - title: "Diagnosing Problems"
+      path: /troubleshooting/diagnosing-problems/
     - title: "MustGather"
       path: /troubleshooting/mustgather/
