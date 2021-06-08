@@ -45,7 +45,7 @@ ACD and its operator require the following secrets.
 
 ### Global pull secret installation
 
-Request access to the staging and/or production entitled registry and get an API or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+Request access to the entitled registry and get an API or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
 
 #### Update the global pull secret using the CLI
 
@@ -61,7 +61,7 @@ oc extract secret/pull-secret -n openshift-config --to=.
 3. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
 
    ```
-   "cp.stg.icr.io": {
+   "cp.icr.io": {
        "auth": "aWFtYXBpaxxxxxxxxxxxcGFzc3dvcmQ=",
        "email": "xxx@nomail.relay.ibm.com"
    }
@@ -93,40 +93,6 @@ kubectl create secret generic ibm-wh-acd-as \
                               --from-file=username \
                               --from-file=password
 ```
-
-## (Optional) Configure Image Registry Repository Mirroring
-
-Configure your OpenShift Container Platform cluster to redirect requests to pull images from a repository on a source image registry and have it resolved by a repository on a mirrored image registry. See [configuring image registry repository mirroring](
-https://docs.openshift.com/container-platform/4.7/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for details.
-
-**Note** This is currently required if you are pulling ACD images from the production entitled registry and want to access the mirrored images in the staging entitled registry.
-
-### Configure mirroring using the CLI
-
-Create an ImageContentSourcePolicy file (for example, mirror-config.yaml) to define the source and mirror locations. Replace the source and mirrors with your own registry and repository pairs and images.
-
-This example mirrors images from production registries `icr.io` and `cp.icr.io` to the same namespace and two different repository locations in the staging registry `cp.stg.icr.io`.
-
-```
-apiVersion: operator.openshift.io/v1alpha1
-kind: ImageContentSourcePolicy
-metadata:
-  name: mirror-config
-spec:
-  repositoryDigestMirrors:
-    - mirrors:
-        - cp.stg.icr.io/cp/wh-acd
-      source: cp.icr.io/cp/wh-acd
-    - mirrors:
-        - cp.stg.icr.io/cp
-      source: icr.io/cpopen
-```
-
-Create the ImageContentSourcePolicy object.
-
-`oc create -f mirror-config.yaml`
-
-**Note** Applying the ImageContentSourcePolicy causes your cluster nodes to recycle and will temporarily limit the usability of the cluster.
 
 ### Configure mirroring using cloudctl
 
