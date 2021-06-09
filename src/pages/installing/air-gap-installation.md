@@ -158,7 +158,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 7. Proceed with installation
 
-Now that the air gap installation preparation steps are complete, you may continue with the [Installing ACD](../installing).
+Now that the air gap installation preparation steps are complete, you may continue with the [Installing ACD](../install-the-acd-operator).
 
 ### Using a portable host
 
@@ -336,4 +336,4 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 10. Proceed with installation
 
-Now that the air gap installation preparation steps are complete, you may continue with the installation [Installing ACD](../installing).
+Now that the air gap installation preparation steps are complete, you may continue with the installation [Installing ACD](../install-the-acd-operator).

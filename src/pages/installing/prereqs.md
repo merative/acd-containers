@@ -43,6 +43,17 @@ These are the requirements for ACD. The cluster itself has additional requiremen
 
 ## Storage
 
+If the deployment will use S3 based storage, the credentials need to be inserted as secrets.
+
+```
+echo '<cos_id>' | tr -d '\n' > username
+echo '<cos_secret>' | tr -d '\n' > password
+oc create secret generic ibm-wh-acd-as \
+    --namespace <namespace> \
+    --from-file=username \
+    --from-file=password
+```
+
 If the deployment will use persistent file based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
 ### Persistent Volume and Claim Installation
@@ -50,7 +61,7 @@ If the deployment will use persistent file based storage, the Persistent Volume 
 Create the persistent volume claim.
 
 ```
- oc create -f file-store-pvc.yaml
+oc create -f file-store-pvc.yaml
 ```
 
 The following is an example of a PVC that has been tested with this chart.

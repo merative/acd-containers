@@ -7,8 +7,6 @@ toc: true
 ---
 To install IBM Watson Annotator for Clinical Data Container Edition, you may use the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
 
-When deploying in an air-gapped environment, see [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
-
 ## Overview
 
 Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration.
@@ -36,18 +34,23 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 **Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
 
-## Create Secrets
+## Air-gapped installation
 
-ACD and its operator require the following secrets.
+When deploying in an air-gapped environment, refer to the [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
 
-1. A pull secret to pull images from the entitled registry account.
-2. (Optional) S3 credentials if S3 is being used as the configuration storage.
+## Non Air-gapped installation
 
-### Global pull secret installation
+When deploying in a non air-gapped environment, continue with the following installation.
+
+### Create a pull secrets
+
+ACD requires a pull secret to pull images from the entitled registry account.
+
+#### Global pull secret installation
 
 Request access to the entitled registry and get an API or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
 
-#### Update the global pull secret using the CLI
+##### Update the global pull secret using the CLI
 
 [Update the global cluster pull secret](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets) containing the container registry image pull secret with these steps:
 
@@ -77,93 +80,41 @@ oc extract secret/pull-secret -n openshift-config --to=.
 
 6. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
 
-#### Update the global pull secret using cloudctl
+### Add the ACD Operator to the catalog
 
-See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.
-
-### (Optional) Create configuration storage secret
-
-If the deployment is using S3 as the configuration storage, the credentials need to be inserted as secrets.
-
-```
-echo '<cos_id>' | tr -d '\n' > username
-echo '<cos_secret>' | tr -d '\n' > password
-kubectl create secret generic ibm-wh-acd-as \
-                              --namespace <namespace> \
-                              --from-file=username \
-                              --from-file=password
-```
-
-### Configure mirroring using cloudctl
-
-See the [Air-gap Installation Configure Cluster for Airgap section](https://ibm.github.io/acd-containers/installing/air-gap-installation/#cluster-with-a-bastion/) documentation.
-
-## Add the ACD Operator to the catalog
-
-Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog or can be installed with its own catalog source.
+Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog.
 
 If you have other IBM products installed in your cluster, then you may already have the IBM Operator Catalog available, and you can continue to installing the ACD operator from there.
 
-If you are installing ACD as the first IBM operator in your cluster, complete the following steps to install either the IBM Operator Catalog or the ACD operator catalog.
+To add the IBM Operator Catalog:
 
-To make the ACD operator and related dependencies available in the OpenShift OperatorHub catalog, chose one of the following install paths to create catalog source YAML files and apply them.
+1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
 
-### Add the IBM Operator Catalog using the CLI
+   ```
+   apiVersion: operators.coreos.com/v1alpha1
+   kind: CatalogSource
+   metadata:
+      name: ibm-operator-catalog
+      namespace: openshift-marketplace
+   spec:
+      displayName: "IBM Operator Catalog"
+      publisher: IBM
+      sourceType: grpc
+      image: icr.io/cpopen/ibm-operator-catalog
+      updateStrategy:
+        registryPoll:
+          interval: 45m
+   ```
 
-Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
+2. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 
-```
-apiVersion: operators.coreos.com/v1alpha1
-kind: CatalogSource
-metadata:
-   name: ibm-operator-catalog
-   namespace: openshift-marketplace
-spec:
-   displayName: "IBM Operator Catalog"
-   publisher: IBM
-   sourceType: grpc
-   image: icr.io/cpopen/ibm-operator-catalog@sha256:d0d106a4a8ff88953d3653a02b4c321545e9503bc4cb5db4f1dc6b9f28f39555
-   updateStrategy:
-     registryPoll:
-       interval: 45m
-```
+3. Apply the source by using the following command:
 
-Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
-Apply the source by using the following command:
-
-`oc apply -f IBMCatalogSource.yaml`
+   `oc apply -f IBMCatalogSource.yaml`
 
 The IBM Operator Catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
 
-### Add the ACD Catalog using the CLI
-
-Create a file for the ACD catalog source with the following content, and save as `acd_catalog_source.yaml`:
-
-```
-apiVersion: operators.coreos.com/v1alpha1
-kind: CatalogSource
-metadata:
-  name: ibm-wh-acd-operator-catalog
-  namespace: openshift-marketplace
-spec:
-  displayName: IBM ACD Operator Catalog
-  publisher: IBM
-  sourceType: grpc
-  image: icr.io/cpopen/ibm-wh-acd-operator-catalog@sha256:d0d106a4a8ff88953d3653a02b4c321545e9503bc4cb5db4f1dc6b9f28f39555
-  updateStrategy:
-    registryPoll:
-      interval: 45m
-```
-
-Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI. Apply the source by using the following command:
-
-`oc apply -f acd_catalog_source.yaml`
-
-The ACD operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
-
-### Add the ACD Catalog using cloudctl
-
-See the [Air-gap Installation install catalog source](https://ibm.github.io/acd-containers/installing/air-gap-installation/#install-catalog-source) documentation.
+More information on the IBM Operator Catalog can be found at [Red Hat Catalog Enablement for the IBM Operator Catalog](https://github.com/IBM/cloud-pak/blob/master/reference/operator-catalog-enablement.md)
 
 ## Install the ACD Operator
 
