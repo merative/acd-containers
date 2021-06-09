@@ -29,7 +29,7 @@ These additional configurable parameters may be provided when file based storage
 | Parameter | Description | Default |
 | -         | -           | -       |
 | `configurationStorage.file.volume.existingClaimName` | Use an existing persistent volume claim |  |
-| `configurationStorage.file.volume.size` | Persistent volume size, e.g. 1Gi |  |
+| `configurationStorage.file.volume.size` | Persistent volume size, e.g. 10Gi |  |
 | `configurationStorage.file.volume.storageClassName` | Use an existing persistent volume of this class type |  |
 | `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` |
 
