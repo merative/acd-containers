@@ -15,8 +15,8 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
 1. Create a project/namespace for the proxy to run in (the examples below used acd-oauth-proxy)
 1. Download the yaml below and save it as oauth-proxy.yaml.  Edit it with these changes:
    * `namespace: acd-oauth-proxy` to the namespace you created in 1.
-   * In the args section on this line `--upstream=https://ibm-wh-acd-acd.<namespace>.svc`  - change \<namespace\> to the namespace your acd instance is running in (the target service)
-   * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":<namespace>}}`- change \<namespace\> again to match your target acd namespace.
+   * In the args section on this line `--upstream=https://ibm-wh-acd-acd.<namespace>.svc`  - change <namespace\> to the namespace your acd instance is running in (the target service)
+   * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":<namespace>}}`- change <namespace\> again to match your target acd namespace.
 
    ```yaml oauth-proxy.yaml
     kind: List
@@ -105,7 +105,7 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
    * This should create a deployment for the proxy, a service to that deployment, a route to that service and a proxy service account all in your new project that was created in step 1.
 1. Because we are using the `--openshift-delegate-urls` option of the proxy we need to give the service account that checks the token permission to create a tokenreviews at the cluster level.  We'll do this by binding the proxy service account to the predefined `system:auth-delegator` cluster role.
    * `oc adm policy add-cluster-role-to-user system:auth-delegator -z proxy -n acd-oauth-proxy` (change project name as needed)
-1. The delegate-urls above says it will check the user/token coming in has the ability to do a get on the services in the target namespace as what will check to ensure the service account has access to the target acd instance.   We need to create a namespace-scoped role on the target acd project and grant access to the service account that will be used to call acd.  To start, create a role (named serviceview) on the namespace where acd is running and bind that role to the service account created above. Change \<namespace\> to your acd namespace and acd-oauth-proxy to the namespace/project created in step 1 where the proxy runs.
+1. The delegate-urls above says it will check the user/token coming in has the ability to do a get on the services in the target namespace as what will check to ensure the service account has access to the target acd instance.   We need to create a namespace-scoped role on the target acd project and grant access to the service account that will be used to call acd.  To start, create a role (named serviceview) on the namespace where acd is running and bind that role to the service account created above. Change <namespace\> to your acd namespace and acd-oauth-proxy to the namespace/project created in step 1 where the proxy runs.
     * `oc create role serviceview --verb=get --resource=service -n <namespace>`
     * `oc adm policy add-role-to-user serviceview system:serviceaccount:acd-oauth-proxy:proxy --role-namespace=<namespace> -n <namespace>`
 1. Create a token to use on the service account
@@ -128,7 +128,7 @@ To diagnose problems follow these steps:
 1. Ensure you can login with the token as the service account and view the services in the target acd namespace
    * `oc login https://api.youserver.com:6443  --token <yourtoken>  --insecure-skip-tls-verify=true` - ensure your token is good
    * `oc whoami` - ensure you are the service account
-   * `oc get service ibm-wh-acd-acd -n <namespace>`  - change \<namespace\> to your acd target namespace and ensure you can view the service as the service account user.  If role binding is setup correctly you will see the service info.  If not, you will see an `Error from server (Forbidden)`.
+   * `oc get service ibm-wh-acd-acd -n <namespace>`  - change <namespace\> to your acd target namespace and ensure you can view the service as the service account user.  If role binding is setup correctly you will see the service info.  If not, you will see an `Error from server (Forbidden)`.
 1. Check the logs on the proxy pod in the console for access errors.
 1. Check the logs in the acd service for errors if it gets to ACD.
 
