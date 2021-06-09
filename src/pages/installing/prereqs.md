@@ -131,6 +131,8 @@ spec:
 To remove the persistent volume and claim run the following:
 
 ```
-oc delete pvc ibm-wh-acd-acd-file-store-pvc -n ibm-wh-acd-demo
-oc delete pv ibm-wh-acd-acd-file-store-pv -n ibm-wh-acd-demo
+oc delete pvc ibm-wh-acd-acd-file-store-pvc \
+   --namespace ibm-wh-acd-demo
+oc delete pv ibm-wh-acd-acd-file-store-pv \
+   --namespace ibm-wh-acd-demo
 ```

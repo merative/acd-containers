@@ -18,7 +18,7 @@ ACD should be uninstalled using the same interface that was used to install.
 cloudctl case launch \
     --case case/ibm-wh-acd \
     --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperator \
+    --inventory clinicalDataAnnotatorOperator \
     --action deleteCustomResources \
     --tolerance 1
 ```
@@ -29,7 +29,7 @@ cloudctl case launch \
 cloudctl case launch \
     --case case/ibm-wh-acd \
     --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperatorSetup \
+    --inventory clinicalDataAnnotatorOperatorSetup \
     --action uninstallOperatorNative \
     --tolerance 1
 ```

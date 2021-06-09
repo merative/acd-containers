@@ -58,16 +58,17 @@ When deploying in an air-gapped environment, refer to the [Air-gap Installation]
 
 When deploying in a non air-gapped environment, continue with the following installation.
 
-### Adding an Kubernetes pull secret for IBM Entitled Registry
+### Adding a pull secret for IBM Entitled Registry
 
-In order for ACD images to be pulled from the IBM Entitled Registry, a Kubernetes pull secret must be added to the environment. This can either be added to the Openshift global pull secret or to the operator service account. The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can either be added to the Openshift global pull secret or to the operator service account. The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
 
 #### Openshift global pull secret installation
 
 To add the pull secret to the Openshift global pull secret:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
-oc extract secret/pull-secret -n openshift-config --to=.
+
+   `oc extract secret/pull-secret --namespace openshift-config --to=.`
 
 2. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
 
@@ -84,7 +85,7 @@ oc extract secret/pull-secret -n openshift-config --to=.
 
 4. Update the global image pull secret with the updated credentials:
 
-   `oc set data secret/pull-secret -n openshift-config --from-file=.dockerconfigjson`
+   `oc set data secret/pull-secret --namespace openshift-config --from-file=.dockerconfigjson`
 
 5. Monitor the node status using the command:
 
@@ -98,7 +99,7 @@ For more information on Openshift pull secrets refer to [Using image pull secret
 
 To add the pull secret to individual operand service accounts:
 
-1. Create a Kubernetes secret
+1. Create a secret
 
    ```
    kubectl create secret docker-registry cp.icr.io \
@@ -128,7 +129,7 @@ To add the pull secret to individual operand service accounts:
        --all
    ```
 
-### Add the ACD Operator to the catalog
+### Adding the ACD Operator to the catalog
 
 Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog.
 
@@ -164,7 +165,7 @@ The IBM Operator Catalog source is added to the OperatorHub catalog, making the 
 
 More information on the IBM Operator Catalog can be found at [Red Hat Catalog Enablement for the IBM Operator Catalog](https://github.com/IBM/cloud-pak/blob/master/reference/operator-catalog-enablement.md)
 
-## Install the ACD Operator
+## Installing the ACD Operator
 
 ### Install the ACD Operator using the web console
 
@@ -186,13 +187,13 @@ The installation can take a few minutes to complete.
 ```
 cloudctl case launch \
     --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
+    --namespace <namespace> \
     --inventory clinicalDataAnnotatorOperatorSetup \
     --action installOperator \
     --tolerance 1
 ```
 
-## Install the ACD Service
+## Installing the ACD Service
 
 Instances of ACD can be created after the ACD operator is installed.
 
@@ -222,8 +223,8 @@ By default, this will deploy 3 replicas of all ACD services. Include `--args "--
 ```
 cloudctl case launch \
     --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory whcsServiceClinicalDataAnnotatorOperator \
+    --namespace <namespace> \
+    --inventory clinicalDataAnnotatorOperator \
     --action applyCustomResources \
     --tolerance 1
 ```
