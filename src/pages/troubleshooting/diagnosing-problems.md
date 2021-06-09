@@ -10,7 +10,7 @@ toc: true
 
 ### Problems with secrets
 
-Before installing the operator, create a secret with your entitlement key for the IBM Container software library. This will enable container images to be pulled from the registry. See the [Create Secrets](https://ibm.github.io/acd-containers/installing/installing/#create-secrets) section of the Installation documentation for more information.
+Before installing the operator, create a secret with your entitlement key for the IBM Container software library. This will enable container images to be pulled from the registry. See [adding a pull secret](https://ibm.github.io/acd-containers/installing/installing/#adding-a-pull-secret-for-ibm-entitled-registry) section of the Installation documentation for more information.
 
 If you do not prepare the required secret, all pods will fail to start with ImagePullBackOff errors. In this case, configure the required secret and allow the pod to restart.
 
