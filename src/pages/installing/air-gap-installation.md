@@ -16,22 +16,6 @@ If the Red Hat OpenShift Container Platform cluster has a Bastion host, ensure t
 
 In the absence of a Bastion host, a portable host with access to the public internet may used. By downloading the CASE and images onto the portable host, and then transporting the portable host into the air gap environment, the images can then be mirrored to the target (air gap) image registry.
 
-### Verifying entitled registry access
-
-Before beginning, verify the entitled registry key or apikey can access the entitled registry.
-
-Example (Docker with apikey):
-
-```
-docker login -u iamapikey -p <apikey> cp.icr.io
-```
-
-Example (Docker with entitlement key):
-
-```
-docker login -u cp -p <entitlement key> cp.icr.io
-```
-
 If using a Bastion host, refer to [Using a Bastion host](#using-a-bastion-host).
 If using a portable host, refer to [Using a portable host](#using-a-portable-host).
 
@@ -158,7 +142,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 7. Proceed with installation
 
-Now that the air gap installation preparation steps are complete, you may continue with the [Installing ACD](../install-the-acd-operator).
+Now that the air gap installation preparation steps are complete, you may continue with the [Installing ACD](../installing/#install-the-acd-operator).
 
 ### Using a portable host
 
@@ -336,4 +320,4 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 10. Proceed with installation
 
-Now that the air gap installation preparation steps are complete, you may continue with the installation [Installing ACD](../install-the-acd-operator).
+Now that the air gap installation preparation steps are complete, you may continue with the installation [Installing ACD](../installing/#install-the-acd-operator).

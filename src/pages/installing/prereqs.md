@@ -19,7 +19,7 @@ toc: true
   - [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - CASE CLI for interacting with CASE bundles
 - Login credentials and other cluster connection details from your cluster administrator
 - A [dedicated Openshift project (namespace)](https://ibm.github.io/acd-containers/installing/installing/#create-a-project-(namespace)) per ACD deployment
-- An [entitlement key](https://myibm.ibm.com/products-services/containerlibrary) for pulling images from the entitled registry; used to [create the global pull secret](https://ibm.github.io/acd-containers/installing/installing/#global-pull-secret-installation).
+- A purchased [entitlement key](https://myibm.ibm.com/products-services/containerlibrary) for pulling images from the IBM Entitled Registry
 - A secret for accessing a storage bucket, if [planning to use an object storage bucket](https://ibm.github.io/acd-containers/planning/storage/)
 
 Obtain the connection details for your OpenShift Container Platform cluster from your administrator. For additional planning and installation details, see:

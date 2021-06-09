@@ -20,9 +20,9 @@ Installing ACD has two phases:
 
 ## Before you begin
 
-* [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-* Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
-* Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
+- [Plan for your installation](https://ibm.github.io/acd-containers/installing/planning/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+- Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
+- Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 
 ## Create a project (namespace)
 
@@ -34,6 +34,22 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 **Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
 
+## Verifying entitled registry access
+
+Before beginning, verify the entitled registry key or apikey can access the entitled registry.
+
+Example (Docker with IBM API key):
+
+```
+docker login -u iamapikey -p <iam apikey> cp.icr.io
+```
+
+Example (Docker with IBM Entitled Registry entitlement key):
+
+```
+docker login -u cp -p <entitlement key> cp.icr.io
+```
+
 ## Air-gapped installation
 
 When deploying in an air-gapped environment, refer to the [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
@@ -42,24 +58,20 @@ When deploying in an air-gapped environment, refer to the [Air-gap Installation]
 
 When deploying in a non air-gapped environment, continue with the following installation.
 
-### Create a pull secrets
+### Adding an Kubernetes pull secret for IBM Entitled Registry
 
-ACD requires a pull secret to pull images from the entitled registry account.
+In order for ACD images to be pulled from the IBM Entitled Registry, a Kubernetes pull secret must be added to the environment. This can either be added to the Openshift global pull secret or to the operator service account. The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
 
-#### Global pull secret installation
+#### Openshift global pull secret installation
 
-Request access to the entitled registry and get an API or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
-
-##### Update the global pull secret using the CLI
-
-[Update the global cluster pull secret](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets) containing the container registry image pull secret with these steps:
+To add the pull secret to the Openshift global pull secret:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
 oc extract secret/pull-secret -n openshift-config --to=.
 
 2. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
 
-   `printf "iamapikey:<developerkey>" | base64`  -or-  `printf "cp:<entitlementkey>" | base64`
+   `printf "iamapikey:<iam apikey>" | base64`  -or-  `printf "cp:<entitlement key>" | base64`
 
 3. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
 
@@ -79,6 +91,42 @@ oc extract secret/pull-secret -n openshift-config --to=.
    `oc get nodes`
 
 6. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
+
+For more information on Openshift pull secrets refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets)
+
+#### Service account pull secret installation
+
+To add the pull secret to individual operand service accounts:
+
+1. Create a Kubernetes secret
+
+   ```
+   kubectl create secret docker-registry cp.icr.io \
+       --docker-server=cp.icr.io \
+       --docker-username=<username> \
+       --docker-password=<password> \
+       --docker-email=<email_address> \
+       --namespace=<namespace>
+   ```
+
+   - `<username>` is the username for the entitled registry. This should be either `cp` or `iamapikey`.
+   - `<password>` is the password for the entitled registry.
+
+2. After the ACD operand has been installed, the service account must be patched to point to the secret.
+
+   ```
+   kubectl patch serviceaccount ibm-wh-acd-operand \
+       --namespace <namespace> \
+       --patch '{"imagePullSecrets": [{"name": "cp.icr.io"}]}'
+   ```
+
+3. Then the ACD operand pods must be restarted
+
+   ```
+   kubectl delete pods \
+       --namespace <namespace> \
+       --all
+   ```
 
 ### Add the ACD Operator to the catalog
 
