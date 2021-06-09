@@ -10,34 +10,33 @@ The following tables lists the configurable parameters of the chart and their de
 
 | Parameter | Description | Default |
 | -         | -           | -       |
-| `replicas`                                 | ACD macro service and micro-service replicas     | `3`    |
-| `aci.enabled`                              | Micro service - Advanced Care Insights enabled   | `true` |
-| `av.enabled`                               | Micro service - Attribute Detection enabled      | `true` |
-| `cd.enabled`                               | Micro service - Concept Detection enabled        | `true` |
-| `cds.enabled`                              | Micro service - Concept Disambiguation enabled   | `true` |
-| `cv.enabled`                               | Micro service - Concept Value Detection enabled  | `true` |
-| `hyp.enabled`                              | Micro service - Hypothetical Detection enabled   | `true` |
-| `mod.enabled`                              | Micro service - Model Broker enabled       | `true` |
-| `neg.enabled`                              | Micro service - Negation Detection enabled       | `true` |
-| `ont.enabled`                              | Micro service - Ontology enabled                 | `true` |
-| `spl.enabled`                              | Micro service - Spell checker enabled            | `true` |
-| `common.environment.artifactstore_shared_backend`                              | Store shared tenant data (`file` or `cos`)            | `file` |
-| `common.environment.artifactstore_tenant_backend`                              | Store private tenant data (`file` or `cos`)            | `file` |
-| `fileBasedPersistence.enabled`   | File based persistence enabled | `false` |
+| `replicas` | ACD replicas | `3`    |
+| `annotators.advancedCareInsights.enabled` | Advanced care insights annotator enabled | `true` |
+| `annotators.attributeDetection.enabled` | Attribute detection annotator enabled | `true` |
+| `annotators.conceptDetection.enabled` | Concept detection annotator enabled | `true` |
+| `annotators.conceptDisambiguation.enabled` | Concept disambiguation annotator enabled | `true` |
+| `annotators.conceptValueDetection.enabled` | Concept value detection annotator enabled | `true` |
+| `annotators.hypotheticalDetection.enabled` | Hypothetical detection annotator enabled | `true` |
+| `annotators.modelBroker.enabled` | Model broker annotator enabled | `true` |
+| `annotators.negationDetection.enabled` | Negation detection annotator enabled | `true` |
+| `annotators.ontology.enabled` | Ontology annotator enabled | `true` |
+| `annotators.spellChecker.enabled` | Spell checker annotator enabled | `true` |
+| `configurationStorage.backend` | Configuration storage backend (`file` or `cos`) | `file` |
+| `configurationStorage.file.persistent` | File based configuration storage persistence enabled | `true` |
 
-These additional configurable parameters may be provided when file based storage (`file`) is used by the artifact store and `fileBasedPersistence.enabled` is `true`.
-
-| Parameter | Description | Default |
-| -         | -           | -       |
-| `fileBasedPersistence.useDynamicProvisioning`   | Use a dynamically provisioned volume | `false` |
-| `fileStorePVC.existingClaimName`   | Use an existing persistent volume claim | `<pvc_name>` |
-| `fileStorePVC.storageClassName`   | Use an existing persistent volume of this class type | `<storage_class_name>` |
-| `fileStorePVC.size`   | Persistent volume size, e.g. 1Gi | `<size>` |
-
-These additional configurable parameters must be provided when IBM Cloud Object Store (`cos`) is used for  `common.environment.artifactstore_shared_backend` or `common.environment.artifactstore_tenant_backend`.
+These additional configurable parameters may be provided when file based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
 
 | Parameter | Description | Default |
 | -         | -           | -       |
-| `common.environment.artifactServiceCosEndpoint` | Artifact service - IBM Cloud Object endpoint (Required) | `s3.us-south.cloud-object-storage.appdomain.cloud` |
-| `common.environment.artifactServiceCosRegion`   | Artifact service - IBM Cloud Object region (Required) | `us-south-standard` |
-| `common.environment.artifactServiceCosBucket`   | Artifact service - IBM Cloud Object bucket (Required) | `` |
+| `configurationStorage.file.volume.existingClaimName` | Use an existing persistent volume claim | `<pvc_name>` |
+| `configurationStorage.file.volume.size` | Persistent volume size, e.g. 1Gi | `<size>` |
+| `configurationStorage.file.volume.storageClassName` | Use an existing persistent volume of this class type | `<storage_class_name>` |
+| `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` |
+
+These additional configurable parameters must be provided when IBM Cloud Object Store (`cos`) is used for  `configurationStorage.backend`.
+
+| Parameter | Description | Default |
+| -         | -           | -       |
+| `configurationStorage.s3.bucket` | IBM Cloud Object bucket (Required) | `` |
+| `configurationStorage.s3.endpointUrl` | IBM Cloud Object endpoint (Required) | `s3.us-south.cloud-object-storage.appdomain.cloud` |
+| `configurationStorage.s3.location` | IBM Cloud Object region (Required) | `us-south-standard` |
