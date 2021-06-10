@@ -203,6 +203,104 @@ If the operator was installed for all namespaces, then it can be used to manage 
 
 When installing an instance of ACD, ensure you are using a namespace that an operator is managing.
 
+### Setting up ACD Service optional dependencies
+
+#### Setting up S3 Based Configuration Storage
+
+If the deployment will use S3 based storage, the S3 credentials need to be inserted into the ACD operand namespace as secrets.
+
+```
+echo '<cos_id>' | tr -d '\n' > username
+echo '<cos_secret>' | tr -d '\n' > password
+oc create secret generic ibm-wh-acd-as \
+    --namespace <namespace> \
+    --from-file=username \
+    --from-file=password
+```
+
+If the deployment will use persistent file based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
+
+#### Setting up File Based Configuration Storage's Persistent Volume and Claim Setup
+
+Create the persistent volume claim.
+
+```
+oc create -f file-store-pvc.yaml
+```
+
+The following is an example of a PVC that has been tested with this chart.
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ibm-wh-acd-acd-file-store-pvc
+  namespace: ibm-wh-acd-demo
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: ocs-storagecluster-cephfs
+  volumeMode: Filesystem
+  volumeName: ibm-wh-acd-acd-file-store-pv
+```
+
+Create the persistent volume.
+
+A minimum size of 1 gigabyte is recommended. Access mode must be set to ReadWriteMany. Note that the persistent volume has a `claimRef` field which
+refers back to the persistent volume claim so ensure its references for name, namespace, and uid are correct.
+
+```
+ oc create -f file-store-pv.yaml
+```
+
+The following is an example of a PV that has been tested with this chart.
+
+```
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ibm-wh-acd-acd-file-store-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: ibm-wh-acd-acd-file-store-pvc
+    namespace: ibm-wh-acd-demo
+    uid: 4353a4d2-306f-4fcd-a0cf-ea43e052ad7d
+  csi:
+    driver: openshift-storage.cephfs.csi.ceph.com
+    fsType: ext4
+    nodeStageSecretRef:
+      name: rook-csi-cephfs-node
+      namespace: openshift-storage
+    volumeAttributes:
+      clusterID: openshift-storage
+      fsName: ocs-storagecluster-cephfilesystem
+      storage.kubernetes.io/csiProvisionerIdentity: 1580324955446-8081-openshift-storage.cephfs.csi.ceph.com
+    volumeHandle: 0001-0011-openshift-storage-0000000000000001-52314a98-5e3c-11ea-af7e-0a580a83008f
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ocs-storagecluster-cephfs
+  volumeMode: Filesystem
+```
+
+#### Removing File Based Configuration Storage's Persistent Volume and Claim Setup
+
+To remove the persistent volume and claim run the following:
+
+```
+oc delete pvc ibm-wh-acd-acd-file-store-pvc \
+   --namespace ibm-wh-acd-demo
+oc delete pv ibm-wh-acd-acd-file-store-pv \
+   --namespace ibm-wh-acd-demo
+```
+
 ### Install the ACD Service by using the web console
 
 To install the ACD service through the OpenShift Container Platform web console, do the following:
