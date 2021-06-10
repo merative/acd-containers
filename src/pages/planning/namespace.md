@@ -14,4 +14,6 @@ The ACD service may be deployed into the same namespace as its operator or to a 
 
 All resources created for an ACD installation are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces.
 
+The IBM Operator Catalog provides a catalog of IBM provided operators. The catalog is the only installation done to an existing system namespace. The `openshift-marketplace` namespace is the default namespace used.
+
 Namespaces must be valid [DNS](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names) label names.

@@ -13,10 +13,11 @@ Annotator for Clinical Data Container Edition is an [operator-based](https://kub
 
 The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
-Installing ACD has two phases:
+Installing ACD has three phases:
 
-1. Install the ACD operator: this will deploy the operator that will install and manage your ACD instances.
-2. Install one or more replicas of ACD by using the operator.
+1. Install the IBM operator catalog: this will deploy the catalog from which IBM operators, including ACD, can be installed.
+2. Install the ACD operator: this will deploy the operator that can be used to install and manage your ACD instances.
+3. Install one or more replicas of ACD by using the operator.
 
 ## Before you begin
 
@@ -34,9 +35,21 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 **Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
 
-## Verifying entitled registry access
+## Air-gapped (disconnected) installation
 
-Before beginning, verify the entitled registry key or apikey can access the entitled registry.
+Some environments are disconnected and do not have access to the public internet, and therefore no access to DockerHub or other image registries. When deploying in an air-gapped environment, refer to the [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
+
+## Non air-gapped (connected) installation
+
+When deploying in a non air-gapped or connected environment, continue with the following installation. These installation steps require internet access to pull images from the image registries.
+
+### Adding a pull secret for IBM Entitled Registry
+
+In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can either be added to the Openshift global pull secret or to the operator service account. The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+
+#### Verifying entitled registry access
+
+Before creating a pull secret, verify the entitled registry key or apikey can access the entitled registry.
 
 Example (Docker with IBM API key):
 
@@ -49,18 +62,6 @@ Example (Docker with IBM Entitled Registry entitlement key):
 ```
 docker login -u cp -p <entitlement key> cp.icr.io
 ```
-
-## Air-gapped installation
-
-When deploying in an air-gapped environment, refer to the [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
-
-## Non Air-gapped installation
-
-When deploying in a non air-gapped environment, continue with the following installation.
-
-### Adding a pull secret for IBM Entitled Registry
-
-In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can either be added to the Openshift global pull secret or to the operator service account. The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
 
 #### Openshift global pull secret installation
 
@@ -111,7 +112,7 @@ To add the pull secret to individual operand service accounts:
    ```
 
    - `<username>` is the username for the entitled registry. This should be either `cp` or `iamapikey`.
-   - `<password>` is the password for the entitled registry.
+   - `<password>` is the password for the entitled registry. This should be either your entitlement key or an apikey.
 
 2. After the ACD operand has been installed, the service account must be patched to point to the secret.
 
@@ -129,7 +130,7 @@ To add the pull secret to individual operand service accounts:
        --all
    ```
 
-### Adding the ACD Operator to the catalog
+## Installing the IBM Operator catalog
 
 Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog.
 
