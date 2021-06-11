@@ -1,6 +1,6 @@
 ---
 title: "Storage Considerations"
-excerpt: "Stroage Considerations."
+excerpt: "Storage Considerations."
 categories: planning
 slug: storage
 toc: true
@@ -8,24 +8,24 @@ toc: true
 
 ## Storage Options
 
-IBM® Watson Annotator for Clinical Data Container Edition requires a storage medium if a cartridge is going to be deployed to the environment.  The storage medium persists the specfic verion of each analytic artifact contained in the cartridge and associated metadata.
+IBM® Watson Annotator for Clinical Data Container Edition requires a storage medium if a cartridge is going to be deployed to the environment.  The storage medium persists the specific version of each analytic artifact contained in the cartridge and associated metadata.
 
 Two storage mediums are supported:
 
-- NFS based persisted volumes and claims
-- Object Stoage
+- NFS-based persisted volumes and claims
+- Object Storage
 
 All configured storage needs to have encrytion enabled.
 
 ### Persistant Volume and Claim Installation
 
-File based storage is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports persistent volume claims of Read Write Many access mode across all zones and nodes of the cluster. The persistent volume claim must be against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.7/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
+File-based storage is most often used with on premise cloud-based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports persistent volume claims of Read Write Many access mode across all zones and nodes of the cluster. The persistent volume claim must be against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.7/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
 
 To setup encryption, a custom storage class must be created using the platform's encryption. This storage class then needs to be specified on the persistent volume claim. For more information on storage class encryption refer to the platform's storage class options.
 
 It is recommended to define an empty directory volume which will honor and use the fsGroup gid from the chart installation.  If you must use an existing volume, ensure the gid of the top level directory is configured in the fsGroup setting of the custom security context.
 
-It is recommended to have a minimum of 1 gigabyte or free space within the file system for artifact storage.
+It is recommended to have a minimum of 1 gigabyte of free space within the file system for artifact storage.
 
 The configuration for a persistant volume is defined in the file-store-pv.yaml file.
 
