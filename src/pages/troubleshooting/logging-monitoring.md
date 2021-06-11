@@ -19,6 +19,7 @@ Openshift supports many solutions for collection and visualization of logs.  Bel
 ### A Note About Tenant and Correlation Identifiers in ACD Logs
 
 ACD outputs its log entries as JSON objects.  Of special note within the JSON structure is the "mdc" object which generally contains two keys.
+
 * correlationId: a UUID used to correlate all log entries for an ACD invocation across all annotators.  This can be helpful in performing root cause analysis when problems occur.
 * tenantId:  The unique identifier for a specific tenant if ACD is being utilized in a multi-tenant manner.  In a single tenant environment it will always be "defaultTenant".
 
