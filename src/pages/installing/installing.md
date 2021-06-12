@@ -222,14 +222,12 @@ oc create secret generic ibm-wh-acd-as \
 If the deployment will use persistent file based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
 #### Setting up File Based Configuration Storage's Persistent Volume and Claim Setup
-TODO: Move this section to before the operator installation??
 
 ##### Shared filesystem creation
-Create the shared file system using the platform's tools.
+
+Create the shared file system using the platform's tools with encryption enabled.
 
 It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany.
-
-To setup encryption, a custom storage class must be created using the platform's encryption. This storage class then needs to be specified on the persistent volume claim. For more information on storage class encryption refer to the platform's storage class options.  **TODO: Verify this**
 
 Once the shared file system is created, the top-level directory should be empty and its GID set to 0 (root) with group rwx permissions.  This is required to allow the services write access when running with a restricted SCC. If the shared file system requires a GID other than zero, you must set the configurationStorage.file.supplementalGroups array property **TODO: how to describe values settings?** to the desired GID in the values file (example: [5555])  If you don't have direct access to the top-level directory of the file share, one technique to set the directory permissions is to start a temporary pod that runs as root with the PVC mounted.  Exec into the pod to run the chgrp and chmod commands on the mounted share directory.
 
@@ -287,8 +285,8 @@ spec:
 To remove the persistent volume and claim run the following:
 
 ```
-oc delete pvc ibm-wh-acd-config-storage-nfs-pvc
-oc delete pv ibm-wh-acd-config-storage-nfs-pv --n <your namespace>
+oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>
+oc delete pv ibm-wh-acd-config-storage-nfs-pv
 ```
 
 ### Install the ACD Service by using the web console
