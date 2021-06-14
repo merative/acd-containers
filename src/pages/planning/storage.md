@@ -12,69 +12,18 @@ IBM® Watson Annotator for Clinical Data Container Edition requires a storage me
 
 Two storage mediums are supported:
 
-- NFS-based persisted volumes and claims
+- File-based persisted volumes and claims
 - Object Storage
 
-All configured storage needs to have encrytion enabled.
+All configured storage needs to have encryption enabled.
 
 ### Persistant Volume and Claim Installation
 
 File-based storage is most often used with on premise cloud-based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports persistent volume claims of Read Write Many access mode across all zones and nodes of the cluster. The persistent volume claim must be against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.7/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
 
-To setup encryption, a custom storage class must be created using the platform's encryption. This storage class then needs to be specified on the persistent volume claim. For more information on storage class encryption refer to the platform's storage class options.
+To setup encryption, a custom storage class must be created using the platform's encryption. This storage class then needs to be specified on the persistent volume claim. For more information on storage class encryption refer to the platform's storage class options.  **TODO: Verify this**
 
-It is recommended to define an empty directory volume which will honor and use the fsGroup gid from the chart installation.  If you must use an existing volume, ensure the gid of the top level directory is configured in the fsGroup setting of the custom security context.
-
-It is recommended to have a minimum of 1 gigabyte of free space within the file system for artifact storage.
-
-The configuration for a persistant volume is defined in the file-store-pv.yaml file.
-
-The following is an example of a PV that has been tested with this chart.
-
-```
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ibm-wh-acd-file-store-pv
-spec:
-  accessModes:
-  - ReadWriteMany
-  capacity:
-    storage: 1Gi
-  claimRef:
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    name: ibm-wh-acd-file-store-pvc
-    namespace: ibm-wh-acd-demo
-    uid: 4353a4d2-306f-4fcd-a0cf-ea43e052ad7d
-  csi:
-    driver: openshift-storage.cephfs.csi.ceph.com
-    fsType: ext4
-    nodeStageSecretRef:
-      name: rook-csi-cephfs-node
-      namespace: openshift-storage
-    volumeAttributes:
-      clusterID: openshift-storage
-      fsName: ocs-storagecluster-cephfilesystem
-      storage.kubernetes.io/csiProvisionerIdentity: 1580324955446-8081-openshift-storage.cephfs.csi.ceph.com
-    volumeHandle: 0001-0011-openshift-storage-0000000000000001-52314a98-5e3c-11ea-af7e-0a580a83008f
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: ocs-storagecluster-cephfs
-  volumeMode: Filesystem
-```
-
-#### Persistant Volume and Claim Creation
-
-```
- oc create -f file-store-pv.yaml
-```
-
-#### Persistant Volume and Claim Removal
-
-```
-oc delete pvc ibm-wh-acd-file-store-pvc -n <namespace>
-oc delete pv ibm-wh-acd-file-store-pv -n <namespace>
-```
+It is recommended to have a minimum of 10 gigabytes of free space within the file system for configuration storage.
 
 ### Object Storage Configuration
 

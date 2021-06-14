@@ -223,83 +223,75 @@ If the deployment will use persistent file based storage, the Persistent Volume 
 
 #### Setting up File Based Configuration Storage's Persistent Volume and Claim Setup
 
-Create the persistent volume claim.
+##### Shared filesystem creation
+
+Create the shared file system using the platform's tools with encryption enabled.
+
+It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany.
+
+Once the shared file system is created, the top-level directory should be empty and its GID set to 0 (root) with group rwx permissions.  This is required to allow the services write access when running with a restricted SCC. If the shared file system requires a GID other than zero, you must set the configurationStorage.file.supplementalGroups array property **TODO: how to describe values settings?** to the desired GID in the values file (example: [5555])  If you don't have direct access to the top-level directory of the file share, one technique to set the directory permissions is to start a temporary pod that runs as root with the PVC mounted.  Exec into the pod to run the chgrp and chmod commands on the mounted share directory.
+
+If you are deploying more than one instance of ACD, each deployment is required to have its own PV and PVC within a project.  The path to the file system in the persistent volume must be unique for each project.
+You can add a number to the end of the PV and PVC's name and corresponding file name to keep them unique. For example:
+
+- ibm-wh-acd-config-storage-nfs-pv1, ibm-wh-acd-config-storage-nfs-pvc1
+- ibm-wh-acd-config-storage-nfs-pv2, ibm-wh-acd-config-storage-nfs-pvc2
+
+##### Create the persistent volume
 
 ```
-oc create -f file-store-pvc.yaml
+ oc create -f ibm-wh-acd-config-storage-nfs-pv.yaml
 ```
 
-The following is an example of a PVC that has been tested with this chart.
-
-```
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ibm-wh-acd-acd-file-store-pvc
-  namespace: ibm-wh-acd-demo
-spec:
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: ocs-storagecluster-cephfs
-  volumeMode: Filesystem
-  volumeName: ibm-wh-acd-acd-file-store-pv
-```
-
-Create the persistent volume.
-
-A minimum size of 1 gigabyte is recommended. Access mode must be set to ReadWriteMany. Note that the persistent volume has a `claimRef` field which
-refers back to the persistent volume claim so ensure its references for name, namespace, and uid are correct.
-
-```
- oc create -f file-store-pv.yaml
-```
-
-The following is an example of a PV that has been tested with this chart.
+> Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
 
 ```
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: ibm-wh-acd-acd-file-store-pv
+  name: ibm-wh-acd-config-storage-nfs-pv
 spec:
-  accessModes:
-  - ReadWriteMany
   capacity:
-    storage: 1Gi
-  claimRef:
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    name: ibm-wh-acd-acd-file-store-pvc
-    namespace: ibm-wh-acd-demo
-    uid: 4353a4d2-306f-4fcd-a0cf-ea43e052ad7d
-  csi:
-    driver: openshift-storage.cephfs.csi.ceph.com
-    fsType: ext4
-    nodeStageSecretRef:
-      name: rook-csi-cephfs-node
-      namespace: openshift-storage
-    volumeAttributes:
-      clusterID: openshift-storage
-      fsName: ocs-storagecluster-cephfilesystem
-      storage.kubernetes.io/csiProvisionerIdentity: 1580324955446-8081-openshift-storage.cephfs.csi.ceph.com
-    volumeHandle: 0001-0011-openshift-storage-0000000000000001-52314a98-5e3c-11ea-af7e-0a580a83008f
+    storage: 10Gi
+  nfs:
+    server: your-nfs-server
+    path: /your/nfs/path
+  accessModes:
+    - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: ocs-storagecluster-cephfs
   volumeMode: Filesystem
 ```
 
-#### Removing File Based Configuration Storage's Persistent Volume and Claim Setup
+##### Create the persistent volume claim.
+
+```
+ oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
+```
+
+> Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ibm-wh-acd-config-storage-nfs-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
+  volumeName: ibm-wh-acd-config-storage-nfs-pv
+```
+
+##### Persistent Volume and Claim Removal
 
 To remove the persistent volume and claim run the following:
 
 ```
-oc delete pvc ibm-wh-acd-acd-file-store-pvc \
-   --namespace ibm-wh-acd-demo
-oc delete pv ibm-wh-acd-acd-file-store-pv \
-   --namespace ibm-wh-acd-demo
+oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>
+oc delete pv ibm-wh-acd-config-storage-nfs-pv
 ```
 
 ### Install the ACD Service by using the web console
