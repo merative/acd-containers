@@ -233,14 +233,18 @@ Once the shared file system is created, the top-level directory should be empty 
 
 If you are deploying more than one instance of ACD, each deployment is required to have its own PV and PVC within a project.  The path to the file system in the persistent volume must be unique for each project.
 You can add a number to the end of the PV and PVC's name and corresponding file name to keep them unique. For example:
+
 - ibm-wh-acd-config-storage-nfs-pv1, ibm-wh-acd-config-storage-nfs-pvc1
 - ibm-wh-acd-config-storage-nfs-pv2, ibm-wh-acd-config-storage-nfs-pvc2
 
 ##### Create the persistent volume
+
 ```
  oc create -f ibm-wh-acd-config-storage-nfs-pv.yaml
 ```
+
 > Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
+
 ```
 apiVersion: v1
 kind: PersistentVolume
