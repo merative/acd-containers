@@ -1,12 +1,11 @@
 ## Contributing In General
 
-Our project welcomes external contributions. If you have an itch, please feel
-free to scratch it.
+Our project welcomes external contributions.
 
-To contribute code or documentation, please submit a **FIXME** [pull request](https://github.com/ibm/repo-template/pulls).
+To contribute code or documentation, please submit a [pull request](https://github.com/ibm/acd-containers/pulls).
 
 A good way to familiarize yourself with the codebase and contribution process is
-to look for and tackle low-hanging fruit in the **FIXME** [issue tracker](https://github.com/ibm/repo-template/issues).
+to look for and tackle low-hanging fruit in the [issue tracker](https://github.com/ibm/acd-containers/issues).
 Before embarking on a more ambitious contribution, please quickly [get in touch](#communication) with us.
 
 **Note: We appreciate your effort, and want to avoid a situation where a contribution
@@ -15,14 +14,14 @@ cannot be accepted at all!**
 
 ### Proposing new features
 
-If you would like to implement a new feature, please **FIXME** [raise an issue](https://github.com/ibm/repo-template/issues)
+If you would like to implement a new feature, please [raise an issue](https://github.com/ibm/acd-containers/issues)
 before sending a pull request so the feature can be discussed. This is to avoid
 you wasting your valuable time working on a feature that the project developers
 are not interested in accepting into the code base.
 
 ### Fixing bugs
 
-If you would like to fix a bug, please **FIXME** [raise an issue](https://github.com/ibm/repo-template/issues) before sending a
+If you would like to fix a bug, please [raise an issue](https://github.com/ibm/acd-containers/issues) before sending a
 pull request so it can be tracked.
 
 ### Merge approval
@@ -75,15 +74,15 @@ git commit -s
 
 ## Setup
 
-**FIXME** Please add any special setup instructions for your project to help the developer
-become productive quickly.
+Clone the [project](https://github.com/IBM/acd-containers) to provide a statign code base.
+
+The project makes use of [Node.js](https://nodejs.org/en/) and [Gatsby](https://www.gatsbyjs.com/docs/) to generate the documentation.
+Please follow the installation instructions starting wtih Node Package Manager from the above links to setup these tools for your development environment.
 
 ## Testing
 
-**FIXME** Please provide information that helps the developer test any changes they make
-before submitting.
+Testing changes locally can be performed after the development environment setup is complete by running 'gatsby develop' from the cloned project root directory.
 
 ## Coding style guidelines
 
-**FIXME** Optional, but recommended: please share any specific style guidelines you might
-have for your project.
+The project makes use of [lint](https://eslint.org/) software to detect stylistic errors and suspicious constructs.
