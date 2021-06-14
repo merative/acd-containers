@@ -223,7 +223,6 @@ If the deployment will use persistent file based storage, the Persistent Volume 
 
 #### Setting up File Based Configuration Storage's Persistent Volume and Claim Setup
 
-
 ##### Shared filesystem creation
 
 Create the shared file system using the platform's tools with encryption enabled.
@@ -237,7 +236,6 @@ You can add a number to the end of the PV and PVC's name and corresponding file 
 
 - ibm-wh-acd-config-storage-nfs-pv1, ibm-wh-acd-config-storage-nfs-pvc1
 - ibm-wh-acd-config-storage-nfs-pv2, ibm-wh-acd-config-storage-nfs-pvc2
-
 
 ##### Create the persistent volume
 
@@ -286,7 +284,6 @@ spec:
   volumeMode: Filesystem
   volumeName: ibm-wh-acd-config-storage-nfs-pv
 ```
-
 
 ##### Persistent Volume and Claim Removal
 
