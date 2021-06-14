@@ -280,6 +280,7 @@ spec:
   volumeMode: Filesystem
   volumeName: ibm-wh-acd-config-storage-nfs-pv
 ```
+
 ##### Persistent Volume and Claim Removal
 
 To remove the persistent volume and claim run the following:
