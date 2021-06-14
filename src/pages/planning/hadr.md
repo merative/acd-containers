@@ -8,9 +8,9 @@ toc: true
 
 ## High availability considerations
 
-IBM® Watson Annotator for Clinical Data Container Edition default deployment model disributes replicas across nodes and can also span zones with a region.
-Disruption in the network connectivity may happen within a regiong.  Recovering from potential disasters that affect an entire region requires planning and preparation.
-Instance owners should develop recomvery plans based on their use cases.
+IBM® Watson Annotator for Clinical Data Container Edition default deployment model distributes replicas across nodes and can also span zones within a region.
+Disruption in the network connectivity may happen within a region.  Recovering from potential disasters that affect an entire region requires planning and preparation.
+Instance owners should develop recovery plans based on their use cases.
 
 ### Availability during updates and voluntary operations
 
@@ -19,6 +19,6 @@ The [management](../../management/pod-disruption) section provides an example th
 
 ### Disaster recovery
 
-Disaster recovery can become a necessity is a region experiences a significant failure that includes the potential loss to data.
-Recovery can be accomplished by deploying into multiple regions or installing in a new region is an existing instance becomes unavailable.
+Disaster recovery can become a necessity if a region experiences a significant failure that includes the potential loss of data.
+Recovery can be accomplished by deploying into multiple regions or installing in a new region if an existing instance becomes unavailable.
 See [Backup and Recovery](../../management/backup-and-recovery) for more information on data recovery.
