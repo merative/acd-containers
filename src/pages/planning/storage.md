@@ -17,11 +17,9 @@ Two storage mediums are supported:
 
 All configured storage needs to have encryption enabled.
 
-### Persistant Volume and Claim Installation
+### Persistent Volume and Claim Installation
 
 File-based storage is most often used with on premise cloud-based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports persistent volume claims of Read Write Many access mode across all zones and nodes of the cluster. The persistent volume claim must be against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.7/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
-
-To setup encryption, a custom storage class must be created using the platform's encryption. This storage class then needs to be specified on the persistent volume claim. For more information on storage class encryption refer to the platform's storage class options.  **TODO: Verify this**
 
 It is recommended to have a minimum of 10 gigabytes of free space within the file system for configuration storage.
 
