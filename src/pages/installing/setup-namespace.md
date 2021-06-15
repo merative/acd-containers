@@ -38,6 +38,7 @@ If the deployment will use persistent file based storage, the Persistent Volume 
 ### Setting up File Based Configuration Storage's Persistent Volume and Claim Setup
 
 #### Shared filesystem creation
+
 Create the shared file system using the platform's tools with encryption enabled.
 
 It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany.
