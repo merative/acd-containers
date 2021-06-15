@@ -50,6 +50,8 @@
   pages:
     - title: "Configuration"
       path: /management/configuring/
+    - title: "Scaling ACD"
+      path: /management/scaling/
     - title: "Pod Disruption"
       path: /management/pod-disruption/
     - title: "Backup and Recovery"
