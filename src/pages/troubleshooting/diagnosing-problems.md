@@ -31,5 +31,7 @@ To diagnose problems with resources not started as expected follow these steps:
    * `oc describe pods <pod> -n <namespace>` - describe a specific pods, such as `ibm-wh-acd-acd-749c996465-bt6zc`
 1. Check the logs on the ACD operator pod for errors.
    * `oc logs <pod> -n <namespace> | grep controller` - get log for the operator pod, such as `ibm-wh-acd-operator-controller-manager-5c58b6b869-q8nwj`
+   * See [Logging and Montioring](/troubleshooting/logging-monitoring) for more details.
 1. Check the logs on the ACD service pod for errors.
    * `oc logs <pod> -n <namespace> | grep acd` - get log for a specific ACD pod, such as `ibm-wh-acd-acd-749c996465-bt6zc`
+   * See [Logging and Montioring](/troubleshooting/logging-monitoring) for more details.
