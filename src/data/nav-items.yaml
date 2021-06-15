@@ -24,6 +24,8 @@
   pages:
     - title: "Prerequisites"
       path: /installing/prereqs/
+    - title: "Setup Namespace"
+      path: /installing/setup-namespace/
     - title: "Installation"
       path: /installing/installing/
     - title: "Air-gap Installation"
