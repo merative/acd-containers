@@ -34,13 +34,18 @@ Some environments are disconnected and do not have access to the public internet
 
 When deploying in a non air-gapped or connected environment, continue with the following installation. These installation steps require internet access to pull images from the image registries.
 
-### Adding a pull secret for IBM Entitled Registry
+### IBM Entitled Registry Pull Secret
 
-In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can either be added to the Openshift global pull secret or to the operator service account. The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can be setup using one of the following:
 
-#### Verifying entitled registry access
+1. Added to the Openshift global pull secrets
+2. Added to the operand service account
 
-Before creating a pull secret, verify the entitled registry key or apikey can access the entitled registry.
+The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+
+#### Verifying IBM Entitled Registry access
+
+Before setting up the pull secret, verify the entitled registry key or apikey can access the entitled registry.
 
 Example (Docker with IBM API key):
 
@@ -54,7 +59,7 @@ Example (Docker with IBM Entitled Registry entitlement key):
 docker login -u cp -p <entitlement key> cp.icr.io
 ```
 
-#### Openshift global pull secret installation
+#### Option 1: Openshift global pull secret installation
 
 To add the pull secret to the Openshift global pull secret:
 
@@ -87,7 +92,7 @@ To add the pull secret to the Openshift global pull secret:
 
 For more information on Openshift pull secrets refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets)
 
-#### Service account pull secret installation
+#### Option 2: Service account pull secret installation
 
 To add the pull secret to individual operand service accounts:
 
