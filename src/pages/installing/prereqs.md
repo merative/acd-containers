@@ -6,11 +6,13 @@ slug: prerequisites
 toc: true
 ---
 
+IBM Watson Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
+
 - Red Hat Openshift Container Platform 4.7 or later
 - Share storage for ACD configuration storage - This can be:
   - A persistent volume claim against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
-    - This is most often used with on prem clouds based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
-    persisent volume claims of Read Write Many access mode across all zones and nodes of the cluster.
+    - This is most often used with on premise cloud-based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
+    persistent volume claims of ReadWriteMany (RWX) access mode across all zones and nodes of the cluster.
   - An object bucket
     - On IBM Cloud - IBM Cloud Object Storage (COS) with a Regional bucket in the same cloud region as the cluster using Standard Storage Class
     - On AWS - S3 Bucket in the same region

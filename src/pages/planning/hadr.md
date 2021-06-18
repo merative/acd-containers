@@ -8,14 +8,14 @@ toc: true
 
 ## High availability considerations
 
-IBM® Watson Annotator for Clinical Data Container Edition default deployment model distributes replicas across nodes and can also span zones within a region.
+IBM Watson Annotator for Clinical Data Container Edition default deployment model distributes replicas across nodes and can also span zones within a region.
 Disruption in the network connectivity may happen within a region.  Recovering from potential disasters that affect an entire region requires planning and preparation.
 Instance owners should develop recovery plans based on their use cases.
 
 ### Availability during updates and voluntary operations
 
 Pod disruption budgets can be configured such that a minimum number of replicas are available during voluntary operations like upgrades or other cluster administration activities.
-The [management](../../management/pod-disruption) section provides an example that was tested with the default deployment Annotator for Clinical Data Container Edition.
+The [management](../../management/pod-disruption) section provides an example that was tested with the default deployment IBM Watson Annotator for Clinical Data Container Edition.
 
 ### Disaster recovery
 

@@ -5,20 +5,20 @@ categories: about
 slug: overview
 toc: true
 ---
-## IBM&reg; Watson Annotator for Clinical Data (ACD) Container Edition
+## IBM Watson Annotator for Clinical Data (ACD) Container Edition
 
 ## Details
 
-This program is the container version of IBM® Watson Annotator for Clinical Data.
+This program is the container version of IBM Watson Annotator for Clinical Data (ACD).
 The program allows a customer to run IBM Watson Annotator for Clinical Data on a cloud of their choice that supports Red Hat OpenShift.
 This documentation discusses how to install IBM Watson Annotator for Clinical Data Container Edition on a Red Hat OpenShift cluster.
 
-IBM® Watson Annotator for Clinical Data is an AI-powered service on IBM Cloud that delivers meaningful insights from unstructured data, purpose-built for healthcare and life sciences domains.
-Annotator for Clinical Data extracts key clinical concepts from natural language text, such as conditions, medications, allergies, and procedures.
+IBM Watson Annotator for Clinical Data is an AI-powered service that delivers meaningful insights from unstructured data, purpose-built for healthcare and life sciences domains.
+IBM Watson Annotator for Clinical Data extracts key clinical concepts from natural language text, such as conditions, medications, allergies, and procedures.
 These features are enriched with deep contextual insights, along with values for key clinical attributes, in order to provide a more complete view of the data at hand.
 Potential data sources include a variety of healthcare and life sciences sources, such as clinical notes, discharge summaries, clinical trial protocols, and literature data.
 
-This program supports English only text for insight extraction.
+This program supports English-only text for insight extraction.
 
 [Try it Now](https://acd-try-it-out.mybluemix.net/preview)
 
@@ -26,7 +26,7 @@ This program supports English only text for insight extraction.
 
 ### Clinical Insights
 
-The [clinical insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview) feature is a ready-to-use annotation capability within Watson Annotator for Clinical Data that provides critical contextual information for problems, procedures, and medications identified in the text.
+The [clinical insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview) feature is a ready-to-use annotation capability within IBM Watson Annotator for Clinical Data that provides critical contextual information for problems, procedures, and medications identified in the text.
 
 ### Clinical Coding
 
@@ -40,7 +40,7 @@ to analyze unstructured data from a single request.
 
 ## How it works
 
-IBM® Watson Annotator for Clinical Data is a REST API service that detects medical concepts within unstructured data.
+IBM Watson Annotator for Clinical Data is a REST API service that detects medical concepts within unstructured data.
 When you send unstructured data to the service to be analyzed and designate the desired annotators to employ,
 the service will route your unstructured data through the designated annotators and return the medical concepts detected within your unstructured data.
 
@@ -53,4 +53,4 @@ the service will route your unstructured data through the designated annotators 
 
 ## Customizing
 
-See the [IBM® Watson Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM® Watson Annotator for Clinical Data.
+See the [IBM Watson Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
