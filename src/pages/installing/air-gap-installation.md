@@ -6,13 +6,13 @@ slug: air-gap-installation
 toc: true
 ---
 
-Since air gap environments do not have access to the public internet, and therefore no access to DockerHub, the following preparation steps are necessary to make the required images accessable to the Red Hat OpenShift Container Platform cluster.
+Since air gap environments do not have access to the public internet, and therefore no access to DockerHub, the following preparation steps are necessary to make the required images accessible to the Red Hat OpenShift Container Platform cluster.
 
 If the Red Hat OpenShift Container Platform cluster has a Bastion host, ensure that the Bastion host can access:
 
 - The public internet to download the CASE and images.
 - The target (air gap) image registry where all the images will be mirrored to.
-- The Red Hat OpenShift Container Platform cluster to install the Operator on.
+- The Red Hat OpenShift Container Platform cluster to install the ACD operator on.
 
 In the absence of a Bastion host, a portable host with access to the public internet may used. By downloading the CASE and images onto the portable host, and then transporting the portable host into the air gap environment, the images can then be mirrored to the target (air gap) image registry.
 
@@ -68,7 +68,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 4. Configure Bastion host's registry authentication secret
 
-1. Create the authentication secret for the entitled registry.
+1. Create the authentication secret for the IBM Entitled Registry.
 
    ```
    cloudctl case launch \
@@ -205,7 +205,7 @@ Ensure you have the following installed on the portable host:
    - `<registry-user>` is the username for the portable device's registry.
    - `<registry-password>` is the password for the portable device's registry.
 
-3. Create the authentication secret for the entitled registry.
+3. Create the authentication secret for the IBM Entitled Registry.
 
    ```
    cloudctl case launch \

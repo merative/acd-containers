@@ -53,4 +53,4 @@ the service will route your unstructured data through the designated annotators 
 
 ## Customizing
 
-See the [IBM Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
+See the [IBM Watson Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.

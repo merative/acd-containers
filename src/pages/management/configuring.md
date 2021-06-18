@@ -10,6 +10,7 @@ The following tables lists the configurable parameters of the chart and their de
 
 | Parameter | Description | Default |
 | -         | -           | -       |
+| `license.accept` | License Accept | `false` |
 | `replicas` | ACD replicas | `3`    |
 | `annotators.advancedCareInsights.enabled` | Advanced care insights annotator enabled | `true` |
 | `annotators.attributeDetection.enabled` | Attribute detection annotator enabled | `true` |
