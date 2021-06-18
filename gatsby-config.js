@@ -1,4 +1,4 @@
-const siteTitle = 'IBM Annotator for Clinical Data'
+const siteTitle = 'IBM Watson Annotator for Clinical Data'
 
 var sitePrefix = process.env.SITE_PREFIX || "/"
 console.log(`Using SITE_PREFIX: '${sitePrefix}'`)
@@ -6,7 +6,7 @@ console.log(`Using SITE_PREFIX: '${sitePrefix}'`)
 module.exports = {
   siteMetadata: {
     title: siteTitle,
-    description: 'IBM Annotator for Clinical Data on Kubernetes Runbook',
+    description: 'IBM Watson Annotator for Clinical Data on Kubernetes Runbook',
     keywords: 'ibm,acd,containers',
   },
   pathPrefix: sitePrefix,

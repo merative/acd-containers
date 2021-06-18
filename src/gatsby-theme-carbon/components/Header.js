@@ -7,7 +7,7 @@ require('./languages/prism-powershell')
 const CustomHeader = props => (
 
   <Header {...props}>
-    IBM® Annotator for Clinical Data Container Edition
+    IBM Watson Annotator for Clinical Data Container Edition
   </Header>
 
 );
