@@ -6,7 +6,7 @@ slug: setup
 toc: true
 ---
 
-Each deployment of ACD operator and it's dependent resources need to be scoped to a project for proper isolation.
+Each deployment of ACD operator and its dependent resources need to be scoped to a project for proper isolation.
 
 ## Create a project (namespace)
 
@@ -20,9 +20,9 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 ## Setting up ACD Service optional dependencies
 
-### Setting up S3 Based Configuration Storage
+### Setting up S3-based Configuration Storage
 
-If the deployment will use S3 based storage, the S3 credentials need to be inserted into the ACD operand namespace as secrets.
+If the deployment will use S3-based storage, the S3 credentials need to be inserted into the ACD operand namespace as secrets.
 
 ```
 echo '<cos_id>' | tr -d '\n' > username
@@ -33,9 +33,9 @@ oc create secret generic ibm-wh-acd-as \
     --from-file=password
 ```
 
-If the deployment will use persistent file based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
+If the deployment will use persistent file-based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
-### Setting up File Based Configuration Storage's Persistent Volume and Claim Setup
+### Setting up File-based Configuration Storage's Persistent Volume and Claim Setup
 
 #### Shared filesystem creation
 

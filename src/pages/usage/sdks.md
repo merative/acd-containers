@@ -6,7 +6,7 @@ slug: sdks
 toc: true
 ---
 
-IBM Annotator for Clinical Data has software development kits in multiple languages for interacting with the service.
+IBM Watson Annotator for Clinical Data has software development kits in multiple languages for interacting with the service.
 
 [Java SDK](https://github.com/IBM/whcs-java-sdk)
 
