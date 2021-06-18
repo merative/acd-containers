@@ -59,7 +59,7 @@ Areas for consideration to address these aspects of the GDPR legislation include
 
 ## Data Life Cycle
 
-### What types of data flow through IBM Annotator for Clinical Data?
+### What types of data flow through IBM Watson Annotator for Clinical Data?
 
 There is no definite answer to the this question as use cases vary between application devleopment.
 The data passed through the ACD Analyze APIs are not persisted nor is the payload data logged.
@@ -72,10 +72,10 @@ Configuration metadata may also reside in the logs collected by pods with in the
 
 ### Personal data used for online contact with IBM
 
-Annotator for Clinical Data Container Edition clients can submit online comments/feedback requests to contact IBM about IBM Annotator for Clinical Data Container Edition in a variety of
+IBM Watson Annotator for Clinical Data Container Edition clients can submit online comments/feedback requests to contact IBM about IBM Watson Annotator for Clinical Data Container Edition in a variety of
 ways, primarily:
 
-- Public issue reporting and feature suggestions via IBM Annotator for Clinical Data Container Edition Git Hub portal
+- Public issue reporting and feature suggestions via IBM Watson Annotator for Clinical Data Container Edition Git Hub portal
 - Private issue reporting via IBM Support
 
 Typically, only the client name and email address are used to enable personal replies for the subject of the contact. The use of personal data conforms to the [IBM Online Privacy Statement](https://www.ibm.com/privacy/us/en/).
