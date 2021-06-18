@@ -13,6 +13,11 @@ If you have applications that run outside of the cluster and want to provide sec
 In the example below we'll use the latest version of the openshift oauth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
 
 1. Create a project/namespace for the proxy to run in (the examples below used ibm-wh-acd-oauth-proxy)
+
+    ```
+    oc create namespace ibm-wh-acd-oauth-proxy
+    ```
+
 1. Download the yaml below and save it as ibm-wh-acd-oauth-proxy.yaml.  Edit it with these changes:
    * `namespace: ibm-wh-acd-oauth-proxy` to the namespace you created in 1.
    * In the args section on this line `--upstream=https://ibm-wh-acd-acd.<namespace>.svc`  - change <namespace\> to the namespace your acd instance is running in (the target service)
@@ -118,19 +123,6 @@ Note here we have the proxy service account doing double duty - it is used to ru
 Also note if your application runs in the cluster you may want to consider using [bound service access tokens](https://docs.openshift.com/container-platform/4.7/authentication/bound-service-account-tokens.html) to have the tokens dynamically generated and rotated by the kubelet using the [TokenRequest api](https://jpweber.io/blog/a-look-at-tokenrequest-api/).
 
 More options and details for the proxy are availble at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).
-
-### Troubleshooting
-
-To diagnose problems follow these steps:
-
-1. Ensure the deployment and pod are running in the proxy namespace created in step 1 above.
-   * Check the pod logs to ensure it is starting without errors.
-1. Ensure you can login with the token as the service account and view the services in the target acd namespace
-   * `oc login https://api.youserver.com:6443  --token <yourtoken>  --insecure-skip-tls-verify=true` - ensure your token is good
-   * `oc whoami` - ensure you are the service account
-   * `oc get service ibm-wh-acd-acd -n <namespace>`  - change <namespace\> to your acd target namespace and ensure you can view the service as the service account user.  If role binding is setup correctly you will see the service info.  If not, you will see an `Error from server (Forbidden)`.
-1. Check the logs on the proxy pod in the console for access errors.
-1. Check the logs in the acd service for errors if it gets to ACD.
 
 ### Multitenancy with ACD
 

@@ -15,16 +15,16 @@ The pod disruption budget limits the number of pods that are down simultaneously
 Create the disruption budget.
 
 ```
-oc create -f pod-disruption-budget.yaml
+oc create -f ibm-wh-acd-pod-disruption-budget.yaml
 ```
 
 The following is an example configuration specifying that a minimum of 2 pods should be running.
 
-```
+```yaml ibm-wh-acd-pod-disruption-budget.yaml
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  name: acd-pdb
+  name: ibm-wh-acd-acd-pdb
 spec:
   minAvailable: 2
   selector:
@@ -47,5 +47,5 @@ oc describe pdb
 Delete the Pod Disruption Budget (using the name from the example configuration above).
 
 ```
-oc delete pdb acd-pdb
+oc delete pdb ibm-wh-acd-acd-pdb
 ```
