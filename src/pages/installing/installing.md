@@ -5,11 +5,11 @@ categories: installing
 slug: installing
 toc: true
 ---
-To install IBM Watson Annotator for Clinical Data Container Edition, you may use the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
+To install IBM Watson Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
 
 ## Overview
 
-Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration.
+IBM Watson Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration.
 
 The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
@@ -17,7 +17,7 @@ Installing ACD has three phases:
 
 1. Install the IBM operator catalog: this will deploy the catalog from which IBM operators, including ACD, can be installed.
 1. Install the ACD operator: this will deploy the operator that can be used to install and manage your ACD instances.
-1. Install one or more replicas of ACD by using the operator.
+1. Install one or more replicas of ACD by using the ACD operator.
 
 ## Before you begin
 
@@ -31,7 +31,7 @@ Installing ACD has three phases:
 
 The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
 
-Before setting up the pull secret, verify the entitled registry key or apikey can access the entitled registry.
+Before setting up the pull secret, verify the entitlement key or API key can access the entitled registry.
 
 Example (Docker with IBM API key):
 
@@ -58,7 +58,7 @@ When deploying in a non air-gapped or connected environment, continue with the f
 In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can be setup using one of the following:
 
 1. Added to the Openshift global pull secrets
-1. Added to the operand service account
+1. Added to the ACD operand service account
 
 #### Option 1: Openshift global pull secret installation
 
@@ -95,7 +95,7 @@ For more information on Openshift pull secrets refer to [Using image pull secret
 
 #### Option 2: Service account pull secret installation
 
-To add the pull secret to individual operand service accounts:
+To add the pull secret to individual ACD operand service accounts:
 
 1. Create a secret
 
@@ -195,11 +195,11 @@ cloudctl case launch \
 
 Instances of ACD can be created after the ACD operator is installed.
 
-If the operator was installed into a specific namespace, then it can only be used to manage instances of ACD in that namespace.
+If the ACD operator was installed into a specific namespace, then it can only be used to manage instances of ACD in that namespace.
 
-If the operator was installed for all namespaces, then it can be used to manage instances of ACD in any namespace, including those created after the operator was deployed.
+If the ACD operator was installed for all namespaces, then it can be used to manage instances of ACD in any namespace, including those created after the ACD operator was deployed.
 
-When installing an instance of ACD, ensure you are using a namespace that an operator is managing.
+When installing an instance of ACD, ensure you are using a namespace that an ACD operator is managing.
 
 ### Install the ACD Service by using the web console
 
@@ -212,11 +212,11 @@ To install the ACD service through the OpenShift Container Platform web console,
 1. In the **Operator Details** dashboard, click the **Annotator for Clinical Data** tab.
 1. Click the **Create Acd** button to open the **Create Acd** panel. You can use this panel to define an `Acd` custom resource.
 
-From here you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
+From here, you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
 
 ### Install the ACD service using cloudctl
 
-By default, this will deploy 3 replicas of all ACD services. Include `--args "--replicas 1"` to install a 1 replica ACD instance.
+By default, this will deploy 3 replicas of ACD. Include `--args "--replicas 1"` to install a 1 replica ACD instance.
 
 ```
 cloudctl case launch \
@@ -227,7 +227,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-To install with object storage the following parameters need to be added.
+To install with object storage, the following parameters need to be added.
 
 ```
 cloudctl case launch \
@@ -236,5 +236,5 @@ cloudctl case launch \
     --inventory clinicalDataAnnotatorOperator \
     --action applyCustomResources \
     --tolerance 1
-    --args "--configurationStorageBackend cos --configurationStorageS3Bucket <bucket> --configurationStorageS3EndpointUrl <endpoint> --configurationStorageS3Location <location>" 
+    --args "--configurationStorageBackend cos --configurationStorageS3Bucket <bucket> --configurationStorageS3EndpointUrl <endpoint> --configurationStorageS3Location <location>"
 ```

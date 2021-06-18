@@ -6,7 +6,7 @@ slug: setup
 toc: true
 ---
 
-Each deployment of ACD operator and its dependent resources need to be scoped to a project for proper isolation.
+Each deployment of the ACD operator and its dependent resources need to be scoped to a project for proper isolation.
 
 ## Create a project (namespace)
 
@@ -41,7 +41,7 @@ If the deployment will use persistent file-based storage, the Persistent Volume 
 
 Create the shared file system using the platform's tools with encryption enabled.
 
-It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany.
+It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany (RWX).
 
 Once the shared file system is created, the top-level directory should be empty and its GID set to 0 (root) with group rwx permissions.  This is required to allow the services write access when running with a restricted SCC. If the shared file system requires a GID other than zero, you must set the configurationStorage.file.supplementalGroups array property **TODO: how to describe values settings?** to the desired GID in the values file (example: [5555])  If you don't have direct access to the top-level directory of the file share, one technique to set the directory permissions is to start a temporary pod that runs as root with the PVC mounted.  Exec into the pod to run the chgrp and chmod commands on the mounted share directory.
 

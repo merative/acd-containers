@@ -9,7 +9,7 @@ toc: true
 ## Tracking License Usage
 
 License Service is required for monitoring and measuring license usage of ACD in accord with the pricing rule for IBM containerized software.
-License usage is based on a Virtual Processing Core (VPC) metric. For ACD, it is the top-level pod (the ibm-wh-acd-acd) that will be metered for VPC usage.
+License usage is based on a Virtual Processing Core (VPC) metric. For ACD, it is the top-level pod `ibm-wh-acd-acd` that will be metered for VPC usage.
 Because ACD has no 'CPU limits' property set, the VPC usage will be the capacity of the node where this pod runs. For example, ACD running in a cluster with 16 CPU/node has license usage = 16 VPC.
 
 Note: Manual license measurements are not allowed.
@@ -20,7 +20,7 @@ The integrated licensing solution collects and stores the license usage informat
 The solution works in the background and does not require any configuration.
 Only one instance of the License Service is deployed per cluster regardless of the number of Cloud Paks and containerized products that you have installed on the cluster.
 
-To comply with the licensing requirements for IBM containerized software, review Validating if License Service is deployed on the cluster,
+To comply with the licensing requirements for IBM containerized software, review [Validating if License Service is deployed on the cluster](#validating-if-license-service-is-deployed-on-the-cluster),
 and use the License Service APIs to generate the required usage audit reports (see [License Service](https://www.ibm.com/docs/en/cpfs?topic=operator-overview) documentation).
 
 ### Validating if License Service is deployed on the cluster
@@ -42,7 +42,7 @@ The following response is a confirmation of successful deployment:
 
 ### Deploying License Service
 
-If Validating License Service determines that the License Service is not deployed on the cluster where you have deployed ACD,
+If [Validating if License Service is deployed on the cluster](#validating-if-license-service-is-deployed-on-the-cluster) determines that the License Service is not deployed on the cluster where you have deployed ACD,
 or the License Service does not return a status of Running, refer to the information about License Service, including how to install, retrieve license usage data, and troubleshoot.
 See the [License Service](https://github.com/IBM/ibm-licensing-operator/blob/master/docs/License_Service_main.md) documentation.
 
