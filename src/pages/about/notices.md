@@ -6,6 +6,8 @@ slug: notices
 toc: true
 ---
 
+![Java Logo](../../images/Java_Compatible.gif)
+
 ## Legal Notices
 
 This program may reference National Library of Medicine (NLM).
