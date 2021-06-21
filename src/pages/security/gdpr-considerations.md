@@ -6,7 +6,7 @@ slug: gdpr-considerations
 toc: true
 ---
 
-## Notice:
+## Notice
 
 Clients are responsible for ensuring their own compliance with various laws
 and regulations, including the European Union General Data Protection Regulation.

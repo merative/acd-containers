@@ -124,6 +124,8 @@ Also note if your application runs in the cluster you may want to consider using
 
 More options and details for the proxy are availble at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).
 
+Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).
+
 ### Multitenancy with ACD
 
 ACD is stateless as far as the text it analyzes and returns however it does store configuration data through cartridges and flows and profiles and associated configuration artifacts.  You can use a single ACD instance with multiple 'tenants' which provides each tenant its own configuration storage area.  In order to use multitenancy you must use a security proxy as described above and use a different service account for each tenant. That provides security and passes back the tenant through a header to ACD but ACD needs to be configured to honor that header (it will use a defaultTenant as a tenant value for all calls otherwise).  In the ACD deployment (operand) when you create the instance you can set the tenantHeader value in the custom resource definition to specify the header to use as the tenant.  With the OAuth proxy above use the value of `X-Forwarded-User` (which the proxy sets to the service account name).  In the ACD custom resource definition this is `tenantHeader: X-Forwarded-User`.  You can edit or patch your instance to change or set it at create time.

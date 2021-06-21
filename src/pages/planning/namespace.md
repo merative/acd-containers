@@ -6,14 +6,16 @@ slug: namespace
 toc: true
 ---
 
-IBM Watson Annotator for Clinical Data (ACD) Container Edition handles installation and management of the ACD service using an ACD operator. Both the operator and service resources are installed by default into a dedicated namespace.
+All ACD resources are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces. Namespaces must be valid [DNS](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names) label names.
 
-The ACD operator may be deployed into different namespaces, one per namespace, or cluster-wide where it will be available to all namespaces. `ibm-wh-acd-operator-system` is the default namespace used when [installing the operator using the CLI](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator-using-cloudctl) to one namespace, and `openshift-operators` is the default namespace used when [installing the operator using the web console](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator-using-the-web-console) to all namespaces.
+IBM Watson Annotator for Clinical Data (ACD) Container Edition handles installation and management of the ACD service using an ACD operator. The ACD operator and its management of its ACD operands are different depending on the selected installation mode. The installation mode can be one of the following:
 
-The ACD service may be deployed into the same namespace as its operator or to a different dedicated namespace, one per namespace. `ibm-wh-acd-operator-system` is the default namespace used when [installing the ACD service using the CLI](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-service-using-cloudctl). The default namespace can be overridden with a different namespace at install time.
+## Option 1: All namespaces mode
 
-All resources created for an ACD installation are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces.
+When the ACD operator is installed using all namespaces mode, a single ACD operator is installed into the `openshift-operators` namespace. Each subsequent ACD operand is installed into the selected namespace.
 
-The IBM Operator Catalog provides a catalog of IBM provided operators. The catalog is the only installation done to an existing system namespace. The `openshift-marketplace` namespace is the default namespace used.
+## Option 2: Single namespace mode
 
-Namespaces must be valid [DNS](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names) label names.
+When the ACD operator is installed using single namespace mode, each ACD operator and it's ACD operand are installed into the specified namespace.
+
+If no namespace is specified on the [cloudctl CLI](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator-using-cloudctl), the `ibm-wh-acd-operator-system` namespace is used.

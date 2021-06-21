@@ -1,12 +1,10 @@
 ---
-title: "Pod Disruption"
+title: "Pod Disruption Budgets"
 excerpt: "Pod Disruption."
 categories: management
 slug: pod-disruption
 toc: true
 ---
-
-## Pod Disruption Budgets
 
 The pod disruption budget limits the number of pods that are down simultaneously from voluntary disruptions.
 
