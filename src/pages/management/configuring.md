@@ -8,7 +8,7 @@ toc: true
 
 The following tables lists the configurable parameters available for ACD.
 
-If using the web console, these are found under the ![YAML view](../../images/configuration_yaml.png) or a subset are found under the ![Form view](../../images/configuration_form.png).
+If using the web console, parameters are found under the ![YAML view](../../images/configuration_yaml.png) or a subset are found under the ![Form view](../../images/configuration_form.png).
 
 If using the CLI, these are configurable via the CSV.
 

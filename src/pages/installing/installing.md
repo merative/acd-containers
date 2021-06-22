@@ -29,7 +29,7 @@ Installing ACD has three phases:
 
 ## Verifying IBM Entitled Registry access
 
-The pull secret consists of an API key or entitlement key. See [IBM Developer Entitled Registry Login Options](https://playbook.cloudpaklab.ibm.com/ibm-developer-entitled-registry-login-options/) for details.
+The pull secret consists of an API key or entitlement key.
 
 Before setting up the pull secret, verify the entitlement key or API key can access the entitled registry.
 
