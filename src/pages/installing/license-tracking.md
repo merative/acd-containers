@@ -46,7 +46,7 @@ The following response is a confirmation of successful deployment:
 
 ## Viewing license usage
 
-The license service is accessable via the [```ibm-licensing-service-instance``` route](../../images/license_route.png) that is created as part of the license service setup.
+The license service is accessable via the ![```ibm-licensing-service-instance``` route](../../images/license_route.png) that is created as part of the license service setup.
 
 In order to run the report the ```ibm-licensing-token``` secret's token must be retrieved and provided on the above service. Once run, the results will show the ![ACD usage](../../images/license_report.png).
 
