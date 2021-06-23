@@ -39,6 +39,6 @@ By default, an ACD installation requires the following minimum resources:
 
 For high availability run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 vCPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 vCPU/pod may be used.  
 
-By default the ACD pods may use all of the CPUs on a node. If needed you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring).
+By default the ACD pods may use all of the CPUs on a node. If needed, you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring)).
 
 These are the requirements for ACD. The cluster itself has additional requirements for master, infrastructure and possible additional worker node for monitoring, logging and other components or applications being run. Please see the [OpenShift recommended host practices](https://docs.openshift.com/container-platform/4.7/scalability_and_performance/recommended-host-practices.html) for guidance on adding infrastructure nodes and moving resources to those nodes.

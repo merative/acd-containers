@@ -28,6 +28,9 @@ If using the CLI, these are configurable via the CSV.
 | `annotators.spellChecker.enabled` | Spell checker annotator enabled | `true` |
 | `configurationStorage.backend` | Configuration storage backend (`file` or `cos`) | `file` |
 | `configurationStorage.file.persistent` | File based configuration storage persistence enabled | `true` |
+| `resources.limits.cpu` | Limit the number of virtual cores allocated to the ACD service | "" |
+| `networkPolicy.enabled` | Enable network isolation between pods within and outside of the namespace that ACD is installed into.  Only the top-level ACD service is exposed through port 9443 | true |
+| `networkPolicy.ingress.fromSelectors` | Further restrict ingress access to ACD on port 9443 from other pods or namespaces using fromSelectors and labels.  Requires networkPolicy to be enabled. | |
 
 These additional configurable parameters may be provided when file based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
 
@@ -35,10 +38,13 @@ These additional configurable parameters may be provided when file based storage
 | -         | -           | -       |
 | `configurationStorage.file.volume.existingClaimName` | Use an existing persistent volume claim |  |
 | `configurationStorage.file.volume.size` | Persistent volume size, e.g. 10Gi |  |
-| `configurationStorage.file.volume.storageClassName` | Use an existing persistent volume of this class type |  |
-| `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` |
+| `configurationStorage.file.volume.supplementalGroup` | Group ID for writeable access to file storage if other than root (0) |  |
+<!---
+ | `configurationStorage.file.volume.storageClassName` | Use an existing persistent volume of this class type |  |
+| `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` | 
+--->
 
-These additional configurable parameters must be provided when IBM Cloud Object Store (`cos`) is used for  `configurationStorage.backend`.
+These additional configurable parameters must be provided when IBM Cloud Object Store (`COS`) is used for  `configurationStorage.backend`.
 
 | Parameter | Description | Default |
 | -         | -           | -       |
