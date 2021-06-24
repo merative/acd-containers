@@ -22,7 +22,7 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](https://ibm.github.io/acd-containers/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain](https://www.ibm.com/docs/en/cloud-paks/cp-management/1.3.0?topic=SSFC4F_1.3.0/readmes/GA/red_hat_getting_started.html#entitlement) and [Verify](#verifying-ibm-entitled-registry-access) access to the IBM Entitled Registry.
+- [Obtain](https://myibm.ibm.com/products-services/containerlibrary) and [Verify](#verifying-ibm-entitled-registry-access) access to the IBM Entitled Registry.
 - Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Setup](/installing/setup-namespace/) your project and project dependencies if required for your environment.
