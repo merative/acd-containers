@@ -22,22 +22,16 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](https://ibm.github.io/acd-containers/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain](https://myibm.ibm.com/products-services/containerlibrary) and [Verify](#verifying-ibm-entitled-registry-access) access to the IBM Entitled Registry.
+- [Obtain](https://myibm.ibm.com/products-services/containerlibrary) and [verify](#verifying-ibm-entitled-registry-access) access to the IBM Entitled Registry. The customer's `myibm` account should be used to request the entitlement key so the ownership and management of the entitlement stays with them.
 - Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Setup](/installing/setup-namespace/) your project and project dependencies if required for your environment.
 
 ## Verifying IBM Entitled Registry access
 
-The pull secret consists of an API key or entitlement key.
+A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images. When an entitlement key is obtained from myibm, the username should be `cp` and the password should be the entitlement key.
 
-Before setting up the pull secret, verify the entitlement key or API key can access the entitled registry.
-
-Example (Docker with IBM API key):
-
-```
-docker login -u iamapikey -p <iam apikey> cp.icr.io
-```
+Before setting up the pull secret, verify the entitlement key can access the entitled registry.
 
 Example (Docker with IBM Entitled Registry entitlement key):
 
@@ -70,13 +64,13 @@ To add the pull secret to the Openshift global pull secret:
 
 1. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
 
-   `printf "iamapikey:<iam apikey>" | base64`  -or-  `printf "cp:<entitlement key>" | base64`
+   `printf "cp:<entitlement key>" | base64`
 
 1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
 
    ```
    "cp.icr.io": {
-       "auth": "aWFtYXBpaxxxxxxxxxxxcGFzc3dvcmQ=",
+       "auth": "aWFtYXBpaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxcGFzc3dvcmQ=",
        "email": "xxx@nomail.relay.ibm.com"
    }
    ```
@@ -108,8 +102,8 @@ To add the pull secret to individual ACD operand service accounts:
        --namespace=<namespace>
    ```
 
-   - `<username>` is the username for the entitled registry. This should be either `cp` or `iamapikey`.
-   - `<password>` is the password for the entitled registry. This should be either your entitlement key or an apikey.
+   - `<username>` is the username for the entitled registry. This should be `cp` when using a `myibm` entitlement key.
+   - `<password>` is the password for the entitled registry. This should be the entitlement key from `myibm`.
 
 1. After the ACD operand has been installed, the service account must be patched to point to the secret.
 
