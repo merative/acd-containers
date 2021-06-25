@@ -118,14 +118,51 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
 1. Use that token as a bearer token to call acd through the proxy route passing the bearer token on the Authorization header (eg:
 `curl -X GET -H "Authorization: Bearer eyJ....z9g" -k https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api/v1/flows?version=2021-05-18`
 
-The delegate-urls parms says for which paths it should foward and what the caller needs to have access to allow it.  In this example we forward all calls ('/') if the caller has `get` access to the services in the target acd namespace  (which we created the role and granted that permission the service account).  More info on openshift rbac access is here - https://docs.openshift.com/container-platform/4.7/authentication/using-rbac.html
+The delegate-urls parms says for which paths it should forward and what the caller needs to have access to allow it.  In this example we forward all calls ('/') if the caller has `get` access to the services in the target acd namespace  (which we created the role and granted that permission the service account).  More info on openshift RBAC access is here - https://docs.openshift.com/container-platform/4.7/authentication/using-rbac.html
 Note here we have the proxy service account doing double duty - it is used to run the proxy service and do the token review (so it needed that cluster role binding) and we have it as the service account that is calling into ACD and bound it to that serviceview role to allow it.  In practice you have many service accounts and use their tokens to act as different acd tenants.
 Also note if your application runs in the cluster you may want to consider using [bound service access tokens](https://docs.openshift.com/container-platform/4.7/authentication/bound-service-account-tokens.html) to have the tokens dynamically generated and rotated by the kubelet using the [TokenRequest api](https://jpweber.io/blog/a-look-at-tokenrequest-api/).
 
-More options and details for the proxy are availble at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).
+More options and details for the proxy are available at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).
 
 Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).
 
 ### Multitenancy with ACD
 
 ACD is stateless as far as the text it analyzes and returns however it does store configuration data through cartridges and flows and profiles and associated configuration artifacts.  You can use a single ACD instance with multiple 'tenants' which provides each tenant its own configuration storage area.  In order to use multitenancy you must use a security proxy as described above and use a different service account for each tenant. That provides security and passes back the tenant through a header to ACD but ACD needs to be configured to honor that header (it will use a defaultTenant as a tenant value for all calls otherwise).  In the ACD deployment (operand) when you create the instance you can set the tenantHeader value in the custom resource definition to specify the header to use as the tenant.  With the OAuth proxy above use the value of `X-Forwarded-User` (which the proxy sets to the service account name).  In the ACD custom resource definition this is `tenantHeader: X-Forwarded-User`.  You can edit or patch your instance to change or set it at create time.
+
+### Network Policies with ACD
+
+A set of Network Policies are created in the target ACD name space during the installation process. These Network Policies will only allow network traffic to flow from the ACD macro service to its back-end micro services within the same namespace.  The ACD macro service will also accept incoming connections from any namespace to port 9443 (via the ACD Service object) such as a Route ingress pod, Proxy pod, or other cluster application pod.
+
+You can disable the Network Policy creation from the web console by setting `Network policy enabled` to false.  When installing from the command line, set the `networkPolicy.enabled` property to false.  This will remove any networking restrictions in the ACD namespace.
+
+You can further enhance security by only allowing the ACD macro service to accept network traffic from a specific source namespace and/or its pods.  This can be done during instance creation in the web console by using the YAML View and adding network policy ingress selectors definitions at `spec.networkPolicy.ingress.fromSelectors`.  From the command line, set `networkPolicy.ingress.fromSelectors`.
+
+**Note:** Creating Network Policy definitions is an advanced topic and requires a good understanding of Network Policies configurations. More information can be found at [Kubernetes Network Policy Documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+
+Steps:
+
+1. Use an existing kubernetes label or add one to the source's namespace or deployment descriptor.  This label is used in the network policy to determine which incoming network traffic is allowed into the macro service.
+1. Modify the ACD instance yaml configuration (CSV) from the web console by adding a yaml block to the fromSelectors object.  There are two types of selectors, `namespaceSelectors` and `podSelectors`.  Choose one or both depending on the scope of restriction you want.  These selectors will get added to the networkpolicy-acd-macroservice.yaml NetworkPolicy definition in the ACD namespace.
+
+Example:
+
+```
+spec:
+  networkPolicy:
+    enabled: true
+    ingress:
+      fromSelectors:
+      - namespaceSelector:
+          matchLabels:
+            <label name>: <label value>
+        podSelector:
+          matchLabels:
+            <label name>: <label value>
+
+# Note that the use of the hyphen (-) on the selectors determines if this restriction is an AND or OR rule.  In the above example, both the namespace and pod selectors have to match since they are in the same array.
+```
+
+Egress
+
+There are no egress Network Policies defined for the ACD namespace by default.  All pods within the ACD namespace can send data outside of the namespace including to the internet unless you have other restrictions in place.  It is also possible to restrict egress traffic from within the ACD namespace using Network Policy egress rules.
