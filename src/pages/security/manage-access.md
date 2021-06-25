@@ -141,10 +141,12 @@ You can further enhance security by only allowing the ACD macro service to accep
 **Note:** Creating Network Policy definitions is an advanced topic and requires a good understanding of Network Policies configurations. More information can be found at [Kubernetes Network Policy Documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 
 Steps:
+
 1. Use an existing kubernetes label or add one to the source's namespace or deployment descriptor.  This label is used in the network policy to determine which incoming network traffic is allowed into the macro service.
 1. Modify the ACD instance yaml configuration (CSV) from the web console by adding a yaml block to the fromSelectors object.  There are two types of selectors, `namespaceSelectors` and `podSelectors`.  Choose one or both depending on the scope of restriction you want.  These selectors will get added to the networkpolicy-acd-macroservice.yaml NetworkPolicy definition in the ACD namespace.
 
 Example:
+
 ```
 spec:
   networkPolicy:
@@ -160,6 +162,7 @@ spec:
 
 # Note that the use of the hyphen (-) on the selectors determines if this restriction is an AND or OR rule.  In the above example, both the namespace and pod selectors have to match since they are in the same array.
 ```
+
 Egress
 
 There are no egress Network Policies defined for the ACD namespace by default.  All pods within the ACD namespace can send data outside of the namespace including to the internet unless you have other restrictions in place.  It is also possible to restrict egress traffic from within the ACD namespace using Network Policy egress rules.
