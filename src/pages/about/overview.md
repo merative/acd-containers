@@ -51,6 +51,15 @@ the service will route your unstructured data through the designated annotators 
 
 3. The service will return a JSON response with extracted insights from the unstructured text analysis based on requested annotator flow.
 
-## Customizing
+## IBM Watson Annotator for Clinical Data Container Edition Overview
 
-See the [IBM Watson Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
+The container edition of IBM Watson Annotator for Clinical data is provided as a Kubernetes operator and set of container images that allow you to deploy, configure and manage Annotator for Clinical Data instances on your own Kubernetes cluster.  This documentation provides the [Planning](../../planning/namespace/) and  [Installation](../../installing/prereqs/) instructions to get started.
+IBM Watson Annotator for Clinical Data itself consists of a top level "macro" or orchestration Annotator for Clinical Data service which provides the REST api endpoints and a set of local micro services that provide the analytics or annotators that are invoked with specific parameters and in a specified order during analyze calls.   These are provided as kubernetes container images and the operator creates and manages the deployment of these.
+The analytics of text is a stateless operation with nothing stored but configuration is stored in a local shared file system or object storage.
+The following shows this setup with an optional security proxy that can be setup.
+
+![IBM Watson Annotator for Clinical Data Container Edition](../../images/ACD-OCP-HLD.png)
+
+## Customizing Annotator for Clinical Data analytics
+
+Annotator for Clinical Data provides a set of of predefined configurations you can install to use with your local ACD instance.  See [Using ACD](../../usage/getting-started/) for setup instructions after installing Annotator for Clinical Data.  See the [IBM Watson Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
