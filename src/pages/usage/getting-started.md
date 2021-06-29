@@ -61,7 +61,7 @@ curl -k -X POST \
 Note this __ibm_supertenant__ is only required when deploying the provided cartridges which are shared across tenants.  Note also if you change the instance to add the OAuth proxy for authentication and mutitenancy later you do not need to redeploy the clinical insights cartridge. If you update the instance later you will need to use the X-Forwarded-User header with a PUT command on curl however.
 
 **Deploying custom cartridges**
-If you are deploying a custom cartridge rather than an ACD provided catridge you would remove this header completely to have it placed into the defaultTenant configuration location or if you are using ACD multitenancy (which requires a [security proxy](../../security/manage-access)) you should deploy and update your custom cartridges through the proxy route using the bearer token for the tenant and not use a port forward direct to an ACD container at all for deploying custom catridges.
+If you are deploying a custom cartridge rather than an ACD provided catridge you would remove this header completely to have it placed into the defaultTenant configuration location or, if you are using ACD multitenancy (which requires a [security proxy](../../security/manage-access)), you should deploy and update your custom cartridges for each application (ie tenant) through the proxy route using the bearer token for the tenant and not use a port forward direct to an ACD container at all for deploying custom catridges.
 
 After the POST or PUT comes back look at the returned JSON structure for a statusLocation field.
 Use GET on the returned `statusLocation` to get status of the POST or PUT of the cartridge.
