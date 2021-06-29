@@ -74,12 +74,12 @@ curl -k -X GET \
 
 #### 4. Use the ACD APIs to get flows and post to analyze to analyze text.
 
-Test ACD APIs to verify the cartridge was deployed using an externalized route to the ACD service.  In the examples below replace <route_host> with the hostname and path to the externalized route to ACD or if you have a security proxy configured in fromnt of ACD use that route instead and use the `--header 'Authorization: Bearer xxxxxxxxxxxxxxx'` header as required for the proxy.
+Test ACD APIs to verify the cartridge was deployed using an externalized route to the ACD service.  In the examples below replace <route_host> with the hostname and path to the externalized route to ACD or if you have a security proxy configured in front of ACD use that route instead and use the `--header 'Authorization: Bearer xxxxxxxxxxxxxxx'` header as required for the proxy.  If testing directly to a pod via port fowarding use localhost:9443 as the route host.  The -k option ignores the ssl cert and should be removed if you have a valid certificate on your route.
 
 Get the flows:
 
 ```
-curl -X GET \
+curl -k -X GET \
     --header 'Accept: application/json' \
     --header 'Authorization: Bearer xxxxxxxxxxxxxxx' \
     'https://<route_host>/services/clinical_data_annotator/api/v1/flows?version=2021-03-15'
@@ -88,7 +88,7 @@ curl -X GET \
 Use POST to analyze text:
 
 ```
-curl -X POST \
+curl -k -X POST \
     --header 'Content-Type: text/plain' \
     --header 'Accept: application/json' \
     --header 'Authorization: Bearer xxxxxxxxxxxxxxxxxx' \
