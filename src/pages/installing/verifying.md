@@ -30,7 +30,7 @@ Port-forward to the ACD pod retrieved in the previous step. **Note that only an 
 oc port-forward <pod_name> -n <namespace> 9443:9443 &
 ```
 
-The terminal window should return to the command prompt with the port-forward running in the background waiting to accept network traffic on the localhost port 9443. (You may have to press enter one more time to get back to the command prompt.) Note that we used the ampersand (&; a control operator) at the end of the command. The shell assigns a number to the job and displays this job number after a smaller number between brackets. Note the job number returned. Once you are done running the curl command to verify status, you can end the port-forward using that job number.
+The terminal window should return to the command prompt with the port-forward running in the background waiting to accept network traffic on the localhost port 9443. (You may have to press enter again to get back to the command prompt.) Note that we used the ampersand (&; a control operator) at the end of the command. The shell assigns a number to the job and displays this job number after a smaller number between brackets. Note the job number returned. Once you are done running the curl command to verify status, you can end the port-forward using that job number.
 
 Example output:
 
@@ -40,7 +40,7 @@ $ oc port-forward ibm-wh-acd-acd-66bc5786-7rrc7 -n acd-test 9443:9443 &
 
 ```
 
-With the port-forward running in the background, call the ACD status API. Confirm `serviceState` is `OK`.
+With the port-forward process running in the background, call the ACD status API. Confirm `serviceState` is `OK`.
 
 ```
 curl -k 'https://localhost:9443/services/clinical_data_annotator/api/v1/status'
@@ -54,7 +54,7 @@ Handling connection for 9443
 {"version":"2021-06-23T16:41:19Z","upTime":"0d 01:01:19","serviceState":"OK","hostName":"ibm-wh-acd-acd-66bc5786-7rrc7","requestCount":254,"maxMemoryMb":3072,"commitedMemoryMb":3072,"inUseMemoryMb":632,"availableProcessors":16,"concurrentRequests":0,"maxConcurrentRequests":1,"totalRejectedRequests":0,"totalBlockedRequests":0
 ```
 
-To end the port-forward job, run the following, where `93053` would be the port-forward job id from the previous example output.
+To end the port-forward job, run the following, where `93053` would be the port-forward job id from the previous example output. You can also use the `jobs` command to get the port-forward process job id.
 
 ```
 kill <port-forward job id>
