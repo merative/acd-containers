@@ -8,9 +8,9 @@ toc: true
 
 To get started using the ACD service, see the [IBM Cloud API docs](https://cloud.ibm.com/apidocs/wh-acd) and examples. The REST APIs can be called directly or with one of the SDKs provided as documented in the API documentation.
 
-### Deploying and updating the ACD provided cartidges
+### Deploying and updating the ACD provided cartridges
 
-ACD provides a set of predefined cartridges (ACD flow and profile configuration) as published [here](https://github.com/IBM/wh-acd-cartridges). Add the cartridges to your ACD deployment for reference and use as example configuration.  These provided cartrides are built using a reserved prefix and need to be placed into a special supertenant tenant storage location in the ACD configuration store and are available as read-only configurations to all tenants of the ACD instance.  An administrator can deploy or updated these by specifying this tenant on a direct call to an acd container as documented below.
+ACD provides a set of predefined cartridges (ACD flow and profile configuration) as published [here](https://github.com/IBM/wh-acd-cartridges). Add the cartridges to your ACD deployment for reference and use as example configuration.  These provided cartrides are built using a reserved prefix and need to be placed into a special supertenant tenant storage location in the ACD configuration store and are available as read-only configurations to all tenants of the ACD instance.  An administrator can deploy or update these predefined cartridges by specifying this super tenant id on a direct call to an ACD container as documented below.
 
 The following steps are for the [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) cartridge.
 
@@ -34,7 +34,7 @@ The terminal should hang here waiting to accept network traffic on the localhost
 
 #### 3. Use curl to deploy the cartridge.
 
-In a new terminal window run one the following commands to deploy the cartridge.  Be sure to be in the directory where the cartridge zip file was downloaded too.
+In a new terminal window run one of the following commands to deploy the cartridge.  Be sure to be in the directory where the cartridge zip file was downloaded to.
 
 ```
 curl -k -X POST \
@@ -45,9 +45,9 @@ curl -k -X POST \
     --data-binary @wh_acd.ibm_clinical_insights_v1.0.zip
 ```
 
-**NOTE:** Use POST to create it the first time, or PUT to update it later.
+**NOTE:** Use POST to create it the first time, or PUT to update a previously deployed or partially deployed cartridge later.
 
-The command above uses the default `X-Watson-UserInfo` header to specify the supertenant tenant id required to deploy or change these provided cartridges to the shared tenant configuration location. This is the default header and format used by ACD if no Tenant header (tenantHeader) value was set in the ACD deployment to support tenant isolation.   If you set a Tenant header value on the ACD instance you will use that header instead.  Using the OAuth proxy and the mulitenancy with the X-Forwarded-User as the tenantHeader you'd use this command instead with a different header.
+The command above uses the default `X-Watson-UserInfo` header to specify the supertenant tenant id required to deploy or change these provided cartridges to the shared tenant configuration location. This is the default header and format used by ACD if no Tenant header (tenantHeader) value was set in the ACD deployment to support tenant isolation.   If you set a Tenant header value on the ACD instance you will use that header instead.  Using the OAuth proxy and multitenancy configuration with the X-Forwarded-User value as the tenantHeader you'd use this command instead with a different header.
 
 ```
 curl -k -X POST \
@@ -74,7 +74,7 @@ curl -k -X GET \
 
 #### 4. Use the ACD APIs to get flows and post to analyze to analyze text.
 
-Test ACD apis to verify the cartridge was deployed using an externalized route to the ACD service.  In the examples below replace <route_host> with the hostname and path to the externalized route to ACD or if you have a security proxy configured in fornt of ACD use that route instead and use the `--header 'Authorization: Bearer xxxxxxxxxxxxxxx'` header as required for the proxy.
+Test ACD APIs to verify the cartridge was deployed using an externalized route to the ACD service.  In the examples below replace <route_host> with the hostname and path to the externalized route to ACD or if you have a security proxy configured in fromnt of ACD use that route instead and use the `--header 'Authorization: Bearer xxxxxxxxxxxxxxx'` header as required for the proxy.
 
 Get the flows:
 
