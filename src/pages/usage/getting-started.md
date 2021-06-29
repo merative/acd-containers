@@ -21,7 +21,7 @@ The following steps are for the [Clinical Insights](https://cloud.ibm.com/docs/w
 List the pod names.
 
 ```
-oc get pod -n ${acd_namespace} | grep ibm-wh-acd
+oc get pod -n ${acd_namespace} | grep ibm-wh-acd-acd
 ```
 
 Port-forward to an ACD pod. **Note that only an admin can do the port-forward and access the pods through localhost.**
@@ -30,7 +30,11 @@ Port-forward to an ACD pod. **Note that only an admin can do the port-forward an
 oc port-forward ${pod_name} -n ${acd_namespace} 9443:9443
 ```
 
+The terminal should hang here waiting to accept network traffic on the localhost port 9443.  Open a new terminal window to run the following steps.
+
 #### 3. Use curl to deploy the cartridge.
+
+In a new terminal window run one the following commands to deploy the cartridge.  Be sure to be in the directory where the cartridge zip file was downloaded too.
 
 ```
 curl -k -X POST \
@@ -41,9 +45,9 @@ curl -k -X POST \
     --data-binary @wh_acd.ibm_clinical_insights_v1.0.zip
 ```
 
-Use POST to create it the first time, or PUT to update it later.
+**NOTE:** Use POST to create it the first time, or PUT to update it later.
 
-The example shows the default `X-Watson-UserInfo` header to specify the supertenant tenant id required to deploy or change these ACD provided cartridges to the shared tenant configuration location. This is the default header and format used by ACD if no Tenant header (tenantHeader) value was set in the ACD deployment to support tenant isolation use that header and remove the bluemix-instance-id prefix.  If you set a Tenant header value on the ACD instance you will use that header instead.  For example, if using the OAuth proxy header with tenancy:
+The command above uses the default `X-Watson-UserInfo` header to specify the supertenant tenant id required to deploy or change these provided cartridges to the shared tenant configuration location. This is the default header and format used by ACD if no Tenant header (tenantHeader) value was set in the ACD deployment to support tenant isolation.   If you set a Tenant header value on the ACD instance you will use that header instead.  Using the OAuth proxy and the mulitenancy with the X-Forwarded-User as the tenantHeader you'd use this command instead with a different header.
 
 ```
 curl -k -X POST \
@@ -54,10 +58,10 @@ curl -k -X POST \
     --data-binary @wh_acd.ibm_clinical_insights_v1.0.zip
 ```
 
-Note this __ibm_supertenant__ is only required when deploying the ACD provided cartridges.
+Note this __ibm_supertenant__ is only required when deploying the provided cartridges which are shared across tenants.  Note also if you change the instance to add the OAuth proxy for authentication and mutitenancy later you do not need to redeploy the clinical insights cartridge. If you update the instance later you will need to use the X-Forwarded-User header with a PUT command on curl however.
 
 **Deploying custom cartridges**
-If you are deploying a custom cartridge rather than an ACD provided catridge you would remove this header completely to have it placed into the defaultTenant configuration location or if you are using ACD multitenancy (which requires a security proxy) you should deploy and update your custom cartridges through the proxy route using the bearer token for the tenant and not use a port forward direct to an ACD container at all for deploying custom catridges.
+If you are deploying a custom cartridge rather than an ACD provided catridge you would remove this header completely to have it placed into the defaultTenant configuration location or if you are using ACD multitenancy (which requires a [security proxy](../../security/manage-access)) you should deploy and update your custom cartridges through the proxy route using the bearer token for the tenant and not use a port forward direct to an ACD container at all for deploying custom catridges.
 
 After the POST or PUT comes back look at the returned JSON structure for a statusLocation field.
 Use GET on the returned `statusLocation` to get status of the POST or PUT of the cartridge.
