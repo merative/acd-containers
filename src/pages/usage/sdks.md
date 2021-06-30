@@ -8,7 +8,7 @@ toc: true
 
 IBM Watson Annotator for Clinical Data has software development kits (SDK) in multiple languages for interacting with the ACD Service REST APIs.
 
-To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you pass a **bearer token** in the credentials.  If you have provided secure access to your ACD service instance via the Openshift OAuth service (see [Managing Access to ACD](https://ibm.github.io/acd-containers/security/manage-access/)), you will use the token that you created on the service account as your bearer token.  
+To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you pass a **bearer token** in the credentials.  If you have provided secure access to your ACD service instance via the Openshift OAuth service (see [Managing Access to ACD](https://ibm.github.io/acd-containers/security/manage-access/)), you will use the token that you created on the service account as your bearer token.  For access to an unsecured ACD service instance, the bearer token used for the credentials can be a dummy token.  
 
 ## Annotator for Clinical Data SDKs in Github
 
@@ -25,9 +25,13 @@ Find details about installing and using the SDKs.
 ## Examples
 
 In the following examples, replace:
-- `{version}` with ACD Service API version, e.g. 2021-06-01
-- `{url}` with URL of OAuth proxy route, e.g. https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api
-- `{token}` with bearer token, e.g. edJhb......M1g
+- `{version}` is the ACD Service API version, e.g. 2021-06-01
+- `{url}` is either: 
+  - OAuth proxy route URL if secured access, e.g. https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api
+  - Direct route URL if unsecured, e.g. https://route-acd-route.apps.youserver.com/services/clinical_data_annotator/api
+- `{token}` is either:
+  - bearer token of OAuth proxy route, e.g. edJhb......M1g
+  - dummy token, e.g. dummy
 
 ### Java SDK Authentication
 
