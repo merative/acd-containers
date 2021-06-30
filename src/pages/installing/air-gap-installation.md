@@ -38,7 +38,7 @@ Ensure you have the following installed on the Bastion host:
    mkdir -p $HOME/offline
    ```
 
-2. Download the CASE from https://github.com/IBM/cloud-pak
+2. Download the CASE from https://github.com/IBM/cloud-pak/tree/master/repo/case/ibm-wh-acd
 
 3. Save the CASE.
 
@@ -163,7 +163,7 @@ Ensure you have the following installed on the portable host:
    mkdir -p $HOME/offline
    ```
 
-2. Download the CASE from https://github.com/IBM/cloud-pak
+2. Download the CASE from https://github.com/IBM/cloud-pak/tree/master/repo/case/ibm-wh-acd
 
 3. Save the CASE.
 
