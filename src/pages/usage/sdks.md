@@ -12,8 +12,8 @@ To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you
 
 ## Annotator for Clinical Data SDKs in Github
 
-Find details about installing and using the SDKs. 
- 
+Find details about installing and using the SDKs.
+
 - [Java SDK](https://github.com/IBM/whcs-java-sdk)
 
 - [Python SDK](https://github.com/IBM/whcs-python-sdk)
@@ -25,8 +25,9 @@ Find details about installing and using the SDKs.
 ## Examples
 
 In the following examples, replace:
+
 - `{version}` is the ACD Service API version, e.g. 2021-06-01
-- `{url}` is either: 
+- `{url}` is either:
   - OAuth proxy route URL if secured access, e.g. https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api
   - Direct route URL if unsecured, e.g. https://route-acd-route.apps.youserver.com/services/clinical_data_annotator/api
 - `{token}` is either:
@@ -162,4 +163,3 @@ func main() {
   ACD.DisableSSLVerification()
 }
 ```
-
