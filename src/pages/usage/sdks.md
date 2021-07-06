@@ -34,7 +34,9 @@ In the following examples, replace:
   - bearer token of OAuth proxy route, e.g. edJhb......M1g
   - dummy token, e.g. dummy
 
-### Java SDK Authentication
+### Java SDK
+
+#### Authentication
 
 ```
 import com.ibm.cloud.sdk.core.security.BearerTokenAuthenticator;
@@ -45,7 +47,7 @@ AnnotatorForClinicalData acdService = new AnnotatorForClinicalData({version},
 acdService.setServiceUrl({url});
 ```
 
-### Java SDK Authentication and Disabling SSL Verification (not recommended)
+#### Authentication and Disabling SSL Verification (not recommended)
 
 ```
 import com.ibm.cloud.sdk.core.security.BearerTokenAuthenticator;
@@ -59,7 +61,9 @@ HttpConfigOptions options = new HttpConfigOptions.Builder().disableSslVerificati
 acdService.configureClient(options);
 ```
 
-### Python SDK Authentication
+### Python SDK
+
+#### Authentication
 
 ```
 from ibm_cloud_sdk_core.authenticators import BearerTokenAuthenticator
@@ -72,7 +76,7 @@ acd_service = acd.AnnotatorForClinicalDataV1(
 acd_service.set_service_url({url})
 ```
 
-### Python SDK Authentication and Disabling SSL Verification (not recommended)
+#### Authentication and Disabling SSL Verification (not recommended)
 
 ```
 from ibm_cloud_sdk_core.authenticators import BearerTokenAuthenticator
@@ -86,7 +90,9 @@ acd_service.set_service_url({url})
 acd_service.set_disable_ssl_verification(True)
 ```
 
-### Node SDK Authentication
+### Node SDK
+
+#### Authentication
 
 ```
 const AnnotatorForClinicalDataAcdV1 = require('ibm-whcs-services/annotator-for-clinical-data/v1');
@@ -102,7 +108,7 @@ const acdService = new AnnotatorForClinicalDataAcdV1({
 });
 ```
 
-### Node SDK Authentication with Disabling SSL Verification (not recommended)
+#### Authentication and Disabling SSL Verification (not recommended)
 
 ```
 const AnnotatorForClinicalDataAcdV1 = require('ibm-whcs-services/annotator-for-clinical-data/v1');
@@ -119,7 +125,9 @@ const acdService = new AnnotatorForClinicalDataAcdV1({
 });
 ```
 
-### Go SDK Authentication
+### Go SDK
+
+#### Authentication
 
 ```
 import (
@@ -141,7 +149,7 @@ func main() {
 }
 ```
 
-### Go SDK Authentication with Disabling SSL Verification (not recommended)
+#### Authentication and Disabling SSL Verification (not recommended)
 
 ```
 import (

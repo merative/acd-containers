@@ -41,8 +41,6 @@
   pages:
     - title: "Getting started"
       path: /usage/getting-started/
-    - title: "API Documentation"
-      path: /usage/apis/
     - title: "Software Development Kits"
       path: /usage/sdks/
 
