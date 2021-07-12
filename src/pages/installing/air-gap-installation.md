@@ -38,9 +38,7 @@ Ensure you have the following installed on the Bastion host:
    mkdir -p $HOME/offline
    ```
 
-2. Download the CASE from https://github.com/IBM/cloud-pak/tree/master/repo/case/ibm-wh-acd
-
-3. Save the CASE.
+2. Save the CASE from Github.
 
    ```
    cloudctl case save \
@@ -50,7 +48,15 @@ Ensure you have the following installed on the Bastion host:
 
    - `<case-path>` is the path or URL to the CASE to save.
 
-4. Verify the CASE (.tgz) file and images (.csv) file have been downloaded.
+   Example:
+
+   ```
+   cloudctl case save \
+       --case https://github.com/IBM/cloud-pak/raw/master/repo/case/ibm-wh-acd/1.0.0/ibm-wh-acd-1.0.0.tgz \
+       --outputdir $HOME/offline
+   ```
+
+3. Verify the CASE (.tgz) file and images (.csv) file have been downloaded.
 
    ```
    ls $HOME/offline
@@ -75,7 +81,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
        --case $HOME/offline/<case-file> \
        --inventory clinicalDataAnnotatorOperatorSetup \
        --action configure-creds-airgap \
-       --args "--registry cp.icr.io --user <registry-user> --pass <registry-password>" \
+       --args "--registry cp.icr.io --user <registry-user> --pass <registry-password>"
    ```
 
    - `<case-file>` is the CASE file.
@@ -121,6 +127,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
    ```
    cloudctl case launch \
        --case $HOME/offline/<case-file> \
+       --namespace openshift-marketplace \
        --inventory clinicalDataAnnotatorOperatorSetup \
        --action configure-cluster-airgap \
        --args "--registry <bastion-registry> --inputDir $HOME/offline"
