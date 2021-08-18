@@ -20,7 +20,11 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 ## Setting up ACD Service optional dependencies
 
+***
+
 ### Setting up S3-based Configuration Storage
+
+***
 
 If the deployment will use S3-based storage, the S3 credentials need to be inserted into the ACD operand namespace as secrets.
 
@@ -33,19 +37,145 @@ oc create secret generic ibm-wh-acd-as \
     --from-file=password
 ```
 
-If the deployment will use persistent file-based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
+***
 
 ### Setting up File-based Storage Configuration Persistent Volume and Claim Setup
 
-#### Shared filesystem creation
+***
 
-Create the shared file system using the platform's tools with encryption enabled.
+If the deployment will use persistent file-based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
-It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany (RWX).
+If you are deploying more than one instance of ACD, each deployment is required to have its own PV and PVC within its own project.  
+
+We have tested two methods for providing a shared filesystem for storing ACD persistent data.
+
+- [Openshift Container Storage (OCS)](#create-ocs)
+- [NFS](#create-nfs)
+
+Create the shared file system using the platform's tools with encryption enabled. It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany (RWX).
+
+<a name="create-ocs"></a>
+
+#### Creating an OCS (cephfs) shared filesystem
+
+1. Install OCS from the Operator Catalog.  This will install the cephfs storage class.  You must provide a block storage class for OCS to use.
+
+1. In the ACD namespace, manually create the ACD persistent volume claim from the example ibm-wh-acd-config-storage-cephfs-pvc.yaml file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
+
+    ```
+    oc create -n <your namespace> -f ibm-wh-acd-config-storage-cephfs-pvc.yaml
+    ```
+
+    Example PVC file ibm-wh-acd-config-storage-cephfs-pv.yaml
+
+    ```yaml ibm-wh-acd-config-storage-cephfs-pvc.yaml
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: ibm-wh-acd-config-storage-cephfs-pvc
+      spec:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: ocs-storagecluster-cephfs
+        volumeMode: Filesystem
+      ```
+
+1. Determine the name of the generated persistent volume that is bound to your PVC.  The PV name starts with 'pvc-'
+
+      ```
+      oc get pvc -n <acd namespace>
+      ```
+
+1. Patch the generated persistent volume to change the `persistentVolumeReclaimPolicy` to `Retain` so the volume does not get deleted if the PVC is deleted.
+
+      ```
+      oc patch pv <dynamic-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
+      ```
+
+1. Continue to the [Shared File System Preparation](#shared-prep) step below.
+
+#### OCS Persistent Volume and Claim Removal
+
+WARNING: Removing an OCS persistent volume will delete any data stored in that PV.
+
+To remove the persistent volume and claim run the following commands:
+
+```
+oc delete pvc ibm-wh-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
+oc delete pv <dynamic-pv-name>
+```
+
+<a name="create-nfs"></a>
+
+#### Creating an NFS shared filesystem
+
+1. Create the persistent volume for NFS
+
+    ```
+    oc create -f ibm-wh-acd-config-storage-nfs-pv.yaml
+    ```
+
+    Note: The path to the NFS volume must be unique for each ACD instance.
+
+    Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
+
+    ```yaml ibm-wh-acd-config-storage-nfs-pv.yaml
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: ibm-wh-acd-config-storage-nfs-pv
+    spec:
+      capacity:
+        storage: 10Gi
+      nfs:
+         server: your-nfs-server
+         path: /your/nfs/path
+      accessModes:
+        - ReadWriteMany
+      persistentVolumeReclaimPolicy: Retain
+      volumeMode: Filesystem
+    ```
+
+1. Create the persistent volume claim for NFS
+ 
+    ```
+    oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
+    ```
+
+    Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
+
+    ```yaml ibm-wh-acd-config-storage-nfs-pvc.yaml
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: ibm-wh-acd-config-storage-nfs-pvc
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: 10Gi
+      volumeMode: Filesystem
+      volumeName: ibm-wh-acd-config-storage-nfs-pv
+    ```
+
+#### NFS Persistent Volume and Claim Removal
+
+To remove the persistent volume and claim run the following:
+
+```
+oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>
+oc delete pv ibm-wh-acd-config-storage-nfs-pv
+```
+
+<a name="shared-prep"></a>
+
+### Shared File System Preparation
 
 Once the shared file system is created, the top-level directory should be empty and its GID set to 0 (root) with group `rwx` permissions.  This is required to allow the ACD services write access when running with a restricted SCC.  If the shared file system requires a GID other than zero, you must also set the `Supplemental Group ID` parameter in the `File Storage -> PVC` section during the ACD instance creation.  
-
-The `Existing PVC Name` parameter should match the name specified in the PVC.  The `PVC Storage Size` should also be set to match the size of the shared file system.  See the PVC example yaml file below.
 
 Example commands to set the shared file system directory permissions:
 
@@ -56,65 +186,4 @@ chmod g+w <top level mount directory>
 
 If you don't have direct access to the top-level directory of the file share, one technique to set the directory permissions is to start a temporary pod that runs as root with the PVC mounted.  Exec into the pod to run the `chgrp` and `chmod` commands on the mounted share directory.
 
-If you are deploying more than one instance of ACD, each deployment is required to have its own PV and PVC within its own project.  The path to the file system in the persistent volume must be unique for each project.
-You can add a number to the end of the PV and PVC's name and corresponding file name to keep them unique. For example:
-
-- ibm-wh-acd-config-storage-nfs-pv1, ibm-wh-acd-config-storage-nfs-pvc1
-- ibm-wh-acd-config-storage-nfs-pv2, ibm-wh-acd-config-storage-nfs-pvc2
-
-#### Create the persistent volume
-
-```
- oc create -f ibm-wh-acd-config-storage-nfs-pv.yaml
-```
-
-Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
-
-```yaml ibm-wh-acd-config-storage-nfs-pv.yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ibm-wh-acd-config-storage-nfs-pv
-spec:
-  capacity:
-    storage: 10Gi
-  nfs:
-    server: your-nfs-server
-    path: /your/nfs/path
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  volumeMode: Filesystem
-```
-
-#### Create the persistent volume claim.
-
-```
- oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
-```
-
-Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
-
-```yaml ibm-wh-acd-config-storage-nfs-pvc.yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ibm-wh-acd-config-storage-nfs-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 10Gi
-  volumeMode: Filesystem
-  volumeName: ibm-wh-acd-config-storage-nfs-pv
-```
-
-#### Persistent Volume and Claim Removal
-
-To remove the persistent volume and claim run the following:
-
-```
-oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>
-oc delete pv ibm-wh-acd-config-storage-nfs-pv
-```
+When creating the ACD instance, the `Existing PVC Name` parameter should match the name specified in the PVC that was created in these steps.  The `PVC Storage Size` must also be set to match the size of the shared file system.
