@@ -13,10 +13,7 @@ This program is the container version of IBM Watson Annotator for Clinical Data 
 The program allows a customer to run IBM Watson Annotator for Clinical Data on a cloud of their choice that supports Red Hat OpenShift.
 This documentation discusses how to install IBM Watson Annotator for Clinical Data Container Edition on a Red Hat OpenShift cluster.
 
-IBM Watson Annotator for Clinical Data is an AI-powered service that delivers meaningful insights from unstructured data, purpose-built for healthcare and life sciences domains.
-IBM Watson Annotator for Clinical Data extracts key clinical concepts from natural language text, such as conditions, medications, allergies, and procedures.
-These features are enriched with deep contextual insights, along with values for key clinical attributes, in order to provide a more complete view of the data at hand.
-Potential data sources include a variety of healthcare and life sciences sources, such as clinical notes, discharge summaries, clinical trial protocols, and literature data.
+IBM Watson Annotator for Clinical Data is an AI-powered service that applies Natural Language Processing (NLP) engines to deliver meaningful insights from unstructured data, purpose-built for healthcare and life sciences domains. Annotator for Clinical Data uses clinical NLP trained models to extract key concepts from natural language text, such as conditions, medications, allergies, and procedures along with their associated medical codes (eg: ICD-10, RxNorm, Snomed, LOINC). These features are enriched with deep contextual insights, along with values for key clinical attributes, in order to provide a more complete view of the data at hand. Potential data sources include a variety of healthcare and life sciences sources, such as clinical notes, discharge summaries, clinical trial protocols, and literature data.
 
 This program supports English-only text for insight extraction.
 
