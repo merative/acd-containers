@@ -140,7 +140,7 @@ oc delete pv <dynamic-pv-name>
     ```
 
 1. Create the persistent volume claim for NFS
- 
+
     ```
     oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
     ```
