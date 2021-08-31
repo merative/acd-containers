@@ -34,6 +34,8 @@
       path: /installing/verifying/
     - title: "License Tracking"
       path: /installing/license-tracking/
+    - title: "Upgrading"
+      path: /installing/upgrading/      
     - title: "Uninstalling"
       path: /installing/uninstalling/
 
