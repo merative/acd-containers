@@ -170,6 +170,7 @@ To install the ACD operator through the OpenShift Container Platform web console
 1. Click the **ACD** tile to open the install side panel.
 1. Click the **Install** button to open the **Create Operator Subscription** dashboard.
 1. Select the chosen installation mode that suits your requirements. If the installation mode is **A specific namespace on the cluster**, select the target namespace you created previously.
+1. Select the approval strategy that suits your requirements. If set to **Automatic**, the [Subscription](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-subscription_olm-understanding-olm) resource uses [Operator Lifecycle Manager (OLM)](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-overview_olm-understanding-olm) to manage and upgrade the operator to ensure that the latest version is always running in the cluster. With **Manual** approval set, a project administrator must manually approve the install plan to enable the upgrade. See the [upgrading](../installing/upgrading) section for more details.
 1. Click **Install** to begin the installation.
 
 The installation can take a few minutes to complete.
@@ -201,8 +202,7 @@ To install the ACD service through the OpenShift Container Platform web console,
 
 1. Log in to the OpenShift Container Platform [web console](https://docs.openshift.com/container-platform/4.7/web_console/web-console.html) using your login credentials.
 1. Expand the **Operators** dropdown and select **Installed Operators** to open the **Installed Operators** page.
-1. Expand the **Project** dropdown and select the project the operator is installed in. Select the **Annotator for Clinical Data** operator link in the **Name** column.
-**Note**: If the operator is not shown, it is either not installed or not available for the selected namespace.
+1. Expand the **Project** dropdown and select the project the operator is installed in. Select the **Annotator for Clinical Data** operator link in the **Name** column. If the operator is not shown, it is either not installed or not available for the selected namespace.
 1. In the **Operator Details** dashboard, click the **Annotator for Clinical Data** tab.
 1. Click the **Create Acd** button to open the **Create Acd** panel. You can use this panel to define an `Acd` custom resource.
 
