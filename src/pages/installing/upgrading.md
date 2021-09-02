@@ -11,13 +11,13 @@ The IBM Watson Annotator for Clinical Data Container Edition supports both manua
 
 The update graph for ACD is expected to grow over time, but is very simple today. The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. The following patch versions are available today.
 
-- Upgrade the ACD operator from `v2.0.202106231922` to `v2.0.20210xxxxxxx`.
+- Upgrade the ACD operator from `v2.0.202106231922` to `v2.0.202109011707`.
 
 ## Automatic Upgrades
 
 With OLM integration, at operator install time, a subscription is created to an upgrade channel. The channel defines the stream of upgrades available for an operator and is used to roll out the upgrades for channel subscribers.
 
-At the present time, the ACD operator only provides one channel, `v2.0`. When a new patch version becomes available within that channel, i.e. `v2.0.20210xxxxxxx`, the operator will automatically reconcile the new version and use a rolling update strategy to upgrade both the operator and ACD instance, creating new pods with the new version installed before terminating the pods running the old versions.
+At the present time, the ACD operator only provides one channel, `v2.0`. When a new patch version becomes available within that channel, i.e. `v2.0.202109011707`, the operator will automatically reconcile the new version and use a rolling update strategy to upgrade both the operator and ACD instance, creating new pods with the new version installed before terminating the pods running the old versions.
 
 ## Manual Upgrades
 
