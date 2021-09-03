@@ -229,6 +229,6 @@ cloudctl case launch \
     --namespace <namespace> \
     --inventory clinicalDataAnnotatorOperator \
     --action applyCustomResources \
-    --tolerance 1
+    --tolerance 1 \
     --args "--backend cos --bucket <bucket> --endpointUrl <endpoint> --location <location>"
 ```
