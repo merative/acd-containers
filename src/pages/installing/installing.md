@@ -230,5 +230,5 @@ cloudctl case launch \
     --inventory clinicalDataAnnotatorOperator \
     --action applyCustomResources \
     --tolerance 1
-    --args "--configurationStorageBackend cos --configurationStorageS3Bucket <bucket> --configurationStorageS3EndpointUrl <endpoint> --configurationStorageS3Location <location>"
+    --args "--backend cos --bucket <bucket> --endpointUrl <endpoint> --location <location>"
 ```
