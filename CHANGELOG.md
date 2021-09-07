@@ -6,17 +6,17 @@ See Annotation for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-a
 
 ## [Released]
 
-## v2.0 - build v2.0.202106231922
-
-### General Availability
-
 ## v2.0 - build v2.0.202109011707
 
 ### Added
 
 - Openshift Operator Lifecycle Manager integration
 
-- Refresh of Annotation for Clinical Data images
+- Refresh of Annotation for Clinical Data Service and eaqch of its annotators
+
+## v2.0 - build v2.0.202106231922
+
+- Initial Release of Annotation for Clinical Data Container Edition
 
 [Released]: https://github.com/ibm/repo-template/compare/v0.0.1...HEAD
 [2.0.0]: https://github.com/ibm/repo-template/releases/tag/v0.0.1
