@@ -2,13 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+See Annotation for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-release-notes) for latest features.
 
-## [0.0.1] - 2019-02-15
+## [Released]
+
+## v2.0 - build v2.0.202106231922
+
+### General Availability
+
+## v2.0 - build v2.0.202109011707
 
 ### Added
 
-- Added a changelog
+- Refresh of Annotation for Clinical Data images
 
-[unreleased]: https://github.com/ibm/repo-template/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/ibm/repo-template/releases/tag/v0.0.1
+[Released]: https://github.com/ibm/repo-template/compare/v0.0.1...HEAD
+[2.0.0]: https://github.com/ibm/repo-template/releases/tag/v0.0.1
