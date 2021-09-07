@@ -14,6 +14,8 @@ See Annotation for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-a
 
 ### Added
 
+- Openshift Operator Lifecycle Manager integration
+
 - Refresh of Annotation for Clinical Data images
 
 [Released]: https://github.com/ibm/repo-template/compare/v0.0.1...HEAD
