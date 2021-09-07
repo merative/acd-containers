@@ -12,7 +12,7 @@ const links = [
 //  },
   {
     title: 'Change Log',
-    href: 'https://github.com/IBM/acd-containers/blob/dcw/CHANGELOG.md',
+    href: 'https://github.com/IBM/acd-containers/blob/master/CHANGELOG.md',
   }
 ];
 
