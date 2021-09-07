@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-See Annotation for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-release-notes) for latest features.
+See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-release-notes) for latest features.
 
-## [Released]
+## Releases
 
 ## v2.0 - build v2.0.202109011707
 
