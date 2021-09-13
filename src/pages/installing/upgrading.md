@@ -12,6 +12,7 @@ The IBM Watson Annotator for Clinical Data Container Edition supports both manua
 The update graph for ACD is expected to grow over time, but is very simple today. The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. The following patch versions are available today.
 
 - Upgrade the ACD operator from `v2.0.202106231922` to `v2.0.202109011707`.
+- Upgrade the ACD operator from `v2.0.202109011707` to `v2.0.202109100417`.
 
 ## Automatic Upgrades
 
