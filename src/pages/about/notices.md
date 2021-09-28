@@ -22,10 +22,10 @@ This program may reference National Library of Medicine (NLM).
 
 <q>The duplication, sale, or redistribution of NLM data must conform to fair use guidelines and copyright law.</q>
 
-SNOMED Clinical Terms® 
+SNOMED Clinical Terms®
 Version: SNOMEDCT_US_2021_03_01 March 1, 2021
 
-This Program includes SNOMED Clinical Terms® (SNOMED CT®) which is used by permission of the International Health Terminology Standards Development Organisation (IHTSDO). All rights reserved. SNOMED CT®, was originally created by The College of American Pathologists. <q>SNOMED</q> and <q>SNOMED CT</q> are registered trademarks of the IHTSDO. 
+This Program includes SNOMED Clinical Terms® (SNOMED CT®) which is used by permission of the International Health Terminology Standards Development Organisation (IHTSDO). All rights reserved. SNOMED CT®, was originally created by The College of American Pathologists. <q>SNOMED</q> and <q>SNOMED CT</q> are registered trademarks of the IHTSDO.
 
 The program described in this document also includes the vocabulary sources listed in the table below from the UMLS Metathesaurus, release 2021 AA. Some material in the UMLS Metathesaurus is from copyrighted sources of the respective copyright holders. Users of the UMLS Metathesaurus are solely responsible for compliance with any copyright, patent or trademark restrictions and are referred to the copyright, patent or trademark notices appearing in the original sources, all of which are hereby incorporated by reference. The program includes SNOMED Clinical Terms® (SNOMED CT®) which is used by permission of the International Health Terminology Standards Development Organisation (IHTSDO). All rights reserved. SNOMED CT®, was originally created by the College of American Pathologists. <q>SNOMED</q> and <q>SNOMED CT</q> are registered trademarks of the IHTSDO.
 
@@ -169,10 +169,7 @@ The program described in this document also includes the vocabulary sources list
 |UWDA173|Jose Mejino, M.D., University of Washington Digital Anatomist, (UWDA). Seattle (WA): University of Washington, Version 1.7.3, March, 2003.|
 |VANDF_2021_01_29 (updated)|Veterans Health Administration National Drug File, January 29, 2021 Washington, DC U.S. Department of Veterans Affairs|
 
-
-
 Deidentified clinical records used in the development of this offering were provided by the i2b2 National Center for Biomedical Computing funded by U54LM008748 and were originally prepared for the Shared Tasks for Challenges in NLP for Clinical Data organized by Dr. Ozlem Uzuner, i2b2 and SUNY
-
 
 This product includes all, or a portion of, or is derived from content from LOINC that is subject to a license from Regenstrief Institute, Inc. Your use of LOINC content also is subject to this license, a copy of which is available https://loinc.org/license/. The current complete LOINC distribution is available for download at http://loinc.org. The LOINC Table and LOINC codes are copyright © 1995-2019, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee. The LOINC Table, LOINC Table Core, LOINC Panels and Forms File, LOINC Answer File, LOINC Part File, LOINC Group File, LOINC Document Ontology File, LOINC Hierarchies, LOINC Linguistic Variants File, LOINC/RSNA Radiology Playbook, LOINC/IEEE Medical Device Code Mapping Table, LOINC Display Name File, LOINC Consumer Name File, and LOINC Change Snapshot File are copyright © 1995-2019, Regenstrief Institute, Inc. All rights reserved. THE LOINC TABLE (IN ALL FORMATS), LOINC TABLE CORE, LOINC PANELS AND FORMS FILE, LOINC ANSWER FILE, LOINC PART FILE, LOINC GROUP FILE, LOINC DOCUMENT ONTOLOGY FILE, LOINC HIERARCHIES, LOINC LINGUISTIC VARIANTS FILE, LOINC/RSNA RADIOLOGY PLAYBOOK, LOINC/IEEE MEDICAL DEVICE CODE MAPPING TABLE, LOINC DISPLAY NAME FILE, LOINC CONSUMER NAME FILE, AND LOINC CHANGE SNAPSHOT FILE ARE PROVIDED "AS IS." ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. LOINC® is a registered United States trademark of Regenstrief Institute, Inc. A small portion of LOINC content may include content (e.g., survey instruments) that is subject to copyrights owned by third parties. Such content has been mapped to LOINC terms under applicable copyright and terms of use. Notice of such third-party copyright and license terms would need to be included if such content is included.
 
