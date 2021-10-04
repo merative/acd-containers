@@ -6,19 +6,19 @@ See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-ac
 
 ## Releases
 
-## v2.0 - build v2.0.202109100417
+## v2.0 - build v2.0.202110010226
 
-### Added
+- Refresh of Annotator for Clinical Data Service and each of its annotators
+
+## v2.0 - build v2.0.202109100417
 
 - Security update
 
 ## v2.0 - build v2.0.202109011707
 
-### Added
+- Openshift Operator Lifecycle Manager integration for upgrades
 
-- Openshift Operator Lifecycle Manager integration
-
-- Refresh of Annotation for Clinical Data Service and each of its annotators
+- Refresh of Annotator for Clinical Data Service and each of its annotators
 
 ## v2.0 - build v2.0.202106231922
 
