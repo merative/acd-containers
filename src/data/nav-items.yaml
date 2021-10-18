@@ -39,6 +39,11 @@
     - title: "Uninstalling"
       path: /installing/uninstalling/
 
+- title: APIs
+  pages:
+    - title: "Acd Service"
+      path: /APIs/spec/
+
 - title: Using ACD
   pages:
     - title: "Getting started"
