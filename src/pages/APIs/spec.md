@@ -94,18 +94,18 @@ The `Configuration Storage` property tells the deployment whether persistent sto
 
 #### PVC
 
-  - `PVC storage size` : default 10 Gigabytes
-  - `Supplemental Group ID` : only needs to be set if root(0) is not being used
-  - `Existing PVC name` | name of the persistent volume claim
-  - `Storage Class Name` : some storage options require specific storage class names
+- `PVC storage size` : default 10 Gigabytes
+- `Supplemental Group ID` : only needs to be set if root(0) is not being used
+- `Existing PVC name` | name of the persistent volume claim
+- `Storage Class Name` : some storage options require specific storage class names
 
 If S3 compatible (COS) is enabled these additional properties need to be set:
 
 #### S3 Storage
 
-  - `Endpoint URL` : S3 Storage endpoint URL
-  - `Location` : cloud region of storage
-  - `Bucket` : name the bucket to use for storage
+- `Endpoint URL` : S3 Storage endpoint URL
+- `Location` : cloud region of storage
+- `Bucket` : name the bucket to use for storage
 
 #### Example
 
