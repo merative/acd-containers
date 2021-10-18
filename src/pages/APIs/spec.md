@@ -13,9 +13,9 @@ The Annotator for Clinical Data Container Edition is a Custom Resource Definitio
   <AnchorLink>Status</AnchorLink>
 </AnchorLinks>
 
-# Spec
+## Spec
 
-## Properties
+### Properties
 
 | Property | Description | Required | Default |
 |----------|-------------|----------|---------|
@@ -39,9 +39,9 @@ The Annotator for Clinical Data Container Edition is a Custom Resource Definitio
   <AnchorLink>Version</AnchorLink>
 </AnchorLinks>
 
-## `Annotators`
+### `Annotators`
 
-### Description
+#### Description
 
 The `Annotators` property tells the deployment which annotator pods should be created as part of the deployment.  At least one annotator need to be enabled and by default all annotators are enabled.
 
@@ -56,7 +56,7 @@ The `Annotators` property tells the deployment which annotator pods should be cr
 - `Ontology` : allows user to manage custom ontologies / dictionaries
 - `Spell Checker` : discovers misspelled words and phrases in a document and suggests corrections
 
-### Example
+#### Example
 
 ```yaml
   Annotators:
@@ -82,28 +82,32 @@ The `Annotators` property tells the deployment which annotator pods should be cr
       Enabled:  true
 ```
 
-## `Configuration Storage`
+### `Configuration Storage`
 
-### Description
+#### Description
 
 The `Configuration Storage` property tells the deployment whether persistent storage is enabled and the type of storage being used.  There are two required fields to configuration storage.
 
 - `Storage` : either File or S3 compatible storage.  
 
-- ` File Storage` : whether persistent storage is enabled, default is true.  If persistent is enabled the following additional properties are available:
-  #### PVC
+- `File Storage` : whether persistent storage is enabled, default is true.  If persistent is enabled the following additional properties are available:
+
+#### PVC
+
   - `PVC storage size` : default 10 Gigabytes
   - `Supplemental Group ID` : only needs to be set if root(0) is not being used
   - `Existing PVC name` | name of the persistent volume claim
   - `Storage Class Name` : some storage options require specific storage class names
 
 If S3 compatible (COS) is enabled these additional properties need to be set:
-  #### S3 Storage
+
+#### S3 Storage
+
   - `Endpoint URL` : S3 Storage endpoint URL
   - `Location` : cloud region of storage
   - `Bucket` : name the bucket to use for storage
 
-### Example
+#### Example
 
 ```yaml
   Configuration Storage:
@@ -122,9 +126,9 @@ If S3 compatible (COS) is enabled these additional properties need to be set:
       Location:
 ```
 
-## `License`
+### `License`
 
-### Description
+#### Description
 
 The `License` property contains two required field:
 
@@ -133,7 +137,7 @@ The `License` property contains two required field:
   - `production`
   - `development`
 
-### Example
+#### Example
 
 ```yaml
   License:
@@ -141,13 +145,13 @@ The `License` property contains two required field:
     Use:     Production
 ```
 
-## `Network Policy`
+### `Network Policy`
 
-### Description
+#### Description
 
 The `Network Policy` property tells the deployment whether network security is enabled.  The default is true.
 
-### Example
+#### Example
 
 ```yaml
   Network Policy:
@@ -156,21 +160,21 @@ The `Network Policy` property tells the deployment whether network security is e
       From Selectors:
 ```
 
-## `Replicas`
+### `Replicas`
 
-### Description
+#### Description
 
 The `Replicas` property tells the deployment how many replica pods to create for each annotator. The default is three replicas for each annotator.
 
-### Example
+#### Example
 
 ```yaml
   Replicas:            3
 ```
 
-## `Resources`
+### `Resources`
 
-### Description
+#### Description
 
 The `Resources` property defines the cpu, ephemeral storage, and memory for limits and requests.
 
@@ -190,7 +194,7 @@ You are able to set the storage for non-persisted or transient if persisted or S
 
 If this field is not provided, or parts of the resources object are left unset, the example below shows the default values(s) that will be used.
 
-### Example
+#### Example
 
 ```yaml
 API Version: wh-acd.ibm.com/v1
@@ -208,35 +212,43 @@ Spec:
       Memory:             4Gi
 ```
 
-## `Tenant Header`
+### `Tenant Header`
 
-### Description
+#### Description
 
 The `Tenant Header` property defines a header to include in a multi-tenant environment to isolate data from other tenants.
 
-### Example
+#### Example
 
 ```yaml
   Tenant Header:  <my tenantid>
 ```
 
-## `Version`
+### `Version`
 
-### Description
+#### Description
 
 The `Version` property identifies the build of the operator that is deployed.
 
-### Example
+#### Example
 
 ```yaml
   Version:  v2.0.202110010226
 ```
 
-# Status
+## Status
 
 The Annotator for Clinical Data Container Edition is a Custom Resource Definition used to deploy and manage an instance of IBM Watson Annotator for Clinical Data Service.
 
-### Example
+### Conditions
+
+The Annotation for Clinical Data Service supports Kubernetes [Conditions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties). These `Conditions` can be viewed as a snapshot of the current and most up-to-date status of the instance.
+
+The `Iniitialized` condition will be set to `True` when all the pods are created for the desired number of replicas set by the instance specification.
+
+The `Deployed` condition will be set to `InstallSuccessful` when the images for the annotators have been deployed to their respective pods.
+
+#### Example
 
 ```
 $ oc get acd
@@ -256,11 +268,3 @@ $ oc describe acd/acd-instance
     Status:  True
     Type:    Deployed
 ```
-
-## Conditions
-
-The Annotation for Clinical Data Service supports Kubernetes [Conditions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties). These `Conditions` can be viewed as a snapshot of the current and most up-to-date status of the instance.
-
-The `Iniitialized` condition will be set to `True` when all the pods are created for the desired number of replicas set by the instance specification.
-
-The 'Deployed' condition will be set to `InstallSuccessful` when the images for the annotators have been deployed to their respective pods.
