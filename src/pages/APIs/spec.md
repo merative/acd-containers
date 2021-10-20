@@ -194,7 +194,7 @@ You are able to set both requests and limits for memory.  The values must follow
 
 You are able to set the values for non-persisted or transient storage.  All data created / managed within the ephemeral storage is only present for the lifetime of the pod.  Transient storage should be used as the sole storage mechanism in a production environment.
 
-If this field is not provided, or parts of the resources object are left unset, the example below shows the default values(s) that will be used.
+If this field is not provided, or parts of the resources object are left unset, the default values(s) will be used for the container.
 
 #### Example
 
@@ -218,7 +218,7 @@ Spec:
 
 #### Description
 
-The `Tenant Header` property defines a header to include in a multi-tenant environment to isolate data from other tenants.
+The `Tenant Header` property defines a [header](https://ibm.github.io/acd-containers/planning/tenancy/) to include in a multi-tenant environment to isolate data from other tenants.
 
 #### Example
 
