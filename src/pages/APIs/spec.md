@@ -43,7 +43,7 @@ The Annotator for Clinical Data Container Edition is a Custom Resource Definitio
 
 #### Description
 
-The `Annotators` property tells the deployment which annotator pods should be created as part of the deployment.  At least one annotator need to be enabled and by default all annotators are enabled.
+The `Annotators` property tells the deployment which annotator pods should be created as part of the deployment.  At least one annotator needs to be enabled and by default all annotators are enabled.
 
 - `Advanced Care Insights` : discovers contextual information for problems, procedures, and medications identified in unstructured text
 - `Attribute Detection` : discovers domain specific attributes and associated values to be discovered in unstructured clinical text
@@ -90,7 +90,9 @@ The `Configuration Storage` property tells the deployment whether persistent sto
 
 - `Storage` : either File or S3 compatible storage.  
 
-- `File Storage` : whether persistent storage is enabled, default is true.  If persistent is enabled the following additional properties are available:
+- `File Storage` : whether persistent storage is enabled, default is true.
+
+If persistent is enabled the following additional properties are available:
 
 #### PVC
 
@@ -190,7 +192,7 @@ You are able to set both requests and limits for memory.  The values must follow
 
 #### Ephemeral Storage
 
-You are able to set the storage for non-persisted or transient if persisted or S3 compatible storage is not being used.  The storage and all files created / managed within the storage are only present for the lifetime of the pod.
+You are able to set the values for non-persisted or transient storage.  All data created / managed within the ephemeral storage is only present for the lifetime of the pod.  Transient storage should be used as the sole storage mechanism in a production environment.
 
 If this field is not provided, or parts of the resources object are left unset, the example below shows the default values(s) that will be used.
 
@@ -221,7 +223,7 @@ The `Tenant Header` property defines a header to include in a multi-tenant envir
 #### Example
 
 ```yaml
-  Tenant Header:  <my tenantid>
+  Tenant Header:  <AUTHORIZATION / AUTHENTICATION HEADER>
 ```
 
 ### `Version`
