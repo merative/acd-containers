@@ -25,7 +25,7 @@ and use the License Service APIs to generate the required usage audit reports (s
 
 If [Validating if License Service is deployed on the cluster](#validating-if-license-service-is-deployed-on-the-cluster) determines that the License Service is not deployed on the cluster where you have deployed ACD,
 or the License Service does not return a status of Running, refer to the information about License Service, including how to install, retrieve license usage data, and troubleshoot.
-See the [License Service](https://github.com/IBM/ibm-licensing-operator/blob/master/docs/License_Service_main.md) documentation.
+See the [License Service](https://github.com/IBM/ibm-licensing-operator/blob/master/docs/License_Service_main.md) documentation. If deploying the License Service to a disconnected or air-gapped cluster, see the [offline installation License Service](https://github.com/IBM/ibm-licensing-operator/blob/latest/docs/Content/Install_offline.md) documentation.
 
 ## Validating if License Service is deployed on the cluster
 
