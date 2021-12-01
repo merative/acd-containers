@@ -6,6 +6,10 @@ See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-ac
 
 ## Releases
 
+## v2.0 - build v2.0.202111232118
+
+- Refresh of Annotator for Clinical Data Service and each of its annotators
+
 ## v2.0 - build v2.0.202110211739
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
