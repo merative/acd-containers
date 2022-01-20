@@ -1,6 +1,6 @@
 ---
-title: "AcdService"
-excerpt: "Acd status and spec."
+title: "ACD Service"
+excerpt: "ACD status and spec."
 categories: APIs
 slug: status
 toc: true
