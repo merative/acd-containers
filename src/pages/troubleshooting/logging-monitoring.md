@@ -52,7 +52,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging’s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
-Login to your openshift platform to create cluster log forwarder as shown below ![cluster-log-forwarder](../../images/cluster_log_fwd.png)
+Login to your openshift platform to create cluster log forwarder as shown below ![cluster-log-forwarder](../../images/cluster_log_fwd.PNG)
 
 * As shown in the above image once you choose to create cluster log forwader, select the yaml view radio button and paste the below configuration.
 
@@ -78,8 +78,8 @@ spec:
 * The value of structuredTypeKey prefixes with "kubernetes.labels.key". In this case the value of "key" is "app_kubernetes_io/part-of".
 * In the above snippet of code we are making use of structuredTypeKey to create index in Kibana. The new index will be created as app-{app_kubernetes_io/part-of}.
 * In the above case the value of "app_kubernetes_io/part-of" is "ibm-wh-acd". The index will be created as "app-ibm-wh-acd".
-* Once the new index is created using the custom log forwarder, Login to Kibana and create the index pattern with the name matching as app-ibm-wh-acd-* as shown below ![Create-Index-Pattern](../../images/index_pattern.png)
-Once you browse to the dicsover screen select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in the below ![Structured-JSON](../../images/converted_json.png)
+* Once the new index is created using the custom log forwarder, Login to Kibana and create the index pattern with the name matching as app-ibm-wh-acd-* as shown below ![Create-Index-Pattern](../../images/index_pattern.PNG)
+* Once you browse to the dicsover screen select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in the below ![Structured-JSON](../../images/converted_json.png)
 * As the logs are now converted to JSON you can use the fields in the visualizations/dashboards as per the requirement.
 * Here is the Custom Dashboard that can be useful to analyze your data.
 
@@ -189,7 +189,7 @@ Once you browse to the dicsover screen select the index pattern you created abov
 ]
 ```
 
-Import the acd ce dahsboard as shown below ![Acd CE Dashboard](../../images/Acd_ce_dashboard.png)
+Import the acd ce dahsboard as shown below ![Acd CE Dashboard](../../images/Acd_ce_Dashboard.PNG)
 
 ### Using IBM Log Analysis on a Red Hat OpenShift on IBM Cloud Cluster (ROKS)
 
