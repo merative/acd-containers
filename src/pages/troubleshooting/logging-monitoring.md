@@ -73,7 +73,7 @@ spec:
         - default
       parse: json
 ```
-   
+
 * structuredTypeKey (string, optional) is the name of a message field. The value of that field, if present, is used to construct the index name.
 * The value of structuredTypeKey prefixes with "kubernetes.labels.key". In this case the value of "key" is "app_kubernetes_io/part-of".
 * In the above snippet of code we are making use of structuredTypeKey to create index in Kibana. The new index will be created as app-{app_kubernetes_io/part-of}.
