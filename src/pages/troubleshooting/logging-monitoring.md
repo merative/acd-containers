@@ -42,18 +42,15 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 * In a multi-tenant ACD depoyment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
 
 ### Enabling JSON logging for Openshift Conatiner Platform
-
 *Prerequisites
 1.Access to Red Hat Openshift Container Platform
 2.In your Openshift project, Make sure that you install below operators.
   a. Red Hat Openshift logging operator
   b. Openshift ElasticSearch operator
-  
 Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging’s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
 Login to your openshift platform to create cluster log forwarder as shown below ![cluster-log-forwarder](../../images/cluster_log_fwd.png)
 * As shown in the above image once you choose to create cluster log forwader, select the yaml view radio button and paste the below configuration.
-
    ```yaml clusterlogforwarder.yaml
 apiVersion: logging.openshift.io/v1
 kind: ClusterLogForwarder
