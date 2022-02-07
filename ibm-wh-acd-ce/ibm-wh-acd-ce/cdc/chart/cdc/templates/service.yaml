@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ibm-wh-acd-cdc
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: ibm-wh-acd-cdc
+    app.kubernetes.io/instance: ibm-wh-acd-cdc-{{ .Release.Name }}
+    app.kubernetes.io/managed-by: helm
+    app.kubernetes.io/version: "2.0.0"
+    helm.sh/chart: ibm-wh-acd-chart
+    release: v2
+  annotations:
+    service.kubernetes.io/ibm-load-balancer-cloud-provider-ip-type: private
+    service.beta.openshift.io/serving-cert-secret-name: ibm-wh-acd-cdc-certs-keystore
+spec:
+  ports:
+  - name: cdc-https
+    protocol: TCP
+    port: 443
+    targetPort: 9443
+  selector:
+    app.kubernetes.io/name: ibm-wh-acd-cdc
+  type: ClusterIP
+  sessionAffinity: None

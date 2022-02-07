@@ -1,0 +1,42 @@
+annotations:
+  TOOLCHAIN_ID: ""
+  GIT_URL: ""
+  GIT_BRANCH: ""
+  GIT_COMMIT: ""
+  USER_NAME: ""
+  APPLICATION_VERSION: "" 
+configurationStorage:
+  backend: file
+  sharedPrefix: tenant_data/ibm_supertenant
+  tenantPrefix: tenant_data
+  s3:
+    bucket: ""
+    endpointUrl: ""
+    location: ""
+  file:
+    persistent: true
+    volume:
+      existingClaimName: ""
+      supplementalGroup: ""
+digest: "50fab67be92acd59d882f4617f153cf98118c6ae4e20f965cf123c10e8b94646"
+image: "cp.icr.io/cp/wh-acd/cartridge"
+initContainer:
+  digest: "1abe105e5258a59345aa4271cbcd731a6eae2f2fce464eb1af6bca7369dc6455"
+  image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
+revProxy:
+  digest: "fd2093a24bb7dcac048d0adc19ac1bc81219405bfbcd67b35858c0902b1d124f"
+  image: "nginxinc/nginx-unprivileged"
+revProxyTargets:
+tag: "20220119.0100"
+replicas: 1
+resources:
+  limits:
+    cpu: ""
+    ephemeralStorage: 1100Mi
+    memory: 2G
+  requests:
+    cpu: 100m
+    ephemeralStorage: 900Mi
+    memory: 2G
+tenantHeader: 
+tolerations: []

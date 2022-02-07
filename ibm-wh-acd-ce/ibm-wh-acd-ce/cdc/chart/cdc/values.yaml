@@ -1,0 +1,38 @@
+annotations:
+  TOOLCHAIN_ID: ""
+  GIT_URL: ""
+  GIT_BRANCH: ""
+  GIT_COMMIT: ""
+  USER_NAME: ""
+  APPLICATION_VERSION: "" 
+configurationStorage:
+  backend: file
+  sharedPrefix: tenant_data/ibm_supertenant
+  tenantPrefix: tenant_data
+  s3:
+    bucket: ""
+    endpointUrl: ""
+    location: ""
+  file:
+    persistent: true
+    volume:
+      existingClaimName: ""
+      supplementalGroup: ""
+digest: "e213a4210e26ff5ecffb44a3f9f49384b6ed9953a576a119f72f9edbbc6615ec"
+image: "cp.icr.io/cp/wh-acd/concept-dictionary"
+initContainer:
+  digest: "1abe105e5258a59345aa4271cbcd731a6eae2f2fce464eb1af6bca7369dc6455"
+  image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
+tag: "20220119.0100"
+replicas: 1
+resources:
+  limits:
+    cpu: ""
+    ephemeralStorage: 1100Mi
+    memory: 19G
+  requests:
+    cpu: 100m
+    ephemeralStorage: 900Mi
+    memory: 19G
+tenantHeader: ""
+tolerations: []
