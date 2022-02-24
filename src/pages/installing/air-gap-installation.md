@@ -75,7 +75,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
        --case $HOME/offline/<case-file> \
        --inventory clinicalDataAnnotatorOperatorSetup \
        --action configure-creds-airgap \
-       --args "--registry cp.icr.io --user <registry-user> --pass <registry-password>" \
+       --args "--registry icr.io --user <registry-user> --pass <registry-password>" \
    ```
 
    - `<case-file>` is the CASE file.
@@ -212,7 +212,7 @@ Ensure you have the following installed on the portable host:
        --case $HOME/offline/<case-file> \
        --inventory clinicalDataAnnotatorOperatorSetup \
        --action configure-creds-airgap \
-       --args "--registry cp.icr.io --user <registry-user> --pass <registry-password>" \
+       --args "--registry icr.io --user <registry-user> --pass <registry-password>" \
    ```
 
    - `<case-file>` is the CASE file.

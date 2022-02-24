@@ -14,6 +14,6 @@ If the IBM Entitled Registry pull secret is not configured correctly, ACD operan
 
 1. Reboot and/or replace the cluster's nodes. Updating the global pull secret should reboot all the cluster's nodes, however depending on cluster modifications this rebooting may not occur. Manually rebooting or even replacing nodes may be required to pickup the changes. Ensure the changes are rolled out to every node since other policies, such as a PodDisruptionBudget policy, may prevent a complete rollout and necessitate manual updates.
 
-1. If attempting to use the global pull secret, ensure the distribution supports this. Openshift extends the Kubernetes support to provide a global pull secret. [Verify](/installing/installing/#ibm-entitled-registry-pull-secret) the global pull secret includes the `cp.icr.io` authorization.
+1. If attempting to use the global pull secret, ensure the distribution supports this. Openshift extends the Kubernetes support to provide a global pull secret. [Verify](/installing/installing/#ibm-entitled-registry-pull-secret) the global pull secret includes the `icr.io` authorization.
 
 1. If pull secrets are being configured at the service account level, ensure the ACD operand service account "ibm-wh-acd-operand" is [patched](/installing/installing/#ibm-entitled-registry-pull-secret) to contain the pull secret. This service account is created as part of each ACD instance and namespace scoped.
