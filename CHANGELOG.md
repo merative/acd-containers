@@ -9,6 +9,7 @@ See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-ac
 ## v2.0 - build v2.0.202202212213
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
+- Align with changes to entitled registry, moving from cp.icr.io to icr.io
 
 ## v2.0 - build v2.0.202201172016
 
