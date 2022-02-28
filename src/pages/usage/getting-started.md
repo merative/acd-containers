@@ -6,7 +6,7 @@ slug: getting-started
 toc: true
 ---
 
-The ACD service provides a robust set of REST APIs to generate clinical annotations over text and interact with persisted analytic artifacts.  To get started using the ACD service, see the [IBM Cloud API docs](https://cloud.ibm.com/apidocs/wh-acd) and examples. (Note that you must be signed in to IBM Cloud to see the docs.) Exported PDF versions of documentation for [Curl](https://ibm.box.com/shared/static/jnxqr0l48viqgwvkzw2v46eu4191wgvx.pdf), [Python](https://ibm.box.com/shared/static/40tvtuhcn0hmui99fb3jc2vh0pr1t7e2.pdf) and [Java](https://ibm.box.com/shared/static/mwna0rfmld0ybess2z4qj29azf9ys9ym.pdf) are also available. The ACD Service REST APIs can be called directly or with the [IBM Watson Annotator for Clinical Data Software Development Kits (SDKs)](https://ibm.github.io/acd-containers/usage/sdks).
+The ACD service provides a robust set of REST APIs to generate clinical annotations over text and interact with persisted analytic artifacts.  To get started using the ACD service, see the Cloud API docs and examples for [Curl](https://ibm.box.com/shared/static/jnxqr0l48viqgwvkzw2v46eu4191wgvx.pdf), [Python](https://ibm.box.com/shared/static/40tvtuhcn0hmui99fb3jc2vh0pr1t7e2.pdf) and [Java](https://ibm.box.com/shared/static/mwna0rfmld0ybess2z4qj29azf9ys9ym.pdf). The ACD Service REST APIs can be called directly or with the [IBM Watson Annotator for Clinical Data Software Development Kits (SDKs)](https://ibm.github.io/acd-containers/usage/sdks).
 
 ### Deploying and updating the ACD-provided cartridges
 

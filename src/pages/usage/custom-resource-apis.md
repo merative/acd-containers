@@ -6,7 +6,7 @@ slug: status
 toc: true
 ---
 
-The Annotator for Clinical Data Container Edition is a Custom Resource Definition used to deploy and manage an instance of IBM Watson Annotator for Clinical Data Service.
+The `Acd` resource is a Custom Resource Definition used to deploy and manage an instance of IBM Watson Annotator for Clinical Data Service. When a custom resource is created or updated, the declared state (or Spec field) is updated and available immediately. Over time, the system will work to bring the Status into line with the Spec. These fields provide a standard way to report the state of the custom resource or ACD Service instance.
 
 <AnchorLinks>
   <AnchorLink>Spec</AnchorLink>

@@ -15,10 +15,10 @@ To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you
 Find details about installing and using the SDKs.
 
 - [Java SDK](https://github.com/IBM/whcs-java-sdk)
-  - See the [IBM Cloud API docs](https://cloud.ibm.com/apidocs/wh-acd) (or an exported PDF version for [Java](https://ibm.box.com/shared/static/mwna0rfmld0ybess2z4qj29azf9ys9ym.pdf)) for examples. See also the Java SDK [javadoc](https://ibm.github.io/whcs-java-sdk/docs/latest/).
+  - See examples provided in the Cloud API docs for [Java](https://ibm.box.com/shared/static/mwna0rfmld0ybess2z4qj29azf9ys9ym.pdf). See also the Java SDK [javadoc](https://ibm.github.io/whcs-java-sdk/docs/latest/).
 
 - [Python SDK](https://github.com/IBM/whcs-python-sdk)
-  - See the [IBM Cloud API docs](https://cloud.ibm.com/apidocs/wh-acd) (or an exported PDF version for [Python](https://ibm.box.com/shared/static/40tvtuhcn0hmui99fb3jc2vh0pr1t7e2.pdf)) for examples.
+  - See examples provided in the Cloud API docs for [Python](https://ibm.box.com/shared/static/40tvtuhcn0hmui99fb3jc2vh0pr1t7e2.pdf).
 
 ## Examples
 

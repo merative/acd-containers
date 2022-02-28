@@ -35,14 +35,9 @@
     - title: "License Tracking"
       path: /installing/license-tracking/
     - title: "Upgrading"
-      path: /installing/upgrading/      
+      path: /installing/upgrading/
     - title: "Uninstalling"
       path: /installing/uninstalling/
-
-- title: APIs
-  pages:
-    - title: "Acd Service"
-      path: /APIs/spec/
 
 - title: Using ACD
   pages:
@@ -50,6 +45,8 @@
       path: /usage/getting-started/
     - title: "Software Development Kits"
       path: /usage/sdks/
+    - title: "Custom Resource APIs"
+      path: /usage/custom-resource-apis/
 
 - title: Management
   pages:
