@@ -511,9 +511,9 @@
 
 <h1 id="annotator-for-clinical-data-acd-authentication">Authentication</h1>
 
-<p>Authentication will be dependant on the ACD deployment being utilized.  Code samples are shown with IBM Cloud IAM authentication. </p>
+<p>Authentication will be dependant on the ACD deployment being utilized.  API code examples below are currently shown using the IBM Cloud &quot;apikey&quot; authentication.</p>
 <h2 id='ibm-cloud-instances'>IBM Cloud Instances</h2>
-<p>The Annotator for Clinical Data service uses Identity and Access Management (IAM) for authentication of instances provisioned through the IBM Cloud Catalog. You can pass either a bearer token in an Authorization header or an API key. Tokens support authenticated requests without embedding service credentials in every call. API keys use basic authentication; i.e., use apikey for the username and the value of the API key as the password. Learn more about IAM.</p>
+<p>The Annotator for Clinical Data service uses Identity and Access Management (IAM) for authentication of instances provisioned through the IBM Cloud Catalog. You can pass either a bearer token in an Authorization header or an API key. Tokens support authenticated requests without embedding service credentials in every call. API keys use basic authentication; i.e., use apikey for the username and the value of the API key as the password. Learn more about <a href="https://cloud.ibm.com/docs/services/watson/getting-started-iam.html" >IAM</a>.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -542,7 +542,7 @@
 <span class="p">)</span>
 <span class="n">service</span><span class="p">.</span><span class="n">set_service_url</span><span class="p">(</span><span class="s">"{url}"</span><span class="p">)</span>
 </code></pre></div><h2 id='container-edition'>Container Edition</h2>
-<p>Container edition instances can be configured to utilize an oauth proxy for external access.  See (https://ibm.github.io/acd-containers/security/manage-access/)[the ACD CE documentation] for additional details.</p>
+<p>Container edition instances can be configured to utilize an oauth proxy for external access.  The oauth proxy uses bearer tokens for authentication.  See the ACD CE <a href="https://ibm.github.io/acd-containers/security/manage-access"> documentation</a> for additional details.</p>
 
 <blockquote>
 <p>Code samples</p>
