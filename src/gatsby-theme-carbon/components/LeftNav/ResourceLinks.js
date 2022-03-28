@@ -13,7 +13,7 @@ const LeftNavResourceLinks = ({
   var links = [
     {
       title: 'API Reference',
-      href: '/apidocs/index.html',
+      href: 'https://ibm.github.io/acd-containers/apidocs/index.html',
     },
     {
       title: 'Github',
