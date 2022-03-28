@@ -12,6 +12,10 @@ const LeftNavResourceLinks = ({
 }) => {
   var links = [
     {
+      title: 'API Reference',
+      href: '/apidocs/index.html',
+    },
+    {
       title: 'Github',
       href: 'https://github.com/IBM/acd-containers',
     },
@@ -22,10 +26,6 @@ const LeftNavResourceLinks = ({
     {
       title: 'Change Log',
       href: 'https://github.com/IBM/acd-containers/blob/master/CHANGELOG.md',
-    },
-    {
-      title: 'API Reference',
-      href: '/apidocs/index.html',
     }
   ];
 
