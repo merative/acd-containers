@@ -6,7 +6,7 @@ slug: sdks
 toc: true
 ---
 
-IBM Watson Annotator for Clinical Data has software development kits (SDK) in multiple languages for interacting with the ACD Service REST APIs, or to directly call the APIs, see the examples in the exported PDF documentation for [Curl](https://ibm.box.com/shared/static/jnxqr0l48viqgwvkzw2v46eu4191wgvx.pdf).
+IBM Watson Annotator for Clinical Data has software development kits (SDK) in multiple languages for interacting with the ACD Service REST APIs, or to directly call the APIs, see the examples in the exported PDF documentation for [Curl](/apidocs/index.html?shell#annotator-for-clinical-data-acd).
 
 To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you pass a **bearer token** in the credentials.  If you have provided secure access to your ACD service instance via the Openshift OAuth service (see [Managing Access to ACD](https://ibm.github.io/acd-containers/security/manage-access/)), you will use the token that you created on the service account as your bearer token.  For access to an unsecured ACD service instance, the bearer token used for the credentials can be a dummy token.  
 
@@ -15,10 +15,10 @@ To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you
 Find details about installing and using the SDKs.
 
 - [Java SDK](https://github.com/IBM/whcs-java-sdk)
-  - See examples provided in the Cloud API docs for [Java](https://ibm.box.com/shared/static/mwna0rfmld0ybess2z4qj29azf9ys9ym.pdf). See also the Java SDK [javadoc](https://ibm.github.io/whcs-java-sdk/docs/latest/).
+  - See examples provided in the Cloud API docs for [Java](/apidocs/index.html?java#annotator-for-clinical-data-acd). See also the Java SDK [javadoc](https://ibm.github.io/whcs-java-sdk/docs/latest/).
 
 - [Python SDK](https://github.com/IBM/whcs-python-sdk)
-  - See examples provided in the Cloud API docs for [Python](https://ibm.box.com/shared/static/40tvtuhcn0hmui99fb3jc2vh0pr1t7e2.pdf).
+  - See examples provided in the Cloud API docs for [Python](/apidocs/index.html?python#annotator-for-clinical-data-acd).
 
 ## Examples
 
