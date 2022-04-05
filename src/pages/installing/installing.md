@@ -36,7 +36,7 @@ Before setting up the pull secret, verify the entitlement key can access the ent
 Example (Docker with IBM Entitled Registry entitlement key):
 
 ```
-docker login -u cp -p <entitlement key> icr.io
+docker login -u cp -p <entitlement key> cp.icr.io
 ```
 
 ## Air-gapped (disconnected) installation
@@ -69,7 +69,7 @@ To add the pull secret to the Openshift global pull secret:
 1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the entitled registry. For example:
 
    ```
-   "icr.io": {
+   "cp.icr.io": {
        "auth": "aWFtYXBpaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxcGFzc3dvcmQ=",
        "email": "xxx@nomail.relay.ibm.com"
    }
@@ -94,8 +94,8 @@ To add the pull secret to individual ACD operand service accounts:
 1. Create a secret
 
    ```
-   kubectl create secret docker-registry icr.io \
-       --docker-server=icr.io \
+   kubectl create secret docker-registry cp.icr.io \
+       --docker-server=cp.icr.io \
        --docker-username=<username> \
        --docker-password=<password> \
        --docker-email=<email_address> \
@@ -110,7 +110,7 @@ To add the pull secret to individual ACD operand service accounts:
    ```
    kubectl patch serviceaccount ibm-wh-acd-operand \
        --namespace <namespace> \
-       --patch '{"imagePullSecrets": [{"name": "icr.io"}]}'
+       --patch '{"imagePullSecrets": [{"name": "cp.icr.io"}]}'
    ```
 
 1. Then the ACD operand pods must be restarted
