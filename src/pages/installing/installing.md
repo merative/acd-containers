@@ -36,7 +36,7 @@ Before setting up the pull secret, verify the entitlement key can access the ent
 Example (Docker with IBM Entitled Registry entitlement key):
 
 ```
-docker login -u cp -p <entitlement key> cp.icr.io
+docker login cp.icr.io --username cp --password <your entitlement key>
 ```
 
 ## Air-gapped (disconnected) installation
