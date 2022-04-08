@@ -78,7 +78,7 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
             serviceAccountName: proxy
             containers:
             - name: oauth-proxy
-              image: registry.redhat.io/openshift4/ose-oauth-proxy
+              image: registry.redhat.io/openshift4/ose-oauth-proxy:v4.8
               imagePullPolicy: IfNotPresent
               ports:
               - containerPort: 8443
