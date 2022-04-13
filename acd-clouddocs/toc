@@ -1,0 +1,94 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="wh-acd" version="2" category="ai" audience="service" href="/docs/wh-acd?topic=wh-acd-getting-started" path="wh-acd"}
+Annotator for Clinical Data
+
+    {: .navgroup id="learn"}
+    getting-started.md
+
+    {: .topicgroup}
+    About
+        overview.md
+        dependencies.md
+    [Demo](https://acd-try-it-out.mybluemix.net/)
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    analyze_text.md
+    customizing.md
+    access_management.md
+    data-security.md
+    service_endpoints.md
+
+    {: .topicgroup}
+    Logging and monitoring
+        at_events.md
+        platform-metrics.md
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    Annotators
+        annotator_allergy.md
+        annotator_attribute_detection.md
+        annotator_cancer.md
+        annotator_concept_detection.md
+        annotator_concept_disambiguation.md
+        annotator_concept_value.md
+        annotator_ejection_fraction.md
+        annotator_hypothetical_detection.md
+        annotator_lab_values.md
+        annotator_living_assistance.md
+        annotator_medication.md
+        annotator_named_entities.md
+        annotator_negation_detection.md
+        annotator_procedure.md
+        annotator_relation.md
+        annotator_sections.md
+        annotator_smoking.md
+        annotator_spell_check.md
+        annotator_symptom_disease.md
+
+
+    {: .topicgroup}
+    Clinical Insights
+        clinical_insights_overview.md
+        clinical_insights_medication.md
+        clinical_insights_procedure.md
+        clinical_insights_diagnosis.md
+        clinical_insights_normality.md
+        clinical_insights_cartridge.md
+
+    {: .topicgroup}
+    Temporal (Experimental)
+        temporal_overview.md
+
+    {: .topicgroup}
+    Social Determinants of Health (Experimental)
+        substance_use_overview.md
+        substance_use_alcohol.md
+        substance_use_tobacco.md
+        substance_use_illicit_drug.md
+        substance_abuse_treatment.md
+
+    medical_codes.md
+    filtering.md
+    [API reference](https://cloud.ibm.com/apidocs/wh-acd)
+
+    {: .topicgroup}
+    CLI reference
+        /whcs-cli-plugin/whcs-cli-plugin-whcs-annotator-for-clinical-data-cli
+
+    information_security.md
+    disaster_recovery.md
+    responsibilities.md
+    legal.md
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    release-notes.md
+    troubleshooting.md
+    faqs.md
+    known_limitations.md
+    {: .navgroup-end}

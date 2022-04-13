@@ -41,12 +41,128 @@
 
 - title: Using ACD
   pages:
+    - title: "Overview"
+      path: /clouddocs/overview/
     - title: "Getting started"
       path: /usage/getting-started/
     - title: "Software Development Kits"
       path: /usage/sdks/
     - title: "Custom Resource APIs"
       path: /usage/custom-resource-apis/
+    - title: "FAQs"
+      path: /clouddocs/faqs/
+    - title: "Known Limitations"
+      path: /clouddocs/known_limitations/
+
+
+# - title: ACD Service Documentation
+#   pages:
+#     - title: "Getting started tutorial"
+#       path: /clouddocs/getting-started/
+#     - title: "Dependencies on other IBM Cloud services"
+#       path: /clouddocs/dependencies/
+- title: How to
+  pages:
+    - title: "Analyzing Text"
+      path: /clouddocs/analyze_text/
+    - title: "Customizing"
+      path: /clouddocs/customizing/
+    # - title: "Managing Access Roles"
+    #   path: /clouddocs/access_management/
+    # - title: "Securing your data in Annotator for Clinical Data"
+    #   path: /clouddocs/data-security/
+    # - title: "Activity Tracker events"
+    #   path: /clouddocs/at_events/
+- title: Annotators
+  pages:
+    - title: "Allergies (Depracated)"
+      path: /clouddocs/annotator_allergy/
+    - title: "Attribute Detection"
+      path: /clouddocs/annotator_attribute_detection/      
+    - title: "Cancer (Depracated)"
+      path: /clouddocs/annotator_cancer/      
+    - title: "Concept Detection"
+      path: /clouddocs/annotator_concept_detection/
+    - title: "Concept Disambiguation"
+      path: /clouddocs/annotator_concept_disambiguation/
+    - title: "Concept Value"
+      path: /clouddocs/annotator_concept_value/
+    - title: "Ejection Fraction (Depracated)"
+      path: /clouddocs/annotator_ejection_fraction/      
+    - title: "Hypothetical"
+      path: /clouddocs/annotator_hypothetical_detection/
+    - title: "Lab Values"
+      path: /clouddocs/annotator_lab_values/
+    - title: "Living Assistance (Depracated)"
+      path: /clouddocs/annotator_living_assistance/
+    - title: "Medications"
+      path: /clouddocs/annotator_medication/
+    - title: "Named entities"
+      path: /clouddocs/annotator_named_entities/  
+    - title: "Negation"
+      path: /clouddocs/annotator_negation_detection/
+    - title: "Procedures"
+      path: /clouddocs/annotator_procedure/       
+    - title: "Relation"
+      path: /clouddocs/annotator_relation/
+    - title: "Sections"
+      path: /clouddocs/annotator_sections/ 
+    - title: "Smoking (Depracated)"
+      path: /clouddocs/annotator_smoking/ 
+    - title: "Spell Check"
+      path: /clouddocs/annotator_spell_check/ 
+    - title: "Symptoms & Diseases"
+      path: /clouddocs/annotator_symptom_disease/
+- title: Clinical Insights
+  pages:
+    - title: "Clinical Insights Overview"
+      path: /clouddocs/clinical_insights_overview/
+    - title: "Clinical Insights Medication Model"
+      path: /clouddocs/clinical_insights_medication/
+    - title: "Clinical Insights Procedure Model"
+      path: /clouddocs/clinical_insights_procedure/
+    - title: "Clinical Insights Diagnosis Model"
+      path: /clouddocs/clinical_insights_diagnosis/
+    - title: "Clinical Insights Normality Model (Preview)"
+      path: /clouddocs/clinical_insights_normality/
+    - title: "Clinical Insights Cartridge"
+      path: /clouddocs/clinical_insights_cartridge/
+- title: Temporal Overview (Preview)
+  pages:
+    - title: "Temporal Overview (Preview)"
+      path: /clouddocs/temporal_overview/
+- title: Social Determinants of Health (Preview)
+  pages:
+    - title: "Substance Use Overview (Preview)"
+      path: /clouddocs/substance_use_overview/
+    - title: "Substance Use Alcohol Model (Preview)"
+      path: /clouddocs/substance_use_alcohol/
+    - title: "Substance Use Tobacco Model (Preview)"
+      path: /clouddocs/substance_use_tobacco/
+    - title: "Substance Use Illicit Drug Model (Preview)"
+      path: /clouddocs/substance_use_illicit_drug/
+    - title: "Substance Abuse Treatment Model (Preview)"
+      path: /clouddocs/substance_abuse_treatment/
+- title: Medical Codes
+  pages:
+    - title: "Medical Codes"
+      path: /clouddocs/medical_codes/
+- title: Filtering
+  pages:
+    - title: "filtering"
+      path: /clouddocs/filtering/  
+# - title: Information security
+#   pages:
+#     - title: "Information security"
+#       path: /clouddocs/information_security/
+# - title: High availability and disaster recovery
+#   pages:
+#     - title: "disaster recovery"
+#       path: /clouddocs/disaster_recovery/
+# - title: Legal Notices
+#   pages:
+#     - title: "Legal Notices"
+#       path: /clouddocs/legal/
 
 - title: Management
   pages:
@@ -86,3 +202,15 @@
       path: /troubleshooting/troubleshooting-uninstall/
     - title: "MustGather"
       path: /troubleshooting/mustgather/
+- title: Help
+  pages:
+    - title: "Release notes"
+      path: /clouddocs/release-notes/
+    - title: "Troubleshooting"
+      path: /clouddocs/troubleshooting/
+    # - title: "Platform Metrics"
+    #   path: /clouddocs/platform-metrics/
+    # - title: "Responsibilities"
+    #   path: /clouddocs/responsibilities/
+    # - title: "Service Endpoints"
+    #   path: /clouddocs/service_endpoints/
