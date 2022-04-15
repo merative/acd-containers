@@ -28,7 +28,6 @@ Detects potential cancer disease terms such as adenocarcinoma carcinomatosis. Ex
 | Library | <ul><li>umls.latest</li><li>umls.2021AA</li><li>umls.2020AA</li><li>umls.2019AA <i>(deprecated - will be removed in 2022)</i></li></ul> | Defines the version of the UMLS library that is used when analyzing unstructured data. |
 The value `umls.latest` will reference the latest available version of UMLS within the service. As newer versions of UMLS are made available in the service, `umls.latest` library configurations will automatically leverage the latest available version of UMLS in the service once available. Declaration of a specific version of UMLS is recommended to avoid undesirable changes in output as newer versions of UMLS are made available within the service. Through declaration of a specific version of UMLS, newer versions of UMLS may be evaluated prior to use in production.
 
-
 ## Annotation Types
 
 *  aci.IcaCancerDiagnosisInd
@@ -73,7 +72,6 @@ Subtypes for aci.IcaCancerDiagnosisInd
 | behaviorSource | A code that will either come from morphology code, icd 9 code, or icd 10 code.
 
 ---
-
 #### aci.Date
 
 | Feature | Description |
