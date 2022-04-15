@@ -30,7 +30,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 
 ## Annotation Types
 
-*  aci.IcaCancerDiagnosisInd
+* aci.IcaCancerDiagnosisInd
 
 ### aci.IcaCancerDiagnosisInd
 
@@ -72,6 +72,7 @@ Subtypes for aci.IcaCancerDiagnosisInd
 | behaviorSource | A code that will either come from morphology code, icd 9 code, or icd 10 code.
 
 ---
+
 #### aci.Date
 
 | Feature | Description |

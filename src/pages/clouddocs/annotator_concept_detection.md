@@ -69,8 +69,6 @@ There are two different injuries expressed in this text that we want to capture 
 Expanded detection will look for diseases, conditions, abnormalities, injuries, and procedures defined in the UMLS dictionary that ships with {{site.data.keyword.wh-acd_short}}.
 In addition, expanded detection will look for all of the concepts defined in custom dictionaries that are enabled for expanded detection in the cartridge configuration.
 
-
-
 ### Configurations
 
 The following table lists parameters of the concept_detection service.

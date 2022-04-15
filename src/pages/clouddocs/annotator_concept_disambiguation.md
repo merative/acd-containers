@@ -31,11 +31,11 @@ The disambiguation annotator can be configured to remove annotations it determin
 
 | Configuration | Values | Description |
 |:--------------|:-------|:------------|
-| remove_invalid | true/false | When true, any concepts that disambiguation determines to be invalid will be removed from the API response.  When false <i>(default)</i>, concepts will contain a *validity* field with the value INVALID, VALID, or NO_DECISION but will be preserved in the API response. |
+| remove_invalid | true/false | When true, any concepts that disambiguation determines to be invalid will be removed from the API response.  When false <i>(default)</i>, concepts will contain a _validity_ field with the value INVALID, VALID, or NO_DECISION but will be preserved in the API response. |
 
 ### Sample Response
 
-In this example, TEC refers to *thymic epithelial cell* in the source document.  Notice the **disambiguationData** section contains a field with the judgement.  If **remove_invalid** is set to `true`, the invalid concepts will not be returned in the response.
+In this example, TEC refers to _thymic epithelial cell_ in the source document.  Notice the **disambiguationData** section contains a field with the judgement.  If **remove_invalid** is set to `true`, the invalid concepts will not be returned in the response.
 
 ```
 {
