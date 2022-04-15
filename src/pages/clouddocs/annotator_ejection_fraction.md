@@ -63,14 +63,14 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | secondValue | The second value of percentage.  For example, in the text “echocardiogram demonstrated ejection fraction of 30 to 35%”, the secondValue is 35.  If the value is not specified as a range then the value of this feature is not retuned. |
 | isRange | Determines if the ejection fraction phrase contains a range of values.  For example, in the text “echocardiogram demonstrated ejection fraction of 30 to 35%”, the isRange is true. |
 | measurementMethod | Method by which the Ejection/Fraction percentage or ratio is measured.  The measurementMethod will be `echo` if the method by which the ejection fraction was take was an echocardiogram, otherwise, the measurementMethod  feature will not be present. |
-| efAlphabeticValueNormalizedName | Normalized name for the appliied value that is word form. | 
-| efAlphabeticValueSurfaceForm | Covered text that represents applied value in word form.   For example, in the text `EF was severely depressed at 28%`, the efAlphabeticValueSurfaceForm is `severely depressed`.  Examples include:   `low`, `normal`, `reduced`, and `improvement`. | 
-| efTermNormalizedName | Normalized name for ejection fraction.   For example, in the text `Echocardiogram at the outside hospital demonstrated EF of approximately 60%`, the efTermNormalizedName is `ejection fraction`. | 
-| efTermSurfaceForm | Covered text that represents the ejection fraction.   For example, in the text `Echocardiogram at the outside hospital demonstrated EF of approximately 60%`, the efTermSurfaceForm is `EF`.  Examples include:  `EF`, `LVEF`, `left ventricular ejection fraction`, `RVEF`,  and `ejection fraction`. | 
-| efSuffixSurfaceForm | Covered text that represents the suffix to the measurement.  For example, in the text `Echocardiogram demonstrated EF of approximately 60%`, the efSuffixSurfaceForm is `%`.  Examples include: `%`, `percent`,  and `percentile`, | 
-| efSuffixNormalizedName | Normalized name for suffix measurement fraction. | 
-| echocardiogramNormalizedName | The normalized name for the echocardiogram. | 
-| echocardiogramSurfaceForm | Covered text that represents the echocardiogram.  Examples include:   `echo`, `echocardiogram`, and  "echocardiographic". | 
+| efAlphabeticValueNormalizedName | Normalized name for the appliied value that is word form. |
+| efAlphabeticValueSurfaceForm | Covered text that represents applied value in word form.   For example, in the text `EF was severely depressed at 28%`, the efAlphabeticValueSurfaceForm is `severely depressed`.  Examples include:   `low`, `normal`,`reduced`, and `improvement`. |
+| efTermNormalizedName | Normalized name for ejection fraction.   For example, in the text `Echocardiogram at the outside hospital demonstrated EF of approximately 60%`, the efTermNormalizedName is `ejection fraction`. |
+| efTermSurfaceForm | Covered text that represents the ejection fraction.   For example, in the text `Echocardiogram at the outside hospital demonstrated EF of approximately 60%`, the efTermSurfaceForm is `EF`.  Examples include:  `EF`, `LVEF`, `left ventricular ejection fraction`, `RVEF`,  and `ejection fraction`. |
+| efSuffixSurfaceForm | Covered text that represents the suffix to the measurement.  For example, in the text `Echocardiogram demonstrated EF of approximately 60%`, the efSuffixSurfaceForm is `%`.  Examples include: `%`, `percent`,  and `percentile`, |
+| efSuffixNormalizedName | Normalized name for suffix measurement fraction. |
+| echocardiogramNormalizedName | The normalized name for the echocardiogram. |
+| echocardiogramSurfaceForm | Covered text that represents the echocardiogram.  Examples include:   `echo`, `echocardiogram`, and  "echocardiographic". |
 
 ### Sample Response
 

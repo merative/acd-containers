@@ -81,8 +81,7 @@ The **trigger** field can be used to evaluate the constraint - i.e. the platelet
 
 #### Example 2: Greater than or equal to Concept Value with units and natural language expression of value - "at least"
 
-***Text***: _The patient must have a ***platelet count of at least 100000/μl***._
-
+**Text**: _The patient must have a **platelet count of at least 100000/μl**._
 
 This is similar to the first example, but this time the language is <q>at least</q> instead of <q>greater than or equal to</q>.  Notice how the **trigger** field is normalized to `greater than or equal to`.
 
@@ -108,7 +107,6 @@ This is similar to the first example, but this time the language is <q>at least<
 #### Example 3: ConceptValue with non-numeric value - _`positive`_
 
 Text: _***Hormone receptor positive** patients are candidates for anti-estrogen therapy._
-
 
 This example demonstrates a non-numeric value (`positive`)for a concept that does not use numeric values.
 

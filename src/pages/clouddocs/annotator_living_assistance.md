@@ -133,7 +133,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 
 This daily living activities annotator identifies text that indicates whether a patient has difficulty seeing. However, this annotator will not identify text if the patient uses assistive devices such as eye glasses or contact lenses to see properly.
 
-#### Configurations
+### Configurations
 
 | Configuration | Values | Description |
 |:--------------|--------|-------------|

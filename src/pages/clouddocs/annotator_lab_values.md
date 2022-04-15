@@ -23,7 +23,7 @@ The purpose of the Lab Value annotator is to annotate the value associated with 
 
 Only the value of the measurement or test is covered by the annotation's span. To determine what test or measurement is associated with the value use the **labTypeNormalizedName** and **labTypeSurfaceForm** fields in the annotation. The Lab Value annotator is written to only handle single values or fractional values composed of two single values.
 
-## Configurations 
+## Configurations
 
 | Configuration | Values | Description |
 |:--------------|--------|-------------|
@@ -57,6 +57,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 ---
 
 ### aci.MeasurementUnit
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |

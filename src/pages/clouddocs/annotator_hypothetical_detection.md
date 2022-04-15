@@ -35,8 +35,8 @@ The hypothetical annotator should run after all other annotators to ensure hypot
 
 | Configuration | Values | Description|
 |:--------------|:-------|:-----------|
-| remove_hypothetical | true/false | When true, any medical concepts deemed hypothetical from the surrounding context will be removed from the API response. When false (_default_), medical concepts deemed hypothetical will be in the response. |
-| include_family_history | true/false | When true, the family history annotations will be included as part of hypothetical spans in the response. When false (_default_), family history annotations will not be included in the response. For example, `his father has diabetes` will be annotated and included in the hypothetical span in the response when true. |
+| remove_hypothetical | true/false | When true, any medical concepts deemed hypothetical from the surrounding context will be removed from the API response. When false (*default*), medical concepts deemed hypothetical will be in the response. |
+| include_family_history | true/false | When true, the family history annotations will be included as part of hypothetical spans in the response. When false (*default*), family history annotations will not be included in the response. For example, `his father has diabetes` will be annotated and included in the hypothetical span in the response when true. |
 
 ## HypotheticalSpan
 
