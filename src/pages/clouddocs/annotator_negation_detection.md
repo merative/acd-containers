@@ -44,7 +44,8 @@ The negation detection annotator identifies the spans of text that are the objec
 
 ---
 
-#### Trigger 
+#### Trigger
+
 | Feature | Description |
 |:--------|-------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |

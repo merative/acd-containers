@@ -29,7 +29,6 @@ This annotator identifies symptoms and diseases mentioned in the text. It also i
 
 The value `umls.latest` will reference the latest available version of UMLS within the service. As newer versions of UMLS are made available in the service, `umls.latest` library configurations will automatically leverage the latest available version of UMLS in the service once available. Declaration of a specific version of UMLS is recommended to avoid undesirable changes in output as newer versions of UMLS are made available within the service. Through declaration of a specific version of UMLS, newer versions of UMLS may be evaluated prior to use in production.
 
-
 ### Annotation Types
 
 * aci.SymptomDiseaseInd

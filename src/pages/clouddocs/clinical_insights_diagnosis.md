@@ -48,7 +48,7 @@ The usage section of the JSON response indicates how a diagnosis applies to the 
 
 Consider the following sample text.
 
-_Pathologic evidence suggests that the patient has stage II breast cancer_
+Pathologic evidence suggests that the patient has stage II breast cancer
 
 The clinical insights features for stage II breast cancer might look as follows:
 

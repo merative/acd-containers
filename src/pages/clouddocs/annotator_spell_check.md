@@ -23,7 +23,6 @@ This annotator identifies misspelled words and phrases in a document and suggest
 
 Spell check can also be configured to recognize and correct to surface forms in custom dictionaries if the dictionaries are enabled for spell check in the cartridge configuration.
 
-
 ## Configurations
 
 | Configuration | Values | Description |

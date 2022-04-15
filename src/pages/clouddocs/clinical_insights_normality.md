@@ -37,12 +37,12 @@ The usage section of the JSON response indicates how a nature of the normality j
 | nonFindingScore | The language around a target does not indicate a finding of any sort.  For example, if a clinic note says "We will schedule a CT scan for next week", there's no obvious finding that is associated with that instance of CT scan. |
 
 ## directlyAffectedScore
+
 This score indicates if the normality target (the object being judged by the model) is the direct target of the normality judgement or something that is mentioned indirectly in context.  For example, consider the following two examples:
 
 _There was a lesion located on the left lung._ - This example would have a high _directlyAffectedScore_ because the lesion is located on the body part in question.
 
 _There was a lesion located 5 cm below the left lung._ - In this example, the lung is being used as a relative landmark.  This instance of _left lung_ would have a low _directlyAffectedScore_.
-
 
 ## evidence
 
@@ -56,8 +56,8 @@ _There was a lesion located 5 cm below the left lung._ - In this example, the lu
 
 When the normality model runs, its evidence spans will be used to create linkages between procedures, diagnosis, and sites.  Those linkages are added to the relevant [Procedure](/docs/wh-acd?topic=wh-acd-clinical_insights_procedure#clinical_insights_procedure) or [Diagnosis](/docs/wh-acd?topic=wh-acd-clinical_insights_diagnosis#clinical_insights_diagnosis) as _modifiers_.  Those links are created as _associatedProcedures_ or _associatedDiagnosis_.  An example is shown below.
 
-
 ## Sample Response
+
 This example demonstrates both an abnormal and normal finding.  Consider the following sample text:
 
 _CT scan showed an area of increased contrast in the left lung.  A followup biopsy did not reveal any signs of metastases._
@@ -69,7 +69,9 @@ _CT scan showed an area of increased contrast in the left lung.  A followup biop
 then _biopsy_ would have a high nonFindingScore.
 
 Context scores for _CT scan_ in the first example:
+
 ```
+
 "insightModelData": {
   "procedure": {
     "usage": {
@@ -162,7 +164,7 @@ Examples of _associatedDiagnosis_ and _associatedProcedures_: if normality is en
  _CT scan appeared to indicate the presence of a tumor in the left lung._
 
 
-```     
+```
 "coveredText": "CT scan",
 "negated": false,
 "insightModelData": {

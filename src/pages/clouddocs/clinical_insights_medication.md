@@ -25,7 +25,6 @@ The medication model provides information about how a medication annotation appl
 
 The demo application above shows an example of how to use the scores from the medication model to create attributes.  In this example, Metformin has a high _taken_ score and is promoted to a PrescribedMedication attribute by the cartridge scoring rules.
 
-
 The usage section of the JSON response indicates how a medication applies to a patient.  
 ## usage
 
@@ -36,7 +35,7 @@ The usage section of the JSON response indicates how a medication applies to a p
 | discussedScore | Other mentions of the medication that do not directly apply to the patient (For example:  _She is not currently taking Warfarin_ or _We considered Warfarin but opted not to use it because of the risk of bleeding._). |
 | labMeasurementScore | The medication mention is a lab measurement and does not directly indicate a medication the patient is taking. |
 
-The medication model also provides information about lifecycle events - *start*, *stopped*, *dose changed*, and *adverse events*.
+The medication model also provides information about lifecycle events - _start_, _stopped_, _dose changed_, and _adverse events_.
 
 Each event has the following scores:
 
@@ -45,19 +44,18 @@ Each event has the following scores:
 | score | How strongly does the language around the candidate annotation look like it indicates the given lifecycle event. |
 | usage | Describes the sense of the medication event. |
 
-
 | Feature | Description |
 |:--------|-------------|
-  | explicitScore | The event directly applies to the patient. |
-  | consideringScore | The event is something that may apply to the patient. |
-  | discussedScore | The event does not apply to the patient. |
+| explicitScore | The event directly applies to the patient. |
+| consideringScore | The event is something that may apply to the patient. |
+| discussedScore | The event does not apply to the patient. |
 
 Note that the lifecycle events only look at local context clues and do not try to reason across large distances in the text or multiple documents.  
 
 * startedEvent - There is language that indicates a medication was started.
 * stoppedEvent - There is language that a medication was stopped.
 * doseChangedEvent - There is language that indicates the dosage of a medication was changed.
-* adverseEvent - The medication mention is associated with any sort of bad outcome for the patient.  In addition to a *score* and *usage* section, adverseEvent also has an *allergyScore* that indicates if the given AE is just an allergy mention.
+* adverseEvent - The medication mention is associated with any sort of bad outcome for the patient.  In addition to a *score* and *usage* section, adverseEvent also has an _allergyScore_ that indicates if the given AE is just an allergy mention.
 
 You can use the usage scores to carve very specific boundaries around the kinds of medication mentions that you surface in your application.  For example, depending on your use case, you may want to know about when a dose change occurred, but not when it was just mentioned as a consideration.
 

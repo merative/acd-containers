@@ -21,7 +21,7 @@ subcollection: wh-acd
 
 The Medications annotator identifies information that is related to medications and how they are administered to the patient (dosage, frequency, route, etc).
 
-## Configurations 
+## Configurations
 
 | Configuration | Values | Description |
 |:--------------|--------|-------------|
@@ -50,7 +50,8 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | drug | See aci.Ind_Drug table below. |
  ___
 
-#### aci.SubstanceAdministration
+### aci.SubstanceAdministration
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -62,9 +63,10 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | route | See route feature table below. |
 | duration | See duration feature table below. |
 
----
+___
 
 #### aci.Ind_Drug
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -77,6 +79,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 ___
 
 #### aci.DrugRoute
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -88,6 +91,7 @@ ___
 ___
 
 #### aci.Duration
+
 |  Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -98,6 +102,7 @@ ___
 ___
 
 #### aci.DrugName
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
