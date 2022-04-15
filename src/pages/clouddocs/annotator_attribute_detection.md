@@ -55,7 +55,7 @@ The attribute detection annotator detects attributes from previously detected co
 
 The attribute detection annotator will propagate contextual information from the underlying concepts and concept values to the discovered attribute, such as whether the concept is negated or what section the attribute appears in. The contextual annotators (negation, hypothetical, disambiguation, or section) should be designated to run prior to attribute detection in the flow.
 
-#### Annotation Types ####
+#### Annotation Types
 
 * Attribute Value
 

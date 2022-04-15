@@ -50,7 +50,7 @@ The hypothetical annotator should run after all other annotators to ensure hypot
 
 ---
 
-#### Trigger
+### Trigger
 
 | Feature | Description |
 |:--------|:------------|

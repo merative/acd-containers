@@ -59,6 +59,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 #### Subtypes for aci.AllergyMedicationInd
 
 #### aci.MedicationInd
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -73,9 +74,10 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | administration | See administration table below. |
 | drug | See drug feature table below. |
 
- ___
+ ---
 
 #### aci.SubstanceAdministration
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -90,6 +92,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 ---
 
 #### aci.Ind_Drug
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -102,6 +105,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 ___
 
 #### aci.DrugRoute
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -113,6 +117,7 @@ ___
 ___
 
 #### aci.Duration
+
 |  Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
@@ -123,6 +128,7 @@ ___
 ___
 
 #### aci.DrugName
+
 | Feature | Description |
 |:--------|:------------|
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
