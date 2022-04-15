@@ -25,7 +25,8 @@ The medication model provides information about how a medication annotation appl
 
 The demo application above shows an example of how to use the scores from the medication model to create attributes.  In this example, Metformin has a high _taken_ score and is promoted to a PrescribedMedication attribute by the cartridge scoring rules.
 
-The usage section of the JSON response indicates how a medication applies to a patient.  
+The usage section of the JSON response indicates how a medication applies to a patient.
+
 ## usage
 
 | Feature | Description |
@@ -55,7 +56,7 @@ Note that the lifecycle events only look at local context clues and do not try t
 * startedEvent - There is language that indicates a medication was started.
 * stoppedEvent - There is language that a medication was stopped.
 * doseChangedEvent - There is language that indicates the dosage of a medication was changed.
-* adverseEvent - The medication mention is associated with any sort of bad outcome for the patient.  In addition to a *score* and *usage* section, adverseEvent also has an _allergyScore_ that indicates if the given AE is just an allergy mention.
+* adverseEvent - The medication mention is associated with any sort of bad outcome for the patient.  In addition to a _score_ and _usage_ section, adverseEvent also has an _allergyScore_ that indicates if the given AE is just an allergy mention.
 
 You can use the usage scores to carve very specific boundaries around the kinds of medication mentions that you surface in your application.  For example, depending on your use case, you may want to know about when a dose change occurred, but not when it was just mentioned as a consideration.
 

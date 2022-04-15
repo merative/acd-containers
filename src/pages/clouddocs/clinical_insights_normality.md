@@ -163,7 +163,6 @@ Examples of _associatedDiagnosis_ and _associatedProcedures_: if normality is en
 
  _CT scan appeared to indicate the presence of a tumor in the left lung._
 
-
 ```
 "coveredText": "CT scan",
 "negated": false,

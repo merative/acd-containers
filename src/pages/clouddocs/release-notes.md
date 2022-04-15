@@ -89,7 +89,7 @@ The following sections document the new features and changes that were included 
 - The IBM Watson Annotator for Clinical Data Service is now available in the IBM Cloud US South location for approved internal IBM solution providers.
 - Support for attribute detection over derived concepts with longest span.
 
-# Service API versioning
+## Service API versioning
 
 API requests require a version parameter that takes the date in the format version=YYYY-MM-DD. Send the version parameter with every API request.
 
