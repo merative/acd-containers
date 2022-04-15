@@ -58,7 +58,6 @@ The usage section of the JSON response indicates how the alcohol usage applies t
 | exposureScore | The patient has been exposed to second-hand alcohol usage, such as in utero. |
 | nonPatientScore | The alcohol use mentioned does not apply to the patient. (For example: "Patient's father was an alcoholic".) |
 
-
 Note that additional features, such as the status and qualifier events, only look at local context clues and do not try to reason across large distances in the text or multiple documents.  
 
 ### Sample Response

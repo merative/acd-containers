@@ -240,7 +240,7 @@ The 'type' field has the default value of _match_. Grouped and nested conditions
 
 Table 2. Conditions to be evaluated
 
-The following snippet illustrates the grouped condition with the *all* type. The returned annotators will satisfy both of the listed conditions.
+The following snippet illustrates the grouped condition with the _all_ type. The returned annotators will satisfy both of the listed conditions.
 
 ```javascript
 "filter": {

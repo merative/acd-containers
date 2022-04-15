@@ -29,7 +29,6 @@ The Annotator for Clinical Data [demo application](https://acd-try-it-out.myblue
 
 Concepts are linked to dates by JSON structures described below.
 
-
 ## temporal
 
 | Feature | Description |
@@ -90,7 +89,7 @@ _PMH: Patient had bariatric revision surgery in April 1999 and again in July 200
 
 The temporal section for _revision surgery_ would have two associated dates.
 
-```        
+```
 "temporal": [{
 		"begin": 47,
 		"end": 57,

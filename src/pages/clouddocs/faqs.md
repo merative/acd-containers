@@ -27,7 +27,7 @@ The service is HIPAA enabled and capable of processing PHI data. Review [Enablin
 
 Yes, you can define multiple text blocks within a json request submitted to the service.
 
-*Example*
+## Example
 
 ```javascript
 {
