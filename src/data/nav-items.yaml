@@ -75,11 +75,11 @@
     #   path: /clouddocs/at_events/
 - title: Annotators
   pages:
-    - title: "Allergies (Depracated)"
+    - title: "Allergies (Deprecated)"
       path: /clouddocs/annotator_allergy/
     - title: "Attribute Detection"
       path: /clouddocs/annotator_attribute_detection/      
-    - title: "Cancer (Depracated)"
+    - title: "Cancer (Deprecated)"
       path: /clouddocs/annotator_cancer/      
     - title: "Concept Detection"
       path: /clouddocs/annotator_concept_detection/
@@ -87,13 +87,13 @@
       path: /clouddocs/annotator_concept_disambiguation/
     - title: "Concept Value"
       path: /clouddocs/annotator_concept_value/
-    - title: "Ejection Fraction (Depracated)"
+    - title: "Ejection Fraction (Deprecated)"
       path: /clouddocs/annotator_ejection_fraction/      
     - title: "Hypothetical"
       path: /clouddocs/annotator_hypothetical_detection/
     - title: "Lab Values"
       path: /clouddocs/annotator_lab_values/
-    - title: "Living Assistance (Depracated)"
+    - title: "Living Assistance (Deprecated)"
       path: /clouddocs/annotator_living_assistance/
     - title: "Medications"
       path: /clouddocs/annotator_medication/
@@ -107,7 +107,7 @@
       path: /clouddocs/annotator_relation/
     - title: "Sections"
       path: /clouddocs/annotator_sections/ 
-    - title: "Smoking (Depracated)"
+    - title: "Smoking (Deprecated)"
       path: /clouddocs/annotator_smoking/ 
     - title: "Spell Check"
       path: /clouddocs/annotator_spell_check/ 

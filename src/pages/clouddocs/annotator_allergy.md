@@ -102,7 +102,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | complex | Whether this a multi-drug medication. |
 | name1 | See drug name feature table below. |
 
-___
+---
 
 #### aci.DrugRoute
 
@@ -114,7 +114,7 @@ ___
 | type | aci.DrugRoute |
 | normalized | The normalized term that represents the route. |
 
-___
+---
 
 #### aci.Duration
 
@@ -125,7 +125,7 @@ ___
 | coveredText | The text covered by an annotation as a string. |
 | type | aci.Duration |
 
-___
+---
 
 #### aci.DrugName
 
