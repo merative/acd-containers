@@ -81,7 +81,7 @@ Attributes are higher order concepts composed of multiple pieces of information 
 The patient is a 37 year old male who is 6 feet tall and weighs 170 lbs.
 ```
 
-You can create custom [concept values](/docs/wh-acd?topic=wh-acd-concept_value#concept_value) to extract and normalize the patient's height and weight.  With that information, you can create inference rules in {{site.data.keyword.wh-acd_short}} to combine that information into a single attribute that we'll call `NORMAL_WEIGHT`.  Custom attributes like this are a powerful way to distill unstructured text into actionable insights.
+You can create custom [concept values](/docs/wh-acd?topic=wh-acd-concept_value#concept_value) to extract and normalize the patient's height and weight.  With that information, you can create inference rules in IBM Clinical Data Annotator to combine that information into a single attribute that we'll call `NORMAL_WEIGHT`.  Custom attributes like this are a powerful way to distill unstructured text into actionable insights.
 
 For more information, see [Attributes](/docs/wh-acd?topic=wh-acd-attribute_detection#attribute_detection).
 

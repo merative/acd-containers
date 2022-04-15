@@ -155,4 +155,4 @@ This example demonstrates a set of range values. The trigger **within** indicate
 
 ### Dependencies
 
-Concept Detection must run prior to Concept Value in your {{site.data.keyword.wh-acd_short}} flow to function properly.
+Concept Detection must run prior to Concept Value in your IBM Clinical Data Annotator flow to function properly.

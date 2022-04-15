@@ -39,8 +39,8 @@ The configuration editor facilitates the following customizations:
 
 ## Cartridge Deployment
 
-1. The consumer uses the {{site.data.keyword.wh-acd_short}} Configuration Editor to create a new cartridge (or modify an existing one) and customizes the contents (artifacts) of the cartridge to their domain. After that, the consumer will **Export** the cartridge in order to save a snapshot of the cartridge.
-2. The consumer deploys the cartridge snapshot (a zip file) to  {{site.data.keyword.wh-acd_short}} using _POST /v1/cartridges_ API. A successful request for creating a cartridge will return with HTTP <q>202 ACCEPTED</q> response code and will include the path to the resource, e.g., /v1/cartridges/cartridge_id in the response body and the response header. The resource path can be used in _GET /v1/cartridges/catridgeId_ API to obtain the overall deployment status. In the following curl example, the consumer's cartridge file is `/path/to/name_of_cartridge_file.zip`.
+1. The consumer uses the IBM Clinical Data Annotator Configuration Editor to create a new cartridge (or modify an existing one) and customizes the contents (artifacts) of the cartridge to their domain. After that, the consumer will **Export** the cartridge in order to save a snapshot of the cartridge.
+2. The consumer deploys the cartridge snapshot (a zip file) to  IBM Clinical Data Annotator using _POST /v1/cartridges_ API. A successful request for creating a cartridge will return with HTTP <q>202 ACCEPTED</q> response code and will include the path to the resource, e.g., /v1/cartridges/cartridge_id in the response body and the response header. The resource path can be used in _GET /v1/cartridges/catridgeId_ API to obtain the overall deployment status. In the following curl example, the consumer's cartridge file is `/path/to/name_of_cartridge_file.zip`.
 
     ```Curl
     
@@ -93,8 +93,8 @@ A typical _POST /v1/catridges_ operation creates and initializes a deployment fo
 
 ## Legacy Cartridge Deployment
 
-1. The consumer uses the {{site.data.keyword.wh-acd_short}} Configuration Editor to create a new cartridge (or modify an existing one) and customizes the contents (artifacts) of the cartridge to their domain. After that, the consumer will **Export** the cartridge in order to save a snapshot of the cartridge.
-2. The consumer deploys the cartridge snapshot (a zip file) to  {{site.data.keyword.wh-acd_short}} using _POST /v1/deploy_ API. In the following curl example, the consumer's cartridge file is `./my_cartridges/name_of_cartridge_file.zip`, and `update=false` means do not update the resource if it already exists. Specifying the **update=true** parameter on the deploy API to update an existing cartridge.
+1. The consumer uses the IBM Clinical Data Annotator Configuration Editor to create a new cartridge (or modify an existing one) and customizes the contents (artifacts) of the cartridge to their domain. After that, the consumer will **Export** the cartridge in order to save a snapshot of the cartridge.
+2. The consumer deploys the cartridge snapshot (a zip file) to  IBM Clinical Data Annotator using _POST /v1/deploy_ API. In the following curl example, the consumer's cartridge file is `./my_cartridges/name_of_cartridge_file.zip`, and `update=false` means do not update the resource if it already exists. Specifying the **update=true** parameter on the deploy API to update an existing cartridge.
 
     Replace `{apikey}` and `{url}` with the actual API key and URL in the following example. A successful cartridge deploy will result in <q>201 Created</q> if it is a new resource, or <q>200 OK</q> if `update=true` was specified and the existing resource was updated.
 
