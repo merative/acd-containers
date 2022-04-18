@@ -6,6 +6,12 @@ See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-ac
 
 ## Releases
 
+## v2.0 - build v2.0.202204121438
+
+- Refresh of Annotator for Clinical Data Service and each of its annotators
+- Revert prior changes to align with entitled registry multiple geography support. Continue to use cp.icr.io as the domain for entitled images.
+- **NOTICE: Redeploy custom cartridges if using multitenancy.** This is required due to a change in handling special characters written out to the artifact store, such as those in a tenant ID. This is only required if using custom cartridges and multiple tenants.
+
 ## v2.0 - build v2.0.202202212213
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
