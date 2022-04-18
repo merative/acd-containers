@@ -28,11 +28,11 @@ How it works:
 **Example:** analyze request referencing a persisted flow
 
 ```bash
-curl -X POST -u "apikey:{apikey}" \
+curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 --header "Content-Type: text/plain" \
 --header "Accept: application/json" \
 --data-binary "Patient has lung cancer, but did not smoke. She may consider chemotherapy as part of a treatment plan." \
-"{url}/v1/analyze/your_flow_id?version=2020-03-13"
+"<route_host>/v1/analyze/your_flow_id?version=2020-03-13"
 ```
 
 When referencing a persisted flow in an analyze request, you can send plain text to the service for analysis.
@@ -40,7 +40,7 @@ When referencing a persisted flow in an analyze request, you can send plain text
 **Example:** analyze request within flow included
 
 ```bash
-curl -X POST -u "apikey:{apikey}" \
+curl -X POST -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
   --header "Content-Type: application/json" \
   --header "Accept: application/json" -d "{
   \"annotatorFlows\": [
@@ -67,7 +67,7 @@ curl -X POST -u "apikey:{apikey}" \
       \"text\": \"Patient has lung cancer, but did not smoke. She may consider Cisplatin as part of a treatment plan.\"
     }
   ]
-}" "{url}/v1/analyze?version=2020-03-13"
+}" "<route_host>/v1/analyze?version=2020-03-13"
 ```
 
 ## Annotator flows
@@ -80,7 +80,7 @@ The following predefined flows are provided with the service:
 
 | Annotator Flow | Description |
 |----|----|
-|wh_acd.ibm_clinical_insights_v1.0_standard_flow | Annotator for Clinical Data provides a ready-to-use Clinical Insights flow that extracts clinically relevant information by performing deep contextual analysis of clinical notes. The Clinical Insights flow is a default configuration provided with Annotator for Clinical Data that produces clinical attributes for Prescribed Medications, Diagnoses, Therapeutic Procedures, and Diagnostic Procedures by contextually evaluating each type of clinical information to determine that it is both relevant and pertinent to the patient. See the [Clinical Insights](/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) documentation for a detailed explanation.<br/><br/>As new versions of the Clinical Insights flow are released, older versions will be deprecated and eventually retired. This is known as the version lifecycle. Annotator for Clinical Data will support two versions of the Clinical Insights flows, the current latest version and the previous version. This is known as an “n-1” version support scheme. Once an older version is marked as “deprecated”, a 90 day period will begin before the deprecated version is officially “retired” and no longer functional. The deprecated version will remain operational for a 90 day period before it is considered retired. Once a version has been retired, it will no longer be available and any attempts to use a retired version will fail.|
+|wh_acd.ibm_clinical_insights_v1.0_standard_flow | Annotator for Clinical Data provides a ready-to-use Clinical Insights flow that extracts clinically relevant information by performing deep contextual analysis of clinical notes. The Clinical Insights flow is a default configuration provided with Annotator for Clinical Data that produces clinical attributes for Prescribed Medications, Diagnoses, Therapeutic Procedures, and Diagnostic Procedures by contextually evaluating each type of clinical information to determine that it is both relevant and pertinent to the patient. See the [Clinical Insights](/clouddocs/clinical_insights_overview/) documentation for a detailed explanation.<br/><br/>As new versions of the Clinical Insights flow are released, older versions will be deprecated and eventually retired. This is known as the version lifecycle. Annotator for Clinical Data will support two versions of the Clinical Insights flows, the current latest version and the previous version. This is known as an “n-1” version support scheme. Once an older version is marked as “deprecated”, a 90 day period will begin before the deprecated version is officially “retired” and no longer functional. The deprecated version will remain operational for a 90 day period before it is considered retired. Once a version has been retired, it will no longer be available and any attempts to use a retired version will fail.|
 Table 1. Predefined annotator flows
 
 ### Creating flows

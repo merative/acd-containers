@@ -45,11 +45,11 @@ The configuration editor facilitates the following customizations:
 
 ```Curl
 
- curl -X POST -u "apikey":"{apikey}" \
+ curl -X POST -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
   --header "Accept:application/json" \
  --header "Content-Type:application/octet-stream" \
  --data-binary @/path/to/name_of_cartridge_file.zip \
- "{url}/v1/cartridges?version=2019-09-01"
+ "<route_host>/v1/cartridges?version=2019-09-01"
 
 ```
 
@@ -59,11 +59,11 @@ Use the _POST /v1/cartridges_ operation for the initial deployment of a cartridg
 
 ```Curl
 
- curl -X PUT -u "apikey":"{apikey}" \
+ curl -X PUT -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
  --header "Accept:application/json" \
  --header "Content-Type:application/octet-stream" \
  --data-binary @/path/to/name_of_cartridge_file.zip \
- "{url}/v1/cartridges?version=2019-09-01"
+ "<route_host>/v1/cartridges?version=2019-09-01"
 
 ```
 
@@ -71,9 +71,9 @@ Use the _POST /v1/cartridges_ operation for the initial deployment of a cartridg
 
 ```Curl
 
- curl -X GET -u "apikey":"{apikey}" \
+ curl -X GET -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
  --header "Accept:application/json" \
- "{url}/v1/cartridges?version=2019-09-01"
+ "<route_host>/v1/cartridges?version=2019-09-01"
 
 ```
 
@@ -81,13 +81,13 @@ Use the _POST /v1/cartridges_ operation for the initial deployment of a cartridg
 
 ```Curl
 
- curl -X GET -u "apikey":"{apikey}" \
+ curl -X GET -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
  --header "Accept:application/json" \
- "{url}/v1/cartridges/cartridge_id?version=2019-09-01"
+ "<route_host>/v1/cartridges/cartridge_id?version=2019-09-01"
 
 ```
 
-Replace `{apikey}` and `{url}` with the actual API key and URL in all sample codes above.
+Replace `{apikey}` and `<route_host>` with the actual API key and URL in all sample codes above.
 
 The _/v1/cartridges_ API is the recommended way for a cartridge deployment and is compatible with the legacy _/v1/deploy_ API. In many situations, the consumer has already deployed a cartridge using the _/v1/deploy_ API and the consumer can immediately update the same cartridge using the above POST and PUT operations on the _/v1/cartridges_ API to initially create and to subsequently update the cartridge deployment.
 A typical _POST /v1/cartridges_ operation creates and initializes a deployment for cartridge that has never been deployed to the system. For cartridges that have been previously deployed with the _/v1/deploy_ API, the _POST /v1/cartridges_ API will create, initialize, and update an existing cartridge deployment. Subsequent redeployments of a cartridge must use the _PUT /v1/cartridges_ API.
@@ -97,15 +97,15 @@ A typical _POST /v1/cartridges_ operation creates and initializes a deployment f
 1. The consumer uses the IBM Clinical Data Annotator Configuration Editor to create a new cartridge (or modify an existing one) and customizes the contents (artifacts) of the cartridge to their domain. After that, the consumer will **Export** the cartridge in order to save a snapshot of the cartridge.
 2. The consumer deploys the cartridge snapshot (a zip file) to  IBM Clinical Data Annotator using _POST /v1/deploy_ API. In the following curl example, the consumer's cartridge file is `./my_cartridges/name_of_cartridge_file.zip`, and `update=false` means do not update the resource if it already exists. Specifying the **update=true** parameter on the deploy API to update an existing cartridge.
 
-    Replace `{apikey}` and `{url}` with the actual API key and URL in the following example. A successful cartridge deploy will result in <q>201 Created</q> if it is a new resource, or <q>200 OK</q> if `update=true` was specified and the existing resource was updated.
+    Replace `{apikey}` and `<route_host>` with the actual API key and URL in the following example. A successful cartridge deploy will result in <q>201 Created</q> if it is a new resource, or <q>200 OK</q> if `update=true` was specified and the existing resource was updated.
 
     ```Curl
 
-  curl -X POST -u "apikey:{apikey}" \
+  curl -X POST -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
   --header “Content-Type: application/octet-stream” \
   --header "Accept: application/json" \
   --data-binary @./my_cartridges/name_of_cartridge_file.zip \
-  "{url}/v1/deploy?update=false&version=2018-01-17"
+  "<route_host>/v1/deploy?update=false&version=2018-01-17"
 
 ```
 
