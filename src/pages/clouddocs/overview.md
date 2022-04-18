@@ -21,7 +21,7 @@ subcollection: wh-acd
 
 **Notice:** Annotator for Clinical Data Service is currently in Limited Availability. Please contact your IBM sales representative for details.
 
-The Annotator for Clinical Data Service is designed to find medical concepts, [medical codes](/docs/wh-acd?topic=wh-acd-medical_codes#medical_codes), and contextual information in unstructured text. It provides turn key annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/)) is the primary source for concepts and medical codes. Annotator for Clinical Data Service can also work with user provided ontologies beyond UMLS.  
+The Annotator for Clinical Data Service is designed to find medical concepts, [medical codes](/clouddocs/medical_codes/), and contextual information in unstructured text. It provides turn key annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/) is the primary source for concepts and medical codes. Annotator for Clinical Data Service can also work with user provided ontologies beyond UMLS.  
 
 To illustrate the basic function of Annotator for Clinical Data Service, let's look at a simple example.  Imagine that we have the following small snippet of text:
 
@@ -67,7 +67,7 @@ The resulting concept over ulceration will contain medical codes along with cont
 
 **Public Multi-tenant Instances:** the service is accessed via public endpoints. The service will access all dependencies via private endpoints. In these instances the control plane of the service is shared across tenants.
 
-**Dedicated Instances:** the service can be accessed via public and/or private endpoints. Review [Public and private network endpoints](/docs/wh-acd?topic=watson-public-private-endpoints) for details. The service will access all dependencies via private endpoints. In these instances the control plane of the service is isolated in separate pods for each tenant.
+**Dedicated Instances:** the service can be accessed via public and/or private endpoints. Review [Public and private network endpoints](/about/overview/) for details. The service will access all dependencies via private endpoints. In these instances the control plane of the service is isolated in separate pods for each tenant.
 
 ## Available Annotators
 
@@ -81,15 +81,15 @@ Attributes are higher order concepts composed of multiple pieces of information 
 The patient is a 37 year old male who is 6 feet tall and weighs 170 lbs.
 ```
 
-You can create custom [concept values](/docs/wh-acd?topic=wh-acd-concept_value#concept_value) to extract and normalize the patient's height and weight.  With that information, you can create inference rules in IBM Clinical Data Annotator to combine that information into a single attribute that we'll call `NORMAL_WEIGHT`.  Custom attributes like this are a powerful way to distill unstructured text into actionable insights.
+You can create custom [concept values](/clouddocs/annotator_concept_value/) to extract and normalize the patient's height and weight.  With that information, you can create inference rules in IBM Clinical Data Annotator to combine that information into a single attribute that we'll call `NORMAL_WEIGHT`.  Custom attributes like this are a powerful way to distill unstructured text into actionable insights.
 
-For more information, see [Attributes](/docs/wh-acd?topic=wh-acd-attribute_detection#attribute_detection).
+For more information, see [Attributes](/clouddocs/annotator_attribute_detection/).
 
 ### Concepts
 
 The concept annotator finds UMLS or custom concepts in unstructured text.
 
-For more information, see [Concepts](/docs/wh-acd?topic=wh-acd-concept_detection#concept_detection).
+For more information, see [Concepts](/clouddocs/annotator_concept_detection/).
 
 ### Concept Value
 
@@ -101,7 +101,7 @@ The patient is a 37 year old male who is 6 feet tall and weighs 170 lbs.
 
 In this example, the combination of `height` with `6 feet` is an example of how concept values work.
 
-For more information, see [Concept Value](/docs/wh-acd?topic=wh-acd-concept_value#concept_value).
+For more information, see [Concept Value](/clouddocs/annotator_concept_value/).
 
 ## Contextual Annotators
 
@@ -111,44 +111,44 @@ Contextual annotators use the surrounding context of the document to provide a d
 
 Identifies spans of text with an implied negative meaning.  For example: _There were no signs of ulceration._
 
-For more information, see [Negation](/docs/wh-acd?topic=wh-acd-negation_detection#negation_detection).
+For more information, see [Negation](/clouddocs/annotator_negation_detection/).
 
 ### Hypothetical
 
 Identifies spans of text are the object of a hypothetical statement.  For example: _We discussed the pros and cons of chemotherapy._
 
-For more information, see [Hypothetical](/docs/wh-acd?topic=wh-acd-hypothetical_detection#hypothetical_detection).
+For more information, see [Hypothetical](/clouddocs/annotator_hypothetical_detection/).
 
 ### Concept Disambiguation
 
 Determines the validity of UMLS concepts detected in a document.
 
-For more information, see [Disambiguation](/docs/wh-acd?topic=wh-acd-concept_disambiguation#concept_disambiguation).
+For more information, see [Disambiguation](/clouddocs/annotator_concept_disambiguation/).
 
 ### Spell Check
 
 Medically aware spell checker that can be integrated into an API call.
 
-For more information, see [Spell Check](/docs/wh-acd?topic=wh-acd-spell_check#spell_check).
+For more information, see [Spell Check](/clouddocs/annotator_spell_check/).
 
 ### Turn Key Annotators
 
  Annotator for Clinical Data provides a set of prebuilt annotators targeted at specific medical domains.
 
-* [Allergy](/docs/wh-acd?topic=wh-acd-allergies#allergies) _(experimental)_
-* [Cancer](/docs/wh-acd?topic=wh-acd-cancer#cancer) _(experimental)_
-* [Ejection Fraction](/docs/wh-acd?topic=wh-acd-ejection_fraction#ejection_fraction) _(experimental)_
-* [Lab Values](/docs/wh-acd?topic=wh-acd-lab_values#lab_values)
-* [Living Assistance](/docs/wh-acd?topic=wh-acd-living_assistance#living_assistance) _(experimental)_
-* [Medications](/docs/wh-acd?topic=wh-acd-medications#medications)
-* [Named Entities](/docs/wh-acd?topic=wh-acd-named_entities#named_entities)
-* [Procedures](/docs/wh-acd?topic=wh-acd-procedure#procedure)
-* [Sections](/docs/wh-acd?topic=wh-acd-sections#sections)
-* [Smoking](/docs/wh-acd?topic=wh-acd-smoking#smoking) _(experimental)_
-* [Symptoms & Diseases](/docs/wh-acd?topic=wh-acd-symptom_disease#symptom_disease)
+* [Allergy](/clouddocs/annotator_allergy/) _(deprecated)_
+* [Cancer](/clouddocs/annotator_cancer/) _(deprecated)_
+* [Ejection Fraction](/clouddocs/annotator_ejection_fraction/) _(deprecated)_
+* [Lab Values](/clouddocs/annotator_lab_values)
+* [Living Assistance](/clouddocs/annotator_living_assistance/) _(deprecated)_
+* [Medications](/clouddocs/annotator_medication/)
+* [Named Entities](/clouddocs/annotator_named_entities/)
+* [Procedures](/clouddocs/annotator_procedure/)
+* [Sections](/clouddocs/annotator_sections/)
+* [Smoking](/clouddocs/annotator_smoking/) _(deprecated)_
+* [Symptoms & Diseases](/clouddocs/annotator_symptom_disease/)
 
 ### Clinical Insights
 
 Clinical insights are a collection of models and cartridge configuration that provide contextual information about key clinical attributes (medication, diagnosis, and procedure) for patient centric clinical notes.
 
-For more information, see [Clinical Insights](/docs/wh-acd?topic=wh-acd-clinical_insights#clinical_insights_overview).
+For more information, see [Clinical Insights](/clouddocs/clinical_insights_overview/).

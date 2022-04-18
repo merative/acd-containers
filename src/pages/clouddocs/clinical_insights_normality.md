@@ -20,7 +20,6 @@ subcollection: wh-acd
 # Clinical Insights Normality Model (Preview) -->
 
 The normality model looks for language around certain target concepts (body parts, body substances, diagnostic tests, and organism functions) that indicate a normal or abnormal finding about a patient.  
-
 ![normality](../../images/normality.png)
 
 The demo application above shows an example of how to use the scores from the normality model to create attributes.  In this case, the language around CT scan and left lung appears suspicious while the language around biopsy appears normal.  The normality scores are used to create the appropriate AbnormalFinding/NormalFinding attributes.
@@ -54,7 +53,7 @@ _There was a lesion located 5 cm below the left lung._ - In this example, the lu
 
 ## modifiers
 
-When the normality model runs, its evidence spans will be used to create linkages between procedures, diagnosis, and sites.  Those linkages are added to the relevant [Procedure](/docs/wh-acd?topic=wh-acd-clinical_insights_procedure#clinical_insights_procedure) or [Diagnosis](/docs/wh-acd?topic=wh-acd-clinical_insights_diagnosis#clinical_insights_diagnosis) as _modifiers_.  Those links are created as _associatedProcedures_ or _associatedDiagnosis_.  An example is shown below.
+When the normality model runs, its evidence spans will be used to create linkages between procedures, diagnosis, and sites.  Those linkages are added to the relevant [Procedure](/clouddocs/annotator_procedure/) or [Diagnosis](/clouddocs/clinical_insights_diagnosis/) as _modifiers_.  Those links are created as _associatedProcedures_ or _associatedDiagnosis_.  An example is shown below.
 
 ## Sample Response
 

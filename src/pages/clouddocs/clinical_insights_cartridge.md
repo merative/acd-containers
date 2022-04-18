@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 # Clinical Insights Cartridge -->
 
-The Clinical Insights Cartridge is a default configuration set that ships with Annotator for Clinical Data that uses the low level insight model scores to promote annotations that apply to the patient to one of the following known [attribute](/docs/wh-acd?topic=wh-acd-attribute_detection#attribute_detection) types.
+The Clinical Insights Cartridge is a default configuration set that ships with Annotator for Clinical Data that uses the low level insight model scores to promote annotations that apply to the patient to one of the following known [attribute](/clouddocs/annotator_attribute_detection/) types.
 
 1. Diagnosis
 2. PotentialDiagnosis
@@ -37,7 +37,7 @@ The Clinical Insights Cartridge is a default configuration set that ships with A
 
 These attributes can be thought of as the result of a distillation step where all candidate annotations are considered, but only those that apply to the patient get promoted to attributes.
 
-If you need different behavior than what the default cartridge provides, you can extend the default Clinical Insights Cartridge using the Annotator for Clinical Data Configuration Editor.  See the [Customizing](/docs/wh-acd?topic=wh-acd-customizing#customizing) section for more information.  Options for extending the cartridge include:
+If you need different behavior than what the default cartridge provides, you can extend the default Clinical Insights Cartridge using the Annotator for Clinical Data Configuration Editor.  See the [Customizing](/clouddocs/customizing/) section for more information.  Options for extending the cartridge include:
 
 1. Adding your own candidate annotations from custom dictionaries.  For example, if there is a medication that the Annotator for Clinical Data does not annotate by default, you could add that to a custom dictionary and then ensure entries from your custom dictionary are scored by the insights medication model.
 

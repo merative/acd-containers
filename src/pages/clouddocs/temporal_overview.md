@@ -21,7 +21,7 @@ subcollection: wh-acd
 
 <!-- # Temporal Overview (Preview) -->
 
-Annotator for Clinical Data can detect temporal expressions and link them to related concepts as contextual features. This temporal capability is currently available through [Clinical Insights](/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview).  
+Annotator for Clinical Data can detect temporal expressions and link them to related concepts as contextual features. This temporal capability is currently available through [Clinical Insights](/clouddocs/clinical_insights_overview/).  
 
 The Annotator for Clinical Data [demo application](https://acd-try-it-out.mybluemix.net/preview) allows you to see how temporal linking works.  In the screenshot below, hovering over _hip surgery_ shows that is linked to the date _5/17_.
 

@@ -20,7 +20,7 @@ subcollection: wh-acd
 # Concept Value -->
 
 The Concept Value annotator is intended to be used in conjunction with the [Concept
-Detection annotator](/docs/wh-acd?topic=wh-acd-concept_detection#concept_detection) to identify values within unstructured data associated with concepts.  For example:
+Detection annotator](/clouddocs/annotator_concept_detection/) to identify values within unstructured data associated with concepts.  For example:
 
 `blood pressure is 120/70 mmHg`
 

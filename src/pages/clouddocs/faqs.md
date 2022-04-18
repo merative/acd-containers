@@ -21,7 +21,7 @@ subcollection: wh-acd
 
 ## Can I process PHI _(Protected Health Information)_ data?
 
-The service is HIPAA enabled and capable of processing PHI data. Review [Enabling the HIPAA Supported setting](/docs/wh-acd?topic=wh-acd-information-security#hipaa) prior to processing PHI data.
+The service is HIPAA enabled and capable of processing PHI data. Review [Enabling the HIPAA Supported setting](/security/manage-access/) prior to processing PHI data.
 
 ## Can I post multiple documents for processing within a single request?
 
@@ -44,7 +44,7 @@ Yes, you can define multiple text blocks within a json request submitted to the 
 
 ## How can I remove undesired mention annotation matches?
 
-You can define filter conditions both at the annotator level and globally to omit undesired mention annotations from the service response. In the case of global filters, annotations are filtered at the end of an annotator flow, before the response is returned. In the case of annotator level filters, annotations are filtered prior to the request proceeding to the next annotator in the flow. Review [annotation filtering](/docs/wh-acd?topic=wh-acd-filtering) for more details.
+You can define filter conditions both at the annotator level and globally to omit undesired mention annotations from the service response. In the case of global filters, annotations are filtered at the end of an annotator flow, before the response is returned. In the case of annotator level filters, annotations are filtered prior to the request proceeding to the next annotator in the flow. Review [annotation filtering](/clouddocs/filtering/) for more details.
 
 ## If I pass in json instead of plain text in my request, does the json metadata count towards my 50K text limit per request?
 
@@ -64,4 +64,4 @@ At this time, the nlp annotators provided by the service support English text.
 
 ## Which annotator flows are provided and maintained by the service?
 
-The [wh_acd.ibm_clinical_insights_v1.0_standard_flow](/docs/wh-acd?topic=wh-acd-analyze_text#flows) annotator flow that's part of the [Clinical Insights](/docs/wh-acd?topic=wh-acd-clinical_insights_overview) capability is provided and maintained by the service.
+The [wh_acd.ibm_clinical_insights_v1.0_standard_flow](/clouddocs/overview/) annotator flow that's part of the [Clinical Insights](/clouddocs/clinical_insights_overview/) capability is provided and maintained by the service.

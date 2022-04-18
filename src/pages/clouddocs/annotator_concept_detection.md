@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 # Concept Detection -->
 
-The concept detection service detects medical concepts from unstructured data. The service provides concepts based on the Unified Medical Language System (UMLS). As of the 2018AA version of the UMLS library, the consumers can elect to have a set of [medical codes](/docs/wh-acd?topic=wh-acd-medical_codes#medical_codes) associated with the UMLS concepts by specifying the optional configuration parameter to return the medical codes. When medical codes are requested, the UMLS concept annotations from concept detection will include the applicable medical codes as metadata within the annotations.
+The concept detection service detects medical concepts from unstructured data. The service provides concepts based on the Unified Medical Language System (UMLS). As of the 2018AA version of the UMLS library, the consumers can elect to have a set of [medical codes](/clouddocs/medical_codes/) associated with the UMLS concepts by specifying the optional configuration parameter to return the medical codes. When medical codes are requested, the UMLS concept annotations from concept detection will include the applicable medical codes as metadata within the annotations.
 
 ## Expanded Concepts
 

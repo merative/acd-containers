@@ -109,4 +109,4 @@ A typical _POST /v1/cartridges_ operation creates and initializes a deployment f
 
 ```
 
-> Some large cartridge deployments can exceed the request timeout thresholds defined in the DataPower gateways (usually after 2 mins). In that event, you may receive the following error response. See [Cartridge Deployment Timeout](/docs/wh-acd?topic=wh-acd-troubleshoot#troubleshoot_deploy_timeout) for additional considerations during the deployment of large cartridges.
+> Some large cartridge deployments can exceed the request timeout thresholds defined in the DataPower gateways (usually after 2 mins). In that event, you may receive the following error response. See [Cartridge Deployment Timeout](/clouddocs/customizing/) for additional considerations during the deployment of large cartridges.
