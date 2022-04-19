@@ -33,7 +33,7 @@ The value `umls.latest` will reference the latest available version of UMLS with
 
 * aci.SmokingInd
 
-## $ aci.SmokingInd
+## aci.SmokingInd
 
 | Feature | Description |
 |:--------|:------------|

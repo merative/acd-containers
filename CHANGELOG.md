@@ -16,6 +16,7 @@ See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-ac
 ## v2.0 - build v2.0.202202212213
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
+  - Improved medication adverse event model with associatedAdverseEvent modifier links.
 - Align with changes to entitled registry, moving from cp.icr.io to icr.io
 
 ## v2.0 - build v2.0.202201172016
@@ -25,14 +26,17 @@ See Annotator for Clinical Data [release notes](https://cloud.ibm.com/docs/wh-ac
 ## v2.0 - build v2.0.202111232118
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
+  - Initial release of substance use models for clinical insights.
 
 ## v2.0 - build v2.0.202110211739
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
+  - Added support for UMLS 2021AA. UMLS 2018AA has been removed and 2019AA is now deprecated (will be removed in 2022 when we add support for UMLS 2022AA).
 
 ## v2.0 - build v2.0.202110010226
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators
+  - Added support for disambiguation filters.
 
 ## v2.0 - build v2.0.202109100417
 
