@@ -6,7 +6,6 @@
       path: /about/license
     - title: "Notices"
       path: /about/notices/
-
 - title: "Planning"
   pages:
     - title: "Namespace Considerations"
@@ -19,7 +18,6 @@
       path: /planning/tenancy/
     - title: "High Availability"
       path: /planning/hadr/
-
 - title: Installation
   pages:
     - title: "Prerequisites"
@@ -38,7 +36,26 @@
       path: /installing/upgrading/
     - title: "Uninstalling"
       path: /installing/uninstalling/
-
+- title: Management
+  pages:
+    - title: "Configuration"
+      path: /management/configuring/
+    - title: "Scaling ACD"
+      path: /management/scaling/
+    - title: "Pod Disruption"
+      path: /management/pod-disruption/
+    - title: "Backup and Recovery"
+      path: /management/backup-and-recovery/
+- title: Security
+  pages:
+    - title: "Manage Access"
+      path: /security/manage-access/
+    - title: "Data Security"
+      path: /security/data-security/
+    - title: "Security Constraints"
+      path: /security/security-context-constraints/
+    - title: "Considerations for GDPR"
+      path:  /security/gdpr-considerations/
 - title: Using ACD
   pages:
     - title: "Overview"
@@ -53,26 +70,12 @@
       path: /clouddocs/faqs/
     - title: "Known Limitations"
       path: /clouddocs/known_limitations/
-
-
-# - title: ACD Service Documentation
-#   pages:
-#     - title: "Getting started tutorial"
-#       path: /clouddocs/getting-started/
-#     - title: "Dependencies on other IBM Cloud services"
-#       path: /clouddocs/dependencies/
 - title: How to
   pages:
     - title: "Analyzing Text"
       path: /clouddocs/analyze_text/
     - title: "Customizing"
       path: /clouddocs/customizing/
-    # - title: "Managing Access Roles"
-    #   path: /clouddocs/access_management/
-    # - title: "Securing your data in Annotator for Clinical Data"
-    #   path: /clouddocs/data-security/
-    # - title: "Activity Tracker events"
-    #   path: /clouddocs/at_events/
 - title: Annotators
   pages:
     - title: "Allergies (Deprecated)"
@@ -151,41 +154,6 @@
   pages:
     - title: "filtering"
       path: /clouddocs/filtering/  
-# - title: Information security
-#   pages:
-#     - title: "Information security"
-#       path: /clouddocs/information_security/
-# - title: High availability and disaster recovery
-#   pages:
-#     - title: "disaster recovery"
-#       path: /clouddocs/disaster_recovery/
-# - title: Legal Notices
-#   pages:
-#     - title: "Legal Notices"
-#       path: /clouddocs/legal/
-
-- title: Management
-  pages:
-    - title: "Configuration"
-      path: /management/configuring/
-    - title: "Scaling ACD"
-      path: /management/scaling/
-    - title: "Pod Disruption"
-      path: /management/pod-disruption/
-    - title: "Backup and Recovery"
-      path: /management/backup-and-recovery/
-
-- title: Security
-  pages:
-    - title: "Manage Access"
-      path: /security/manage-access/
-    - title: "Data Security"
-      path: /security/data-security/
-    - title: "Security Constraints"
-      path: /security/security-context-constraints/
-    - title: "Considerations for GDPR"
-      path:  /security/gdpr-considerations/
-
 - title: Monitoring and Troubleshooting
   pages:
     - title: "Logging and Monitoring"
@@ -198,19 +166,11 @@
       path: /troubleshooting/troubleshooting-acd-instances/
     - title: "Troubleshooting the OAuth Proxy"
       path: /troubleshooting/troubleshooting-the-oauth-proxy/
+    - title: "Troubleshooting Cartridge Deploy"
+      path: /troubleshooting/troubleshooting-cartridge-deploy/
+    - title: "Troubleshooting Medical Codes"
+      path: /troubleshooting/troubleshooting-medical-codes/
     - title: "Troubleshooting Uninstall"
       path: /troubleshooting/troubleshooting-uninstall/
     - title: "MustGather"
       path: /troubleshooting/mustgather/
-- title: Help
-  pages:
-    - title: "Release notes"
-      path: /clouddocs/release-notes/
-    - title: "Troubleshooting"
-      path: /clouddocs/troubleshooting/
-    # - title: "Platform Metrics"
-    #   path: /clouddocs/platform-metrics/
-    # - title: "Responsibilities"
-    #   path: /clouddocs/responsibilities/
-    # - title: "Service Endpoints"
-    #   path: /clouddocs/service_endpoints/
