@@ -22,7 +22,7 @@ Annocator for Clinical Data detects medical concepts within unstructured data. W
 
 How it works:
 
-1. Designate which annotators to employ in analyzing your unstructured data. This designation is defined as an annotator flow. See [Annotator Flows] for more details.
+1. Designate which annotators to employ in analyzing your unstructured data. This designation is defined as an annotator flow. See the Annotator Flows section below for more details.
 2. Send your unstructured data along with the annotator flow to the service to extract the desired medical concepts.
 
 **Example:** analyze request referencing a persisted flow
@@ -40,7 +40,7 @@ When referencing a persisted flow in an analyze request, you can send plain text
 **Example:** analyze request within flow included
 
 ```bash
-curl -X POST -u --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
+curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
   --header "Content-Type: application/json" \
   --header "Accept: application/json" -d "{
   \"annotatorFlows\": [
