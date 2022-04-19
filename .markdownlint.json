@@ -4,10 +4,12 @@
   "MD010": false,
   "MD013": false,
   "MD026": false,
+  "MD029": false,
   "MD033": false,
   "MD034": false,
   "MD040": false,
   "MD041": false,
+  "MD046": false,
   "no-trailing-spaces": true,
   "MD024": { "siblings_only": true}
 }
