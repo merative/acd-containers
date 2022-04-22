@@ -27,7 +27,7 @@ See the [configuration](../../management/configuring) section for enabling objec
 
 ### IBM Cloud Object Storage (COS)
 
-IBM COS encrypts all objects by default. For more information on encryption management including bring your own encryption key, refer to the [Cloud Object Storage documentation](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-encryption)
+IBM COS encrypts all objects by default. For more information on encryption management including bring your own encryption key, refer to the [Cloud Object Storage documentation](/planning/storage/)
 
 ### Amazon S3 Storage
 

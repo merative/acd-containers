@@ -23,7 +23,7 @@ This program supports English-only text for insight extraction.
 
 ### Clinical Insights
 
-The [clinical insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview) feature is a ready-to-use annotation capability within IBM Watson Annotator for Clinical Data that provides critical contextual information for problems, procedures, and medications identified in the text.
+The [clinical insights](/clouddocs/clinical_insights_overview/) feature is a ready-to-use annotation capability within IBM Watson Annotator for Clinical Data that provides critical contextual information for problems, procedures, and medications identified in the text.
 
 ### Clinical Coding
 
@@ -41,8 +41,8 @@ IBM Watson Annotator for Clinical Data is a REST API service that detects medica
 When you send unstructured data to the service to be analyzed and designate the desired annotators to employ,
 the service will route your unstructured data through the designated annotators and return the medical concepts detected within your unstructured data.
 
-1. Designate which [available annotators](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-overview#available-annotators) to employ in analyzing your unstructured data.
-   This designation is defined as an annotator flow. See [Analyzing Text](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-analyze_text) for more details.
+1. Designate which [available annotators](/clouddocs/overview/) to employ in analyzing your unstructured data.
+   This designation is defined as an annotator flow. See [Analyzing Text](/clouddocs/analyze_text/) for more details.
 
 2. Send your unstructured data along with the annotator flow to the service to extract the desired medical concepts.
 
@@ -59,4 +59,4 @@ The following shows this setup with an optional security proxy that can be setup
 
 ## Customizing Annotator for Clinical Data analytics
 
-Annotator for Clinical Data provides a set of of predefined configurations you can install to use with your local ACD instance.  See [Using ACD](../../usage/getting-started/) for setup instructions after installing Annotator for Clinical Data.  See the [IBM Watson Annotator for Clinical Data](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-customizing) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
+Annotator for Clinical Data provides a set of of predefined configurations you can install to use with your local ACD instance.  See [Using ACD](../../usage/getting-started/) for setup instructions after installing Annotator for Clinical Data.  See the [IBM Watson Annotator for Clinical Data](/clouddocs/customizing/) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
