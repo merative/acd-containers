@@ -41,7 +41,7 @@ IBM Watson Annotator for Clinical Data is a REST API service that detects medica
 When you send unstructured data to the service to be analyzed and designate the desired annotators to employ,
 the service will route your unstructured data through the designated annotators and return the medical concepts detected within your unstructured data.
 
-1. Designate which [available annotators](/clouddocs/overview/) to employ in analyzing your unstructured data.
+1. Designate which [available annotators](/clouddocs/overview/#Available-Annotators) to employ in analyzing your unstructured data.
    This designation is defined as an annotator flow. See [Analyzing Text](/clouddocs/analyze_text/) for more details.
 
 2. Send your unstructured data along with the annotator flow to the service to extract the desired medical concepts.
