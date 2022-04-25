@@ -1,6 +1,6 @@
 # IBM Watson Annotator for Clinical Data Docs
 
-This project contains the docuemntation for IBM Watson Annotator for Clinical Data Container Edition.
+This project contains the documentation for IBM Watson Annotator for Clinical Data Container Edition.
 
 ## Contributing to Annotation for Clinical Data Container Edition documentation
 
