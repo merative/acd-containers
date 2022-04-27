@@ -94,7 +94,7 @@ To add the pull secret to individual ACD operand service accounts:
 1. Create a secret
 
    ```
-   kubectl create secret docker-registry cp.icr.io \
+   kubectl create secret docker-registry ibm-entitlement-key \
        --docker-server=cp.icr.io \
        --docker-username=<username> \
        --docker-password=<password> \
@@ -107,10 +107,12 @@ To add the pull secret to individual ACD operand service accounts:
 
 1. After the ACD operand has been installed, the service account must be patched to point to the secret.
 
+  NOTE: If using the current release of the ACD Container Edition, this `ibm-entitlement-key` pull secret is already defined in the operand service account so the patch step is no longer necessary.
+
    ```
    kubectl patch serviceaccount ibm-wh-acd-operand \
        --namespace <namespace> \
-       --patch '{"imagePullSecrets": [{"name": "cp.icr.io"}]}'
+       --patch '{"imagePullSecrets": [{"name": "ibm-entitlement-key"}]}'
    ```
 
 1. Then the ACD operand pods must be restarted
