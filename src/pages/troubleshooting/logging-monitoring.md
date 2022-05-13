@@ -41,7 +41,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 * To view logs filtered by correlationId, include `"\"correlationId\":\"<correlation_id>\""`.
 * In a multi-tenant ACD depoyment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
 
-### Enabling JSON logging for Openshift Conatiner Platform
+### Enabling JSON logging for Openshift Container Platform
 
 *Prerequisites
 1.Access to Red Hat Openshift Container Platform
