@@ -18,12 +18,12 @@ configurationStorage:
     volume:
       existingClaimName: ""
       supplementalGroup: ""
-digest: "884a5e1c440973656545cdaee8cf98511ef5390c1b94978afe51ce4ea23d1b55"
+digest: "9c856d0e08401e36bad7dbb43318f013275257bd7ee26d41f4384b1185d494c2"
 image: "cp.icr.io/cp/wh-acd/concept-dictionary"
 initContainer:
-  digest: "87a8cd6825919cb2777dadda6099d7c66b8a63ab181fe11c8a66f11c146d3b9a"
+  digest: "6bcad846562eb85c16ad9e2f35f524d5e53dd88df29490436383fbcc29ad95b9"
   image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
-tag: "20220413.0101"
+tag: "20220611.1543"
 replicas: 1
 resources:
   limits:
