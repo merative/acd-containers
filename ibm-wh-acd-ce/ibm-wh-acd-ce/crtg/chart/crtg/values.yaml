@@ -18,16 +18,16 @@ configurationStorage:
     volume:
       existingClaimName: ""
       supplementalGroup: ""
-digest: "8c94a6e72cb553e1c1c4ecdac69c65a413c0ba0ff5d40e1db7072ce37bb75ba8"
+digest: "a1a14c28a4133625cd9f845bb2e111b5c37fb24155dd1f07bfc1d2609b334d1e"
 image: "cp.icr.io/cp/wh-acd/cartridge"
 initContainer:
-  digest: "87a8cd6825919cb2777dadda6099d7c66b8a63ab181fe11c8a66f11c146d3b9a"
+  digest: "6bcad846562eb85c16ad9e2f35f524d5e53dd88df29490436383fbcc29ad95b9"
   image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
 revProxy:
   digest: "fd2093a24bb7dcac048d0adc19ac1bc81219405bfbcd67b35858c0902b1d124f"
   image: "nginxinc/nginx-unprivileged"
 revProxyTargets:
-tag: "20220413.1324"
+tag: "20220613.1334"
 replicas: 1
 resources:
   limits:
