@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rev-proxy
+  namespace: {{ .Values.namespace }}
+data:
+  rev-proxy.conf: |
+{{ .Files.Get "rev-proxy.conf" | indent 4}}

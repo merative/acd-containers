@@ -1,0 +1,22 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: ibm-wh-acd-acd-ce-macroservice
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: ibm-wh-acd-acd-ce-macroservice
+    app.kubernetes.io/instance: ibm-wh-acd-acd-ce-macroservice-{{ .Release.Name }}
+    app.kubernetes.io/managed-by: helm
+    helm.sh/chart: ibm-wh-acd-chart
+spec:
+  ingress:
+    - ports:
+        - port: 9443
+          protocol: TCP
+        - port: 9444
+          protocol: TCP
+  podSelector:
+    matchLabels:
+      serviceType: macroservice
+  policyTypes:
+    - Ingress

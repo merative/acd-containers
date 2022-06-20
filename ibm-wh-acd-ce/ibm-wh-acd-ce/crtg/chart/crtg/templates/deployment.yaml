@@ -1,0 +1,385 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ibm-wh-acd-crtg
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: ibm-wh-acd-crtg
+    app.kubernetes.io/instance: ibm-wh-acd-crtg-{{ .Release.Name }}
+    app.kubernetes.io/managed-by: helm
+    app.kubernetes.io/version: "2.0.0"
+    helm.sh/chart: ibm-wh-acd-chart
+  annotations:
+    TOOLCHAIN_ID: "{{ .Values.annotations.TOOLCHAIN_ID }}"
+    GIT_URL: "{{ .Values.annotations.GIT_URL }}"
+    GIT_BRANCH: "{{ .Values.annotations.GIT_BRANCH }}"
+    GIT_COMMIT: "{{ .Values.annotations.GIT_COMMIT }}"
+    USER_NAME: "{{ .Values.annotations.USER_NAME }}"
+    APPLICATION_VERSION: "{{ .Values.annotations.APPLICATION_VERSION }}"    
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ibm-wh-acd-crtg
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: "25%"
+      maxUnavailable: "25%"
+  template:
+    metadata:
+      annotations:
+        productID: ""
+        productName: ""
+        productVersion: 2.0.0
+        productMetric: VIRTUAL_PROCESSOR_CORE
+        productChargedContainers: ""
+      creationTimestamp:
+      labels:
+        app.kubernetes.io/name: ibm-wh-acd-crtg
+        app.kubernetes.io/instance: ibm-wh-acd-crtg-{{ .Release.Name }}
+        helm.sh/chart: ibm-wh-acd-chart
+        app.kubernetes.io/version: "2.0.0"
+        app.kubernetes.io/managed-by: helm
+        app.kubernetes.io/versionedApp: ibm-wh-acd-crtg-{{ .Values.tag }}
+        app.kubernetes.io/context: cartridge
+        serviceType: macroservice
+    spec:
+      hostNetwork: false
+      hostPID: false
+      hostIPC: false
+      initContainers:
+        - name: ibm-wh-acd-p12
+          image: {{ .Values.initContainer.image }}@sha256:{{ .Values.initContainer.digest }}
+          env:
+            - name: tls_key
+              value: /tmp/keystore/tls.key
+            - name: tls_crt
+              value: /tmp/keystore/tls.crt
+            - name: tls_p12
+              value: /opt/ibm/watsonhealth/services/config/certs/keystore/tls.p12
+            - name: password
+              value: wats0n
+          command: ['/bin/bash']
+          args: ['-c', "openssl pkcs12 -export -in $tls_crt -inkey $tls_key -name tls -out $tls_p12 -passin pass:$password -passout pass:$password"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 500Mi
+          volumeMounts:
+            - name: certs-keystore-volume
+              mountPath: /tmp/keystore
+              readOnly: true
+            - name: certs-keystore-p12-volume
+              mountPath: /opt/ibm/watsonhealth/services/config/certs/keystore
+          securityContext:
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
+            runAsUser: 1001
+          {{- end }}
+            capabilities:
+              drop: ["ALL"]
+      containers:
+        - name: ibm-wh-acd-crtg
+          image: {{ .Values.image }}@sha256:{{ .Values.digest }}
+          env:
+            - name: "com_ibm_watson_health_car_acd_sandbox_url"
+              value: "https://ibm-wh-acd-acd.ibm-wh-acd-operator-system:443/services/clinical_data_annotator"
+            - name: "com_ibm_watson_health_car_acd_target_url"
+              value: "https://ibm-wh-acd-acd.ibm-wh-acd-operator-system:443/services/clinical_data_annotator"
+            - name: "com_ibm_watson_health_car_aci_url"
+              value: "https://ibm-wh-acd-aci.ibm-wh-acd-operator-system:443/services/advanced_care_insights"
+            - name: "com_ibm_watson_health_car_av_url"
+              value: "https://ibm-wh-acd-av.ibm-wh-acd-operator-system:443/services/attribute_detection"
+            - name: "com_ibm_watson_health_car_url"
+              value: "https://proxy-ibm-wh-acd-ce-oauth.ddt-459f438a9db2e8e38a0030e5bd2bb905-0000.us-east.containers.appdomain.cloud:443/services/cartridge"
+            - name: "com_ibm_watson_health_car_cd_url"
+              value: "https://ibm-wh-acd-cd.ibm-wh-acd-operator-system:443/services/concept_detection"
+            - name: "com_ibm_watson_health_car_cdc_url"
+              value: "https://ibm-wh-acd-cdc.ibm-wh-acd-ce:443/services/concept_dictionary"
+            - name: "com_ibm_watson_health_car_cds_url"
+              value: "https://ibm-wh-acd-cds.ibm-wh-acd-operator-system:443/services/concept_disambiguation"
+            - name: "com_ibm_watson_health_car_hyp_url"
+              value: "https://ibm-wh-acd-hyp.ibm-wh-acd-operator-system:443/services/hypothetical_detection"
+            - name: "com_ibm_watson_health_car_neg_url"
+              value: "https://ibm-wh-acd-neg.ibm-wh-acd-operator-system:443/services/negation_detection"
+            - name: "com_ibm_watson_health_car_ont_url"
+              value: "https://ibm-wh-acd-ont.ibm-wh-acd-operator-system:443/services/ontology"
+            - name: "com_ibm_watson_health_car_spl_url"
+              value: "https://ibm-wh-acd-spl.ibm-wh-acd-operator-system:443/services/spell_checker"
+            - name: "com_ibm_watson_health_car_acd_sandbox_internal_url"
+              value: "https://ibm-wh-acd-acd.ibm-wh-acd-operator-system:443/services/clinical_data_annotator"
+            - name: "com_ibm_watson_health_car_acd_target_internal_url"
+              value: "https://ibm-wh-acd-acd.ibm-wh-acd-operator-system:443/services/clinical_data_annotator"
+            - name: "com_ibm_watson_health_car_aci_internal_url"
+              value: "https://ibm-wh-acd-aci.ibm-wh-acd-operator-system:443/services/advanced_care_insights"
+            - name: "com_ibm_watson_health_car_av_internal_url"
+              value: "https://ibm-wh-acd-av.ibm-wh-acd-operator-system:443/services/attribute_detection"
+            - name: "com_ibm_watson_health_car_cd_internal_url"
+              value: "https://ibm-wh-acd-cd.ibm-wh-acd-operator-system:443/services/concept_detection"
+            - name: "com_ibm_watson_health_car_cdc_internal_url"
+              value: "https://ibm-wh-acd-cdc.ibm-wh-acd-ce:443/services/concept_dictionary"
+            - name: "com_ibm_watson_health_car_cds_internal_url"
+              value: "https://ibm-wh-acd-cds.ibm-wh-acd-operator-system:443/services/concept_disambiguation"
+            - name: "com_ibm_watson_health_car_hyp_internal_url"
+              value: "https://ibm-wh-acd-hyp.ibm-wh-acd-operator-system:443/services/hypothetical_detection"
+            - name: "com_ibm_watson_health_car_neg_internal_url"
+              value: "https://ibm-wh-acd-neg.ibm-wh-acd-operator-system:443/services/negation_detection"
+            - name: "com_ibm_watson_health_car_ont_internal_url"
+              value: "https://ibm-wh-acd-ont.ibm-wh-acd-operator-system:443/services/ontology"
+            - name: "com_ibm_watson_health_car_spl_internal_url"
+              value: "https://ibm-wh-acd-spl.ibm-wh-acd-operator-system:443/services/spell_checker"
+            - name: "com_ibm_watson_health_car_auth_header_email"
+              value: "X-Auth-Request-Email"
+            - name: "com_ibm_watson_health_artifactstore_shared_backend"
+              value: "{{ .Values.configurationStorage.backend }}"
+            - name: "com_ibm_watson_health_artifactstore_tenant_backend"
+              value: "{{ .Values.configurationStorage.backend }}"
+            - name: "com_ibm_watson_health_artifactstore_tenant_prefix"
+              value: "{{ .Values.configurationStorage.tenantPrefix }}"
+            - name: "com_ibm_watson_health_artifactstore_shared_prefix"
+              value: "{{ .Values.configurationStorage.sharedPrefix }}"
+            - name: "com_ibm_watson_health_artifactstore_cos_buckets"
+              value: "{{ .Values.configurationStorage.s3.bucket }}"
+            - name: "com_ibm_watson_health_artifactstore_cos_tenants"
+              value: "wh-acd"
+            - name: "com_ibm_watson_health_artifactstore_cos_accessKeyIdFiles"
+              value: "ibm_wh_acd_as/username"
+            - name: "com_ibm_watson_health_artifactstore_cos_accessKeySecretFiles"
+              value: "ibm_wh_acd_as/password"
+            - name: "com_ibm_watson_health_artifactstore_cos_endpointUrl"
+              value: "{{ .Values.configurationStorage.s3.endpointUrl }}"
+            - name: "com_ibm_watson_health_artifactstore_cos_location"
+              value: "{{ .Values.configurationStorage.s3.location }}"
+            - name: "com_ibm_watson_health_common_client_auth_enabled"
+              value: "false"
+            - name: "com_ibm_watson_health_common_concurrent_blocking_threshold"
+              value: "10"
+            - name: "com_ibm_watson_health_common_concurrent_reject_threshold"
+              value: "50"
+            - name: "com_ibm_watson_health_common_concurrent_uri_pattern_list"
+              value: "/v1/cartridge.*"
+            - name: "com_ibm_watson_health_common_context_root"
+              value: "services/cartridge"
+            - name: "com_ibm_watson_health_common_enabled_dark_features"
+              value: "{{ .Values.enabledDarkFeatures }}"
+            - name: "com_ibm_watson_health_common_http_port"
+              value: "-1"
+            - name: "com_ibm_watson_health_common_https_port"
+              value: "9443"
+            - name: "com_ibm_watson_health_common_log_event_format"
+              value: "json"
+            - name: "com_ibm_watson_health_common_max_heap"
+              value: "16G"
+            - name: "com_ibm_watson_health_common_min_heap"
+              value: "16G"
+            - name: "com_ibm_watson_health_common_service_name"
+              value: "cartridge"
+            - name: "com_ibm_watson_health_common_shared_config_dir"
+              value: "/opt/ibm/watsonhealth/services/config"
+            - name: "com_ibm_watson_health_car_acd_host_1_label"
+              value: "Annotator for Clinical Data US-South (Dallas)"
+            - name: "com_ibm_watson_health_car_acd_host_1_url"
+              value: "https://us-south.wh-acd.cloud.ibm.com/wh-acd/api"
+            - name: "com_ibm_watson_health_car_acd_host_1_proxy"
+              value: "ibm-cloud-south"
+            - name: "com_ibm_watson_health_car_acd_host_1_auth"
+              value: "APIKey"
+            - name: "com_ibm_watson_health_car_acd_host_1_phi"
+              value: "true"
+            - name: "com_ibm_watson_health_car_acd_host_2_label"
+              value: "Annotator for Clinical Data US-East (Washington DC)"
+            - name: "com_ibm_watson_health_car_acd_host_2_url"
+              value: "https://us-east.wh-acd.cloud.ibm.com/wh-acd/api"
+            - name: "com_ibm_watson_health_car_acd_host_2_proxy"
+              value: "ibm-cloud-east"
+            - name: "com_ibm_watson_health_car_acd_host_2_auth"
+              value: "APIKey"
+            - name: "com_ibm_watson_health_car_acd_host_2_phi"
+              value: "true"
+          {{- with .Values.revProxyTargets }}
+{{ toYaml . | indent 12 }}
+          {{- end }}
+            {{- if .Values.tenantHeader }}
+            - name: "com_ibm_watson_health_services_authentication_type"
+              value: "custom_header"
+            - name: "com_ibm_watson_health_services_authentication_header"
+              value: "{{ .Values.tenantHeader }}"
+            {{- end }}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: crtg-https
+              containerPort: 9443
+              protocol: TCP
+          volumeMounts:
+            - name: as-volume
+              mountPath: /opt/ibm/watsonhealth/services/config/secrets/ibm_wh_acd_as
+              readOnly: true
+            - name: certs-keystore-p12-volume
+              mountPath: /opt/ibm/watsonhealth/services/config/certs/keystore
+              readOnly: true
+            - name: certs-truststore-volume
+              mountPath: /opt/ibm/watsonhealth/services/config/certs/truststore/service-ca.crt
+              subPath: service-ca.crt
+              readOnly: true
+              readOnly: true
+            - name: configmap-env-volume
+              mountPath: /opt/ibm/watsonhealth/services/config/configmaps
+              readOnly: true
+          {{- if and (eq .Values.configurationStorage.backend "file") .Values.configurationStorage.file.persistent }}
+            - name: {{ .Release.Name }}-file-store-pvc
+              mountPath: /opt/ibm/watsonhealth/services/config/artifactstore/tenant_data
+              readOnly: false
+          {{- end }}
+          startupProbe:
+            exec:
+              command:
+                - /staging/whcs-devops-ucd/docker/k8s_startup.sh
+            initialDelaySeconds: 30
+            timeoutSeconds: 1800
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 10
+          livenessProbe:
+            exec:
+              command:
+                - /staging/whcs-devops-ucd/docker/docker_liveness.sh
+            initialDelaySeconds: 180
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
+          readinessProbe:
+            exec:
+              command:
+                - /staging/whcs-devops-ucd/docker/docker_readiness.sh
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 1
+          resources:
+            requests:
+              cpu: {{ index .Values.resources.requests.cpu}}
+              ephemeral-storage: {{ index .Values.resources.requests "ephemeralStorage" }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              ephemeral-storage: {{ index .Values.resources.limits "ephemeralStorage" }}
+              memory: {{ .Values.resources.limits.memory }}
+          securityContext:
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+          {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
+            runAsUser: 1001
+          {{- end }}
+            capabilities:
+              drop: ["ALL"]
+        - name: rev-proxy
+          image: {{ .Values.revProxy.image }}@sha256:{{ .Values.revProxy.digest }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: crtg-https-pxy
+              containerPort: 9444
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 300m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          volumeMounts:
+          - name: certs-keystore-volume
+            mountPath: /tmp/keystore
+            readOnly: true
+          - mountPath: /etc/nginx/conf.d
+            name: rev-proxy
+      securityContext:
+        runAsNonRoot: true
+      {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }}
+        runAsUser: 1001
+      {{- end }}
+      {{- if eq .Values.configurationStorage.backend "file" }}
+        {{- if .Values.configurationStorage.file.volume.supplementalGroup }}
+        supplementalGroups: [{{ .Values.configurationStorage.file.volume.supplementalGroup }}]
+        {{- end }}
+      {{- end }}
+      volumes:
+      - name: as-volume
+        secret:
+          secretName: ibm-wh-acd-as
+          optional: true
+      - name: certs-keystore-volume
+        secret:
+          secretName: ibm-wh-acd-crtg-certs-keystore
+          optional: true
+      - name: certs-keystore-p12-volume
+        emptyDir: {}
+      - name: certs-truststore-volume
+        configMap:
+          name: ibm-wh-acd-certs-truststore-pem
+          optional: true
+      - name: configmap-env-volume
+        configMap:
+          name: ibm-wh-acd-custom-env
+          optional: true
+      - name: {{ .Release.Name }}-file-store-pvc
+      {{- if and (eq .Values.configurationStorage.backend "file") .Values.configurationStorage.file.persistent }}
+        persistentVolumeClaim:
+        {{- if .Values.configurationStorage.file.volume.existingClaimName }}
+          claimName: {{ .Values.configurationStorage.file.volume.existingClaimName }}
+        {{- else }}
+          claimName: {{ .Release.Name }}-file-store-pvc
+        {{- end }}
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+      - name: rev-proxy
+        configMap:
+          name: rev-proxy
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - amd64
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/versionedApp
+                  operator: In
+                  values:
+                  - ibm-wh-acd-crtg-{{ .Values.tag }}
+              topologyKey: failure-domain.alpha.kubernetes.io/zone
+            weight: 100
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/versionedApp
+                operator: In
+                values:
+                - ibm-wh-acd-crtg-{{ .Values.tag }}
+            topologyKey: kubernetes.io/hostname
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: single-request
+      schedulerName: default-scheduler
