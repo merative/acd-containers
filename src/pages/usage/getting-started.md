@@ -6,13 +6,13 @@ slug: getting-started
 toc: true
 ---
 
-The ACD service provides a robust set of REST APIs to generate clinical annotations over text and interact with persisted analytic artifacts.  To get started using the ACD service, see the [IBM Cloud API docs](https://cloud.ibm.com/apidocs/wh-acd) and examples.  The ACD Service REST APIs can be called directly or with the [IBM Watson Annotator for Clinical Data Software Development Kits (SDKs)](https://ibm.github.io/acd-containers/usage/sdks).
+The ACD service provides a robust set of REST APIs to generate clinical annotations over text and interact with persisted analytic artifacts.  To get started using the ACD service, see the Cloud API docs and examples for <span><a aria-current="" to="https://ibm.github.io/acd-containers/apidocs/index.html?shell" href="https://ibm.github.io/acd-containers/apidocs/index.html?shell" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">curl</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>. The ACD Service REST APIs can be called directly or with the [IBM Watson Annotator for Clinical Data Software Development Kits (SDKs)](https://ibm.github.io/acd-containers/usage/sdks).
 
 ### Deploying and updating the ACD-provided cartridges
 
 ACD provides a set of predefined cartridges (containing ACD flow and profile configuration) as published [here](https://github.com/IBM/wh-acd-cartridges). Add the cartridges to your ACD deployment for reference and use as example configuration.  These provided cartrides are built using a reserved prefix and need to be placed into a special supertenant tenant storage location in the ACD configuration store and are available as read-only configurations to all tenants of the ACD instance.  An administrator can deploy or update these predefined cartridges by specifying this supertenant tenant id on a direct call to an ACD container as documented below.
 
-The following steps are for the [Clinical Insights](https://cloud.ibm.com/docs/wh-acd?topic=wh-acd-clinical_insights_overview#clinical_insights_overview) cartridge.
+The following steps are for the [Clinical Insights](/clouddocs/clinical_insights_overview/) cartridge.
 
 #### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/IBM/wh-acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
 
@@ -58,7 +58,7 @@ curl -k -X POST \
     --data-binary @wh_acd.ibm_clinical_insights_v1.0.zip
 ```
 
-Note this __ibm_supertenant__ is only required when deploying the provided cartridges which are shared across tenants.  Note also if you change the instance to add the OAuth proxy for authentication and mutitenancy later, you do not need to redeploy the clinical insights cartridge. If you update the instance later you will need to use the `X-Forwarded-User` header with a PUT command on curl, however.
+Note this **ibm_supertenant** is only required when deploying the provided cartridges which are shared across tenants.  Note also if you change the instance to add the OAuth proxy for authentication and mutitenancy later, you do not need to redeploy the clinical insights cartridge. If you update the instance later you will need to use the `X-Forwarded-User` header with a PUT command on curl, however.
 
 **Deploying custom cartridges**
 If you are deploying a custom cartridge rather than an ACD-provided cartridge, you would remove this header completely to have it placed into the defaultTenant configuration location, or if you are using ACD multitenancy (which requires a [security proxy](../../security/manage-access)), you should deploy and update your custom cartridges for each application (i.e. tenant) through the proxy route using the bearer token for the tenant and not use a port forward direct to an ACD container at all for deploying custom cartridges.
