@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ibm-wh-acd-crtg
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: ibm-wh-acd-crtg
+    app.kubernetes.io/instance: ibm-wh-acd-crtg-{{ .Release.Name }}
+    app.kubernetes.io/managed-by: helm
+    app.kubernetes.io/version: "2.0.0"
+    helm.sh/chart: ibm-wh-acd-chart
+    release: v2
+  annotations:
+    service.kubernetes.io/ibm-load-balancer-cloud-provider-ip-type: private
+    service.beta.openshift.io/serving-cert-secret-name: ibm-wh-acd-crtg-certs-keystore
+spec:
+  ports:
+  - name: crtg-https-pxy
+    protocol: TCP
+    port: 443
+    targetPort: crtg-https-pxy
+  selector:
+    app.kubernetes.io/name: ibm-wh-acd-crtg
+  type: ClusterIP
+  sessionAffinity: None

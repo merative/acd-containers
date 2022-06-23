@@ -1,0 +1,5 @@
+apiVersion: v2
+appVersion: "2.0"
+description: A Helm chart for Kubernetes
+name: ibm-wh-acd-ce-cdc-chart
+version: 2.0.0
