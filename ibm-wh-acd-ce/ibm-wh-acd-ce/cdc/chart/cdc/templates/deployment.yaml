@@ -48,8 +48,6 @@ spec:
       hostNetwork: false
       hostPID: false
       hostIPC: false
-      imagePullSecrets:
-        - name: us.icr.io 
       initContainers:
         - name: ibm-wh-acd-p12
           image: {{ .Values.initContainer.image }}@sha256:{{ .Values.initContainer.digest }}
@@ -88,7 +86,7 @@ spec:
               drop: ["ALL"]
       containers:
         - name: ibm-wh-acd-cdc
-          image: {{ .Values.container.image }}@sha256:{{ .Values.container.digest }}
+          image: {{ .Values.image }}@sha256:{{ .Values.digest }}
           env:
             - name: "com_ibm_watson_health_artifactstore_shared_backend"
               value: "{{ .Values.configurationStorage.backend }}"
@@ -276,7 +274,7 @@ spec:
               - key: app.kubernetes.io/versionedApp
                 operator: In
                 values:
-                - ibm-wh-acd-cdc-{{ .Values.container.tag }}
+                - ibm-wh-acd-cdc-{{ .Values.tag }}
             topologyKey: kubernetes.io/hostname
     {{- with .Values.tolerations }}
       tolerations:
