@@ -20,19 +20,19 @@ configurationStorage:
       supplementalGroup: ""
 digest: "9c856d0e08401e36bad7dbb43318f013275257bd7ee26d41f4384b1185d494c2"
 image: "cp.icr.io/cp/wh-acd/concept-dictionary"
+tag: "20220611.1543"
 initContainer:
   digest: "6bcad846562eb85c16ad9e2f35f524d5e53dd88df29490436383fbcc29ad95b9"
   image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
-tag: "20220611.1543"
 replicas: 1
 resources:
   limits:
     cpu: ""
-    ephemeralStorage: 1100Mi
-    memory: 19G
+    ephemeralStorage: 2Gi
+    memory: 12G
   requests:
     cpu: 100m
     ephemeralStorage: 900Mi
-    memory: 19G
+    memory: 12G
 tenantHeader: ""
 tolerations: []

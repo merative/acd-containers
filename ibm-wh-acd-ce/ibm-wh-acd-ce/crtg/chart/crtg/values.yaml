@@ -20,14 +20,14 @@ configurationStorage:
       supplementalGroup: ""
 digest: "a1a14c28a4133625cd9f845bb2e111b5c37fb24155dd1f07bfc1d2609b334d1e"
 image: "cp.icr.io/cp/wh-acd/cartridge"
+tag: "20220613.1334"
 initContainer:
   digest: "6bcad846562eb85c16ad9e2f35f524d5e53dd88df29490436383fbcc29ad95b9"
   image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
 revProxy:
-  digest: "fd2093a24bb7dcac048d0adc19ac1bc81219405bfbcd67b35858c0902b1d124f"
+  digest: "2e7ef18231fe3f087e568e4bb55970f654f76859e452e079269ca8c2b95ea485"
   image: "nginxinc/nginx-unprivileged"
 revProxyTargets:
-tag: "20220613.1334"
 replicas: 1
 resources:
   limits:
