@@ -222,7 +222,7 @@ Spec:
 
 #### Description
 
-The `Tenant Header` property defines a [header](https://ibm.github.io/acd-containers/planning/tenancy/) to include in a multi-tenant environment to isolate data from other tenants.
+The `Tenant Header` property defines a [header](/planning/tenancy/) to include in a multi-tenant environment to isolate data from other tenants.
 
 #### Example
 

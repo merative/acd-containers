@@ -41,7 +41,7 @@ The configuration editor facilitates the following customizations:
 
 1. The consumer uses the IBM Clinical Data Annotator Configuration Editor to create a new cartridge (or modify an existing one) and customizes the contents (artifacts) of the cartridge to their domain. After that, the consumer will **Export** the cartridge in order to save a snapshot of the cartridge.
 
-2. The consumer deploys the cartridge snapshot (a zip file) to  IBM Clinical Data Annotator using _POST /v1/cartridges_ API. A successful request for creating a cartridge will return with HTTP <q>202 ACCEPTED</q> response code and will include the path to the resource, e.g., /v1/cartridges/cartridge_id in the response body and the response header. The resource path can be used in _GET /v1/cartridges/cartridgeId_ API to obtain the overall deployment status. In the following curl example, the consumer's cartridge file is `/path/to/name_of_cartridge_file.zip`.
+2. The consumer deploys the cartridge snapshot (a zip file) to  IBM Clinical Data Annotator using _POST /v1/cartridges_ API. A successful request for creating a cartridge will return with HTTP <q>202 ACCEPTED</q> response code and will include the path to the resource, e.g., /v1/cartridges/cartridgeId in the response body and the response header. The resource path can be used in _GET /v1/cartridges/cartridgeId_ API to obtain the overall deployment status. In the following curl example, the consumer's cartridge file is `/path/to/name_of_cartridge_file.zip`.
 
 ```Curl
 
@@ -53,9 +53,9 @@ The configuration editor facilitates the following customizations:
 
 ```
 
-Use the _POST /v1/cartridges_ operation for the initial deployment of a cartridge version and _PUT /v1/cartridges_ to redploy cartridge updates. Different pusblished versions of a cartridge (e.g. cartridge_v1.0, cartridge_v2.0) will need to be initially deployed via the POST operation and subsequently redeployed via the PUT operation.
+Use the _POST /v1/cartridges_ operation for the initial deployment of a cartridge version and _PUT /v1/cartridges_ to redploy cartridge updates. Different published versions of a cartridge (e.g. cartridge_v1.0, cartridge_v2.0) will need to be initially deployed via the POST operation and subsequently redeployed via the PUT operation.
 
-3. The consumer redeploys a previously deployed cartridge version using the _PUT /v1/cartridges_ API. The cartridges id is extracted directly from the cartridge zip file. A successful request for updating the cartridge (re)deployment will result in a HTTP <q>202 ACCEPTED</q> response code and will include the path to the resource, e.g., -v1-cartridges-cartridge_id in the response body and the response header.
+3. The consumer redeploys a previously deployed cartridge version using the _PUT /v1/cartridges_ API. The cartridges id is extracted directly from the cartridge zip file. A successful request for updating the cartridge (re)deployment will result in a HTTP <q>202 ACCEPTED</q> response code and will include the path to the resource, e.g., /v1/cartridges/cartridgeId in the response body and the response header.
 
 ```Curl
 
@@ -105,4 +105,4 @@ curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 "<route_host>/v1/deploy?update=false&version=2018-01-17"
 ```
 
-Some large cartridge deployments can exceed the request timeout thresholds defined in the DataPower gateways (usually after 2 mins). In that event, you may receive the following error response. See [Cartridge Deployment Timeout](/clouddocs/customizing/) for additional considerations during the deployment of large cartridges.
+Some large cartridge deployments can exceed the request timeout thresholds defined in the data center gateways (usually after 2 mins). See [Cartridge Deployment Timeout](/clouddocs/known_limitations/#cartridge-deployment-timeouts) for additional considerations during the deployment of large cartridges.
