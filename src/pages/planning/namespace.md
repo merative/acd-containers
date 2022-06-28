@@ -25,4 +25,4 @@ When the ACD operator is installed using all namespaces mode, a single ACD opera
 
 When the ACD operator is installed using single namespace mode, each ACD operator and its ACD operand are installed into the specified namespace.
 
-If no namespace is specified when using the [cloudctl CLI](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator-using-cloudctl), the `ibm-wh-acd-operator-system` namespace is used.
+If no namespace is specified when using the [cloudctl CLI](/installing/installing/#install-the-acd-operator-using-cloudctl), the `ibm-wh-acd-operator-system` namespace is used.
