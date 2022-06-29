@@ -21,9 +21,9 @@ Installing ACD has three phases:
 
 ## Before you begin
 
-- [Plan for your installation](https://ibm.github.io/acd-containers/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+- [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
 - [Obtain](https://myibm.ibm.com/products-services/containerlibrary) and [verify](#verifying-ibm-entitled-registry-access) access to the IBM Entitled Registry. Note that customers must use their IBMid to log in to their `myibm` account. The customer must request the entitlement key so the ownership and management of the entitlement stays with them.
-- Set up your environment according to the [prerequisites](https://ibm.github.io/acd-containers/installing/prereqs/), including setting up your OpenShift Container Platform.
+- Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Setup](/installing/setup-namespace/) your project and project dependencies if required for your environment.
 
@@ -41,7 +41,7 @@ docker login cp.icr.io --username cp --password <your entitlement key>
 
 ## Air-gapped (disconnected) installation
 
-Some environments are disconnected and do not have access to the public internet, and therefore no access to DockerHub or other image registries. When deploying in an air-gapped environment, refer to the [Air-gap Installation](https://ibm.github.io/acd-containers/installing/air-gap-installation/).
+Some environments are disconnected and do not have access to the public internet, and therefore no access to DockerHub or other image registries. When deploying in an air-gapped environment, refer to the [Air-gap Installation](/installing/air-gap-installation/).
 
 ## Non air-gapped (connected) installation
 

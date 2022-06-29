@@ -22,14 +22,14 @@ IBM Watson Annotator for Clinical Data (ACD) Container Edition has the following
   - [oc](https://docs.openshift.com/container-platform) - Openshift CLI for interacting with the cluster
   - [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli) - CASE CLI for interacting with CASE bundles
 - Login credentials and other cluster connection details from your cluster administrator
-- A [dedicated Openshift project (namespace)](https://ibm.github.io/acd-containers/installing/installing/#create-a-project-(namespace)) per ACD deployment
+- A [dedicated Openshift project (namespace)](/installing/installing/#create-a-project-(namespace)) per ACD deployment
 - A purchased [entitlement key](https://myibm.ibm.com/products-services/containerlibrary) for pulling images from the IBM Entitled Registry
-- A secret for accessing a storage bucket, if [planning to use an object storage bucket](https://ibm.github.io/acd-containers/planning/storage/)
+- A secret for accessing a storage bucket, if [planning to use an object storage bucket](/planning/storage/)
 
 Obtain the connection details for your OpenShift Container Platform cluster from your administrator. For additional planning and installation details, see:
 
-- [Plan for your installation](https://ibm.github.io/acd-containers/planning/namespace), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Install ACD](https://ibm.github.io/acd-containers/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](https://ibm.github.io/acd-containers/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-operator), and [installing the ACD service](https://ibm.github.io/acd-containers/installing/installing/#install-the-acd-service).
+- [Plan for your installation](/planning/namespace), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
+- [Install ACD](/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](/installing/installing/#install-the-acd-operator), and [installing the ACD service](/installing/installing/#install-the-acd-service).
 
 ## Resources Required
 
