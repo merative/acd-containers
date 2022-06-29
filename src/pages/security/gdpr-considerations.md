@@ -55,7 +55,7 @@ Areas for consideration to address these aspects of the GDPR legislation include
 
 - Physical access to the assets where the product is installed
 - [Encryption of data](/security/data-security/) both at rest and in flight
-- [Managing access](/security/managing-access/) to topics which hold sensitive material.
+- [Managing access](/security/manage-access/) to topics which hold sensitive material.
 
 ## Data Life Cycle
 
