@@ -13,19 +13,15 @@ const LeftNavResourceLinks = ({
   var links = [
     {
       title: 'API Reference',
-      href: 'https://ibm.github.io/acd-containers/apidocs/index.html',
+      href: 'https://merative.github.io/acd-containers/apidocs/index.html',
     },
     {
       title: 'Github',
-      href: 'https://github.com/IBM/acd-containers',
+      href: 'https://github.com/merative/acd-containers',
     },
-  //  {
-  //    title: 'Knowledge Center',
-  //    href: 'https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.10/com.ibm.curam.nav.doc/spm_welcome.html',
-  //  },
     {
       title: 'Change Log',
-      href: 'https://github.com/IBM/acd-containers/blob/master/CHANGELOG.md',
+      href: 'https://github.com/merative/acd-containers/blob/master/CHANGELOG.md',
     }
   ];
 
