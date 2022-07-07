@@ -16,14 +16,29 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
+    "carbon-components-react": "^8.6.0",
     "carbon-icons": "^7.0.7",
-    "gatsby": "^2.32.12",
-    "gatsby-cli": "^2.19.2",
-    "gatsby-theme-carbon": "^1.28.0",
+    "gatsby": "^4.18.0",
+    "gatsby-cli": "^4.18.0",
+    "gatsby-plugin-catch-links": "^4.18.0",
+    "gatsby-plugin-manifest": "^4.18.0",
+    "gatsby-plugin-mdx": "^3.18.0",
+    "gatsby-plugin-react-helmet": "^5.18.0",
+    "gatsby-plugin-sass": "^5.18.0",
+    "gatsby-plugin-sass-resources": "^2.0.0",
+    "gatsby-plugin-sharp": "^4.18.0",
+    "gatsby-remark-copy-linked-files": "^5.18.0",
+    "gatsby-remark-images": "^6.18.0",
+    "gatsby-remark-responsive-iframe": "^5.18.0",
+    "gatsby-remark-smartypants": "^5.18.0",
+    "gatsby-source-filesystem": "^4.18.0",
+    "gatsby-theme-carbon": "^2.3.1",
+    "gatsby-transformer-yaml": "^4.18.0",
     "latest": "^0.2.0",
     "node.js": "0.0.1-security",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "use-media": "^1.4.0"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
