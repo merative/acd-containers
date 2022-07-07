@@ -35,7 +35,6 @@ jobs:
           npm install -g markdownlint-cli
           npm ci --force
           pip install --user linkchecker
-#          sed -i "s/TRAVIS_HOST/$(hostname -f)/" linkcheckerrc
           markdownlint **/*.md
           npm run build
 
