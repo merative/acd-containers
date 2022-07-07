@@ -32,11 +32,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          npm install -g markdownlint-cli
           npm ci --force
+          pip install --user linkchecker
+          sed -i "s/TRAVIS_HOST/$(hostname -f)/" linkcheckerrc
+          markdownlint **/*.md
           npm run build
-          npm install @jamesives/github-pages-deploy-action
-          
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: public
+
