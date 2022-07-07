@@ -1,5 +1,4 @@
-
-// This is where your application styles could go.
+/* This is where your application styles could go. */
 
 [class*='PageHeader-module--page-header'] {
   height: auto !important;
@@ -100,7 +99,7 @@
   }
 }
 
-// Hide SideBar and Footer when printing
+/* Hide SideBar and Footer when printing */
 @media print {
   [class*='LeftNavWrapper-module--expanded'] {
     display: none;
