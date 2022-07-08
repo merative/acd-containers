@@ -1,6 +1,6 @@
 const siteTitle = 'Annotator for Clinical Data'
 
-var sitePrefix = process.env.SITE_PREFIX || "\/"
+var sitePrefix = process.env.SITE_PREFIX || "acd-containers"
 console.log(`Using SITE_PREFIX: '${sitePrefix}'`)
 
 module.exports = {
