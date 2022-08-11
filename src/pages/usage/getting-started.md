@@ -14,7 +14,7 @@ ACD provides a set of predefined cartridges (containing ACD flow and profile con
 
 The following steps are for the [Clinical Insights](/clouddocs/clinical_insights_overview/) cartridge.
 
-#### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/merative/wh-acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
+#### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/merative/acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
 
 #### 2. Port-forward to connect to an ACD pod.
 
