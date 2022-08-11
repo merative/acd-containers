@@ -10,7 +10,7 @@ The ACD service provides a robust set of REST APIs to generate clinical annotati
 
 ### Deploying and updating the ACD-provided cartridges
 
-ACD provides a set of predefined cartridges (containing ACD flow and profile configuration) as published [here](https://github.com/merative/wh-acd-cartridges). Add the cartridges to your ACD deployment for reference and use as example configuration.  These provided cartrides are built using a reserved prefix and need to be placed into a special supertenant tenant storage location in the ACD configuration store and are available as read-only configurations to all tenants of the ACD instance.  An administrator can deploy or update these predefined cartridges by specifying this supertenant tenant id on a direct call to an ACD container as documented below.
+ACD provides a set of predefined cartridges (containing ACD flow and profile configuration) as published [here](https://github.com/merative/acd-cartridges). Add the cartridges to your ACD deployment for reference and use as example configuration.  These provided cartrides are built using a reserved prefix and need to be placed into a special supertenant tenant storage location in the ACD configuration store and are available as read-only configurations to all tenants of the ACD instance.  An administrator can deploy or update these predefined cartridges by specifying this supertenant tenant id on a direct call to an ACD container as documented below.
 
 The following steps are for the [Clinical Insights](/clouddocs/clinical_insights_overview/) cartridge.
 
