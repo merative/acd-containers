@@ -129,6 +129,8 @@ Before you can install the ACD operator and use it to create instances of the AC
 
 If you have other IBM products installed in your cluster, then you may already have the IBM Operator Catalog available, and you can continue to installing the ACD operator from there.
 
+**Important**: If you operate in an internet-connected Red Hat OpenShift Container Platform cluster, you must migrate your images from Docker to the IBM Container Registry by 30 September 2021. IBM Operator Catalog related images can be sourced from icr.io/cpopen. Refer to [Migrating from Docker to IBM Container Registry](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=clusters-migrating-from-docker-container-registry) for more details.
+
 To add the IBM Operator Catalog:
 
 1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
