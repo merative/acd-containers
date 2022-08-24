@@ -32,6 +32,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm install -g markdownlint-cli
+          npm install -force
           pip install --user linkchecker
           markdownlint **/*.md
           npm run build
