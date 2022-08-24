@@ -11,7 +11,6 @@ module.exports = {
   },
   pathPrefix: sitePrefix,
   plugins: [
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
