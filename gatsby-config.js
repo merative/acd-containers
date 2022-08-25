@@ -6,7 +6,7 @@ console.log(`Using SITE_PREFIX: '${sitePrefix}'`)
 module.exports = {
   siteMetadata: {
     title: siteTitle,
-    description: 'Annotator for Clinical Data on Kubernetes Runbook',
+    description: 'Annotator for Clinical Data Container Edition Documentation',
     keywords: 'acd,containers',
   },
   pathPrefix: sitePrefix,

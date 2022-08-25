@@ -18,9 +18,9 @@
   "dependencies": {
     "@parcel/namer-default": "^2.6.2",
     "carbon-components-react": "^8.9.0",
-    "carbon-icons": "^7.0.7",
-    "gatsby": "^4.18.0",
-    "gatsby-cli": "^4.18.0",
+    "carbon-icons": "7.0.7",
+    "gatsby": "4.21.0",
+    "gatsby-cli": "4.21.0",
     "gatsby-plugin-catch-links": "^4.20.0",
     "gatsby-plugin-gatsby-cloud": "^4.18.0",
     "gatsby-plugin-image": "^2.18.1",
@@ -47,6 +47,11 @@
     "use-media": "^1.4.0"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "immer": "9.0.12",
+    "normalize-url": "7.0.3",
+    "node-sass": "7.0.1",
+    "simple-get": "4.0.1",
+    "trim": "1.0.1",
+    "glob-parent": "6.0.2"
   }
 }
