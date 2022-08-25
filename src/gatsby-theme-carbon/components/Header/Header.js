@@ -34,7 +34,6 @@ const Header = ({ children }) => {
       className={cx(styles.header, {
         [styles.headerWithHeaderNav]: navigationStyle,
       })}>
-      <SkipToContent href="#main-content" className={styles.skipToContent} />
       <HeaderMenuButton
         className={cx('bx--header__action--menu', styles.headerButton)}
         aria-label="Open menu"
