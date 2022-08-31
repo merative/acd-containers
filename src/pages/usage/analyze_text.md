@@ -18,7 +18,7 @@ toc: true
 
 <!-- # Analyzing Text -->
 
-Annocator for Clinical Data detects medical concepts within unstructured data. When you send unstructured data to the service to be analyzed and designate the desired annotators to employ, the service will route your unstructured data through the designated annotators and return the medical concepts detected within your unstructured data.
+Annotator for Clinical Data detects medical concepts within unstructured data. When you send unstructured data to the service to be analyzed and designate the desired annotators to employ, the service will route your unstructured data through the designated annotators and return the medical concepts detected within your unstructured data.
 
 How it works:
 

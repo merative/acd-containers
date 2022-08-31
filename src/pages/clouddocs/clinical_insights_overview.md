@@ -30,7 +30,7 @@ There is an online [demo application](https://acd-try-it-out.mybluemix.net/previ
 
 The default attributes that are defined in the clinical insights cartridge can be customized.
 
-You can use the Annotator for Clinical Data Configuration Editor to [customize attributes](/clouddocs/customizing/) using the clinical insight model scores and other contextual information provided by {Annotator for Clinical Data.
+You can use the Annotator for Clinical Data Configuration Editor to [customize attributes](/usage/customizing/) using the clinical insight model scores and other contextual information provided by {Annotator for Clinical Data.
 
 ## Models
 
