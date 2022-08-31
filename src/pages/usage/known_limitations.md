@@ -25,7 +25,7 @@ Annotator for Clinical Data imposes a 50K limit on text being analyzed per reque
 
 ## Cartridge Deployment Timeouts
 
-Cartridge deployments via the /deploy API can sometimes exceed the one minute timeout threshold for services to provide a response. When the timeout is exceeded, a 504 response is returned in html format. Despite the 504 response, the deploy operation will continue to completion. In the event of a deployment timeout, you can verify successful deployment of the cartridge through monitoring the status of the deployment.  See [Cartridge Deployment](/clouddocs/customizing/#cartridge-deployment).
+Cartridge deployments via the /deploy API can sometimes exceed the one minute timeout threshold for services to provide a response. When the timeout is exceeded, a 504 response is returned in html format. Despite the 504 response, the deploy operation will continue to completion. In the event of a deployment timeout, you can verify successful deployment of the cartridge through monitoring the status of the deployment.  See [Cartridge Deployment](/usage/customizing/#cartridge-deployment).
 
 Use of the asynchronous /cartridges APIs is recommended to avoid cartridge deployment timeouts.  See here for more information about [troubleshooting a cartridge deployment](/troubleshooting/troubleshooting-cartridge-deploy/).
 

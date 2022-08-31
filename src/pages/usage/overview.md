@@ -21,7 +21,7 @@ subcollection: wh-acd
 
 **Notice:** Annotator for Clinical Data Service is currently in Limited Availability. Please contact your IBM sales representative for details.
 
-The Annotator for Clinical Data Service is designed to find medical concepts, [medical codes](/clouddocs/medical_codes/), and contextual information in unstructured text. It provides turn key annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/) is the primary source for concepts and medical codes. Annotator for Clinical Data Service can also work with user provided ontologies beyond UMLS.  
+The Annotator for Clinical Data Service is designed to find medical concepts, [medical codes](/clouddocs/medical_codes/), and contextual information in unstructured text. It provides turnkey annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/) is the primary source for concepts and medical codes. Annotator for Clinical Data Service can also work with user-provided ontologies beyond UMLS.  
 
 To illustrate the basic function of Annotator for Clinical Data Service, let's look at a simple example.  Imagine that we have the following small snippet of text:
 

@@ -56,26 +56,44 @@
       path: /security/security-context-constraints/
     - title: "Considerations for GDPR"
       path:  /security/gdpr-considerations/
+- title: Monitoring and Troubleshooting
+  pages:
+    - title: "Logging and Monitoring"
+      path: /troubleshooting/logging-monitoring/
+    - title: "Troubleshooting Pull Secrets"
+      path: /troubleshooting/troubleshooting-pull-secrets/
+    - title: "Troubleshooting Air-gapped (disconnected) installations"
+      path: /troubleshooting/troubleshooting-air-gapped-installations/
+    - title: "Troubleshooting ACD instances"
+      path: /troubleshooting/troubleshooting-acd-instances/
+    - title: "Troubleshooting the OAuth Proxy"
+      path: /troubleshooting/troubleshooting-the-oauth-proxy/
+    - title: "Troubleshooting Cartridge Deploy"
+      path: /troubleshooting/troubleshooting-cartridge-deploy/
+    - title: "Troubleshooting Medical Codes"
+      path: /troubleshooting/troubleshooting-medical-codes/
+    - title: "Troubleshooting Uninstall"
+      path: /troubleshooting/troubleshooting-uninstall/
+    - title: "MustGather"
+      path: /troubleshooting/mustgather/
 - title: Using ACD
   pages:
     - title: "Overview"
-      path: /clouddocs/overview/
+      path: /usage/overview/
     - title: "Getting started"
       path: /usage/getting-started/
     - title: "Software Development Kits"
       path: /usage/sdks/
     - title: "Custom Resource APIs"
       path: /usage/custom-resource-apis/
-    - title: "FAQs"
-      path: /clouddocs/faqs/
-    - title: "Known Limitations"
-      path: /clouddocs/known_limitations/
-- title: How to
-  pages:
     - title: "Analyzing Text"
-      path: /clouddocs/analyze_text/
+      path: /usage/analyze_text/
     - title: "Customizing"
-      path: /clouddocs/customizing/
+      path: /usage/customizing/
+    - title: "FAQs"
+      path: /usage/faqs/
+    - title: "Known Limitations"
+      path: /usage/known_limitations/
 - title: Annotators
   pages:
     - title: "Allergies (Deprecated)"
@@ -154,23 +172,3 @@
   pages:
     - title: "filtering"
       path: /clouddocs/filtering/  
-- title: Monitoring and Troubleshooting
-  pages:
-    - title: "Logging and Monitoring"
-      path: /troubleshooting/logging-monitoring/
-    - title: "Troubleshooting Pull Secrets"
-      path: /troubleshooting/troubleshooting-pull-secrets/
-    - title: "Troubleshooting Air-gapped (disconnected) installations"
-      path: /troubleshooting/troubleshooting-air-gapped-installations/
-    - title: "Troubleshooting ACD instances"
-      path: /troubleshooting/troubleshooting-acd-instances/
-    - title: "Troubleshooting the OAuth Proxy"
-      path: /troubleshooting/troubleshooting-the-oauth-proxy/
-    - title: "Troubleshooting Cartridge Deploy"
-      path: /troubleshooting/troubleshooting-cartridge-deploy/
-    - title: "Troubleshooting Medical Codes"
-      path: /troubleshooting/troubleshooting-medical-codes/
-    - title: "Troubleshooting Uninstall"
-      path: /troubleshooting/troubleshooting-uninstall/
-    - title: "MustGather"
-      path: /troubleshooting/mustgather/

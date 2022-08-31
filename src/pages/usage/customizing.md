@@ -105,4 +105,4 @@ curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 "<route_host>/v1/deploy?update=false&version=2018-01-17"
 ```
 
-Some large cartridge deployments can exceed the request timeout thresholds defined in the data center gateways (usually after 2 mins). See [Cartridge Deployment Timeout](/clouddocs/known_limitations/#cartridge-deployment-timeouts) for additional considerations during the deployment of large cartridges.
+Some large cartridge deployments can exceed the request timeout thresholds defined in the data center gateways (usually after 2 mins). See [Cartridge Deployment Timeout](/usage/known_limitations/#cartridge-deployment-timeouts) for additional considerations during the deployment of large cartridges.

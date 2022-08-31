@@ -19,10 +19,6 @@ subcollection: wh-acd
 
 <!-- # FAQs -->
 
-## Can I process PHI _(Protected Health Information)_ data?
-
-The service is HIPAA enabled and capable of processing PHI data. Review [Enabling the HIPAA Supported setting](/security/manage-access/) prior to processing PHI data.
-
 ## Can I post multiple documents for processing within a single request?
 
 Yes, you can define multiple text blocks within a json request submitted to the service.
@@ -64,4 +60,4 @@ At this time, the nlp annotators provided by the service support English text.
 
 ## Which annotator flows are provided and maintained by the service?
 
-The [wh_acd.ibm_clinical_insights_v1.0_standard_flow](/clouddocs/overview/) annotator flow that's part of the [Clinical Insights](/clouddocs/clinical_insights_overview/) capability is provided and maintained by the service.
+The [wh_acd.ibm_clinical_insights_v1.0_standard_flow](/usage/overview/) annotator flow that's part of the [Clinical Insights](/clouddocs/clinical_insights_overview/) capability is provided and maintained by the service.
