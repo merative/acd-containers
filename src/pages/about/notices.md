@@ -23,7 +23,7 @@ This program may reference National Library of Medicine (NLM).
 <q>The duplication, sale, or redistribution of NLM data must conform to fair use guidelines and copyright law.</q>
 
 SNOMED Clinical Terms®
-Version: SNOMEDCT_US_2021_03_01 March 1, 2021
+Version: SNOMEDCT_US_2022_03_01 March 1, 2022
 
 This Program includes SNOMED Clinical Terms® (SNOMED CT®) which is used by permission of the International Health Terminology Standards Development Organisation (IHTSDO). All rights reserved. SNOMED CT®, was originally created by The College of American Pathologists. <q>SNOMED</q> and <q>SNOMED CT</q> are registered trademarks of the IHTSDO.
 
@@ -32,27 +32,29 @@ The program described in this document also includes the vocabulary sources list
 | Table 1. Additional UMLS Vocabulary Sources ||
 |----------------------------|---------------------------------------------------------|
 |AIR93|AI/RHEUM. Bethesda, MD : National Library of Medicine, Lister Hill Center, 1993|
+|ALT2009|ABC Coding and Terminology. 9th. Albuquerque, NM: ABC Coding Solutions - Alternative Link, 2009|
 |AOD2000|Alcohol and Other Drug Thesaurus. 3rd. ed. [4 Volumes.] Bethesda, MD: National Institute on Alcohol Abuse and Alcoholism (NIAAA) and Center for Substance Abuse Prevention (CSAP), 2000|
 |AOT2003|Authorized Osteopathic Thesaurus. Educational Council of Osteopathic Principles of the American Association of Colleges of Osteopathic Medicine: Chevy Chase MD, 2004|
 |ATC_2021_21_03_01 (updated)|WHO Collaborating Centre for Drug Statistics Methodology, Anatomical Therapeutic Chemical (ATC) classification system, 2021 Oslo, Norway|
 |CCS2005|Clinical Classifications Software (CCS). Release Date: April 2005. Agency for Healthcare Research and Quality (AHRQ), Rockville, MD|
-|CCSR_ICD10CM_2021 (new)|Healthcare Cost and Utilization Project (HCUP), Clinical Classifications Software Refined for ICD-10-CM, Agency for Healthcare Research and Quality (AHRQ), October 2020, Rockville, MD|
-|CCSR_ICD10PCS_2021 (new)|Healthcare Cost and Utilization Project (HCUP),Clinical Classifications Software Refined for ICD-10-PCS, Agency for Healthcare Research and Quality (AHRQ), December 2020, Rockville, MD|
+|CCSR_ICD10CM_2022 (updated)|Healthcare Cost and Utilization Project (HCUP), Clinical Classifications Software Refined for ICD-10-CM, Agency for Healthcare Research and Quality (AHRQ), October 2021, Rockville, MD|
+|CCSR_ICD10PCS_2022 (updated)|Healthcare Cost and Utilization Project (HCUP),Clinical Classifications Software Refined for ICD-10-PCS, Agency for Healthcare Research and Quality (AHRQ), October 2021, Rockville, MD|
+|CDCREC_1.2|CDC, National Center for Health Statistics, Race & Ethnicity - CDC, Atlanta, GA, December 27,2017|
 |CHV2011_02|Consumer Health Vocabulary, 2011.|
 |COSTAR_89-95|Computer-Stored Ambulatory Records (COSTAR). Boston MA: Massachusetts General Hospital, 1989-1995.|
 |CSP2006|Computer Retrieval of Information on Scientific Projects (CRISP). Bethesda MD: National Institutes of Health, Division of Research Grants, Research Documentation Section, 2006.|
 |CST95|Coding Symbols for Thesaurus of Adverse Reaction Terms (COSTART). 5th ed. Rockville MD: U.S. Food and Drug Administration, Center for Drug Evaluation and Research, 1995.|
-|CVX_2021_01_29 (updated)|National Center for Immunization and Respiratory Diseases, CVX Code Set, Atlanta, GA, January 29, 2021|
-|DRUGBANK5.0_2021_01_29 (updated)|DrugBank 5.0, OMx Personal Health Analytics Inc., January 29, 2021, Edmonton, Alberta, Canada, Wishart DS, Knox C, Guo AC, Shrivastava S, Hassanali M, Stothard P, Chang Z, Woolsey J. DrugBank: a comprehensive resource for in silico drug discovery and exploration. Nucleic Acids Res. 2006 Jan 1 34(Database issue):D668-72|
+|CVX_2022_02_14 (updated)|National Center for Immunization and Respiratory Diseases, CVX Code Set, Atlanta, GA, February 14, 2022|
+|DRUGBANK5.0_2021_01_29 (updated)|DrugBank 5.0, OMx Personal Health Analytics Inc., February 03, 2022, Edmonton, Alberta, Canada, Wishart DS, Knox C, Guo AC, Shrivastava S, Hassanali M, Stothard P, Chang Z, Woolsey J. DrugBank: a comprehensive resource for in silico drug discovery and exploration. Nucleic Acids Res. 2006 Jan 1 34(Database issue):D668-72|
 |DXP94|DXplain (An expert diagnosis program). Boston MA: Massachusetts General Hospital, 1994|
 |FMA4_15|Jose Leonardo V. Mejino Jr., M.D., Cornelius Rosse, M.D., DSc, Foundation Model of Anatomy, v4.6.0 Department of Biological Structure, University of Washington, April 2019|
-|GO2020_05_02 |Gene Ontology, Gene Ontology Consortium, May 2, 2020|
-|HCPCS2021 (updated)|Healthcare Common Procedure Coding System (HCPCS), 2021 Baltimore, MD Centers for Medicare & Medicaid Services 2021|
-|HGNC2020_05|Gray KA, Yates B, Seal RL, Wright MW, Bruford EA, HGNC Database, The HUGO Gene Nomenclature Database, European Bioinformatics Institute Wellcome Trust Genome Campus, May 20, 2020 United Kingdom|
+|GO2021_05_01|Gene Ontology, Gene Ontology Consortium, May 1, 2021|
+|HCPCS2022 (updated)|Healthcare Common Procedure Coding System (HCPCS), 2022 Baltimore, MD Centers for Medicare & Medicaid Services 2022|
+|HGNC2021_03|Gray KA, Yates B, Seal RL, Wright MW, Bruford EA, HGNC Database, The HUGO Gene Nomenclature Database, European Bioinformatics Institute Wellcome Trust Genome Campus, March 21, 2021 United Kingdom|
 |HL7V2.5_2003_08_30|Health Level Seven Vocabulary (HL7). Ann Arbor MI: Health Level Seven, 1998-2002|
-|HL7V3.0_2020_11 (updated)|Health Level Seven (HL7) Vocabulary, Ann Arbor, MI, November 7, 2020|
-|HPO2020_10_12 (updated)|The Human Phenotype Ontology (HPO), The Human Phenotype Ontology Consortium, October 12, 2020|
-|ICD10PCS_2021|Centers for Medicare and Medicaid Services, International Classification of Diseases, 10th Revision, Procedure Coding System, Baltimore, MD, 2021|
+|HL7V3.0_2021_12 (updated)|Health Level Seven (HL7) Vocabulary, Ann Arbor, MI, December 2, 2021|
+|HPO2021_10_10 (updated)|The Human Phenotype Ontology (HPO), The Human Phenotype Ontology Consortium, October 10, 2021|
+|ICD10PCS_20222|Centers for Medicare and Medicaid Services, International Classification of Diseases, 10th Revision, Procedure Coding System, Baltimore, MD, 2022|
 |ICD9CM_2014|National Center for Health Statistics (NCHS), ICD-9-CM: International Classification of Diseases, Ninth Revision, Clinical Modification, FY 2014 Medicare Addendum United States, October 1, 2013, Baltimore, MD|
 |ICD9CM_2005|ICD-9-CM [computer file]: international classification of diseases, ninth revision, clinical modification. Version 22. Baltimore, MD: U.S. Department of Health and Human Services, Centers for Medicare & Medicaid Services, effective October 1, 2004|
 |ICPC93|The International Classification of Primary Care (ICPC). Denmark: World Organisation of Family Doctors, 1993.|
@@ -71,103 +73,104 @@ The program described in this document also includes the vocabulary sources list
 |ICPCSWE_1993|The International Classification of Primary Care (ICPC). Swedish Translation. Denmark: World Organisation of Family Doctors, 1993.|
 |LCH90|Library of Congress Subject Headings. 12th ed. Washington (DC): Library of Congress, 1989.|
 |LCH_NW_2013|Northwestern University Library, Library of Congress Subject Headings, Northwestern University subset, Evanston, IL, 2013.|
-|LNC269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Version 2.69, Indianapolis (IN), December 15, 2020|
+|LNC272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Version 2.72, Indianapolis (IN), February 16, 2022|
 |LNC215|Logical Observation Identifier Names and Codes (LOINC). Version 2.15. Indianapolis (IN): The Regenstrief Institute, June 6, 2005|
-|LNC-DE-AT_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), German, Austria Edition, Version 2.69 Austria ELGA December 15, 2020, German|
-|LNC-DE-DE_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), German, Germany Edition, Version 2.69 Germany Institute for Medical Documentation and Information (DIMDI) December 15, 2020, German|
-|LNC-EL-GR_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Greek, Greece Edition, Version 2.69 Greece, Efstratia Kontaxi, MD, MSc, and Evripidis Stefanidis, MD, with technical support from Panagiotis Kontaxis, Diploma of Electrical and Computer Engineering, December 15, 2020, Greek|
-|LNC-ES-AR_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Spanish, Argentina Edition, Version 2.69 Argentina Conceptum Medical Terminology Center December 15, 2020, Spanish|
-|LNC-ES-ES_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Spanish, Spain Edition, Version 2.69 Spain The Clinical Laboratory Committee of SERVICIO EXTREMENO DE SALUD, with the support of BITAC MAP. December 15, 2020, Spanish|
-|LNC-ET-EE_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Estonian, Estonia Edition, Version 2.69 Estonia Estonian E-Health Foundation December 15, 2020, Estonian|
-|LNC-FR-BE_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), French, Belgium Edition, Version 2.69 Belgium Jean M. Prevost, MD, Biopathology December 15, 2020, French|
-|LNC-FR-CA_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), French, Canada Edition, Version 2.69 Canada Canada Health Infoway Inc. December 15, 2020, French|
-|LNC-FR-FR_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), French, France Edition, Version 2.69 France ASIP Sante (Agence des systemes d'information partages de de sante) December 15, 2020, French|
-|LNC-IT-IT_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Italian, Italy Edition, Version 2.69 Italy Consiglio Nazionale delle Ricerche December 15, 2020, Italian|
-|LNC-KO-KR_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Korean, Korea Edition, Version 2.69 Republic of Korea Korean Ministry for Health, Welfare, and Family Affairs December 15, 2020, Korean|
-|LNC-NL-NL_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Dutch, Netherlands Edition, Version 2.69 Netherlands NVKC, Dutch Society for Clinical Chemistry and Laboratory Medicine, The Netherlands December 15, 2020, Dutch|
-|LNC-PT-BR_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Portuguese, Brazil Edition, Version 2.69 Brazil HL7 Brazil Institute December 15, 2020, Portuguese|
-|LNC-RU-RU_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Russian, Russia Edition, Version 2.69 Russia Yaroslavl State Medical Academy December 15, 2020, Russian|
-|LNC-TR-TR_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Turkish, Turkey Edition, Version 2.69 Turkey LOINC Turkish Translation Group and the Turkish Ministry of Health December 15, 2020, Turkish|
-|LNC-ZH-CN_269 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Chinese, China Edition, Version 2.69 China, Lin Zhang, a LOINC volunteer from China December 15, 2020, Chinese|
+|LNC-DE-AT_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), German, Austria Edition, Version 2.72 Austria ELGA February 16, 2022, German|
+|LNC-DE-DE_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), German, Germany Edition, Version 2.72 Germany Institute for Medical Documentation and Information (DIMDI) February 16, 2022, German|
+|LNC-EL-GR_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Greek, Greece Edition, Version 2.72 Greece, Efstratia Kontaxi, MD, MSc, and Evripidis Stefanidis, MD, with technical support from Panagiotis Kontaxis, Diploma of Electrical and Computer Engineering, February 16, 2022, Greek|
+|LNC-ES-AR_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Spanish, Argentina Edition, Version 2.72 Argentina Conceptum Medical Terminology Center February 16, 2022, Spanish|
+|LNC-ES-ES_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Spanish, Spain Edition, Version 2.72 Spain, The Clinical Laboratory Committee of SERVICIO EXTREMENO DE SALUD, with the support of BITAC MAP. February 16, 2022, Spanish|
+|LNC-ES-MX_272 (new)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Spanish, Mexico Edition, Version 2.72 Mexico, Deep Dive Data Science, February 16, 2022, Spanish|
+|LNC-ET-EE_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Estonian, Estonia Edition, Version 2.72 Estonia Estonian E-Health Foundation February 16, 2022, Estonian|
+|LNC-FR-BE_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), French, Belgium Edition, Version 2.72 Belgium Jean M. Prevost, MD, Biopathology February 16, 2022, French|
+|LNC-FR-CA_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), French, Canada Edition, Version 2.72 Canada Canada Health Infoway Inc. February 16, 2022, French|
+|LNC-FR-FR_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), French, France Edition, Version 2.72 France ASIP Sante (Agence des systemes d'information partages de de sante) February 16, 2022, French|
+|LNC-IT-IT_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Italian, Italy Edition, Version 2.72 Italy Consiglio Nazionale delle Ricerche February 16, 2022, Italian|
+|LNC-KO-KR_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Korean, Korea Edition, Version 2.72 Republic of Korea Korean Ministry for Health, Welfare, and Family Affairs February 16, 2022, Korean|
+|LNC-NL-NL_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Dutch, Netherlands Edition, Version 2.72 Netherlands NVKC, Dutch Society for Clinical Chemistry and Laboratory Medicine, The Netherlands February 16, 2022, Dutch|
+|LNC-PL-PL_272 (new)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Polish, Poland Edition, Version 2.72 Poland, ;Polish Society of Laboratory Diagnostics, February 16, 2022, Polish|
+|LNC-PT-BR_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Portuguese, Brazil Edition, Version 2.72 Brazil HL7 Brazil Institute February 16, 2022, Portuguese|
+|LNC-RU-RU_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Russian, Russia Edition, Version 2.72 Russia Yaroslavl State Medical Academy February 16, 2022, Russian|
+|LNC-TR-TR_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Turkish, Turkey Edition, Version 2.72 Turkey LOINC Turkish Translation Group and the Turkish Ministry of Health February 16, 2022, Turkish|
+|LNC-ZH-CN_272 (updated)|The Regenstrief Institute, Logical Observation Identifier Names and Codes (LOINC), Chinese, China Edition, Version 2.72 China, Lin Zhang, a LOINC volunteer from China February 16, 2022, Chinese|
 |MCM92|Glossary of Methodologic Terms for Clinical Epidemiologic Studies of Human Disorders. Canada: McMaster University, 1992|
-|MEDLINEPLUS_20201125 (updated)|MedlinePlus Health Topics, National Library of Medicine, November 25, 2020 Bethesda, MD|
-|MEDLINEPLUS_SPA_20201125 (new)|MedlinePlus Spanish Health Topics, National Library of Medicine, November 25, 2020 Bethesda, MD|
-|MED-RT_2021_03_01 (updated)|Medication Reference Terminology, 2019_03_04, Washington, DC, U.S. Department of Veterans Affairs, Veterans Health Administration, March 1, 2021|
-|MSH2021_2021_01_25 (updated)|Medical Subject Headings (MeSH), 2021, U.S. National Library of Medicine January 25, 2021, Bethesda, MD|
+|MEDLINEPLUS_20211023 (updated)|MedlinePlus Health Topics, National Library of Medicine, October 23, 2021 Bethesda, MD|
+|MEDLINEPLUS_SPA_20211023 (new)|MedlinePlus Spanish Health Topics, National Library of Medicine, October 23, 2021 Bethesda, MD|
+|MED-RT_2022_03_07 (updated)|Medication Reference Terminology, Washington, DC, U.S. Department of Veterans Affairs, Veterans Health Administration, March 7, 2022|
+|MSH2022_2022_01_24 (updated)|Medical Subject Headings (MeSH), 2022, U.S. National Library of Medicine January 24, 2022, Bethesda, MD|
 |MSH2015_2014_09_08|Medical Subject Headings (MeSH), 2015, U.S. National Library of Medicine 2015, Bethesda, MD|
 |MTH|UMLS Metathesaurus. Bethesda, MD: National Library of Medicine|
-|MTHCMSFRF_2020_21_03_01 (updated)|Metathesaurus Forms of CMS Formulary Reference File, 2020 Bethesda, MD National Library Of Medicine|
+|MTHCMSFRF_2020_22_03_07 (updated)|Metathesaurus Forms of CMS Formulary Reference File, 2020 Bethesda, MD National Library Of Medicine|
 |MTHICD9_2014|Metathesaurus additional entry terms for ICD-9-CM [computer file]: International Classification of Diseases, Ninth Revision, Clinical Modification, National Library of Medicine, October 1, 2013, Bethesda, MD|
 |MTHMST2001|Metathesaurus Version of Minimal Standard Terminology Digestive Endoscopy. Bethesda, MD: National Library of Medicine, 2001|
 |MTHMSTFRE_2001|Metathesaurus Version of Minimal Standard Terminology Digestive Endoscopy, French Translation. Bethesda, MD: National Library of Medicine, 2001|
 |MTHMSTITA_2001|Metathesaurus Version of Minimal Standard Terminology Digestive Endoscopy, Italian Translation. Bethesda, MD: National Library of Medicine, 2001|
-|MTHSPL_2021_02_19 (updated)|Metathesaurus Forms of the FDA Structured Product Labels, 2020_02_19 Bethesda, MD National Library of Medicine|
-|MVX2021_02_23 (updated)|National Center for Immunization and Respiratory Diseases, Manufacturers of Vaccines, Atlanta, GA, February 23, 2021|
-|NCBI2020_05_21|NCBI Taxonomy, National Institutes of Health, National Library of Medicine, National Center for Biotechnology Information, May 21, 2020 Bethesda, MD|
-|NCI2020_09D (updated)|National Cancer Institute, National Institutes of Health, NCI Thesaurus, 20.09d, National Cancer Institute, October 9, 2020 Bethesda, MD|
-|NCI2020_ACC-AHA_2009D (updated)|American College of Cardiology/American Heart Association Clinical Data Terminology, 20.09d, October 9, 2020|
-|NCI2020_BioC_2009D (updated)|BioCarta online maps of molecular pathways, adapted for NCI use, 20.09d, October 9, 2020|
-|NCI2020_BRIDG_2009D (updated)|Biomedical Research Integrated Domain Group Model, 20.09d, October 9, 2020|
-|NCI2020_BRIDG_3_0_3_2009D (updated)|Biomedical Research Integrated Domain Group Model, 20.09d, October 9, 2020|
-|NCI2020_caDSR_2009D (new)|Cancer Data Standards Registry and Repository, 20.09d, October 9, 2020|
-|NCI2020_CareLex_2009D (updated)|Content Archive Resource Exchange Lexicon, 20.09d, October 9, 2020|
-|NCI2020_CBDD_2009D (updated)|Chemical Biology and Drug Development Vocabulary, 20.09d, October 9, 2020|
-|NCI2020_CDC_2009D (updated)|U.S. Centers for Disease Control and Prevention, Department of Health and Human Services, 20.09d, October 9, 2020, Atlanta, GA|
-|NCI2020_CDISC_2009D (updated)|Clinical Data Interchange Standards Consortium, 20.09d, October 9, 2020|
-|NCI2020_CDISC-GLOSS_2009D (updated)|CDISC Glossary Terminology, 20.09d, October 9, 2020|
-|NCI2020_CELLOSAURUS_2009D (updated)|Cellosaurus, 20.09d, October 9, 2020|
-|NCI2020_CRCH_2009D (updated)|Cancer Research Center of Hawaii, University of Hawaii, Cancer Research Center of Hawaii Nutrition Terminology, 20.09d Hawaii, October 9, 2020|
-|NCI2020_CTCAE_2009D (updated)|Common Terminology Criteria for Adverse Events, 20.09d, October 9, 2020|
-|NCI2020_CTCAE_3_2009D (updated)|Common Terminology Criteria for Adverse Events 3.0, 20.09d, October 9, 2020|
-|NCI2020_CTCAE_5_2009D (updated)|Common Terminology Criteria for Adverse Events 5.0, 20.09d, October 9, 2020|
-|NCI2020_CTDC_2009D (new)|Clinical Trial Data Commons, 20.09d, October 9, 2020|
-|NCI2020_CTEP-SDC_2009D (updated)|Cancer Therapy Evaluation Program - Simple Disease Classification, 20.09d, October 9, 2020|
-|NCI2020_CTRP_2009D (updated)|Clinical Trials Reporting Program, 20.09d, October 9, 2020|
-|NCI2020_DCP_2009D (updated)|NCI Division of Cancer Prevention Program, 20.09d, October 9, 2020|
-|NCI2020_DICOM_2009D (updated)|Digital Imaging Communications in Medicine, 20.09d, October 9, 2020|
-|NCI2020_DTP_2009D (updated)|National Cancer Institute, NCI Developmental Therapeutics Program, 20.09d, October 9, 2020|
-|NCI2020_EDQM-HC_2009D (updated)|European Directorate for the Quality of Medicines and Healthcare, 20.09d, October 9, 2020|
-|NCI2020_FDA_2009D (updated)|U.S. Food and Drug Administration, 20.09d, October 9, 2020|
-|NCI2020_GAIA_2009D (updated)|Brighton Collaboration Foundation (BCF), Global Alignment of Immunization Safety Assessment in pregnancy, 20.09d, October 9, 2020|
-|NCI2020_GDC_2009D (updated)|NCI Genomic Data Commons Terms, 20.09d, October 9, 2020|
-|NCI2020_GENC_2009D (updated)|Country Codes Working Group of the Geospatial Intelligence Standards Working Group (GWG), Geopolitical Entities, Names, and Codes (GENC) Standard Edition 1, 20.09d, October 9, 2020|
-|NCI2020_ICH_2009D (updated)|International Conference on Harmonization, 20.09d, October 9, 2020|
-|NCI2020_INC_2009D (updated)|International Neonatal Consortium Terms, 20.09d, October 9, 2020|
-|NCI2020_JAX_2009D (updated)|Jackson Laboratories, Jackson Laboratories Mouse Terminology, adapted for NCI use, 20.09d, October 9, 2020|
-|NCI2020_KEGG_2009D (updated)|Kyoto Encyclopedia of Genes and Genomes (KEGG), KEGG Pathway Database, adapted for NCI use, 20.09d, October 9, 2020|
-|NCI2020_NCI-GLOSS_2009D (updated)|National Cancer Institute, NCI Dictionary of Cancer Terms, 20.09d, October 9, 2020 Bethesda, MD|
-|NCI2020_NCI-HGNC_2009D (updated)|NCI HUGO Gene Nomenclature, 20.09d, October 9, 2020|
-|NCI2020_NCI-HL7_2009D (updated)|Health Level 7, NCI Health Level 7, 20.09d, October 9, 2020|
-|NCI2020_NCPDP_2009D (updated)|National Council for Prescription Drug Programs, 20.09d Scottsdale, AZ, October 9, 2020|
-|NCI2020_NICHD_2009D  (updated)|National Institute of Child Health and Human Development, National Institutes of Health, 20.09d, October 9, 2020|
-|NCI2020_PCDC_2009D (new)|Pediatric Cancer Data Commons, 20.09d Scottsdale, AZ, October 9, 2020|
-|NCI2020_PID_2009D  (updated)|Carl F. Schaefer, Kira Anthony, Shiva Krupa, Jeffrey Buchoff, Matthew Day, Timo Hannay & Kenneth H. Buetow., PID: The Pathway Interaction Database, 20.09d, October 9, 2020|
-|NCI2020_PI-RADS_2009D (updated)|Prostate Imaging Reporting and Data System, 20.09d, October 9, 2020|
-|NCI2020_RENI_2009D (updated)|Registry Nomenclature Information System, 20.09d, October 9, 2020|
-|NCI2020_UCUM_2009D (updated)|Schadow, Gunther and McDonald, Clement, Regenstrief Institute, Inc. and The UCUM Organization, Unified Code for Units of Measure, 20.09d, October 9, 2020 Indianapolis, IN|
-|NCI2020_ZFin_2009D (updated)|Zebrafish Information Network (ZFIN), Zebrafish Model Organism Database, 20.09d University of Oregon, October 9, 2020 Eugene, OR|
+|MTHSPL_2022_02_25 (updated)|Metathesaurus Forms of the FDA Structured Product Labels, 2022_02_25 Bethesda, MD National Library of Medicine|
+|MVX2022_02_28 (updated)|National Center for Immunization and Respiratory Diseases, Manufacturers of Vaccines, Atlanta, GA, February 28, 2022|
+|NCBI2021_05_25|NCBI Taxonomy, National Institutes of Health, National Library of Medicine, National Center for Biotechnology Information, May 25, 2021, Bethesda, MD|
+|NCI2021_09D (updated)|National Cancer Institute, National Institutes of Health, NCI Thesaurus, 21.09d, National Cancer Institute, September 27, 2021, Bethesda, MD|
+|NCI2021_ACC-AHA_2109D (updated)|American College of Cardiology/American Heart Association Clinical Data Terminology, 21.09d, September 27, 2021|
+|NCI2021_BioC_2109D (updated)|BioCarta online maps of molecular pathways, adapted for NCI use, 21.09d, September 27, 2021|
+|NCI2021_BRIDG_2109D (updated)|Biomedical Research Integrated Domain Group Model, 21.09d, September 27, 2021|
+|NCI2021_BRIDG_5_3_2109D (updated)|Biomedical Research Integrated Domain Group Model, 21.09d, September 27, 2021|
+|NCI2021_caDSR_2109D (updated)|Cancer Data Standards Registry and Repository, 21.09d, September 27, 2021|
+|NCI2021_CareLex_2109D (updated)|Content Archive Resource Exchange Lexicon, 21.09d, September 27, 2021|
+|NCI2021_CBDD_2109D (updated)|Chemical Biology and Drug Development Vocabulary, 21.09d, September 27, 2021|
+|NCI2021_CDC_2109D (updated)|U.S. Centers for Disease Control and Prevention, Department of Health and Human Services, 21.09d, September 27, 2021, Atlanta, GA|
+|NCI2021_CDISC_2109D (updated)|Clinical Data Interchange Standards Consortium, 21.09d, September 27, 2021|
+|NCI2021_CDISC-GLOSS_2109D (updated)|CDISC Glossary Terminology, 21.09d, September 27, 2021|
+|NCI2021_CELLOSAURUS_2109D (updated)|Cellosaurus, 21.09d, September 27, 2021|
+|NCI2021_CRCH_2109D (updated)|Cancer Research Center of Hawaii, University of Hawaii, Cancer Research Center of Hawaii Nutrition Terminology, 21.09d Hawaii, September 27, 2021|
+|NCI2021_CTCAE_2109D (updated)|Common Terminology Criteria for Adverse Events, 21.09d, September 27, 2021|
+|NCI2021_CTCAE_3_2109D (updated)|Common Terminology Criteria for Adverse Events 3.0, 21.09d, September 27, 2021|
+|NCI2021_CTCAE_5_2109D (updated)|Common Terminology Criteria for Adverse Events 5.0, 21.09d, September 27, 2021|
+|NCI2021_CTDC_2109D (updated)|Clinical Trial Data Commons, 21.09d, September 27, 2021|
+|NCI2021_CTEP-SDC_2109D (updated)|Cancer Therapy Evaluation Program - Simple Disease Classification, 21.09d, September 27, 2021|
+|NCI2021_CTRP_2109D (updated)|Clinical Trials Reporting Program, 21.09d, September 27, 2021|
+|NCI2021_DCP_2109D (updated)|NCI Division of Cancer Prevention Program, 21.09d, September 27, 2021|
+|NCI2021_DICOM_2109D (updated)|Digital Imaging Communications in Medicine, 21.09d, September 27, 2021|
+|NCI2021_DTP_2109D (updated)|National Cancer Institute, NCI Developmental Therapeutics Program, 21.09d, September 27, 2021|
+|NCI2021_EDQM-HC_2109D (updated)|European Directorate for the Quality of Medicines and Healthcare, 21.09d, September 27, 2021|
+|NCI2021_FDA_2109D (updated)|U.S. Food and Drug Administration, 21.09d, September 27, 2021|
+|NCI2021_GAIA_2109D (updated)|Brighton Collaboration Foundation (BCF), Global Alignment of Immunization Safety Assessment in pregnancy, 21.09d, September 27, 2021|
+|NCI2021_GDC_2109D (updated)|NCI Genomic Data Commons Terms, 21.09d, September 27, 2021|
+|NCI2021_GENC_2109D (updated)|Country Codes Working Group of the Geospatial Intelligence Standards Working Group (GWG), Geopolitical Entities, Names, and Codes (GENC) Standard Edition 1, 21.09d, September 27, 2021|
+|NCI2021_ICH_2109D (updated)|International Conference on Harmonization, 21.09d, September 27, 2021|
+|NCI2021_INC_2109D (updated)|International Neonatal Consortium Terms, 21.09d, September 27, 2021|
+|NCI2021_JAX_2109D (updated)|Jackson Laboratories, Jackson Laboratories Mouse Terminology, adapted for NCI use, 21.09d, September 27, 2021|
+|NCI2021_KEGG_2109D (updated)|Kyoto Encyclopedia of Genes and Genomes (KEGG), KEGG Pathway Database, adapted for NCI use, 21.09d, September 27, 2021|
+|NCI2021_NCI-GLOSS_2109D (updated)|National Cancer Institute, NCI Dictionary of Cancer Terms, 21.09d, September 27, 2021 Bethesda, MD|
+|NCI2021_NCI-HGNC_2109D (updated)|NCI HUGO Gene Nomenclature, 21.09d, September 27, 2021|
+|NCI2021_NCI-HL7_2109D (updated)|Health Level 7, NCI Health Level 7, 21.09d, September 27, 2021|
+|NCI2021_NCPDP_2109D (updated)|National Council for Prescription Drug Programs, 21.09d Scottsdale, AZ, September 27, 2021|
+|NCI2021_NICHD_2109D  (updated)|National Institute of Child Health and Human Development, National Institutes of Health, 21.09d, September 27, 2021|
+|NCI2021_PCDC_2109D (updated)|Pediatric Cancer Data Commons, 21.09d Scottsdale, AZ, September 27, 2021|
+|NCI2021_PID_2109D  (updated)|Carl F. Schaefer, Kira Anthony, Shiva Krupa, Jeffrey Buchoff, Matthew Day, Timo Hannay & Kenneth H. Buetow., PID: The Pathway Interaction Database, 21.09d, September 27, 2021|
+|NCI2021_PI-RADS_2109D (updated)|Prostate Imaging Reporting and Data System, 21.09d, September 27, 2021|
+|NCI2021_RENI_2109D (updated)|Registry Nomenclature Information System, 21.09d, September 27, 2021|
+|NCI2021_UCUM_2109D (updated)|Schadow, Gunther and McDonald, Clement, Regenstrief Institute, Inc. and The UCUM Organization, Unified Code for Units of Measure, 21.09d, September 27, 2021, Indianapolis, IN|
+|NCI2021_ZFin_2109D (updated)|Zebrafish Information Network (ZFIN), Zebrafish Model Organism Database, 21.09d University of Oregon, September 27, 2021, Eugene, OR|
 |NCISEER_1999|NCI Surveillance, Epidemiology, and End Results (SEER) conversions between ICD-9-CM and ICD-10 neoplasm codes. National Cancer Institute, Bethesda, MD. Release Date: June 1999|
-|OMIM2021_02_08 (updated)|McKusick-Nathans Institute of Genetic Medicine, Johns Hopkins University (Baltimore, MD), Online Mendelian Inheritance in Man (OMIM), Baltimore, MD McKusick-Nathans Institute of Genetic Medicine, Johns Hopkins University, February 8, 2021|
+|OMIM2022_01_24 (updated)|McKusick-Nathans Institute of Genetic Medicine, Johns Hopkins University (Baltimore, MD), Online Mendelian Inheritance in Man (OMIM), Baltimore, MD McKusick-Nathans Institute of Genetic Medicine, Johns Hopkins University, January 24, 2022|
 |PDQ_2018_10_27|PDQ. Bethesda MD: National Cancer Institute, October 27, 2018|
 |QMR96|Quick Medical Reference (QMR). San Bruno (CA): First DataBank, 1997|
 |RAM99|QMR clinically related terms from Randolf A. Miller, 1999|
-|RXNORM_20AA_210301F (updated)|RxNorm, META2020AA Full Update 2021_03_01 Bethesda, MD National Library of Medicine|
-|SCTSPA_2020_10_31 (updated)|SNOMED International, SNOMED CT Spanish Edition, Spanish Language Edition, London, United Kingdom, October 31, 2020|
+|RXNORM_20AA_220307F (updated)|RxNorm, META2020AA Full Update 2022_03_07 Bethesda, MD National Library of Medicine|
+|SCTSPA_2021_10_31 (updated)|SNOMED International, SNOMED CT Spanish Edition, Spanish Language Edition, London, United Kingdom, October 31, 2021|
 |SNM2|Cote, Roger A., Systematized Nomenclature of Medicine. 2nd ed. Skokie (IL): College of American Pathologists, 1982|
 |SNMI98|Cote, Roger A., Systematized Nomenclature of Human and Veterinary Medicine: SNOMED International, Version 3.5, Schaumberg (IL), College of American Pathologists, American Veterinary Medical Association, 1998|
-|SNOMEDCT_US_2021_03_01 (updated)|SNOMED International, US Edition of SNOMED CT, London, United Kingdom, SNOMED International, March 1, 2021|
-|SNOMEDCT_US_2017_01_31|SNOMED International, SNOMED Clinical Terms US Edition, January 31, 2017, London, United Kingdom, SNOMED International|
-|SNOMEDCT_US_2018_03_01|SNOMED International, US Edition of SNOMED CT, London, United Kingdom, SNOMED International, March 1, 2018|
+|SNOMEDCT_US_2022_03_01 (updated)|SNOMED International, US Edition of SNOMED CT, London, United Kingdom, SNOMED International, March 1, 2022|
+|SNOMEDCT_US_2021_09_01 (updated)|SNOMED International, US Edition of SNOMED CT, London, United Kingdom, SNOMED International, September 1, 2021|
 |SNOMEDCT_US_2020_07_31|SNOMED International, US Edition of SNOMED CT, London, United Kingdom, SNOMED International, July 31, 2020|
-|SNOMEDCT_VET_2020_10_08 (updated) |SNOMED International, US Edition of SNOMED CT, London, United Kingdom, SNOMED International, March 1, 2021|
+|SNOMEDCT_VET_2021_10_01 (updated)|Veterinary Terminology Services Laboratory (VTSL),Virginia Maryland Regional College of Veterinary Medicine, Veterinary Extension to SNOMED CT, Blacksburg, VA, October 2021|
 |SOP9.2 (updated)|National Association of Health Data Organizations (NAHDO),Source of Payment Typology, Version 9.2, National Association of Health Data Organizations (NAHDO), December, 2020|
 |SPN2003|Standard Product Nomenclature (SPN). Rockville, (MD): U.S. Food and Drug Administration, 2003|
 |SRC|UMLS Metathesaurus Source Terminologies. Bethesda, MD: National Library of Medicine|
 |TKMT2011|Traditional Korean Medical Terms, 2011 Korea, KOR|
-|USP_2021_02_15 (updated)|USP Compendial Nomenclature, February, 2021, United States Pharmacopeia, February, 2021|
+|USP_2022_02_15 (updated)|USP Compendial Nomenclature, February, 2022, United States Pharmacopeia, February, 2022|
 |USPMG_2020|USP Medicare Model Guidelines, Version 6, United States Pharmacopeia February 1, 2020|
 |UWDA173|Jose Mejino, M.D., University of Washington Digital Anatomist, (UWDA). Seattle (WA): University of Washington, Version 1.7.3, March, 2003.|
-|VANDF_2021_01_29 (updated)|Veterans Health Administration National Drug File, January 29, 2021 Washington, DC U.S. Department of Veterans Affairs|
+|VANDF_2022_01_31 (updated)|Veterans Health Administration National Drug File, January 31, 2022, Washington, DC U.S. Department of Veterans Affairs|
 
 Deidentified clinical records used in the development of this offering were provided by the i2b2 National Center for Biomedical Computing funded by U54LM008748 and were originally prepared for the Shared Tasks for Challenges in NLP for Clinical Data organized by Dr. Ozlem Uzuner, i2b2 and SUNY
 
