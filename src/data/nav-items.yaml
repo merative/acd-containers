@@ -171,4 +171,12 @@
 - title: Filtering
   pages:
     - title: "filtering"
-      path: /clouddocs/filtering/  
+      path: /clouddocs/filtering/
+- title: Configuration Editor
+  pages:
+    - title: "Overview"
+      path: /configeditor/overview/
+    - title: "Download and Install (Docker)"
+      path: /configeditor/download_docker/
+    - title: "Download and Install (OpenShift)"
+      path: /configeditor/download_openshift/ 
