@@ -185,7 +185,7 @@ The following command will copy all CAs from the Java `cacerts` file into the tr
 
   `keytool -importkeystore -srckeystore /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64/jre/lib/security/cacerts -destkeystore /tmp/installs/config/truststore/trust.jks -srcstorepass changeit -deststorepass wats0n`
 
-After running this succesfully, run the `./run-acd-ce.sh -restart` command to restart the containers to pick up the change.
+After running this successfully, run the `./run-acd-ce.sh -restart` command to restart the containers to pick up the change.
 
 To configure external ACD Hosts for deploying published cartridges from the Configuration Editor, you must provide them in the `acd-ce.properties` file and provide proxy redirects in the `ssl.conf` Apache HTTP configuration file.  To add ACD target hosts, you can add them to the `acd-ce.properties` file. An example of adding an ACD target to an ACD container edition instance is:
 
@@ -214,7 +214,7 @@ You can use the OIDC module in Apache HTTP server to provide an authentication l
 
 Edit `/etc/httpd/conf.d/auth_openidc.conf` as root.  For example, `sudo vi /etc/httpd/conf.d/auth_openidc.conf`.
 
-In that file add these lines to the top:
+In that file, add these lines to the top:
 
 ```
 OIDCRedirectURI https://<your host>/services/redirect_uri
@@ -233,7 +233,7 @@ Header echo ^OIDC_CLAIM_
 
 Configure your OpenID Connect Provider (e.g., IBM AppId, Google, Azure AD, Keycloak, etc.) to add this client and the call redirect URL to obtain the client id and secret needed in the configuration file above.
 
-In the `acd-ce.properties` file the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.
+In the `acd-ce.properties` file, the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.
 
 The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the `acd-ce.properties` file. These properties are:
 - `com_ibm_watson_health_car_auth_enable_logout` Set this property as true to enable logout.
@@ -261,11 +261,11 @@ Run the following command to stop the containers running the Configuration Edito
 
 ## Updating the Configuration Editor
 
-To update to a newer version of the ACD Configuration Editor follow these steps:
+To update to a newer version of the ACD Configuration Editor, follow these steps:
 
 1. Back up existing `acd-ce.properties` file in your `acd-ce` directory.
 2. Download the latest acd-ce.tar file again and unpack it as above (see Installing ACD Configuration Editor)
-3. Modify the default `acd-ce.properties` file to merge in any changes you made from your backup (replacing the `%SERVER%` with the host name and updating the shared configuration directory for example)
+3. Modify the default `acd-ce.properties` file to merge in any changes you made from your backup (replacing the `%SERVER%` with the host name and updating the shared configuration directory, for example)
 4. Clear out the shared keystore/truststore. To do this, go to the shared config directory set in the `acd-ce.properties` file with the `*_shared_config_dir` property and run these commands to clear the shared certificates and truststore:
   - `rm -r certs`
   - `rm -r keystore`

@@ -89,7 +89,7 @@ helm install whcs-acd-ce-crtg \
   - where `{acd namespace}` is the namespace where the ACD sandbox instance is running
   - where `{pvc name}` is the persistent volume claim (PVC) the ACD sandbox instance is using
 8. Verify the Cartridge microservice is running.<br/>
-   Find the `ibm-wh-acd-crtg` pod by running the command:<br/>:
+   Find the `ibm-wh-acd-crtg` pod by running the command:<br/>
    `kubectl get pods -n {acd namespace}`<br/>
    Run a health check against the pod using the following command.<br/>  
    It should list `"serviceState":"OK"`.<br/>
@@ -232,7 +232,7 @@ Go to the following URL to verify authentication and the proxy route:<br/>
 
 You may get an error about the self-signed certificate in the browser, but you can use advanced option to continue to to the site.  In Google Chrome, if there is no button to proceed, click on the advanced warning text and type `thisisunsafe` (all one word lower-case--type it after clicking on the warning) and it should proceed.  This is only needed the first time in.  To fix this, add a trusted CA-issued certificate to the Apache HTTP server.
 
-Initially, there are no default cartridges so your list will be empty.  You can install the base Clinical Insights cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, Click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.  
+Initially, there are no default cartridges so your list will be empty.  You can install the base Clinical Insights cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.  
 
 Periodically, refer to this page for updates to the Configuration Editor packages and see below for update instructions.
 
@@ -266,7 +266,7 @@ location /<identifier>/ {
     proxy_pass https://$prod_dev/wh-acd$path_remainder;
 }
 ```
-  - where `<identfier>` is the identifer of the custom ACD instance, e.g. `custom-acd`
+  - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
   - where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
 
 2. `ibm-wh-acd-ce/crtg/chart/crtg/values.yaml`
@@ -284,7 +284,7 @@ location /<identifier>/ {
     value: "true"
 ```
 
-  - where `<identfier>` is the identifer of the custom ACD instance, e.g. `custom-acd`
+  - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
   - where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
 
 ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_car_acd_host_{index}` as the beginning of their property name. The index must start at "3". The properties are:
