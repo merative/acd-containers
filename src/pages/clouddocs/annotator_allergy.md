@@ -65,6 +65,12 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | begin | The start position of the annotation as a character offset into the text. The smallest possible start position is 0. |
 | end | The end position of the annotation as character offset into the text. The end position points at the first character after the annotation, such that end-begin equals the length of the coveredText. |
 | coveredText | The text covered by an annotation as a string. |
+| snomedConceptId | Numerical code provided by the SNOMED dictionaries that represents the symptom or disease. |
+| cui | UMLS Concept Unique ID (CUI). CUIs are used to uniquely identify concepts across different UMLS sources. Depending on the source of the symptom/disease information, this value may not be available. |
+| loincId | LOINC stands for Logical Observations Identifiers, Names, Codes.  The value for this feature comes from UMLS. |
+| nciCode | The [NCI Thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NCI/) covers vocabulary for cancer-related clinical care, translational and basic research, and public information and administrative activities.  The value for this feature comes from UMLS. |
+| meshId | The [MeSH thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MSH/) is a controlled vocabulary used for indexing, cataloging, and searching for biomedical and health-related information and documents.  The value for this feature comes from UMLS. |
+ rxNormID | Also called the RXCUI which is a normalized id that is defined in the RxNorm standard and commonly used amongst different organizations. Depending on the source of the medication information, this value may not be available. |
 | type | aci.MedicationInd |
 | sectionSurfaceForm | Medical documents have many sections such as patient's information, previous medical history, family history, etc.  The covered text that identifies which section of the document that spans the annotation. The default value of this feature is 'document'. |
 | sectionNormalizedName | The normalized term for the section. |
@@ -149,95 +155,103 @@ Sample response from the allergy annotator for the text: `The patient is allergi
   "unstructured": [
     {
       "text": "The patient is allergic to Percocet and Tramadol.",
-      "data": {
-        "AllergyMedicationInd": [
-          {
+     "data": {
+       "AllergyMedicationInd": [
+         {
+            "type": "aci.AllergyMedicationInd",
             "begin": 27,
             "end": 35,
             "coveredText": "Percocet",
-            "type": "aci.AllergyMedicationInd",
-            "medication": [
-              {
+           "medication": [
+             {
+                "rxNormID": "42844",
                 "coveredText": "Percocet",
+                "nciCode": "C29311",
                 "cui": "C0086787",
                 "end": 35,
                 "type": "aci.MedicationInd",
+                "meshId": "M0015666",
                 "begin": 27,
-                "drug": [
-                  {
+               "drug": [
+                 {
                     "coveredText": "Percocet",
                     "cui": "C0086787",
                     "complex": "false",
                     "end": 35,
                     "type": "aci.Ind_Drug",
-                    "begin": 27,
-                    "name1": [
-                      {
+                   "name1": [
+                     {
                         "rxNormID": "42844",
                         "coveredText": "Percocet",
                         "cui": "C0086787",
                         "drugSurfaceForm": "Percocet",
-                        "end": 35,
                         "drugNormalizedName": "percocet",
+                        "end": 35,
                         "type": "aci.DrugName",
                         "begin": 27
                       }
-                    ]
+                    ],
+                    "begin": 27
                   }
                 ]
               }
             ]
           },
-          {
+         {
+            "type": "aci.AllergyMedicationInd",
             "begin": 40,
             "end": 48,
             "coveredText": "Tramadol",
-            "type": "aci.AllergyMedicationInd",
-            "medication": [
-              {
+           "medication": [
+             {
+                "loincId": "MTHU060450,LP18112-0,LA28618-9",
+                "rxNormID": "10689",
                 "coveredText": "Tramadol",
+                "nciCode": "C29507",
                 "cui": "C0040610",
                 "end": 48,
+                "snomedConceptId": "386858008,108507005",
                 "type": "aci.MedicationInd",
+                "meshId": "M0021764",
                 "begin": 40,
-                "drug": [
-                  {
+               "drug": [
+                 {
                     "coveredText": "Tramadol",
                     "cui": "C0040610",
                     "complex": "false",
                     "end": 48,
                     "type": "aci.Ind_Drug",
-                    "begin": 40,
-                    "name1": [
-                      {
+                   "name1": [
+                     {
                         "rxNormID": "10689",
                         "coveredText": "Tramadol",
                         "cui": "C0040610",
                         "drugSurfaceForm": "Tramadol",
-                        "end": 48,
                         "drugNormalizedName": "tramadol",
+                        "end": 48,
                         "type": "aci.DrugName",
                         "begin": 40
                       }
-                    ]
+                    ],
+                    "begin": 40
                   }
                 ]
               }
             ]
           }
         ],
-        "AllergyInd": [
-          {
+       "AllergyInd": [
+         {
+            "type": "aci.AllergyInd",
             "begin": 27,
             "end": 35,
-            "coveredText": "Percocet",
-            "type": "aci.AllergyInd"
+            "coveredText": "Percocet"
           },
-          {
+         {
+            "type": "aci.AllergyInd",
             "begin": 40,
             "end": 48,
-            "coveredText": "Tramadol",
-            "type": "aci.AllergyInd"
+            "coveredText": "Tramadol"
           }
         ]
       }
