@@ -25,7 +25,7 @@ initContainer:
   digest: "6bcad846562eb85c16ad9e2f35f524d5e53dd88df29490436383fbcc29ad95b9"
   image: "cp.icr.io/cp/wh-acd/ubi8-whcs-liberty"
 revProxy:
-  digest: "2e7ef18231fe3f087e568e4bb55970f654f76859e452e079269ca8c2b95ea485"
+  tag: "stable"
   image: "nginxinc/nginx-unprivileged"
 revProxyTargets:
 replicas: 1
