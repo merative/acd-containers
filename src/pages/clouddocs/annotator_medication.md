@@ -41,6 +41,12 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | end | The end position of the annotation as character offset into the text. The end position points at the first character after the annotation, such that end-begin equals the length of the coveredText. |
 | coveredText | The text covered by an annotation as a string. |
 | type | aci.MedicationInd |
+| snomedConceptId | Numerical code provided by the SNOMED dictionaries that represents the symptom or disease. |
+| cui | UMLS Concept Unique ID (CUI). CUIs are used to uniquely identify concepts across different UMLS sources. Depending on the source of the symptom/disease information, this value may not be available. |
+| loincId | LOINC stands for Logical Observations Identifiers, Names, Codes.  The value for this feature comes from UMLS. |
+| nciCode | The [NCI Thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NCI/) covers vocabulary for cancer-related clinical care, translational and basic research, and public information and administrative activities.  The value for this feature comes from UMLS. |
+| meshId | The [MeSH thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MSH/) is a controlled vocabulary used for indexing, cataloging, and searching for biomedical and health-related information and documents.  The value for this feature comes from UMLS. |
+| rxNormID | Also called the RXCUI which is a normalized id that is defined in the RxNorm standard and commonly used amongst different organizations. Depending on the source of the medication information, this value may not be available. |
 | sectionSurfaceForm | Medical documents have many sections such as patient's information, previous medical history, family history, etc.  The covered text that identifies which section of the document that spans the annotation. The default value of this feature is `document`. |
 | sectionNormalizedName | The normalized term for the section. |
 | date | Indicates the date that is related to the event.  For instance, in a patient's medical form, this date may indicate the date of surgery, or the date of last diagnosis.  The value of date is detected from the date that is nearest to the text that is annotated. |
@@ -120,55 +126,60 @@ Sample response from the Medications annotator for the text: `He takes Metformin
 
 ```
 {
-  "unstructured": [
-    {
+ "unstructured": [
+   {
       "text": "He takes Metformin orally once a day.",
-      "data": {
-        "MedicationInd": [
-          {
+     "data": {
+       "MedicationInd": [
+         {
             "type": "aci.MedicationInd",
             "begin": 9,
             "end": 36,
             "coveredText": "Metformin orally once a day",
-            "administration": [
-              {
+            "loincId": "MTHU060554,LP33332-5",
+            "rxNormID": "6809",
+            "nciCode": "C61612",
+           "administration": [
+             {
                 "coveredText": "orally once a day",
-                "route": [
-                  {
+                "frequencyValue": "once a day",
+                "end": 36,
+               "route": [
+                 {
                     "coveredText": "orally",
-                    "normalized": "intraoral route of administration",
                     "end": 25,
                     "type": "aci.DrugRoute",
-                    "begin": 19
+                    "begin": 19,
+                    "normalized": "intraoral route of administration"
                   }
                 ],
-                "end": 36,
-                "frequencyValue": "once a day",
                 "type": "aci.SubstanceAdministration",
                 "begin": 19
               }
             ],
             "cui": "C0025598",
-            "drug": [
-              {
+            "snomedConceptId": "372567009,109081006",
+            "meshId": "M0013535",
+           "drug": [
+             {
                 "coveredText": "Metformin",
                 "cui": "C0025598",
                 "complex": "false",
                 "end": 18,
                 "type": "aci.Ind_Drug",
-                "begin": 9,
-                "name1": [
-                  {
+               "name1": [
+                 {
                     "rxNormID": "6809",
                     "coveredText": "Metformin",
                     "cui": "C0025598",
                     "drugSurfaceForm": "Metformin",
-                    "end": 18,
                     "drugNormalizedName": "metformin",
+                    "end": 18,
                     "type": "aci.DrugName",
                     "begin": 9
                   }
-                ]
+                ],
+                "begin": 9
               }
             ]
           }
