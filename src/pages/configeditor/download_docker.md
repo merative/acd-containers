@@ -8,8 +8,8 @@ toc: true
 <!-- ---
 
 copyright:
-  years: 2020
-lastupdated: "2020-04-01"
+  years: 2022
+lastupdated: "2022-09-13"
 
 keywords: annotator clinical data, clinical data, annotation
 
@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-The following will walk through the steps necessary to set up and configure a system with the IBM Watson Annotator for Clinical Data Configuration Editor (ACD Configuration Editor).  This sets up a local copy of the Configuration Editor in an "all-in-one" single system that can be used to create, edit and preview IBM Watson Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also deploy and test against a remote ACD instance that you have access to.  The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
+The following will walk through the steps necessary to set up and configure a system with the Annotator for Clinical Data Configuration Editor (ACD Configuration Editor).  This sets up a local copy of the Configuration Editor in an "all-in-one" single system that can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also deploy and test against a remote ACD instance that you have access to.  The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
 
 ![Configuration Editor on Docker](../../images/ACDCE_on_docker.png)
 
@@ -74,11 +74,12 @@ ProxyPass /services/cartridge https://localhost:9281/services/cartridge
 ProxyPassReverse /services/cartridge https://localhost:9281/services/cartridge
 #ProxyPass /services/clinical_data_annotator  https://localhost:9272/services/clinical_data_annotator
 #ProxyPassReverse /services/clinical_data_annotator https://localhost:9272/services/clinical_data_annotator
-# reverse proxy to add in ibm cloud entries -
-#ProxyPass /wh-acd/api https://us-south.wh-acd.cloud.ibm.com/wh-acd/api
-#ProxyPassReverse /wh-acd/api https://us-south.wh-acd.cloud.ibm.com/wh-acd/api
-#ProxyPass /wh-acd-east/api https://us-east.wh-acd.cloud.ibm.com/wh-acd/api
-#ProxyPassReverse /wh-acd-east/api https://us-east.wh-acd.cloud.ibm.com/wh-acd/api
+# reverse proxy to add in an ACD target deployment instance - change this to your acd instance(s) url endpoints.
+# note you will also need to add configuration to the acd-ce.properties file for each acd target instance as documented below.
+#ProxyPass /acd-dev/api https://acdroute.yourdevserver.com/services/clinical_data_annotator/api
+#ProxyPassReverse /acd-dev/api https://acdroute.yourdevserver.com/services/clinical_data_annotator/api
+#ProxyPass /acd/api https://acdroute.yourserver.com/services/clinical_data_annotator/api
+#ProxyPassReverse /acd/api https://acdroute.yourserver.com/services/clinical_data_annotator/api
 # =========
 # USERS: add additional reverse proxy aliases to any other ACD targets here like entry above
 # =======
@@ -118,7 +119,7 @@ SSLProxyCheckPeerExpire off
 ## Installing ACD Configuration Editor
 
 Download the ACD Configuration Editor setup program and place it on the target machine:
-
+TODO point to setup script downloadf file(s)
 <a href="./acd-ce.2022-06-16.239.tar" download>acd-ce.2022-06-16.239.tar</a>
 
 Date: June 16th, 2022 : size: 11250063360 sha-256: 292f925a776ee53ae9454284aafbe0cb901390cb15130dc1b6183a165704e265 (using sha256sum -b acd-ce.2022-06-16.239.tar)
@@ -131,7 +132,7 @@ Older releases:
 
 Recent changes to the properties file:
 - acd-ce.2022-04-14.219.tar : IBM Cloud East and South ACD Host configurations moved from the Cartridge service properties to the `acd-ce.properties` file.
-- acd-ce.2022-04-14.219.tar : 2 new URLs added for Concept Disambiguation service (cds) to the Cartridge service properties. 
+- acd-ce.2022-04-14.219.tar : 2 new URLs added for Concept Disambiguation service (cds) to the Cartridge service properties.
 
 Untar the container images by running the command `tar -xvf acd-ce.2022-06-16.239.tar acd-ce`.  This will put the image files into an `acd-ce` subfolder.  You can now run the command `rm acd-ce.2022-06-16.239.tar` to free up the file space.
 
@@ -176,9 +177,9 @@ The first prompt is going to ask for your name and email to identify any configu
 After you are in, initially there are no default cartridges.  You can install the base Clinical Insights cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.
 
 Periodically, refer to this page for updates to the Configuration Editor packages and see below for update instructions.
-   
+
 ## Enabling Outbound Connections (optional)
- 
+
 If you are going to connect to an external ACD instance, you need to add the standard certifying authorities to the Java trust store used by the services.  Copy the default Java `cacerts` file certificates into the trust store used by the ACD Configuration Editor services and then restart the services with the following command.
 
 The following command will copy all CAs from the Java `cacerts` file into the trust store used by the Configuration Editor processes.  You may need to adjust the `srckeystore` path to match your exact Java version or location.  Adjust the `java-1.8.0-...` directory to your level and the `/tmp/` target should match where you pointed the install to run from in the `acd-ce.properties` file.
@@ -233,7 +234,7 @@ Header echo ^OIDC_CLAIM_
 
 Configure your OpenID Connect Provider (e.g., IBM AppId, Google, Azure AD, Keycloak, etc.) to add this client and the call redirect URL to obtain the client id and secret needed in the configuration file above.
 
-In the `acd-ce.properties` file, the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.
+In the `acd-ce.properties` file, the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.  You will need to set the OIDC_
 
 The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the `acd-ce.properties` file. These properties are:
 - `com_ibm_watson_health_car_auth_enable_logout` Set this property as true to enable logout.
@@ -275,9 +276,8 @@ To update to a newer version of the ACD Configuration Editor, follow these steps
 ## Notices
 
 The Configuration Editor is Java compatible.
- 
+
 ![Java Compatible](../../images/Java.png)
 
 
 [View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
-

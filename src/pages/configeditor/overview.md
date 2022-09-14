@@ -8,8 +8,8 @@ toc: true
 <!-- ---
 
 copyright:
-  years: 2020
-lastupdated: "2020-04-01"
+  years: 2022
+lastupdated: "2022-09-13"
 
 keywords: annotator clinical data, clinical data, annotation
 
@@ -19,12 +19,12 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-**Notice:** The Merative Annotator for Clinical Data (ACD) Configuration Editor is an as-is (non-warranted) development tool provided for free to ACD customers to customize ACD through the development of cartridges. Once a cartridge has been developed it can be published and deployed to an ACD runtime instance. See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use. 
+**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use.
 
 ## Welcome to the IBM Watson Annotator for Clinical Data Configuration Editor
 
 ### Introduction
-IBM Watson Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to IBM Watson Annotator for Clinical Data service through the construction of knowledge cartridges.
+IBM Watson Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.
 
 Each customer's use case and data sets are unique, however, there are common cognitive patterns within health data text that can be captured into artifacts so they can be reused across projects. Configuration Editor allows the domain expert to build a cognitive model, contained in a cartridge, to extract structured data from unstructured text in order to derive valuable insights. The tool provides a mechanism for the domain expert to share cognitive models or pieces of a model with other customer engagements. The tool's purpose is to enable customization, reduce development time, and improve accuracy of building cognitive models that run on Annotator for Clinical Data service.
 
@@ -39,14 +39,14 @@ The tool allows the domain expert to view Annotator for Clinical Data analytic i
 - Publish and deploy cartridges to an Annotator for Clinical Data service
 
 ### Access to the Configuration Editor
-You can download and install the Configuration Editor using one of the following the options:
-- [Download and Install (Docker)](/configeditor/download_docker/)
-- [Download and Install (OpenShift)](/configeditor/download_openshift)
+The configuration Editor can be deployed locally to a single linux system using Docker or can be deployed on OpenShift.  Follow the instructions for these options below:
+- [Install using Docker](/configeditor/download_docker/)
+- [Install on OpenShift](/configeditor/download_openshift)
 
-Once installed, use the instructions on the page to access the Configuration Editor on the host it was deployed to.
+Once installed, use the instructions on the install page to access the Configuration Editor using a browser on the host it was deployed to.
 
 ### Support and Questions
-Configuration Editor is provided to you as-is and free of charge.  Please use your IBM contact email and/or the interlock Slack channel if provided to ask questions. 
+Configuration Editor is provided to you as-is and free of charge.  Please use your IBM contact email and/or the interlock Slack channel if provided to ask questions.
 
 Acceptance of terms of use is required to use the tool.
 
