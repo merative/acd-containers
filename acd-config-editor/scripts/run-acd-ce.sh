@@ -17,7 +17,7 @@ SCRIPT_NAME=$(basename -- "$0")
 repository="us.icr.io"
 registry_namespace="vdt-acd-rns"
 label="latest"
-IMAGE_FILE_LIST="/home/jenkins/workspace/whcs-devops-ucd/acd-ce_new/acd-main/acd-ceacd-ce-images.txt"
+IMAGE_FILE_LIST="/home/jenkins/workspace/whcs-devops-ucd/acd-ce_new/acd-main/acd-ce/acd-ce-images.txt"
 remove=true
 
 UNAME="$(uname -s)"
