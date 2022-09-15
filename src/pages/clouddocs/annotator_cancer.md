@@ -63,6 +63,9 @@ Subtypes for aci.IcaCancerDiagnosisInd
 | cancerNormalizedName |  Normalized name for the cancer from the UMLS dictionary   For example, in the text `He has lung cancer`, the cancerSurfaceForm is `primary malignant neoplasm of lung`. |
 | ccsCode | CCS stands for Clinical Classification System, used to categorize diagnosis and procedures such that it can be used for further analysis. |
 | hccCode | HCC stands for Hierarchical Condition Categories and primarily used by Medicare and Medicaid. |
+| loincId | LOINC stands for Logical Observations Identifiers, Names, Codes.  The value for this feature comes from UMLS. |
+| nciCode | The [NCI Thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NCI/) covers vocabulary for cancer-related clinical care, translational and basic research, and public information and administrative activities.  The value for this feature comes from UMLS. |
+| meshId | The [MeSH thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MSH/) is a controlled vocabulary used for indexing, cataloging, and searching for biomedical and health-related information and documents.  The value for this feature comes from UMLS. |
 | icd9Code | ICD stands for International Classification of Diseases.  The number 9 is a revision number for this code set. |
 | icd10Code | ICD stands for International Classification of Diseases.  The number 10 is a revision number for this code set. |
 | snomedConceptId | Numerical code provided by the SNOMED dictionaries that represents the cancer. |
@@ -148,33 +151,36 @@ Sample response from the cancer annotator for the text: `She was previously trea
     {
       "text": "She was previously treated for adenocarcinoma of the colon.",
       "data": {
-        "IcaCancerDiagnosisInd": [
-          {
+         "IcaCancerDiagnosisInd": [
+         {
+            "type": "aci.IcaCancerDiagnosisInd",
             "begin": 31,
             "end": 58,
             "coveredText": "adenocarcinoma of the colon",
-            "type": "aci.IcaCancerDiagnosisInd",
-            "site": [
-              {
-                "coveredText": "the colon",
-                "end": 58,
+           "site": [
+             {
+                "coveredText": "colon",
                 "siteNormalizedName": "colon structure",
-                "type": "aci.SiteInd",
+                "end": 58,
                 "snomedConceptId": "71854001",
-                "begin": 49,
-                "compound": "false"
+                "type": "aci.SiteInd",
+                "compound": "false",
+                "begin": 53
               }
             ],
             "modality": "positive",
-            "cancer": [
-              {
+           "cancer": [
+             {
                 "icd10Code": "C80.9,C80.1",
+                "nciCode": "C2852",
                 "cancerSurfaceForm": "adenocarcinoma",
                 "cancerNormalizedName": "malignant adenomatous neoplasm",
+                "snomedConceptId": "35917007,443961001",
                 "type": "aci.Cancer",
-                "snomedConceptId": "443961001",
                 "ccsCode": "43",
+                "meshId": "M0000355",
                 "icd9Code": "199.1",
+                "loincId": "LA11900-0",
                 "coveredText": "adenocarcinoma",
                 "cui": "C0001418",
                 "behaviorSource": "icd-10",
