@@ -19,6 +19,7 @@ registry_namespace="vdt-acd-rns"
 label="latest"
 IMAGE_FILE_LIST=acd-ce-images.txt
 remove=true
+image_dir=acd-ce
 
 UNAME="$(uname -s)"
 
@@ -41,7 +42,6 @@ print_help() {
   echo "  -image-list FILE  file to use that has list of images.  Default is $IMAGE_FILE_LIST"
   echo "  -registry name of the container registry hosting ACD service images. Default is ${registry}"
   echo "  -registry_namespace namespace for the ACD service images in the container registry.  Default is ${registry_namesapce}"
-
 }
 
 
@@ -163,6 +163,7 @@ if [ ${restart} != true ]; then
   do
     if  ! echo "${image_name}" | grep -q '^ *#'   # ignore comments
     then
+      cd ${image_dir}
       image_file="${image_name}.tar.gz"
       echo " loading  ${image_file}"
       load_image "${image_file}"
