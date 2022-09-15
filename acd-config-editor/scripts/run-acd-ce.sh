@@ -17,7 +17,7 @@ SCRIPT_NAME=$(basename -- "$0")
 repository="us.icr.io"
 registry_namespace="vdt-acd-rns"
 label="latest"
-IMAGE_FILE_LIST=acd-ce-images.txt
+IMAGE_FILE_LIST="/home/jenkins/workspace/whcs-devops-ucd/acd-ce_new/acd-main/acd-ceacd-ce-images.txt"
 remove=true
 
 UNAME="$(uname -s)"
@@ -40,7 +40,7 @@ print_help() {
   echo "  -env-props FILE environment properties file to use. Default is acd-ce.properties"
   echo "  -image-list FILE  file to use that has list of images.  Default is $IMAGE_FILE_LIST"
   echo "  -registry name of the container registry hosting ACD service images. Default is ${registry}"
-  echo "  -regist;ry_namespace namespace for the ACD service images in the container registry.  Default is ${registry_namesapce}"
+  echo "  -registry_namespace namespace for the ACD service images in the container registry.  Default is ${registry_namesapce}"
 
 }
 
