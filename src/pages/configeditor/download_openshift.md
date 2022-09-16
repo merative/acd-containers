@@ -26,7 +26,7 @@ The following will walk through the steps necessary to set up and configure the 
 ## Prerequisites
 
 ### Hardware Prerequisites
-The ACD Configuration Editor hardware prerequisites are in addition to those required by an installation of ACD Container Edition as a dedicated sandbox instance.  The ACD Container Edition prerequisites are listed at [https://merative.github.io/acd-containers/installing/prereqs/](https://merative.github.io/acd-containers/installing/prereqs/).
+The ACD Configuration Editor hardware prerequisites are in addition to those required by an installation of ACD Container Edition as a dedicated sandbox instance.  Refer to [ACD Container Edition Prerequisites](https://merative.github.io/acd-containers/installing/prereqs/).
 
 | Component | Number of worker nodes | CPU/node | Memory/node (G) |
 |:----------|------------------------|----------|-----------------|
@@ -38,9 +38,9 @@ The ACD Configuration Editor hardware prerequisites are in addition to those req
 - OpenShift Cluster
   - Annotator for Clinical Data Container Edition - Dedicated sandbox instance<br/>
 
-    The ACD Configuration Editor requires an installation of ACD Container Edition as a dedicated sandbox instance.  Requirements and installation instructions can be found at [https://merative.github.io/acd-containers/installing/installing/](https://merative.github.io/acd-containers/installing/installing/).  The ACD Configuration Editor needs to be deployed into the same namespace as the dedicated sandbox instance.<br/><br/>
+    The ACD Configuration Editor requires an installation of ACD Container Edition as a dedicated sandbox instance.  Refer to [Installing ACD](https://merative.github.io/acd-containers/installing/installing/) for requirements and installation instructions.  The ACD Configuration Editor needs to be deployed into the same namespace as the dedicated sandbox instance.<br/><br/>
 
-    Storage considerations:  For performance reasons, it is recommended that the setup of ACD and ACD Configuration Editor use a File-based storage option per [https://merative.github.io/acd-containers/installing/setup-namespace/](https://merative.github.io/acd-containers/installing/setup-namespace/).
+    Storage considerations:  For performance reasons, it is recommended that the setup of ACD and ACD Configuration Editor use a [file-based storage option](https://merative.github.io/acd-containers/installing/setup-namespace/).
 
 - Client for Installation
   - [Helm 3](https://helm.sh/docs/intro/quickstart/)
@@ -56,44 +56,53 @@ The ACD Configuration Editor hardware prerequisites are in addition to those req
    If you used the default namespace during ACD's installation, this is `ibm-wh-acd-operator-system`.<br/>
 
     Run the command:<br/>
-   `oc project {acd namespace}`<br/>
-   - where `{acd namespace}` is the namespace where the ACD sandbox is running.
+   `oc project <acd namespace>`<br/>
+   - where `<acd namespace>` is the namespace where the ACD sandbox is running.
 5. Install the Concept Dictionary microservice using Helm:
 
 ```
 helm install whcs-acd-ce-cdc \
      ibm-wh-acd-ce/cdc/chart/cdc \
      --set replicas=1 \
-     --set configurationStorage.file.volume.existingClaimName={pvc name} \
-     --namespace {acd namespace}
+     --set configurationStorage.file.volume.existingClaimName=<pvc name> \
+     --namespace <acd namespace>
 ```
 
-   - where `{acd namespace}` is the namespace where the ACD sandbox instance is running
-   - where `{pvc name}` is the persistent volume claim (PVC) the ACD sandbox instance is using
+   - where `<acd namespace>` is the namespace where the ACD sandbox instance is running
+   - where `<pvc name>` is the persistent volume claim (PVC) the ACD sandbox instance is using
 6. Verify the Concept Dictionary microservice is running.<br/>
    Find the `ibm-wh-acd-cdc` pod by running the command:<br/>
-   `kubectl get pods -n {acd namespace}`<br/>
-   Run a health check against the pod using the following command.<br/>
-   It should list `"serviceState":"OK"`.<br/>
-   `kubectl exec {pod name} -c ibm-wh-acd-cdc -n {acd namespace} -- curl -sk 'https://localhost:9443/services/concept_dictionary/api/v1/status/health_check'`
+   `kubectl get pods -n <acd namespace>`<br/>
+
+   Run a health check against the pod using the following command:
+   - it should list `"serviceState":"OK"`
+
+```
+kubectl exec <pod name> -c ibm-wh-acd-cdc -n <acd namespace> -- curl -sk 'https://localhost:9443/services/concept_dictionary/api/v1/status/health_check'
+```
+
 7. Install the Cartridge microservice using Helm:
 
 ```
 helm install whcs-acd-ce-crtg \
      ibm-wh-acd-ce/crtg/chart/crtg \
      --set replicas=1 \
-     --set configurationStorage.file.volume.existingClaimName="{pvc name}" \
-     --namespace {acd namespace}
+     --set configurationStorage.file.volume.existingClaimName="<pvc name>" \
+     --namespace <acd namespace>
 ```
 
-  - where `{acd namespace}` is the namespace where the ACD sandbox instance is running
-  - where `{pvc name}` is the persistent volume claim (PVC) the ACD sandbox instance is using
+  - where `<acd namespace>` is the namespace where the ACD sandbox instance is running
+  - where `<pvc name>` is the persistent volume claim (PVC) the ACD sandbox instance is using
 8. Verify the Cartridge microservice is running.<br/>
    Find the `ibm-wh-acd-crtg` pod by running the command:<br/>
-   `kubectl get pods -n {acd namespace}`<br/>
-   Run a health check against the pod using the following command.<br/>  
-   It should list `"serviceState":"OK"`.<br/>
-   `kubectl exec {pod name} -c ibm-wh-acd-crtg -n {acd namespace} -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'`
+   `kubectl get pods -n <acd namespace>`<br/>
+
+   Run a health check against the pod using the following command:
+   - it should list `"serviceState":"OK"`
+
+``` 
+kubectl exec <pod name> -c ibm-wh-acd-crtg -n <acd namespace> -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'
+```
 
 ## ACD Configuration Editor Authentication
 
@@ -121,7 +130,7 @@ spec:
 ```
 
 2. Create the ACD Configuration Editor route:<br/>
-`oc create -f ibm-wh-acd-acd-ce-macroservice.yaml -n {acd namespace}`
+`oc create -f ibm-wh-acd-acd-ce-macroservice.yaml -n <acd namespace>`
 
 ### Option 2: Identity Provider authentication
 There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using [OIDC](https://en.wikipedia.org/wiki/OpenID) with [Openshift OAuth 2.0 Proxy](https://github.com/openshift/oauth-proxy).
@@ -230,9 +239,9 @@ items:
 Go to the following URL to verify authentication and the proxy route:<br/>
 `https://<hostname>/services/cartridge/cartridge-main.html`<br/>
 
-You may get an error about the self-signed certificate in the browser, but you can use advanced option to continue to to the site.  In Google Chrome, if there is no button to proceed, click on the advanced warning text and type `thisisunsafe` (all one word lower-case--type it after clicking on the warning) and it should proceed.  This is only needed the first time in.  To fix this, add a trusted CA-issued certificate to the Apache HTTP server.
+You may get an error about the self-signed certificate in the browser, but you can use advanced option to continue to the site.  In Google Chrome, if there is no button to proceed, click on the advanced warning text and type `thisisunsafe` (all one word lower-case--type it after clicking on the warning) and it should proceed.  This is only needed the first time in.  To fix this, add a trusted CA-issued certificate to the Apache HTTP server.
 
-Initially, there are no default cartridges so your list will be empty.  You can install the base Clinical Insights cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.  
+After you are in, you are at the main ACD Configuration Editor catalog page. Initially, there are no default cartridges so your list will be empty.  You can install the base [Clinical Insights](https://github.com/merative/acd-cartridges) cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.  
 
 Periodically, refer to this page for updates to the Configuration Editor packages and see below for update instructions.
 
@@ -249,7 +258,7 @@ Custom properties include:
  
 ## Deploying to Custom ACD Configuration Editor Environments (optional)
 
-ACD Configuration Editor provides the ability to deploy published cartridges to ACD instances in production environments.  To configure additional custom environments, the following files must be modified and the Cartridge microservice must be redeployed using Helm (see Installation instructions above).
+ACD Configuration Editor provides the ability to deploy published cartridges to ACD instances in production environments.  To configure additional custom environments, the following files must be modified and the Cartridge microservice must be redeployed using Helm (see Installing ACD Configuration Editor instructions above).
 
 1. `ibm-wh-acd-ce/crtg/chart/crtg/rev-proxy.conf`
 
@@ -288,24 +297,24 @@ location /<identifier>/ {
   - where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
 
 ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_car_acd_host_{index}` as the beginning of their property name. The index must start at "3". The properties are:
-- The `_label` which is the name for the host that will be shown in the Configuration Editor
-- The `_url` which is what will be shown in the host description in the Configuration Editor
-- The `_proxy` which is the proxy you have configured in your `ssl.conf` file detailed in the section Installation and Configuration of Prerequisite Software in order to allow requests to the hosts and avoid CORS errors
-- The `_phi` which is either true or false based on whether this ACD Host can support protected health information
-- The `_auth` which specifies the type of authentication the host requires.  The three possible authentication types are:
+- `_label` which is the name for the host that will be shown in the Configuration Editor
+- `_url` which is what will be shown in the host description in the Configuration Editor
+- `_proxy` which is the proxy you have configured in your `ibm-wh-acd-ce/crtg/chart/crtg/rev-proxy.conf` file mentioned in Step 1 in this section 
+- `_phi` which is either true or false based on whether this ACD Host can support protected health information
+- `_auth` which specifies the type of authentication the host requires.  The three possible authentication types are:
    - APIKey: Used for cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field `com_ibm_watson_health_car_identity_server` (default is `https://iam.cloud.ibm.com/identity/token`) in order to request a bearer token using the API Key the user entered.
-   - Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition and expire every 24 hours
-   - Leaving the field blank: Used for no authentication if the host does not require any authentication
+   - Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition and expire every 24 hours.
+   - Leaving the field blank: Used for no authentication if the host does not require any authentication.
 
 ## Backing up Your Data
 
-All configuration data such as cartridges, flows, dictionaries, filters, etc. are stored in the storage setup as part of the ACD prerequisites. The recommendation is to use file-based storage via a PVC. Backup of this storage is implementation specific. It is recommended to have at least daily backups in case a restore is needed.
+All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored in the storage set up as part of the ACD [prerequisites](/configeditor/download_openshift/#prerequisites). The recommendation is to use file-based storage via a persistent volume claim (PVC). Backup of this storage is implementation-specific. It is recommended to have at least daily backups in case a restore is needed.
 
 ## Updating ACD Configuration Editor
 
 To update to a newer version of the ACD Configuration Editor follow these steps:
 
-1. Backup any customizations in:
+1. Back up any customizations in:
   - `ibm-wh-acd-ce/crtg/chart/crtg/rev-proxy.conf`
   - `ibm-wh-acd-ce/crtg/chart/crtg/values.yaml`
 2. Download the latest project and unpack it as above.

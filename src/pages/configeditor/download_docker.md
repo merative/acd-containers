@@ -32,7 +32,7 @@ The ACD Configuration Editor setup we use here should be installed on a dedicate
 
   **NOTE:** The disk where Docker stores its images and where ACD Configuration Editor is installed needs to have 200GB of storage free.  Note: If you are using IBM Cloud with a VM, it may dafault to a 25GB base disk which will not fit the images and the Configuration Editor, so increase that or add a second larger disk and install Docker and its registry to that along with the ACD Configuration Editor.
 
-### Software Requirements (refer to installation and configuration instructions below)
+### Software Requirements (refer to the installation and configuration instructions below)
 - Docker Community Edition
 - HTTP Server (or some reverse proxy)
 - Java 8
@@ -46,7 +46,7 @@ The ACD Configuration Editor setup we use here should be installed on a dedicate
   Run this command to install the Apache HTTP server and set it to auto-start with the system:<br/>
   `sudo yum install httpd mod_ssl`
 
-- Allow outbound connections (on selinux, enabled systems need to allow connections):<br/>
+- Allow outbound connections (SELinux-enabled systems need to allow connections):<br/>
   `sudo /usr/sbin/setsebool -P httpd_can_network_connect on`
 
 - (Optional) If your server is set up with a firewall locally, allow incoming connections on your firewall to port 443.  If the system has a local firewall daemon running, you can use:
@@ -101,7 +101,7 @@ SSLProxyCheckPeerExpire off
 
   - Logs are in `/etc/httpd/logs` (you need to be root to see them by default) in case you need to look at logs
 
-  - Note:  By default, the Configuration Editor is running unsecured and users will be prompted to only provide their name and email address.  You can, however, add a plugin for the HTTP Server to secure access to the system.  The auth_openidc module, for example, can be used and configured to check credentials against an openIDC provider, such as IBM AppID.  These docs [https://github.com/zmartzone/mod_auth_openidc](https://github.com/zmartzone/mod_auth_openidc) and [https://cloud.ibm.com/docs/appid?topic=appid-web-apps](https://cloud.ibm.com/docs/appid?topic=appid-web-apps) are for those tools.  See sample instructions below for setting that up after you have the base Configuration Editor installed.   Another level of security can be done with firewall access at the network layer just to limit which networks can access the HTTP server.
+  - Note:  By default, the Configuration Editor is running unsecured and users will be prompted to only provide their name and email address.  You can, however, add a plugin for the HTTP server to secure access to the system.  The auth_openidc module, for example, can be used and configured to check credentials against an openIDC provider, such as IBM AppID.  These docs [https://github.com/zmartzone/mod_auth_openidc](https://github.com/zmartzone/mod_auth_openidc) and [https://cloud.ibm.com/docs/appid?topic=appid-web-apps](https://cloud.ibm.com/docs/appid?topic=appid-web-apps) are for those tools.  See sample instructions below for setting that up after you have the base Configuration Editor installed.   Another level of security can be done with firewall access at the network layer just to limit which networks can access the HTTP server.
 
 - Install Java - you can use this command:<br/>
   `sudo yum install java-1.8.0-openjdk`
@@ -111,7 +111,7 @@ SSLProxyCheckPeerExpire off
   - Follow these instructions to allow non-root users to use Docker and to enable Docker to automatically start: [https://docs.docker.com/install/linux/linux-postinstall/](https://docs.docker.com/install/linux/linux-postinstall/)
   - Ensure Docker is started before proceeding and can be run as non-root.  (Using the command `docker -version` as regular user or similar.)
 
-- Verify Perl is installed or install it
+- Verify Perl is installed (or install it)
 
   Run the command `perl -version`.  If you get an error that the command is not installed, install it with:<br/>
   `sudo yum install perl`
@@ -138,7 +138,7 @@ Untar the container images by running the command `tar -xvf acd-ce.2022-06-16.23
 
 Run the command `cd acd-ce` to change the directory.
 
-Update the properties in the `acd-ce` directory with the name of the host your users will be accessing the Configuration Editor from (the host name they will enter into the browser) by using "sed" against the `ace-ce.properties` file:<br/>
+Update the properties in the `acd-ce` directory with the name of the host your users will be accessing the Configuration Editor from (the host name they will enter into the browser) by using the following command against the `ace-ce.properties` file:<br/>
   `sed -i 's/%SERVER%/<hostname>/g' acd-ce.properties`
 
 Note:  If the host name changes (the host used by the browser to get to the system) you'll need to update it in `acd-ce.properties` and restart the acd-ce processes.
@@ -146,12 +146,12 @@ Note:  If the host name changes (the host used by the browser to get to the syst
 In the `acd-ce.properties` file is also the configuration file where configuration data goes. It defaults to `%HOME%/installs/config/`.  You need to change this to a real directory that is read/write for the Docker process user (set below) and should be a directory you will back up.  For example (replace `<user>` with your user name):<br/>
   `sed -i 's/%HOME%/\/home\/<user>/g' acd-ce.properties`
 
-Finally, in the `acd-ce.properties` file is the user and group that Docker will start the containers as.  It is defined near the top on a line that starts with something similar to this:<br/>
+Finally, in the `acd-ce.properties` file, is the user and group that Docker will start the containers as.  It is defined near the top on a line that starts with something similar to this:<br/>
   `com_ibm_watson_health_common_docker_user=<userid>:<groupid>;\`
 
-Edit this line in the file.  The `<userid>` should be a user id on your local system that has RWX permission to the `installs/config` target directory defined above.  The group should be set to 0.
+Edit this line in the file.  The `<userid>` should be a user id on your local system that has RWX permission to the `installs/config` target directory defined above.  The group should be set to `0`.
 
-The user can be a uid (the id of the user, e.g., 1001, or your own user id which you can get by using the `id` command on Linux).
+The user can be a uid (the id of the user, e.g., `1001`, or your own user id which you can get by using the `id` command on Linux).
 
 You can test what you use here by running:<br/>
   `docker run -u <userid>:0 hello-world`
@@ -159,7 +159,7 @@ You can test what you use here by running:<br/>
 Back up your properties file.  Everytime you update it, the file will be overwritten and you'll want to merge back any changes you made here.<br/>
   `cp acd-ce.properties acd-ce.properties.bak`
 
-Now to start the acd-ce processes (the Docker containers), run the following command:<br/>
+Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
   `./run-acd-ce.sh`
 
 This command will stop any running containers, remove any old images, load the downloaded images and start the Docker containers.
@@ -174,7 +174,7 @@ You will get an error about the self-signed certificate in the browser, but you 
 
 The first prompt is going to ask for your name and email to identify any configuration items you create and what you have access to.  Note that there is no actual authentication configured unless you added it to the HTTP server above (with the OIDC module).
 
-After you are in, initially there are no default cartridges.  You can install the base Clinical Insights cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.
+After you are in, you are at the main ACD Configuration Editor catalog page.  Initially, there are no default cartridges.  You can install the base [Clinical Insights](https://github.com/merative/acd-cartridges) cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.
 
 Periodically, refer to this page for updates to the Configuration Editor packages and see below for update instructions.
 
@@ -199,11 +199,14 @@ com_ibm_watson_health_car_acd_host_1_phi=false;\
 ```
 
 ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_car_acd_host_{index}` as the beginning of their property name. The possible properties are:
-- label:  which is the name for the host that will be shown in the Configuration Editor
-- url:  which is what will be shown in the host description in the Configuration Editor
-- proxy:  which is the proxy you have configured in your `ssl.conf` file (see Installation and Configuration of Prerequisite Software) to allow requests to the hosts and avoid CORS errors
-- phi:  which is either true or false based on whether this ACD Host can support protected health information
-- auth:  which specifies the type of authentication the host requires. The three possible auth types are:  APIKey, Bearer, and leaving the field blank. "APIKey" is used for IBM Cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field `com_ibm_watson_health_car_identity_server` (by default, `https://iam.cloud.ibm.com/identity/token`) in order to request a bearer token using the API Key the user entered. The auth type "Bearer" is used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition, and expire every 24 hours.  You can also leave the auth field blank if your host does not require any authentication.
+- `_label` which is the name for the host that will be shown in the Configuration Editor
+- `_url` which is what will be shown in the host description in the Configuration Editor
+- `_proxy` which is the proxy you have configured in your `ssl.conf` file (see Installation and Configuration of Prerequisite Software) to allow requests to the hosts and avoid CORS errors
+- `_phi` which is either true or false based on whether this ACD Host can support protected health information
+- `_auth` which specifies the type of authentication the host requires. The three possible auth types are:
+  - APIKey: Used for IBM Cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field `com_ibm_watson_health_car_identity_server` (by default, `https://iam.cloud.ibm.com/identity/token`) in order to request a bearer token using the API Key the user entered.
+  - Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition, and expire every 24 hours.
+  - Leaving the field blank: You can leave the auth field blank if your host does not require any authentication.
 
 As you add new ACD Hosts, you must configure a proxy in your `ssl.conf` file in order to allow requests to the hosts and avoid CORS errors.  The proxy specified in your `ssl.conf` file must match the proxy in your `acd-ce.properties` file for that host.
 
@@ -234,7 +237,7 @@ Header echo ^OIDC_CLAIM_
 
 Configure your OpenID Connect Provider (e.g., IBM AppId, Google, Azure AD, Keycloak, etc.) to add this client and the call redirect URL to obtain the client id and secret needed in the configuration file above.
 
-In the `acd-ce.properties` file, the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.  You will need to set the OIDC_
+In the `acd-ce.properties` file, the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.
 
 The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the `acd-ce.properties` file. These properties are:
 - `com_ibm_watson_health_car_auth_enable_logout` Set this property as true to enable logout.
@@ -253,7 +256,7 @@ com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
 
 ## Backing Up Your Data
 
-All configuration data such as cartridges, flows, dictionaries, filters, etc. are stored by default in the `/tmp/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
+All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the `/tmp/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
 
 ## Stopping the Configuration Editor
 
@@ -265,7 +268,7 @@ Run the following command to stop the containers running the Configuration Edito
 To update to a newer version of the ACD Configuration Editor, follow these steps:
 
 1. Back up existing `acd-ce.properties` file in your `acd-ce` directory.
-2. Download the latest acd-ce.tar file again and unpack it as above (see Installing ACD Configuration Editor)
+2. Download the latest acd-ce tar file again and unpack it as above (see Installing ACD Configuration Editor)
 3. Modify the default `acd-ce.properties` file to merge in any changes you made from your backup (replacing the `%SERVER%` with the host name and updating the shared configuration directory, for example)
 4. Clear out the shared keystore/truststore. To do this, go to the shared config directory set in the `acd-ce.properties` file with the `*_shared_config_dir` property and run these commands to clear the shared certificates and truststore:
   - `rm -r certs`

@@ -176,7 +176,7 @@
   pages:
     - title: "Overview"
       path: /configeditor/overview/
-    - title: "Download and Install (Docker)"
+    - title: "Install using Docker"
       path: /configeditor/download_docker/
-    - title: "Download and Install (OpenShift)"
+    - title: "Install on OpenShift"
       path: /configeditor/download_openshift/
