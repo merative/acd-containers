@@ -57,6 +57,6 @@ The following shows this setup with an optional security proxy that can be setup
 
 ![IBM Watson Annotator for Clinical Data Container Edition](../../images/ACD-OCP-HLD.png)
 
-## Customizing Annotator for Clinical Data analytics
+## Customizing Annotator for Clinical Data
 
-Annotator for Clinical Data provides a set of of predefined configurations you can install to use with your local ACD instance.  See [Using ACD](../../usage/getting-started/) for setup instructions after installing Annotator for Clinical Data.  See the [IBM Watson Annotator for Clinical Data](/usage/customizing/) (on IBM Cloud) documentation for information on customizing IBM Watson Annotator for Clinical Data.
+Annotator for Clinical Data provides a set of predefined configurations you can install to use with your local ACD instance.  See [Using ACD](../../usage/getting-started/) for setup instructions after installing Annotator for Clinical Data.  See the [Customizing](../../usage/customizing/) documentation for information on customizing Annotator for Clinical Data.
