@@ -21,10 +21,10 @@ subcollection: wh-acd
 
 **Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use.
 
-## Welcome to the IBM Watson Annotator for Clinical Data Configuration Editor
+## Welcome to the Annotator for Clinical Data Configuration Editor
 
 ### Introduction
-IBM Watson Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.
+Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.
 
 Each customer's use case and data sets are unique, however, there are common cognitive patterns within health data text that can be captured into artifacts so they can be reused across projects. Configuration Editor allows the domain expert to build a cognitive model, contained in a cartridge, to extract structured data from unstructured text in order to derive valuable insights. The tool provides a mechanism for the domain expert to share cognitive models or pieces of a model with other customer engagements. The tool's purpose is to enable customization, reduce development time, and improve accuracy of building cognitive models that run on Annotator for Clinical Data service.
 

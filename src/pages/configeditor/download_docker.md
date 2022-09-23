@@ -119,7 +119,7 @@ SSLProxyCheckPeerExpire off
 ## Installing ACD Configuration Editor
 
 Download the ACD Configuration Editor setup program and place it on the target machine:
-TODO point to setup script downloadf file(s)
+TODO: point to setup script downloadf file(s)
 <a href="./acd-ce.2022-06-16.239.tar" download>acd-ce.2022-06-16.239.tar</a>
 
 Date: June 16th, 2022 : size: 11250063360 sha-256: 292f925a776ee53ae9454284aafbe0cb901390cb15130dc1b6183a165704e265 (using sha256sum -b acd-ce.2022-06-16.239.tar)

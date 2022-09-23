@@ -172,11 +172,3 @@
   pages:
     - title: "filtering"
       path: /clouddocs/filtering/
-- title: ACD Configuration Editor
-  pages:
-    - title: "Overview"
-      path: /configeditor/overview/
-    - title: "Install using Docker"
-      path: /configeditor/download_docker/
-    - title: "Install on OpenShift"
-      path: /configeditor/download_openshift/
