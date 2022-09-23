@@ -26,8 +26,8 @@ In the following examples, replace:
 
 - `{version}` is the ACD Service API version, e.g. 2021-06-01
 - `{url}` is either:
-  - OAuth proxy route URL if secured access, e.g. https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api
-  - Direct route URL if unsecured, e.g. https://route-acd-route.apps.youserver.com/services/clinical_data_annotator/api
+  - OAuth proxy route URL if secured access, e.g. https://<proxy_route_name>-<proxy_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
+  - Direct route URL if unsecured, e.g. https://<route_name>-<acd_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
 - `{token}` is either:
   - bearer token of OAuth proxy route, e.g. `edJhb......M1g`
   - dummy token, e.g. `dummy`
