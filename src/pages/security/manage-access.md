@@ -9,8 +9,8 @@ toc: true
 
 ## Managing Access to ACD
 
-If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster you can use the Openshift provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do RBAC access to the service.
-In the example below we'll use the latest version of the openshift oauth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
+If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster you can use the OpenShift-provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do role-based access control (RBAC) access to the service.
+In the example below we'll use the latest version of the OpenShift OAuth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
 
 1. Create a project/namespace for the proxy to run in (the examples below used acd-oauth-proxy)
 
@@ -120,8 +120,8 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
 1. Use that token as a bearer token to call acd through the proxy route passing the bearer token on the Authorization header (eg:
 `curl -X GET -H "Authorization: Bearer eyJ....z9g" -k "https://<proxy_route_name>-<proxy_route_namespace>.apps.yourserver.com/services/clinical_data_annotator/api/v1/flows?version=2021-05-18"`
 
-The delegate-urls parms says for which paths it should forward and what the caller needs to have access to allow it.  In this example we forward all calls ('/') if the caller has `get` access to the services in the target acd namespace  (which we created the role and granted that permission the service account).  More info on openshift RBAC access is here - https://docs.openshift.com/container-platform/4.7/authentication/using-rbac.html
-Note here we have the proxy service account doing double duty - it is used to run the proxy service and do the token review (so it needed that cluster role binding) and we have it as the service account that is calling into ACD and bound it to that serviceview role to allow it.  In practice you have many service accounts and use their tokens to act as different acd tenants.
+The delegate-urls parms says for which paths it should forward and what the caller needs to have access to allow it.  In this example we forward all calls ('/') if the caller has `get` access to the services in the target ACD namespace  (which we created the role and granted that permission the service account).  More info on openshift RBAC access is here - https://docs.openshift.com/container-platform/4.7/authentication/using-rbac.html
+Note here we have the proxy service account doing double duty - it is used to run the proxy service and do the token review (so it needed that cluster role binding) and we have it as the service account that is calling into ACD and bound it to that serviceview role to allow it.  In practice you have many service accounts and use their tokens to act as different ACD tenants.
 Also note if your application runs in the cluster you may want to consider using [bound service access tokens](https://docs.openshift.com/container-platform/4.7/authentication/bound-service-account-tokens.html) to have the tokens dynamically generated and rotated by the kubelet using the [TokenRequest api](https://jpweber.io/blog/a-look-at-tokenrequest-api/).
 
 More options and details for the proxy are available at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).
@@ -165,6 +165,6 @@ spec:
 # Note that the use of the hyphen (-) on the selectors determines if this restriction is an AND or OR rule.  In the above example, both the namespace and pod selectors have to match since they are in the same array.
 ```
 
-Egress
+#### Egress
 
 There are no egress Network Policies defined for the ACD namespace by default.  All pods within the ACD namespace can send data outside of the namespace including to the internet unless you have other restrictions in place.  It is also possible to restrict egress traffic from within the ACD namespace using Network Policy egress rules.

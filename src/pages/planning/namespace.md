@@ -6,9 +6,9 @@ slug: namespace
 toc: true
 ---
 
-All IBM Watson Annotator for Clinical Data (ACD) Container Edition resources are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces.
+All Annotator for Clinical Data (ACD) Container Edition resources are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces.
 
-IBM Watson Annotator for Clinical Data (ACD) Container Edition handles installation and management of the ACD service using an ACD operator. The ACD operator and its management of its ACD operand are handled differently depending on the selected installation mode. Regardless of the ACD operator installation mode, each ACD service instance (ACD operand) must have its own namespace.
+Annotator for Clinical Data (ACD) Container Edition handles installation and management of the ACD service using an ACD operator. The ACD operator and its management of its ACD operand are handled differently depending on the selected installation mode. Regardless of the ACD operator installation mode, each ACD service instance (ACD operand) must have its own namespace.
 
 Two installation mode are supported:
 

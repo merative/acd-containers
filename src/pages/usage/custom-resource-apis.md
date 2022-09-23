@@ -6,9 +6,9 @@ slug: status
 toc: true
 ---
 
-The `Acd` resource is a Custom Resource Definition used to deploy and manage an instance of IBM Watson Annotator for Clinical Data Service.
+The `Acd` resource is a Custom Resource Definition used to deploy and manage an instance of Annotator for Clinical Data service.
 
-Just as other Kubernetes objects do, the Acd custom resource includes two nested object fields that govern the object's configuration: the object `Spec` (desired state) and the object `Status` (current state). When a custom resource is created or updated, the desired state (Spec field) is updated and available immediately. Over time, the system will work to bring the Status into line with the Spec. These fields provide a standard way to report the state of the custom resource or ACD Service instance.
+Just as other Kubernetes objects do, the `Acd` custom resource includes two nested object fields that govern the object's configuration: the object `Spec` (desired state) and the object `Status` (current state). When a custom resource is created or updated, the desired state (Spec field) is updated and available immediately. Over time, the system will work to bring the Status into line with the Spec. These fields provide a standard way to report the state of the custom resource or ACD service instance.
 
 For more information on the object spec, status, and metadata, see the [Kubernetes API Conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md).
 
@@ -138,7 +138,7 @@ If S3 compatible (COS) is enabled these additional properties need to be set:
 
 The `License` property contains two required field:
 
-- `accept` : must be boolean `true` for the ACD prods to successfully start.
+- `accept` : must be boolean `true` for the ACD pods to successfully start.
 - `use` : the type of license being used.  Can be one of the following values:
   - `production`
   - `development`
@@ -182,13 +182,13 @@ The `Replicas` property tells the deployment how many replica pods to create for
 
 #### Description
 
-The `Resources` property defines the cpu, ephemeral storage, and memory for limits and requests.
+The `Resources` property defines the CPU, ephemeral storage, and memory for limits and requests.
 
 #### CPU
 
 The default CPU request is 100m.
 
-It is worth noting that you can only request CPU, there is not a limit field, as the Annotation for Clinical Data Operator will set the limits CPU to the requests CPU.
+It is worth noting that you can only request CPU, there is not a limit field, as the Annotator for Clinical Data operator will set the limits CPU to the requests CPU.
 
 #### Memory
 
@@ -244,11 +244,11 @@ The `Version` property identifies the build of the operator that is deployed.
 
 ## Status
 
-The Annotator for Clinical Data Container Edition is a Custom Resource Definition used to deploy and manage an instance of IBM Watson Annotator for Clinical Data Service.
+The Annotator for Clinical Data Container Edition is a Custom Resource Definition used to deploy and manage an instance of Annotator for Clinical Data service.
 
 ### Conditions
 
-The Annotation for Clinical Data Service supports Kubernetes [Conditions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties). These `Conditions` can be viewed as a snapshot of the current and most up-to-date status of the instance.
+The Annotation for Clinical Data service supports Kubernetes [Conditions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties). These `Conditions` can be viewed as a snapshot of the current and most up-to-date status of the instance.
 
 The `Iniitialized` condition will be set to `True` when all the pods are created for the desired number of replicas set by the instance specification.
 

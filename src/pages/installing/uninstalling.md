@@ -94,4 +94,4 @@ To remove the catalog run the following:
 oc delete catalogsource ibm-operator-catalog -n openshift-marketplace
 ```
 
-**Note:** This catalog resource provides access to many operators, one of which is the IBM Watson Annotator for Clinical Data Container Edition operator. Before deleting the catalog source, ensure you want to remove the full catalog. If you need to reinstall, see [Installing the IBM Operator catalog](/installing/installing/#installing-the-ibm-operator-catalog).
+**Note:** This catalog resource provides access to many operators, one of which is the Annotator for Clinical Data Container Edition operator. Before deleting the catalog source, ensure you want to remove the full catalog. If you need to reinstall, see [Installing the IBM Operator catalog](/installing/installing/#installing-the-ibm-operator-catalog).

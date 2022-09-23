@@ -6,7 +6,7 @@ slug: prerequisites
 toc: true
 ---
 
-IBM Watson Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
+Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
 
 - Red Hat Openshift Container Platform (OCP) 4.7 or later
   - Commencing with OpenShift Container Platform 4.8, Red Hat will denote all even numbered minor releases (eg 4.8, 4.10, 4.12) as Extended Update Support (EUS) releases. ACD will support the EUS releases. For more lifecycle policy information please see the [IBM Continuous Delivery Support Lifecycle Policy](https://www.ibm.com/support/pages/ibm-continuous-delivery-support-lifecycle-policy) (IBM CD), and the [Red Hat OpenShift Container Platform Life Cycle Policy](https://access.redhat.com/support/policy/updates/openshift).
@@ -39,8 +39,8 @@ By default, an ACD installation requires the following minimum resources:
 | ----------------------- | ---------------------- | -------- | ---------------- |
 | ACD                     | 3                      | 8 min (16 recommended )       | 64              |
 
-For high availability run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 CPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 CPU/node may be used.  
+For high availability, run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 CPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 CPU/node may be used.  
 
-By default the ACD pods may use all of the CPUs on a node. If needed, you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring)).
+By default, the ACD pods may use all of the CPUs on a node. If needed, you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring)).
 
 These are the requirements for ACD. The cluster itself has additional requirements for master, infrastructure and possible additional worker node for monitoring, logging and other components or applications being run. Please see the [OpenShift recommended host practices](https://docs.openshift.com/container-platform/4.7/scalability_and_performance/recommended-host-practices.html) for guidance on adding infrastructure nodes and moving resources to those nodes.

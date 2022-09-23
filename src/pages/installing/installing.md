@@ -5,11 +5,11 @@ categories: installing
 slug: installing
 toc: true
 ---
-To install IBM Watson Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
+To install Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
 
 ## Overview
 
-IBM Watson Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration.
+Annotator for Clinical Data Container Edition is an [operator-based](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) release and uses a custom resource to define your ACD configuration.
 
 The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
