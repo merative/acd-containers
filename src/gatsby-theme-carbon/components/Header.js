@@ -7,7 +7,7 @@ require('./languages/prism-powershell')
 const CustomHeader = props => (
 
   <Header {...props}>
-    Annotator for Clinical Data Container Edition
+    Merative Annotator for Clinical Data Container Edition
   </Header>
 
 );
