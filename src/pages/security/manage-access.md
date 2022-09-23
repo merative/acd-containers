@@ -12,18 +12,18 @@ toc: true
 If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster you can use the Openshift provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do RBAC access to the service.
 In the example below we'll use the latest version of the openshift oauth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
 
-1. Create a project/namespace for the proxy to run in (the examples below used ibm-wh-acd-oauth-proxy)
+1. Create a project/namespace for the proxy to run in (the examples below used acd-oauth-proxy)
 
     ```
-    oc create namespace ibm-wh-acd-oauth-proxy
+    proxy_namespace=acd-oauth-proxy
+    oc create namespace ${proxy_namespace}
     ```
 
-1. Download the yaml below and save it as ibm-wh-acd-oauth-proxy.yaml.  Edit it with these changes:
-   * `namespace: ibm-wh-acd-oauth-proxy` to the namespace you created in 1.
-   * In the args section on this line `--upstream=https://ibm-wh-acd-acd.<namespace>.svc`  - change <namespace\> to the namespace your acd instance is running in (the target service)
-   * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":<namespace>}}`- change <namespace\> again to match your target acd namespace.
+1. Download the yaml below and save it as acd-oauth-proxy.yaml.  Edit it with these changes:
+   * In the args section on this line `--upstream=https://ibm-wh-acd-acd.<acd_namespace>.svc`  - change <acd_namespace\> to the namespace your acd instance is running in (the target service)
+   * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":<acd_namespace>}}`- change <acd_namespace\> again to match your target acd namespace.
 
-   ```yaml ibm-wh-acd-oauth-proxy.yaml
+   ```yaml acd-oauth-proxy.yaml
     kind: List
     apiVersion: v1
     items:
@@ -88,8 +88,8 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
               - --provider=openshift
               - --request-logging=true
               - --openshift-service-account=proxy
-              - --upstream=https://ibm-wh-acd-acd.<namespace>.svc
-              - --openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":"<namespace>"}}
+              - --upstream=https://ibm-wh-acd-acd.<acd_namespace>.svc
+              - --openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":"<acd_namespace>"}}
               - --ssl-insecure-skip-verify=false
               - --upstream-ca=/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt
               - --tls-cert=/etc/tls/private/tls.crt
@@ -105,18 +105,20 @@ In the example below we'll use the latest version of the openshift oauth proxy. 
                 secretName: proxy-tls
    ```
 
-1. Run `oc project ibm-wh-acd-oauth-proxy` (change to your project used in  step 1 above).
-1. `oc create -f ibm-wh-acd-oauth-proxy.yaml`
+1. Run `oc project ${proxy_namespace}` (change to your project used in step 1 above).
+1. Run `acd_namespace=<acd_namespace>` to set a variable for your acd namespace.
+1. `oc create -f acd-oauth-proxy.yaml`
    * This should create a deployment for the proxy, a service to that deployment, a route to that service and a proxy service account all in your new project that was created in step 1.
 1. Because we are using the `--openshift-delegate-urls` option of the proxy we need to give the service account that checks the token permission to create a tokenreviews at the cluster level.  We'll do this by binding the proxy service account to the predefined `system:auth-delegator` cluster role.
-   * `oc adm policy add-cluster-role-to-user system:auth-delegator -z proxy -n ibm-wh-acd-oauth-proxy` (change project name as needed)
-1. The delegate-urls above says it will check the user/token coming in has the ability to do a get on the services in the target namespace as what will check to ensure the service account has access to the target acd instance.   We need to create a namespace-scoped role on the target acd project and grant access to the service account that will be used to call acd.  To start, create a role (named serviceview) on the namespace where acd is running and bind that role to the service account created above. Change <namespace\> to your acd namespace and ibm-wh-acd-oauth-proxy to the namespace/project created in step 1 where the proxy runs.
-    * `oc create role serviceview --verb=get --resource=service -n <namespace>`
-    * `oc adm policy add-role-to-user serviceview system:serviceaccount:ibm-wh-acd-oauth-proxy:proxy --role-namespace=<namespace> -n <namespace>`
+   * `oc adm policy add-cluster-role-to-user system:auth-delegator -z proxy -n ${proxy_namespace}`
+1. The delegate-urls above says it will check the user/token coming in has the ability to do a get on the services in the target namespace as what will check to ensure the service account has access to the target acd instance.  We need to create a namespace-scoped role on the target acd project and grant access to the service account that will be used to call acd.  To start, create a role (named serviceview) on the namespace where acd is running and bind that role to the service account created above.
+    * `oc create role serviceview --verb=get --resource=service -n ${acd_namespace}`
+    * `oc adm policy add-role-to-user serviceview system:serviceaccount:${proxy_namespace}:proxy --role-namespace=${acd_namespace} -n ${acd_namespace}`
 1. Create a token to use on the service account
-   * `oc serviceaccounts new-token proxy -n ibm-wh-acd-oauth-proxy`  (change the project name as needed).  Copy the token returned (not this is also stored in a secret named proxy-token-nnnnn in the target project and when you delete that it will remove the token from the account after a bit. You can add additional tokens and remove the secret to rotate your tokens for your app.
+   * `oc serviceaccounts new-token proxy -n ${proxy_namespace}`.  Copy the token returned.
+     **Note:** This token is also stored in a secret named proxy-token-nnnnn in the target project and when you delete that it will remove the token from the account after a bit. You can add additional tokens and remove the secret to rotate your tokens for your app.
 1. Use that token as a bearer token to call acd through the proxy route passing the bearer token on the Authorization header (eg:
-`curl -X GET -H "Authorization: Bearer eyJ....z9g" -k "https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api/v1/flows?version=2021-05-18"`
+`curl -X GET -H "Authorization: Bearer eyJ....z9g" -k "https://<proxy_route_name>-<proxy_route_namespace>.apps.yourserver.com/services/clinical_data_annotator/api/v1/flows?version=2021-05-18"`
 
 The delegate-urls parms says for which paths it should forward and what the caller needs to have access to allow it.  In this example we forward all calls ('/') if the caller has `get` access to the services in the target acd namespace  (which we created the role and granted that permission the service account).  More info on openshift RBAC access is here - https://docs.openshift.com/container-platform/4.7/authentication/using-rbac.html
 Note here we have the proxy service account doing double duty - it is used to run the proxy service and do the token review (so it needed that cluster role binding) and we have it as the service account that is calling into ACD and bound it to that serviceview role to allow it.  In practice you have many service accounts and use their tokens to act as different acd tenants.

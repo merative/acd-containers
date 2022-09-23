@@ -16,10 +16,11 @@ oc get pods --namespace <namespace> | grep controller
 
 ## Verifying the ACD Service
 
-List the pods deployed and look for the deployment pods showing ACD and all microservices ready with a status of running.
+List the pods deployed and look for the deployment pods showing ACD and all microservices ready with a status of running. The ACD macroservice pod waits for all its microservice pods to report ready before it becomes ready so it will be the last one to reach a ready state. List only the ACD macroservice pod by searching for "acd-acd".
 
 ```
-oc get pods --namespace <namespace> | grep ibm-wh-acd-acd
+oc get pods --namespace <namespace>
+oc get pods --namespace <namespace> | grep acd-acd
 ```
 
 ## Calling the ACD Status API

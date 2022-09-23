@@ -21,7 +21,7 @@ The following steps are for the [Clinical Insights](/clouddocs/clinical_insights
 List the pod names.
 
 ```
-oc get pod -n ${acd_namespace} | grep ibm-wh-acd-acd
+oc get pod -n ${acd_namespace} | grep acd-acd
 ```
 
 Port-forward to an ACD pod. **Note that only an admin can do the port-forward and access the pods through localhost.**
