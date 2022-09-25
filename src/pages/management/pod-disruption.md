@@ -6,7 +6,7 @@ slug: pod-disruption
 toc: true
 ---
 
-The pod disruption budget limits the number of pods that are down simultaneously from voluntary disruptions.
+The Pod Disruption Budget limits the number of pods that are down simultaneously from voluntary disruptions.
 
 ### Pod Disruption Budget Setup
 

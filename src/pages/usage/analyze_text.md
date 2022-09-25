@@ -25,7 +25,7 @@ How it works:
 1. Designate which annotators to employ in analyzing your unstructured data. This designation is defined as an annotator flow. See the Annotator Flows section below for more details.
 2. Send your unstructured data along with the annotator flow to the service to extract the desired medical concepts.
 
-**Example:** analyze request referencing a persisted flow
+**Example:** Analyze request referencing a persisted flow
 
 ```bash
 curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
@@ -37,7 +37,7 @@ curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 
 When referencing a persisted flow in an analyze request, you can send plain text to the service for analysis.
 
-**Example:** analyze request within flow included
+**Example:** Analyze request within flow included
 
 ```bash
 curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
@@ -70,11 +70,11 @@ curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 }" "<route_host>/v1/analyze?version=2020-03-13"
 ```
 
-## Annotator flows
+## Annotator Flows
 
-Annotator flows define which annotators to employ on a given request and the order in which request data flows through the annotators. An annotator flow along with the unstructured data to be analyzed are the two required inputs for the service. Flows can either be defined dynamically as part of the request or persisted via the `/flows` APIs and referenced as a path parameter on an analyze request - e.g. `/analyze/{flow_id}`.
+Annotator flows define which annotators to employ on a given request and the order in which request data flows through the annotators. An annotator flow along with the unstructured data to be analyzed are the two required inputs for the service. Flows can either be defined dynamically as part of the request or persisted via the `/flows` APIs and referenced as a path parameter on an analyze request, e.g. `/analyze/{flow_id}`.
 
-The `/analyze/{flow_id}` API supports text/plain requests wheres the `/analyze` API where the flow is defined within the request requires you define both the flow and unstructured data to be analyzed in json format.
+The `/analyze/{flow_id}` API supports text/plain requests, whereas the `/analyze` API, where the flow is defined within the request, requires you define both the flow and unstructured data to be analyzed in JSON format.
 
 The following predefined flows are provided with the service:
 
@@ -105,7 +105,7 @@ By default, the unstructured data input sent to the service is not returned in t
 
 ## Response
 
-A sample response is shown below when the default setting (i.e. return_analyzed_text=false) is used, i.e. when the encoding process is activated. Notice that the begin and the end field of the concepts are not affected by the character encoding.  Set return_analyzed_text=true to avoid the encoding results and to show the analyzed text in the response.  
+A sample response is shown below when the default setting (i.e. `return_analyzed_text=false`) is used and the encoding process is activated. Notice that the `begin` and the `end` field of the concepts are not affected by the character encoding.  Set `return_analyzed_text=true` to avoid the encoding results and to show the analyzed text in the response.  
 
 ```bash
 {

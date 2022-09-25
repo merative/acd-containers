@@ -19,11 +19,11 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-**Notice:** Annotator for Clinical Data Service is currently in Limited Availability. Please contact your IBM sales representative for details.
+**Notice:** Annotator for Clinical Data is currently in Limited Availability. Please contact your Merative sales representative for details.
 
-The Annotator for Clinical Data Service is designed to find medical concepts, [medical codes](/clouddocs/medical_codes/), and contextual information in unstructured text. It provides turnkey annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/) is the primary source for concepts and medical codes. Annotator for Clinical Data Service can also work with user-provided ontologies beyond UMLS.  
+Annotator for Clinical Data is designed to find medical concepts, [medical codes](/clouddocs/medical_codes/), and contextual information in unstructured text. It provides turnkey annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/) is the primary source for concepts and medical codes. Annotator for Clinical Data can also work with user-provided ontologies beyond UMLS.  
 
-To illustrate the basic function of Annotator for Clinical Data Service, let's look at a simple example.  Imagine that we have the following small snippet of text:
+To illustrate the basic function of Annotator for Clinical Data, let's look at a simple example.  Imagine that we have the following small snippet of text:
 
 ```
 There were no signs of ulceration
@@ -65,9 +65,9 @@ The resulting concept over ulceration will contain medical codes along with cont
 
 ## Compute Isolation
 
-**Public Multi-tenant Instances:** the service is accessed via public endpoints. The service will access all dependencies via private endpoints. In these instances the control plane of the service is shared across tenants.
+**Public Multi-tenant Instances:** The service is accessed via public endpoints. The service will access all dependencies via private endpoints. In these instances the control plane of the service is shared across tenants.
 
-**Dedicated Instances:** the service can be accessed via public and/or private endpoints. Review [Public and private network endpoints](/about/overview/) for details. The service will access all dependencies via private endpoints. In these instances the control plane of the service is isolated in separate pods for each tenant.
+**Dedicated Instances:** The service can be accessed via public and/or private endpoints. Review [Public and private network endpoints](/about/overview/) for details. The service will access all dependencies via private endpoints. In these instances the control plane of the service is isolated in separate pods for each tenant.
 
 ## Available Annotators
 
@@ -81,7 +81,7 @@ Attributes are higher order concepts composed of multiple pieces of information 
 The patient is a 37 year old male who is 6 feet tall and weighs 170 lbs.
 ```
 
-You can create custom [concept values](/clouddocs/annotator_concept_value/) to extract and normalize the patient's height and weight.  With that information, you can create inference rules in IBM Clinical Data Annotator to combine that information into a single attribute that we'll call `NORMAL_WEIGHT`.  Custom attributes like this are a powerful way to distill unstructured text into actionable insights.
+You can create custom [concept values](/clouddocs/annotator_concept_value/) to extract and normalize the patient's height and weight.  With that information, you can create inference rules in Annotator for Clinical Data to combine that information into a single attribute that we'll call `NORMAL_WEIGHT`.  Custom attributes like this are a powerful way to distill unstructured text into actionable insights.
 
 For more information, see [Attributes](/clouddocs/annotator_attribute_detection/).
 

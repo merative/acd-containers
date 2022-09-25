@@ -64,5 +64,5 @@ kill <port-forward job id>
 ### Next Steps
 
 * If pods are not starting, see the [Troubleshooting ACD instances](/troubleshooting/troubleshooting-acd-instances/) section in the Troubleshooting documentation.
-* Once all the pods have started with a status of running and you verified the status with the ACD status API, continue on to [Getting Started](/usage/getting-started/) with ACD.
+* Once all the pods have started with a status of "Running" and you verified the status with the ACD status API, continue on to [Getting Started](/usage/getting-started/) with ACD.
 * For more details on management or configuration of your ACD instance, see [ACD Configuration Management](/management/configuring).
