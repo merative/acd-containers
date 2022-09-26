@@ -19,8 +19,6 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-**Notice:** Annotator for Clinical Data is currently in Limited Availability. Please contact your Merative sales representative for details.
-
 Annotator for Clinical Data is designed to find medical concepts, [medical codes](/clouddocs/medical_codes/), and contextual information in unstructured text. It provides turnkey annotators as well as highly customizable annotators that you can tune specifically for your application needs.  The Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/) is the primary source for concepts and medical codes. Annotator for Clinical Data can also work with user-provided ontologies beyond UMLS.  
 
 To illustrate the basic function of Annotator for Clinical Data, let's look at a simple example.  Imagine that we have the following small snippet of text:
