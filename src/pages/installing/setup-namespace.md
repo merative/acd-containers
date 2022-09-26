@@ -66,7 +66,7 @@ Create the shared file system using the platform's tools with encryption enabled
     oc create -n <your namespace> -f ibm-wh-acd-config-storage-cephfs-pvc.yaml
     ```
 
-    Example PVC file ibm-wh-acd-config-storage-cephfs-pv.yaml
+    <br/>Example PVC file ibm-wh-acd-config-storage-cephfs-pv.yaml
 
     ```yaml ibm-wh-acd-config-storage-cephfs-pvc.yaml
     apiVersion: v1
@@ -101,7 +101,7 @@ Create the shared file system using the platform's tools with encryption enabled
 
 WARNING: Removing an OCS persistent volume will delete any data stored in that PV.
 
-To remove the persistent volume and claim run the following commands:
+To remove the persistent volume and claim, run the following commands:
 
 ```
 oc delete pvc ibm-wh-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
@@ -120,7 +120,7 @@ oc delete pv <dynamic-pv-name>
 
     Note: The path to the NFS volume must be unique for each ACD instance.
 
-    Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
+    <br/>Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
 
     ```yaml ibm-wh-acd-config-storage-nfs-pv.yaml
     apiVersion: v1
@@ -145,7 +145,7 @@ oc delete pv <dynamic-pv-name>
     oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
     ```
 
-    Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
+    <br/>Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
 
     ```yaml ibm-wh-acd-config-storage-nfs-pvc.yaml
     apiVersion: v1
@@ -164,7 +164,7 @@ oc delete pv <dynamic-pv-name>
 
 #### NFS Persistent Volume and Claim Removal
 
-To remove the persistent volume and claim run the following:
+To remove the persistent volume and claim, run the following:
 
 ```
 oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>

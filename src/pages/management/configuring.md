@@ -8,7 +8,11 @@ toc: true
 
 The following tables lists the configurable parameters available for ACD.
 
-If using the web console, parameters are found under the ![YAML view](../../images/configuration_yaml.png) or a subset are found under the ![Form view](../../images/configuration_form.png).
+If using the web console, parameters are found under the YAML view:
+![YAML view](../../images/configuration_yaml.png)
+
+Or a subset are found under the Form view:
+![Form view](../../images/configuration_form.png).
 
 If using the CLI, these are configurable via the CSV.
 
@@ -32,7 +36,7 @@ If using the CLI, these are configurable via the CSV.
 | `networkPolicy.enabled` | Enable network isolation between pods within and outside of the namespace that ACD is installed into.  Only the top-level ACD service is exposed through port 9443 | true |
 | `networkPolicy.ingress.fromSelectors` | Further restrict ingress access to ACD on port 9443 from other pods or namespaces using fromSelectors and labels.  Requires networkPolicy to be enabled. | |
 
-These additional configurable parameters may be provided when file based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
+These additional configurable parameters may be provided when file-based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
 
 | Parameter | Description | Default |
 | -         | -           | -       |

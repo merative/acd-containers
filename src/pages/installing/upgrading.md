@@ -5,7 +5,7 @@ categories: installing
 slug: upgrading
 toc: true
 ---
-The IBM Watson Annotator for Clinical Data Container Edition supports both manual and automatic upgrades of the operator and operand through [Operator Lifecycle Manager (OLM)](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-overview_olm-understanding-olm) integration. OLM operators are limited to upgrades and do not rollback function. An operator upgrade is always done with a new replacement version. Operand upgrades are managed by the operator. An ACD instance is upgraded based on a specific set of related images that align with the ACD operator version.
+The Annotator for Clinical Data Container Edition supports both manual and automatic upgrades of the operator and operand through [Operator Lifecycle Manager (OLM)](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-overview_olm-understanding-olm) integration. OLM operators are limited to upgrades and do not rollback function. An operator upgrade is always done with a new replacement version. Operand upgrades are managed by the operator. An ACD instance is upgraded based on a specific set of related images that align with the ACD operator version.
 
 ## Upgrade Paths
 
