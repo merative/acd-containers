@@ -8,7 +8,7 @@ toc: true
 
 License Service is required for monitoring and measuring license usage of ACD in accord with the pricing rule for IBM containerized software.
 License usage is based on a Virtual Processing Core (VPC) metric. For ACD, it is the top-level pod `ibm-wh-acd-acd` that will be metered for VPC usage.
-The usage will be the capacity of the node where this pod runs. For example, ACD running in a cluster with 16 CPU/node has license usage = 16 VPC. The ACD CPU limit can be adjusted with the ```spec.resources.limits.cpu```. For more information on configuration see [Configuration](/management/configuring/).
+The usage will be the capacity of the node where this pod runs. For example, ACD running in a cluster with 16 CPU/node has license usage = 16 VPC. The ACD CPU limit can be adjusted by the number of replicas configured and the size of the nodes where ACD runs. For more information on configuration see [Configuration](/management/configuring/).
 
 Note: Manual license measurements are not allowed.
 
