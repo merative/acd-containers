@@ -99,19 +99,22 @@ In order to use mirrored images, follow these steps to configure container regis
   _Example output_
   ```
   unqualified-search-registries = ["registry.access.redhat.com", "docker.io"]
+
   [[registry]]
     prefix = ""
     location = "cp.icr.io/cp/wh-acd"
     mirror-by-digest-only = true
-      [[registry.mirror]]
-        location = "acdcontaineredition.azurecr.io/cp/wh-acd"
 
-      [[registry]]
+    [[registry.mirror]]
+      location = "acdcontaineredition.azurecr.io/cp/wh-acd"
+
+  [[registry]]
     prefix = ""
     location = "icr.io/cpopen"
     mirror-by-digest-only = true
-      [[registry.mirror]]
-        location = "acdcontaineredition.azurecr.io/cp"
+
+    [[registry.mirror]]
+      location = "acdcontaineredition.azurecr.io/cp"
   ```
   e. Pull an image digest to the node from the source and check if it is resolved by the mirror. `ImageContentSourcePolicy` objects support image digests only, not image tags.
   ```
