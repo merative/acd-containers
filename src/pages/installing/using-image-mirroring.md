@@ -1,6 +1,6 @@
 ---
-title: "Using Image Mirroring"
-excerpt: "Using Image Mirroring"
+title: "Using image mirroring"
+excerpt: "Using image mirroring"
 categories: installing
 slug: using-image-mirroring
 toc: true
@@ -13,9 +13,9 @@ Setting up container registry repository mirroring enables you to do the followi
 
 See Red Hat Openshift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
 
-Images for IBM Watson Annnotator for Clinical Data are available from the IBM Entitled Registry through December, 2022. To assist in migration and help ensure a smooth transition of your ACD product from IBM to Merative, the images for the three most recent [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) of IBM ACD have been mirrored to the Azure ACD Registry which is used for Merative Annotator for Clinical Data installations.
+Images for IBM Watson Annotator for Clinical Data are available from the IBM Entitled Registry through December, 2022. Images for Merative Annotator for Clinical Data are available from the ACD Registry. ACD consumers need to migrate from IBM ACD to Merative ACD by the end of December, 2022. To help ensure all ACD images are available during this migration period, we have mirrored recent [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) of the IBM ACD images from the IBM Entitled Registry to the ACD Registry. Credentials for the ACD Registry can be used to pull either Merative or IBM ACD images, once mirroring is configured for the IBM ACD images.
 
-In order to use any mirrored images, follow these steps to configure container registry and repository image source and mirror locations on your cluster.
+In order to use mirrored images, follow these steps to configure container registry and repository image source and mirror locations on your cluster.
 
 ### Configure mirroring to an existing mirror location
 
@@ -53,7 +53,7 @@ In order to use any mirrored images, follow these steps to configure container r
 
 1. Check that the mirrored configuration settings are applied by doing the following on one of the nodes.
 
-  1. List your nodes:
+  a. List your nodes:
   ```
   oc get node
   ```
@@ -70,7 +70,7 @@ In order to use any mirrored images, follow these steps to configure container r
     ```
   You can see that scheduling on each worker node is disabled as the change is being applied.
 
-  1. Start the debugging process to access the node:
+  b. Start the debugging process to access the node:
 
     ```
     oc debug node/10.240.128.20
@@ -84,14 +84,14 @@ In order to use any mirrored images, follow these steps to configure container r
     If you don't see a command prompt, try pressing enter.
     sh-4.4#
     ```
-  1. Access the node’s files:
+  c. Access the node’s files:
 
     ```
     sh-4.4# chroot /host
     sh-4.2#
     ```
 
-  1. Check the `/etc/containers/registries.conf` file to make sure the changes were made:
+  d. Check the `/etc/containers/registries.conf` file to make sure the changes were made:
 
     ```
     sh-4.2# cat /etc/containers/registries.conf
@@ -113,7 +113,7 @@ In order to use any mirrored images, follow these steps to configure container r
       [[registry.mirror]]
         location = "acdcontaineredition.azurecr.io/cp"
   ```
-  1. Pull an image digest to the node from the source and check if it is resolved by the mirror. `ImageContentSourcePolicy` objects support image digests only, not image tags.
+  e. Pull an image digest to the node from the source and check if it is resolved by the mirror. `ImageContentSourcePolicy` objects support image digests only, not image tags.
   ```
   podman pull --log-level=debug cp.icr.io/cp/wh-acd/clinical-data-annotator@sha256:bc077404849f4794a9de0ff2aad3a9af78fe72560b46d623a711d42927e5c955
   ```
