@@ -1,6 +1,6 @@
 ---
 title: "Manage Access"
-excerpt: "Managing Access to IBM ACD."
+excerpt: "Managing Access to ACD."
 categories: security
 slug: manage-access
 toc: true
@@ -111,7 +111,7 @@ In the example below we'll use the latest version of the OpenShift OAuth proxy. 
   oc project ${proxy_namespace}
   ```
 
-4. Set a variable for your ACD namespace:
+4. Set a variable for your ACD namespace. Replace <acd_namespace> with your target ACD namespace name.
 
   ```yaml
   acd_namespace=<acd_namespace>
@@ -144,10 +144,11 @@ In the example below we'll use the latest version of the OpenShift OAuth proxy. 
 9. Create a token to use on the service account:
 
   ```yaml
-  oc serviceaccounts new-token proxy -n ${proxy_namespace}`.  Copy the token returned.
+  oc serviceaccounts new-token proxy -n ${proxy_namespace}
   ```
+  Copy the token returned.
 
-    Note: This token is also stored in a secret named "proxy-token-nnnnn" in the target project, and when you delete that it will remove the token from the account after a bit. You can add additional tokens and remove the secret to rotate your tokens for your app.
+  **Note**: This token is also stored in a secret named "proxy-token-nnnnn" in the target project, and when you delete that it will remove the token from the account after a bit. You can add additional tokens and remove the secret to rotate your tokens for your app.
 
 10. Use the token you just created as a bearer token to call ACD through the proxy route passing the bearer token on the Authorization header.  For example:
 
