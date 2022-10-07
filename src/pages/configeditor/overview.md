@@ -45,6 +45,9 @@ The Configuration Editor can be deployed locally to a single Linux system using 
 
 Once installed, use the instructions on the Install page to access the Configuration Editor using a browser on the host it was deployed to.
 
+### Learning Materials
+Videos and other [educational content](/configeditor/learning_materials).
+
 ### Support and Questions
 Configuration Editor is provided to you as-is and free of charge.  Please use your IBM contact email and/or the interlock Slack channel, if provided, to ask questions.
 
