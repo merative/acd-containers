@@ -13,7 +13,7 @@ const LeftNavResourceLinks = ({
   var links = [
     {
       title: 'Configuration Editor',
-      href: '../../configeditor/overview',
+      href: './configeditor/overview',
     },
     {
       title: 'API Reference',
