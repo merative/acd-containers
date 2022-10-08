@@ -6,7 +6,7 @@ slug: installing
 toc: true
 ---
 
-_Note: The following instructions are for installing IBM Annotator for Clinical Data COntainer Edition._
+_Note: The following instructions are for installing IBM Annotator for Clinical Data Container Edition._
 
 To install IBM Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the [oc](https://docs.openshift.com/container-platform/4.11/welcome/index.html) command line utility, or the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 

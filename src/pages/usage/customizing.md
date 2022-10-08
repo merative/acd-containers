@@ -24,6 +24,7 @@ The Annotator for Clinical Data Configuration Editor supports extensive customiz
 The Configuration Editor facilitates the following customizations:
 
 `Table 1. Customizations facilitated by the Configuaration Editor`
+
 | Customization | Description |
 |----|----|
 | Dictionaries | A set of terms describing a unique concept that is matched against the provided text to be analyzed. |
