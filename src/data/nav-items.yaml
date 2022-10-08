@@ -96,6 +96,7 @@
       path: /usage/faqs/
     - title: "Known Limitations"
       path: /usage/known_limitations/
+  hasDivider: true
 - title: Annotators
   pages:
     - title: "Allergies (Deprecated)"
@@ -174,3 +175,8 @@
   pages:
     - title: "filtering"
       path: /clouddocs/filtering/
+  hasDivider: true
+- title: Contact Us
+  pages:
+    - title: "Contact Us"
+      path: /support/support/
