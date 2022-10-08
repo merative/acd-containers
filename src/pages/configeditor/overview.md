@@ -1,6 +1,6 @@
 ---
-title: "Overview"
-excerpt: "Overview."
+title: "Configuration Editor Overview"
+excerpt: "Configuration Editor Overview."
 categories: configeditor
 slug: overview
 toc: true
@@ -22,6 +22,10 @@ subcollection: wh-acd
 **Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use.
 
 ## Welcome to the Annotator for Clinical Data Configuration Editor
+
+In this document, find instructions for:
+- Installing Configuration Editor [Using Docker](/configeditor/download_docker/)
+- Installing Configuration Editor [On OpenShift](/configeditor/download_openshift)
 
 ### Introduction
 Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.
@@ -49,7 +53,7 @@ Once installed, use the instructions on the Install page to access the Configura
 Videos and other [educational content](/configeditor/learning_materials).
 
 ### Support and Questions
-Configuration Editor is provided to you as-is and free of charge.  Please use your IBM contact email and/or the interlock Slack channel, if provided, to ask questions.
+Configuration Editor is provided to you as-is and free of charge.  For support or questions, please refer to [Support](/support/support/).
 
 Acceptance of terms of use is required to use the tool.
 

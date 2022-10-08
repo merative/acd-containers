@@ -6,6 +6,8 @@ slug: air-gap-installation
 toc: true
 ---
 
+_Note:  The air gap environment applies to IBM Annotator for Clinical Data Container Edition._
+ 
 Since air gap environments do not have access to the public internet, and therefore no access to DockerHub, the following preparation steps are necessary to make the required images accessible to the Red Hat OpenShift Container Platform cluster.
 
 If the Red Hat OpenShift Container Platform cluster has a Bastion host, ensure that the Bastion host can access:

@@ -1,13 +1,14 @@
 ---
-title: "Installing ACD"
-excerpt: "Installing ACD."
+title: "Installing IBM ACD"
+excerpt: "Installing IBM ACD."
 categories: installing
 slug: installing
 toc: true
 ---
-_Note: Refer here for installation instructions for [IBM Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
 
-To install Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
+_Note: The following instructions are for installing IBM Annotator for Clinical Data COntainer Edition._
+
+To install IBM Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the [oc](https://docs.openshift.com/container-platform/4.11/welcome/index.html) command line utility, or the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 
 ## Overview
 
@@ -17,33 +18,41 @@ The ACD operator uses the custom resource to deploy and manage the entire lifecy
 
 Installing ACD has three phases:
 
-1. Install the Merative ACD operator catalog:  This will deploy the catalog from which the ACD operator can be installed.
+1. Install the IBM operator catalog:  This will deploy the catalog from which IBM operators, including ACD, can be installed.
 1. Install the ACD operator:  This will deploy the operator that can be used to install and manage your ACD instances.
 1. Install one or more replicas of ACD by using the ACD operator.
 
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- Obtain and [verify](#verifying-acd-registry-access) access to the ACD Registry.
+- [Obtain](https://myibm.ibm.com/products-services/containerlibrary) and [verify](#verifying-ibm-entitled-registry-access) access to the IBM Entitled Registry. Note that customers must use their IBMid to log in to their `myibm` account. The customer must request the entitlement key so the ownership and management of the entitlement stays with them.
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
-- [Setup](/installing/setup-namespace/) your project and project dependencies if required for your environment.
+- [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment.  If using the CLI to install the ACD operator and ACD service, you will need the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 
 ## Verifying ACD Registry access
 
-A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images.
+A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images. When an entitlement key is obtained from myibm, the username should be `cp` and the password should be the entitlement key.
 
-Before setting up the pull secret, verify your credentials can access the ACD registry.
+Before setting up the pull secret, verify the entitlement key can access the entitled registry.
 
-Example (Docker with ACD Registry credentials):
+Example (Docker with IBM Entitled Registry entitlement key):
 
 ```
-docker login acdcontaineredition.azurecr.io --username acd-ce --password <ACD registry credentials>
+docker login cp.icr.io --username cp --password <your entitlement key>
 ```
+
+## Air-gapped (disconnected) installation
+
+Some environments are disconnected and do not have access to the public internet, and therefore no access to DockerHub or other image registries. When deploying in an air-gapped environment, refer to the [Air-gap Installation](/installing/air-gap-installation/).
+
+## Non air-gapped (connected) installation
+
+When deploying in a non air-gapped or connected environment, continue with the following installation. These installation steps require internet access to pull images from the image registries.
 
 ### ACD Registry Pull Secret
 
-In order for ACD images to be pulled from the ACD Registry, a pull secret must be added to the environment. This can be set up using one of the following:
+In order for ACD images to be pulled from the ACD Registry, a pull secret must be added to the environment. This can be setup using one of the following:
 
 1. Added to the Openshift global pull secrets
 1. Added to the ACD operand service account
@@ -58,14 +67,14 @@ To add the pull secret to the Openshift global pull secret:
 
 1. Create a base64 encoded string with the registry userid and password as it aligns with your access method.
 
-   `printf "acd-ce:<ACD registry credentials>" | base64`
+   `printf "cp:<acd registry key>" | base64`
 
-1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD Registry. For example: 
+1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD Registry. For example:
 
    ```
-   "acd-ce": {
+   "cp.icr.io": {
        "auth": "aWFtYXBpaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxcGFzc3dvcmQ=",
-       "email": "xxx@nomail.relay.merative.com"
+       "email": "xxx@nomail.relay.ibm.com"
    }
    ```
 
@@ -88,25 +97,25 @@ To add the pull secret to individual ACD operand service accounts:
 1. Create a secret
 
    ```
-   kubectl create secret docker-registry acd-registry-credentials \
-       --docker-server=acdcontaineredition.azurecr.io \
+   kubectl create secret docker-registry ibm-entitlement-key \
+       --docker-server=cp.icr.io \
        --docker-username=<username> \
        --docker-password=<password> \
        --docker-email=<email_address> \
        --namespace=<namespace>
    ```
 
-   - `<username>` is the username for the ACD registry.
-   - `<password>` is the password for the ACD registry.
+   - `<username>` is the username for the entitled registry. This should be `cp` when using a `myibm` entitlement key.
+   - `<password>` is the password for the entitled registry. This should be the entitlement key from `myibm`.
 
 1. After the ACD operand has been installed, the service account must be patched to point to the secret.
 
-  NOTE: If using the current release of the ACD Container Edition, this `acd-registry-credentials` pull secret is already defined in the operand service account so the patch step is no longer necessary.
+  NOTE: If using the current release of the ACD Container Edition, this `ibm-entitlement-key` pull secret is already defined in the operand service account so the patch step is no longer necessary.
 
    ```
-   kubectl patch serviceaccount merative-acd-operand \
+   kubectl patch serviceaccount ibm-wh-acd-operand \
        --namespace <namespace> \
-       --patch '{"imagePullSecrets": [{"name": "acd-registry-credentials"}]}'
+       --patch '{"imagePullSecrets": [{"name": "ibm-entitlement-key"}]}'
    ```
 
 1. Then the ACD operand pods must be restarted
@@ -117,25 +126,29 @@ To add the pull secret to individual ACD operand service accounts:
        --all
    ```
 
-## Installing the Merative ACD Operator catalog
+## Installing the IBM Operator catalog
 
-Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the ACD Operator Catalog.
+Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog.
 
-To add the ACD Operator Catalog:
+If you have other IBM products installed in your cluster, then you may already have the IBM Operator Catalog available, and you can continue to installing the ACD operator from there.
 
-1. Create a file for the ACD Operator Catalog source with the following content, and save as `ACDCatalogSource.yaml`:
+**Important**: If you operate in an internet-connected Red Hat OpenShift Container Platform cluster, you must migrate your images from Docker to the IBM Container Registry by 30 September 2021. IBM Operator Catalog related images can be sourced from icr.io/cpopen. Refer to [Migrating from Docker to IBM Container Registry](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=clusters-migrating-from-docker-container-registry) for more details.
 
-   ```yaml ACDCatalogSource.yaml
+To add the IBM Operator Catalog:
+
+1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
+
+   ```yaml IBMCatalogSource.yaml
    apiVersion: operators.coreos.com/v1alpha1
    kind: CatalogSource
    metadata:
-      name: merative-acd-operator-catalog
+      name: ibm-operator-catalog
       namespace: openshift-marketplace
    spec:
-      displayName: "ACD Operator Catalog"
-      publisher: Merative
+      displayName: "IBM Operator Catalog"
+      publisher: IBM
       sourceType: grpc
-      image: acdcontaineredition.azurecr.io/acd-ce/merative-acd-operator-catalog
+      image: icr.io/cpopen/ibm-operator-catalog
       updateStrategy:
         registryPoll:
           interval: 45m
@@ -145,9 +158,11 @@ To add the ACD Operator Catalog:
 
 1. Apply the source by using the following command:
 
-   `oc apply -f ACDCatalogSource.yaml`
+   `oc apply -f IBMCatalogSource.yaml`
 
-The ACD Operator Catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
+The IBM Operator Catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
+
+More information on the IBM Operator Catalog can be found at [Red Hat Catalog Enablement for the IBM Operator Catalog](https://github.com/IBM/cloud-pak/blob/master/reference/operator-catalog-enablement.md)
 
 ## Installing the ACD Operator
 
@@ -166,6 +181,17 @@ To install the ACD operator through the OpenShift Container Platform web console
 1. Click **Install** to begin the installation.
 
 The installation can take a few minutes to complete.
+
+### Install the ACD Operator using cloudctl
+
+```
+cloudctl case launch \
+    --case case/ibm-wh-acd \
+    --namespace <namespace> \
+    --inventory clinicalDataAnnotatorOperatorSetup \
+    --action installOperator \
+    --tolerance 1
+```
 
 ## Installing the ACD Service
 
@@ -189,3 +215,27 @@ To install the ACD service through the OpenShift Container Platform web console,
 
 From here, you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
 
+### Install the ACD service using cloudctl
+
+By default, this will deploy 3 replicas of ACD. Include `--args "--replicas 1"` to install a 1 replica ACD instance.
+
+```
+cloudctl case launch \
+    --case case/ibm-wh-acd \
+    --namespace <namespace> \
+    --inventory clinicalDataAnnotatorOperator \
+    --action applyCustomResources \
+    --tolerance 1
+```
+
+To install with object storage, the following parameters need to be added.
+
+```
+cloudctl case launch \
+    --case case/ibm-wh-acd \
+    --namespace <namespace> \
+    --inventory clinicalDataAnnotatorOperator \
+    --action applyCustomResources \
+    --tolerance 1 \
+    --args "--backend cos --bucket <bucket> --endpointUrl <endpoint> --location <location>"
+```
