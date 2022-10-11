@@ -6,7 +6,7 @@ To contribute code or documentation, please submit a [pull request](https://gith
 
 A good way to familiarize yourself with the codebase and contribution process is
 to look for and tackle low-hanging fruit in the [issue tracker](https://github.com/merative/acd-containers/issues).
-Before embarking on a more ambitious contribution, please quickly [get in touch](#communication) with us.
+Before embarking on a more ambitious contribution, please quickly [reach out to one of us](MAINTAINERS.md).
 
 **Note: We appreciate your effort, and want to avoid a situation where a contribution
 requires extensive rework (by you or by us), sits in backlog for a long time, or

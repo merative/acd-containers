@@ -134,6 +134,7 @@ In order to use mirrored images, follow these steps to configure container regis
 ### Mirror images to another container registry
 
 There are several ways that you can mirror images from one registry to another. Choose the most appropriate method for your environment. These documents may be useful as references.
+
 - Set up a mirrored repository with Red Hat Quay, as described in [Red Hat Quay Repository Mirroring](https://access.redhat.com/documentation/en-us/red_hat_quay/3/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay). Using Red Hat Quay allows you to copy images from one repository to another and also automatically syncs those repositories repeatedly over time.
 - Use a tool such as skopeo (see example [here](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration)) to copy images manually from the source directory to the mirrored repository.
 - Set up a mirrored repository to a private container registry, as described [here](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-mirroring-images-your-private-container-registry) to mirror images from the IBM Entitled Registry.

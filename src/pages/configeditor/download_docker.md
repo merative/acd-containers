@@ -24,21 +24,25 @@ The following will walk through the steps necessary to set up and configure a sy
 ![Configuration Editor on Docker](../../images/ACDCE_on_docker.png)
 
 ## Prerequisites
+
 The ACD Configuration Editor setup we use here should be installed on a dedicated system with these requirements:
 
 ### System Requirements
+
 - Hardware: Processor Architecture: x86_64 / amd64 ; vCPU: 4+ ; Memory: 64GB+ ; Storage: 200GB+
 - OS: CentOS 7/8 (RHEL should also work; Ubuntu may work but hasn't been tested)
 
   **NOTE:** The disk where Docker stores its images and where ACD Configuration Editor is installed needs to have 200GB of storage free.  Note: If you are using IBM Cloud with a VM, it may dafault to a 25GB base disk which will not fit the images and the Configuration Editor, so increase that or add a second larger disk and install Docker and its registry to that along with the ACD Configuration Editor.
 
 ### Software Requirements (refer to the installation and configuration instructions below)
+
 - Docker Community Edition
 - HTTP Server (or some reverse proxy)
 - Java 8
 - Perl
 
 ## Installation and Configuration of Prerequisite Software
+
 - Install and configure HTTP proxy
 
   The ACD Configuration Editor needs to access several services through a reverse proxy (single host endpoint). The instructions below are to set up an Apache HTTP server, however, any reverse proxy server could be configured for this.  Note also this setup will end up with a self-signed certificate being used by Apache HTTP and presented to the browser/client.   For installing a real certificate see [http://httpd.apache.org/docs/2.4/ssl/ssl_faq.html#realcert](http://httpd.apache.org/docs/2.4/ssl/ssl_faq.html#realcert) or use Let's Encrypt to generate one such as [https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-centos-7](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-centos-7)
@@ -50,6 +54,7 @@ The ACD Configuration Editor setup we use here should be installed on a dedicate
   `sudo /usr/sbin/setsebool -P httpd_can_network_connect on`
 
 - (Optional) If your server is set up with a firewall locally, allow incoming connections on your firewall to port 443.  If the system has a local firewall daemon running, you can use:
+
   - `sudo firewall-cmd --permanent --add-port=443/tcp`
   - `sudo firewall-cmd --reload`
 
@@ -97,16 +102,18 @@ SSLProxyCheckPeerExpire off
   `sudo apachectl start`
 
 - Configure HTTP proxy to restart when the system starts by running:
+
   - `sudo systemctl enable httpd`
 
   - Logs are in `/etc/httpd/logs` (you need to be root to see them by default) in case you need to look at logs
 
-  - Note:  By default, the Configuration Editor is running unsecured and users will be prompted to only provide their name and email address.  You can, however, add a plugin for the HTTP server to secure access to the system.  The auth_openidc module, for example, can be used and configured to check credentials against an openIDC provider, such as IBM AppID.  These docs [https://github.com/zmartzone/mod_auth_openidc](https://github.com/zmartzone/mod_auth_openidc) and [https://cloud.ibm.com/docs/appid?topic=appid-web-apps](https://cloud.ibm.com/docs/appid?topic=appid-web-apps) are for those tools.  See sample instructions below for setting that up after you have the base Configuration Editor installed.   Another level of security can be done with firewall access at the network layer just to limit which networks can access the HTTP server.
+  - Note: By default, the Configuration Editor is running unsecured and users will be prompted to only provide their name and email address.  You can, however, add a plugin for the HTTP server to secure access to the system.  The auth_openidc module, for example, can be used and configured to check credentials against an openIDC provider, such as IBM AppID.  These docs [https://github.com/zmartzone/mod_auth_openidc](https://github.com/zmartzone/mod_auth_openidc) and [https://cloud.ibm.com/docs/appid?topic=appid-web-apps](https://cloud.ibm.com/docs/appid?topic=appid-web-apps) are for those tools.  See sample instructions below for setting that up after you have the base Configuration Editor installed.  Another level of security can be done with firewall access at the network layer just to limit which networks can access the HTTP server.
 
 - Install Java - you can use this command:<br/>
   `sudo yum install java-1.8.0-openjdk`
 
 - Install Docker and set it up to allow use from non-root and to auto-start
+
   - Follow these instructions to install Docker: [https://docs.docker.com/install/linux/docker-ce/centos/](https://docs.docker.com/install/linux/docker-ce/centos/)
   - Follow these instructions to allow non-root users to use Docker and to enable Docker to automatically start: [https://docs.docker.com/install/linux/linux-postinstall/](https://docs.docker.com/install/linux/linux-postinstall/)
   - Ensure Docker is started before proceeding and can be run as non-root.  (Using the command `docker -version` as regular user or similar.)
@@ -127,10 +134,12 @@ Date: June 16th, 2022 : size: 11250063360 sha-256: 292f925a776ee53ae9454284aafbe
 **Note:** If updating an existing installation, be sure to back up and merge changes into your `acd-ce.properties` file (see Updating the Configuration Editor below).
 
 Older releases:
+
 - TODO:  Here ACD CE Tar file old1
 - TODO:  Here ACD CE Tar file old2
 
 Recent changes to the properties file:
+
 - acd-ce.2022-04-14.219.tar : IBM Cloud East and South ACD Host configurations moved from the Cartridge service properties to the `acd-ce.properties` file.
 - acd-ce.2022-04-14.219.tar : 2 new URLs added for Concept Disambiguation service (cds) to the Cartridge service properties.
 
@@ -199,11 +208,13 @@ com_ibm_watson_health_car_acd_host_1_phi=false;\
 ```
 
 ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_car_acd_host_{index}` as the beginning of their property name. The possible properties are:
+
 - `_label` which is the name for the host that will be shown in the Configuration Editor
 - `_url` which is what will be shown in the host description in the Configuration Editor
 - `_proxy` which is the proxy you have configured in your `ssl.conf` file (see Installation and Configuration of Prerequisite Software) to allow requests to the hosts and avoid CORS errors
 - `_phi` which is either true or false based on whether this ACD Host can support protected health information
 - `_auth` which specifies the type of authentication the host requires. The three possible auth types are:
+
   - APIKey: Used for IBM Cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field `com_ibm_watson_health_car_identity_server` (by default, `https://iam.cloud.ibm.com/identity/token`) in order to request a bearer token using the API Key the user entered.
   - Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition, and expire every 24 hours.
   - Leaving the field blank: You can leave the auth field blank if your host does not require any authentication.
@@ -213,6 +224,7 @@ As you add new ACD Hosts, you must configure a proxy in your `ssl.conf` file in 
 ## Adding Security to HTTP Server (optional)
 
 You can use the OIDC module in Apache HTTP server to provide an authentication layer.  You will need an OpenID Connect Provider to do the actual authentication and need to add this Configuration Editor HTTP server as a client to it.  Below are the basic steps to do this.  See the detailed usage and support instructions of this plugin at [https://github.com/zmartzone/mod_auth_openidc](https://github.com/zmartzone/mod_auth_openidc).<br/>
+
   - `sudo yum install mod_auth_openidc`
   - **Note:** On CentOS 8, you need to run `sudo dnf module enable mod_auth_openidc` (or `sudo dnf module enable mod_auth_openidc:2.3` or `2.4`, etc.)
 
@@ -240,6 +252,7 @@ Configure your OpenID Connect Provider (e.g., IBM AppId, Google, Azure AD, Keycl
 In the `acd-ce.properties` file, the `OIDC_*` headers are configured that are used to populate the fields of the user email and name and for checking authorizations.
 
 The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the `acd-ce.properties` file. These properties are:
+
 - `com_ibm_watson_health_car_auth_enable_logout` Set this property as true to enable logout.
 - `com_ibm_watson_health_car_auth_logout_url` Set this property to the URL your authentication method uses to perform logout, if applicable.
    - Note:  Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method `encodeURIComponent` or with [https://www.urlencoder.org/](https://www.urlencoder.org/).
@@ -271,9 +284,11 @@ To update to a newer version of the ACD Configuration Editor, follow these steps
 2. Download the latest acd-ce tar file again and unpack it as above (see Installing ACD Configuration Editor)
 3. Modify the default `acd-ce.properties` file to merge in any changes you made from your backup (replacing the `%SERVER%` with the host name and updating the shared configuration directory, for example)
 4. Clear out the shared keystore/truststore. To do this, go to the shared config directory set in the `acd-ce.properties` file with the `*_shared_config_dir` property and run these commands to clear the shared certificates and truststore:
-  - `rm -r certs`
-  - `rm -r keystore`
-  - `rm -r truststore`
+
+  `rm -r certs`
+  `rm -r keystore`
+  `rm -r truststore`
+
 5. Back in the `acd-ce` directory where the tar file was unpacked to, run `./run-acd-ce.sh` to update all the images and restart the containers with the latest build and your modified properties file.
 
 ## Notices
@@ -281,6 +296,5 @@ To update to a newer version of the ACD Configuration Editor, follow these steps
 The Configuration Editor is Java compatible.
 
 ![Java Compatible](../../images/Java.png)
-
 
 [View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
