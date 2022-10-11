@@ -29,7 +29,6 @@ Obtain the connection details for your OpenShift Container Platform cluster from
 
 - [Plan for your installation](/planning/namespace), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
 - [Install ACD](/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](/installing/installing/#install-the-acd-operator), and [installing the ACD service](/installing/installing/#install-the-acd-service).<br/>
-  * _Note: For installation instructions for IBM Annotator for Clinical Data Container Edition, refer [here](/installing/installing-ibm/)._
 
 ## Resources Required
 

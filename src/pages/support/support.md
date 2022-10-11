@@ -19,7 +19,7 @@ To contact the  Merative Support team, open a case using the [Merative Support p
   - Each case will be assigned a unique number for reference and a severity level that is based on the details within the case description.
   - Updates and client responses will be sent by e-mail and recorded in the case comments.
 
-- **No Personal Information (PI) including Protected Health Information (PHI) and sensitive personal information (SPI) should be included in any documentation or information when reporting an incident.** 
+- **No Personal Information (PI) including Protected Health Information (PHI) and sensitive personal information (SPI) should be included in any documentation or information when reporting an incident.**
 
 ## General Support
 

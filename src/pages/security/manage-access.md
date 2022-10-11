@@ -146,6 +146,7 @@ In the example below we'll use the latest version of the OpenShift OAuth proxy. 
   ```yaml
   oc serviceaccounts new-token proxy -n ${proxy_namespace}
   ```
+
   Copy the token returned.
 
   **Note**: This token is also stored in a secret named "proxy-token-nnnnn" in the target project, and when you delete that it will remove the token from the account after a bit. You can add additional tokens and remove the secret to rotate your tokens for your app.
