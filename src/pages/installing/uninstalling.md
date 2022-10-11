@@ -6,8 +6,6 @@ slug: uninstalling
 toc: true
 ---
 
-_Note: Refer here for uninstalling instructions for [IBM Annotator for Clinical Data Container Edition](/installing/uninstalling-ibm/)._ 
-
 ACD should be uninstalled using the same interface that was used to install. The uninstall can be done using either the OpenShift Container Platform web console or the command line.
 
 The order of the uninstall is important. Delete the ACD service instance first, then delete the operator. If the operator was installed into all namespaces, ensure all ACD service instances are deleted before deleting the operator.
@@ -56,3 +54,6 @@ Confirm the ACD operator pod shows Terminating status and then is removed from t
 1. Click the **Delete Project** menu option to open the delete confirmation panel.
 1. Check that the namespace is correct and confirm deletion by entering the project name into the text box. Click **Delete** to delete the project.
 
+## Uninstalling using Command Line
+
+If the `cloudctl` interface was used for install, refer here for instructions on [uninstalling ACD from the command line](/installing/uninstalling-ibm/).
