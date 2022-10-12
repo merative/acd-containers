@@ -30,7 +30,7 @@ Installing ACD has three phases:
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment. If using the CLI to install the ACD operator and ACD service, you will need the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 
-## Verifying ACD Registry access
+## Verifying ACD registry access
 
 A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images. When an entitlement key is obtained from myibm, the username should be `cp` and the password should be the entitlement key.
 
@@ -50,9 +50,9 @@ Some environments are disconnected and do not have access to the public internet
 
 When deploying in a non air-gapped or connected environment, continue with the following installation. These installation steps require internet access to pull images from the image registries.
 
-### ACD Registry Pull Secret
+### ACD registry pull secret
 
-In order for ACD images to be pulled from the ACD Registry, a pull secret must be added to the environment. This can be setup using one of the following:
+In order for ACD images to be pulled from the ACD registry, a pull secret must be added to the environment. This can be setup using one of the following:
 
 1. Added to the Openshift global pull secrets
 1. Added to the ACD operand service account
@@ -69,7 +69,7 @@ To add the pull secret to the Openshift global pull secret:
 
    `printf "cp:<acd registry key>" | base64`
 
-1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD Registry. For example:
+1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD registry. For example:
 
    ```
    "cp.icr.io": {

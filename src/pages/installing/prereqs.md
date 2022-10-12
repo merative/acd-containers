@@ -22,7 +22,7 @@ Annotator for Clinical Data (ACD) Container Edition has the following prerequisi
   - [oc](https://docs.openshift.com/container-platform) - Openshift CLI for interacting with the cluster
 - Login credentials and other cluster connection details from your cluster administrator
 - A [dedicated Openshift project (namespace)](/installing/installing/#create-a-project-(namespace)) per ACD deployment
-- Purchased ACD Registry credentials for pulling images from the ACD Registry
+- Purchased ACD registry credentials for pulling images from the ACD registry
 - A secret for accessing a storage bucket, if [planning to use an object storage bucket](/planning/storage/)
 
 Obtain the connection details for your OpenShift Container Platform cluster from your administrator. For additional planning and installation details, see:
