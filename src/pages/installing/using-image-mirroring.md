@@ -13,7 +13,7 @@ Setting up container registry repository mirroring enables you to do the followi
 
 See Red Hat Openshift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
 
-Images for IBM Watson Annotator for Clinical Data are available from the IBM Entitled Registry through December, 2022. Images for Merative Annotator for Clinical Data are available from the ACD Registry. ACD consumers need to migrate from IBM ACD to Merative ACD by the end of December, 2022. To help ensure all ACD images are available during this migration period, we have mirrored recent [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) of the IBM ACD images from the IBM Entitled Registry to the ACD Registry. Credentials for the ACD Registry can be used to pull either Merative or IBM ACD images, once mirroring is configured for the IBM ACD images.
+Images for IBM Watson Annotator for Clinical Data are available from the IBM Entitled Registry through December, 2022. Images for Merative Annotator for Clinical Data are available from the ACD registry. ACD consumers need to migrate from IBM ACD to Merative ACD by the end of December, 2022. To help ensure all ACD images are available during this migration period, we have mirrored recent [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) of the IBM ACD images from the IBM Entitled Registry to the ACD registry. Credentials for the ACD registry can be used to pull either Merative or IBM ACD images, once mirroring is configured for the IBM ACD images.
 
 In order to use mirrored images, follow these steps to configure container registry and repository image source and mirror locations on your cluster.
 
@@ -23,7 +23,7 @@ In order to use mirrored images, follow these steps to configure container regis
 
   Log into the Red Hat OpenShift Container Platform cluster as a cluster administrator using the `oc login` command.
 
-1. Create the ACD registry credentials for the Azure ACD Registry, if not previously created. See [creating a global pull secret](/installing/installing/#ibm-entitled-registry-pull-secret) for details.
+1. Create the ACD registry credentials for the Azure ACD registry, if not previously created. See [creating a global pull secret](/installing/installing/#ibm-entitled-registry-pull-secret) for details.
 
   **NOTE**: You can only configure global pull secrets for clusters that have an ImageContentSourcePolicy object. You cannot add a pull secret to a project.
 

@@ -7,7 +7,7 @@ toc: true
 ---
 _Note: Refer here for installation instructions for [IBM Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
 
-To install Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the `oc` command line utility, or the `cloudctl` command line utility.
+To install Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console or the `oc` command line utility.
 
 ## Overview
 
@@ -15,38 +15,40 @@ Annotator for Clinical Data Container Edition is an [operator-based](https://kub
 
 The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
+A new instance of the `Acd` custom resource belonging to the `acd.merative.com` group must be installed. There is no upgrade path from the IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition. Refer to the [Migration Considerations](/migration/considerations/) when planning for and migrating from an IBM ACD instance to a Merative ACD instance.
+
 Installing ACD has three phases:
 
 1. Install the Merative ACD operator catalog:  This will deploy the catalog from which the ACD operator can be installed.
-1. Install the ACD operator:  This will deploy the operator that can be used to install and manage your ACD instances.
+1. Install the ACD operator: This will deploy the operator that can be used to install and manage your ACD instances.
 1. Install one or more replicas of ACD by using the ACD operator.
 
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- Obtain and [verify](#verifying-acd-registry-access) access to the ACD Registry.
+- [Obtain your ACD registry credentials](https://www.ibm.com/support/pages/ibm-watson-health-product-support-portal) and [verify your access](#verifying-acd-registry-access) to the ACD registry. Note that customers must use their customer id to log in to their `Merative` account. The customer must request the credentials so the ownership and management of the ACD authorization stays with them.
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Setup](/installing/setup-namespace/) your project and project dependencies if required for your environment.
 
-## Verifying ACD Registry access
+## Verifying ACD registry access
 
 A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images.
 
 Before setting up the pull secret, verify your credentials can access the ACD registry. You should have Azure Active Directory (AAD) service principal credentials from your account onboarding process. See [authentication with the service principal](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#authenticate-with-the-service-principal) for guidance.
 
-Example (Docker with ACD Registry credentials):
+Example (Docker with ACD registry credentials):
 
 ```
 docker login acdcontaineredition.azurecr.io --username <username> --password <password>
 ```
 
-- username - service principal's application (client) ID
-- password - service principal's password (client secret)
+- where `<username>` is the service principal's application (client) ID
+- where `<password>` is the service principal's password (client secret)
 
-### ACD Registry Pull Secret
+### ACD registry pull secret
 
-In order for ACD images to be pulled from the ACD Registry, a pull secret must be added to the environment. This can be set up using one of the following:
+In order for ACD images to be pulled from the ACD registry, a pull secret must be added to the environment. This can be set up using one of the following:
 
 1. Added to the Openshift global pull secrets
 1. Added to the ACD operand service account
@@ -55,15 +57,15 @@ In order for ACD images to be pulled from the ACD Registry, a pull secret must b
 
 To add the pull secret to the Openshift global pull secret:
 
-1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
+1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`
 
    `oc extract secret/pull-secret --namespace openshift-config --to=.`
 
-1. Create a base64 encoded string with the registry username and password as it aligns with your access method.
+1. Create a base64 encoded string with the ACD registry credentials, such as the service principal client ID (username) and client secret (password), as it aligns with your access method.
 
-   `printf "<ACD registry credentials username>:<ACD registry credentials password>" | base64`
+   `printf "<username>:<password>" | base64`
 
-1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD Registry. For example:
+1. Edit the `.dockerconfigjson` file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD registry. For example:
 
    ```
    "acdcontaineredition.azurecr.io": {
@@ -80,7 +82,7 @@ To add the pull secret to the Openshift global pull secret:
 
    `oc get nodes`
 
-1. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
+1. When the nodes are finish restarting, your cluster is now ready to pull images from the ACD registry.
 
 For more information on Openshift pull secrets refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets)
 
@@ -99,8 +101,8 @@ To add the pull secret to individual ACD operand service accounts:
        --namespace=<namespace>
    ```
 
-   - `<username>` is the username for the ACD Registry.
-   - `<password>` is the password for the ACD Registry.
+   - `<username>` is the service principal's application (client) ID
+   - `<password>` is the service principal's password (client secret)
 
 1. After the ACD operand has been installed, the service account must be patched to point to the secret.
 
