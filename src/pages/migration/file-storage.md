@@ -11,4 +11,8 @@ All Annotator for Clinical Data (ACD) Container Edition consumers need to migrat
 - For more information and general considerations, see [Migration Considerations](/migration/considerations/).
 - Refer to [Migration with Object Storage](/migration/object-storage/) if using an object storage medium.
 
-Please consider the following when migrating an ACD instance that uses shared file storage as a storage medium.
+Consider the following when migrating an ACD instance that uses shared file storage as a storage medium. References to source ACD are referring to your existing IBM ACD instance. References to target ACD are referring to your new Merative ACD instance.
+
+1. Capture storage configuration information from the source ACD instance.
+1. Create the target ACD namespace.
+1. 

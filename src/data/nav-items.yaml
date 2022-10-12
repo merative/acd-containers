@@ -22,7 +22,7 @@
   pages:
     - title: "Migration Considerations"
       path: /migration/considerations/
-    - title: "Migration with File Storage"
+    - title: "Migration with Shared File Storage"
       path: /migration/file-storage/
     - title: "Migration with Object Storage"
       path: /migration/object-storage/
