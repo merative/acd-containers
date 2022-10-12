@@ -10,7 +10,7 @@ toc: true
 ## Managing Access to ACD
 
 If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster, you can use the OpenShift-provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do role-based access control (RBAC) access to the service.
-In the example below we'll use the latest version of the OpenShift OAuth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
+In the example below we'll use a 4.8 version of the OpenShift OAuth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.  You can update the version to match your openshift version.  We set the replica count to 2 which gives some level of HA and distributes the workload some, you may need to increase this based on load.
 
 1. Create a project/namespace for the proxy to run in (the examples below use `acd-oauth-proxy`)
 
@@ -66,7 +66,7 @@ In the example below we'll use the latest version of the OpenShift OAuth proxy. 
       metadata:
         name: proxy
       spec:
-        replicas: 1
+        replicas: 2
         selector:
           matchLabels:
             app: proxy
