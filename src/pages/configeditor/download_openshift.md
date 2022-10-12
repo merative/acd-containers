@@ -264,8 +264,8 @@ Custom properties include:
 - `com_ibm_watson_health_car_auth_enable_logout` Set this property as true to enable logout.
 - `com_ibm_watson_health_car_auth_logout_url` Set this property to the URL your authentication method uses to perform logout, if applicable.
 
-   - Note:  Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method `encodeURIComponent` or with [https://www.urlencoder.org/](https://www.urlencoder.org/).
-   - Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at `your-acd-config-editor-site/services/cartridge/cartridge-main.html`.
+  - Note:  Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method `encodeURIComponent` or with [https://www.urlencoder.org/](https://www.urlencoder.org/).
+  - Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at `your-acd-config-editor-site/services/cartridge/cartridge-main.html`.
 
 - `com_ibm_watson_health_car_auth_logout_cookies` Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.
 
@@ -318,9 +318,9 @@ ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_ca
 - `_phi` which is either true or false based on whether this ACD Host can support protected health information
 - `_auth` which specifies the type of authentication the host requires.  The three possible authentication types are:
 
-   - APIKey: Used for cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field `com_ibm_watson_health_car_identity_server` (default is `https://iam.cloud.ibm.com/identity/token`) in order to request a bearer token using the API Key the user entered.
-   - Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition and expire every 24 hours.
-   - Leaving the field blank: Used for no authentication if the host does not require any authentication.
+  - APIKey: Used for cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field `com_ibm_watson_health_car_identity_server` (default is `https://iam.cloud.ibm.com/identity/token`) in order to request a bearer token using the API Key the user entered.
+  - Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition and expire every 24 hours.
+  - Leaving the field blank: Used for no authentication if the host does not require any authentication.
 
 ## Backing up Your Data
 
