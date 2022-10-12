@@ -60,6 +60,3 @@ See Annotator for Clinical Data [release notes](https://github.com/merative/acd-
 ## v2.0 - build v2.0.202106231922
 
 - Initial Release of Annotator for Clinical Data Container Edition
-
-[Released]: https://github.com/ibm/repo-template/compare/v0.0.1...HEAD
-[2.0.0]: https://github.com/ibm/repo-template/releases/tag/v0.0.1

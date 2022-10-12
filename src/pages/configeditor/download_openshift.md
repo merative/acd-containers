@@ -74,8 +74,8 @@ helm install whcs-acd-ce-cdc \
      --namespace <acd namespace>
 ```
 
-   - where `<acd namespace>` is the namespace where the ACD sandbox instance is running
-   - where `<pvc name>` is the persistent volume claim (PVC) the ACD sandbox instance is using
+- where `<acd namespace>` is the namespace where the ACD sandbox instance is running
+- where `<pvc name>` is the persistent volume claim (PVC) the ACD sandbox instance is using
 
 6. Verify the Concept Dictionary microservice is running.<br/>
 
@@ -98,8 +98,8 @@ helm install whcs-acd-ce-crtg \
      --namespace <acd namespace>
 ```
 
-  - where `<acd namespace>` is the namespace where the ACD sandbox instance is running
-  - where `<pvc name>` is the persistent volume claim (PVC) the ACD sandbox instance is using
+- where `<acd namespace>` is the namespace where the ACD sandbox instance is running
+- where `<pvc name>` is the persistent volume claim (PVC) the ACD sandbox instance is using
 
 8. Verify the Cartridge microservice is running.<br/>
 
@@ -233,13 +233,13 @@ items:
             secretName: proxy-tls
 ```
 
-  - where `<client id>` is the OAuth client id
-  - where `<client secret>` is the OAuth client secret
-  - where `<cookie secret>` is the generated cookie secret
-  - where `<oidc issuer url>` is the OIDC issuer URL, e.g. `https://sts.windows.net/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/` for Azure Active Directory
-  - where `<hostname`> is the OAuth proxy hostname, e.g. `proxy-ibm-wh-acd-ce-oauth.xxx.us-xxxx.containers.appdomain.cloud` for IBM Cloud
+- where `<client id>` is the OAuth client id
+- where `<client secret>` is the OAuth client secret
+- where `<cookie secret>` is the generated cookie secret
+- where `<oidc issuer url>` is the OIDC issuer URL, e.g. `https://sts.windows.net/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/` for Azure Active Directory
+- where `<hostname`> is the OAuth proxy hostname, e.g. `proxy-ibm-wh-acd-ce-oauth.xxx.us-xxxx.containers.appdomain.cloud` for IBM Cloud
 
-3.  Create the proxy's deployment, proxy's service, and proxy's route:<br/>
+3. Create the proxy's deployment, proxy's service, and proxy's route:<br/>
   `oc create -f ibm-wh-acd-ce-oauth.yaml`<br/>
 
    More options and details for the proxy are available at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).  Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).  More details and options such as secret generation and cookie expiration are defined in the base [OAuth proxy](https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/) docs.
@@ -263,8 +263,10 @@ Custom properties include:
 
 - `com_ibm_watson_health_car_auth_enable_logout` Set this property as true to enable logout.
 - `com_ibm_watson_health_car_auth_logout_url` Set this property to the URL your authentication method uses to perform logout, if applicable.
+
    - Note:  Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method `encodeURIComponent` or with [https://www.urlencoder.org/](https://www.urlencoder.org/).
    - Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at `your-acd-config-editor-site/services/cartridge/cartridge-main.html`.
+
 - `com_ibm_watson_health_car_auth_logout_cookies` Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.
 
 ## Deploying to Custom ACD Configuration Editor Environments (optional)
@@ -286,13 +288,14 @@ location /<identifier>/ {
     proxy_pass https://$prod_dev/wh-acd$path_remainder;
 }
 ```
-  - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
-  - where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
+
+- where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
+- where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
 
 2. `ibm-wh-acd-ce/crtg/chart/crtg/values.yaml`
 
 ```
- - name: "com_ibm_watson_health_car_acd_host_3_label"
+  - name: "com_ibm_watson_health_car_acd_host_3_label"
     value: "Annotator for Clinical Data - <identifier>"
   - name: "com_ibm_watson_health_car_acd_host_3_url"
     value: "https://<hostname>/wh-acd/api"
@@ -304,8 +307,8 @@ location /<identifier>/ {
     value: "true"
 ```
 
-  - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
-  - where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
+- where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
+- where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
 
 ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_car_acd_host_{index}` as the beginning of their property name. The index must start at "3". The properties are:
 
@@ -335,8 +338,8 @@ To update to a newer version of the ACD Configuration Editor follow these steps:
 2. Download the latest project and unpack it as above.
 3. Delete the existing Helm deployments:
 
-  - `helm delete whcs-acd-ce-crtg`
-  - `helm delete whcs-acd-ce-cdc`
+`helm delete whcs-acd-ce-crtg`
+`helm delete whcs-acd-ce-cdc`
 
 4. Merge in any customizations to the new project files.
 
