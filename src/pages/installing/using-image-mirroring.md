@@ -49,15 +49,18 @@ In order to use mirrored images, follow these steps to configure container regis
   ```
   oc create -f acd-registry-mirrror.yaml
   ```
+
   After the `ImageContentSourcePolicy` object is created, the new settings are deployed to each node and the cluster starts using the mirrored repository for requests to the source repository.
 
 1. Check that the mirrored configuration settings are applied by doing the following on one of the nodes.
 
   a. List your nodes:
+
   ```
   oc get node
   ```
-  _Example output_
+
+  Example output
 
     ```
     NAME            STATUS                        ROLES           AGE
@@ -68,6 +71,7 @@ In order to use mirrored images, follow these steps to configure container regis
     10.240.128.6    Ready                         master,worker   25h
     10.240.128.7    Ready                         master,worker   25h
     ```
+
   You can see that scheduling on each worker node is disabled as the change is being applied.
 
   b. Start the debugging process to access the node:
@@ -75,7 +79,8 @@ In order to use mirrored images, follow these steps to configure container regis
     ```
     oc debug node/10.240.128.20
     ```
-  _Example output_
+
+  Example output
 
     ```
     Starting pod/1024012821-debug ...
@@ -84,6 +89,7 @@ In order to use mirrored images, follow these steps to configure container regis
     If you don't see a command prompt, try pressing enter.
     sh-4.4#
     ```
+
   c. Access the node’s files:
 
     ```
@@ -96,7 +102,9 @@ In order to use mirrored images, follow these steps to configure container regis
     ```
     sh-4.2# cat /etc/containers/registries.conf
     ```
-  _Example output_
+
+  Example output
+
   ```
   unqualified-search-registries = ["registry.access.redhat.com", "docker.io"]
 
@@ -116,7 +124,9 @@ In order to use mirrored images, follow these steps to configure container regis
     [[registry.mirror]]
       location = "acdcontaineredition.azurecr.io/cp"
   ```
+
   e. Pull an image digest to the node from the source and check if it is resolved by the mirror. `ImageContentSourcePolicy` objects support image digests only, not image tags.
+
   ```
   podman pull --log-level=debug cp.icr.io/cp/wh-acd/clinical-data-annotator@sha256:bc077404849f4794a9de0ff2aad3a9af78fe72560b46d623a711d42927e5c955
   ```
@@ -124,6 +134,7 @@ In order to use mirrored images, follow these steps to configure container regis
 ### Mirror images to another container registry
 
 There are several ways that you can mirror images from one registry to another. Choose the most appropriate method for your environment. These documents may be useful as references.
+
 - Set up a mirrored repository with Red Hat Quay, as described in [Red Hat Quay Repository Mirroring](https://access.redhat.com/documentation/en-us/red_hat_quay/3/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay). Using Red Hat Quay allows you to copy images from one repository to another and also automatically syncs those repositories repeatedly over time.
 - Use a tool such as skopeo (see example [here](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration)) to copy images manually from the source directory to the mirrored repository.
 - Set up a mirrored repository to a private container registry, as described [here](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-mirroring-images-your-private-container-registry) to mirror images from the IBM Entitled Registry.

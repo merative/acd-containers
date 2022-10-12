@@ -31,7 +31,7 @@ If the deployment will use S3-based storage, the S3 credentials need to be inser
 ```
 echo '<cos_id>' | tr -d '\n' > username
 echo '<cos_secret>' | tr -d '\n' > password
-oc create secret generic ibm-wh-acd-as \
+oc create secret generic merative-acd-as \
     --namespace <namespace> \
     --from-file=username \
     --from-file=password
@@ -60,19 +60,19 @@ Create the shared file system using the platform's tools with encryption enabled
 
 1. Install OCS from the Operator Catalog.  This will install the cephfs storage class.  You must provide a block storage class for OCS to use.
 
-1. In the ACD namespace, manually create the ACD persistent volume claim from the example ibm-wh-acd-config-storage-cephfs-pvc.yaml file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
+1. In the ACD namespace, manually create the ACD persistent volume claim from the example "merative-acd-config-storage-cephfs-pvc.yaml" file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
 
     ```
-    oc create -n <your namespace> -f ibm-wh-acd-config-storage-cephfs-pvc.yaml
+    oc create -n <your namespace> -f merative-acd-config-storage-cephfs-pvc.yaml
     ```
 
-    <br/>Example PVC file ibm-wh-acd-config-storage-cephfs-pv.yaml
+    <br/>Example:  PVC file "merative-acd-config-storage-cephfs-pv.yaml"
 
-    ```yaml ibm-wh-acd-config-storage-cephfs-pvc.yaml
+    ```yaml merative-acd-config-storage-cephfs-pvc.yaml
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
-      name: ibm-wh-acd-config-storage-cephfs-pvc
+      name: merative-acd-config-storage-cephfs-pvc
       spec:
         accessModes:
         - ReadWriteMany
@@ -104,7 +104,7 @@ WARNING: Removing an OCS persistent volume will delete any data stored in that P
 To remove the persistent volume and claim, run the following commands:
 
 ```
-oc delete pvc ibm-wh-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
+oc delete pvc merative-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
 oc delete pv <dynamic-pv-name>
 ```
 
@@ -115,18 +115,18 @@ oc delete pv <dynamic-pv-name>
 1. Create the persistent volume for NFS
 
     ```
-    oc create -f ibm-wh-acd-config-storage-nfs-pv.yaml
+    oc create -f merative-acd-config-storage-nfs-pv.yaml
     ```
 
     Note: The path to the NFS volume must be unique for each ACD instance.
 
-    <br/>Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
+    <br/>Example:  NFS PV file "merative-acd-config-storage-nfs-pv.yaml"
 
-    ```yaml ibm-wh-acd-config-storage-nfs-pv.yaml
+    ```yaml merative-acd-config-storage-nfs-pv.yaml
     apiVersion: v1
     kind: PersistentVolume
     metadata:
-      name: ibm-wh-acd-config-storage-nfs-pv
+      name: merative-acd-config-storage-nfs-pv
     spec:
       capacity:
         storage: 10Gi
@@ -142,16 +142,16 @@ oc delete pv <dynamic-pv-name>
 1. Create the persistent volume claim for NFS
 
     ```
-    oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
+    oc create -f merative-acd-config-storage-nfs-pvc.yaml -n <your namespace>
     ```
 
-    <br/>Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
+    <br/>Example:  NFS PVC file "merative-acd-config-storage-nfs-pvc.yaml"
 
-    ```yaml ibm-wh-acd-config-storage-nfs-pvc.yaml
+    ```yaml merative-acd-config-storage-nfs-pvc.yaml
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
-      name: ibm-wh-acd-config-storage-nfs-pvc
+      name: merative-acd-config-storage-nfs-pvc
     spec:
       accessModes:
         - ReadWriteMany
@@ -159,7 +159,7 @@ oc delete pv <dynamic-pv-name>
         requests:
           storage: 10Gi
       volumeMode: Filesystem
-      volumeName: ibm-wh-acd-config-storage-nfs-pv
+      volumeName: merative-acd-config-storage-nfs-pv
     ```
 
 #### NFS Persistent Volume and Claim Removal
@@ -167,8 +167,8 @@ oc delete pv <dynamic-pv-name>
 To remove the persistent volume and claim, run the following:
 
 ```
-oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>
-oc delete pv ibm-wh-acd-config-storage-nfs-pv
+oc delete pvc merative-acd-config-storage-nfs-pvc -n <your namespace>
+oc delete pv merative-acd-config-storage-nfs-pv
 ```
 
 <a name="shared-prep"></a>

@@ -6,6 +6,8 @@ slug: air-gap-installation
 toc: true
 ---
 
+_Note:  The air gap environment applies to IBM Annotator for Clinical Data Container Edition._
+
 Since air gap environments do not have access to the public internet, and therefore no access to DockerHub, the following preparation steps are necessary to make the required images accessible to the Red Hat OpenShift Container Platform cluster.
 
 If the Red Hat OpenShift Container Platform cluster has a Bastion host, ensure that the Bastion host can access:
@@ -129,7 +131,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
    - `<case-file>` is the CASE file.
    - `<bastion-registry>` is the Bastion host's registry.
 
-   *WARNING:* This step may restart all cluster nodes. The cluster resources might be unavailable until the time the new pull secret is applied.
+   _WARNING:_ This step may restart all cluster nodes. The cluster resources might be unavailable until the time the new pull secret is applied.
 
 2. Optional: If you are using an insecure Bastion host's registry, you must add the Bastion host's registry to the cluster insecureRegistries list.
 
@@ -307,7 +309,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
    - `<case-file>` is the CASE file.
    - `<portable-registry>` is the portable device's registry.
 
-   *WARNING:* This step may restart all cluster nodes. The cluster resources might be unavailable until the time the new pull secret is applied.
+   _WARNING:_ This step may restart all cluster nodes. The cluster resources might be unavailable until the time the new pull secret is applied.
 
 2. Optional: If you are using an insecure portable device's registry, you must add the portable device's registry to the cluster insecureRegistries list.
 
