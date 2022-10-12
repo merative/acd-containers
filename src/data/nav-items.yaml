@@ -18,6 +18,14 @@
       path: /planning/tenancy/
     - title: "High Availability"
       path: /planning/hadr/
+- title: "Migration"
+  pages:
+    - title: "Migration Considerations"
+      path: /migration/considerations/
+    - title: "Migration with File Storage"
+      path: /migration/file-storage/
+    - title: "Migration with Object Storage"
+      path: /migration/object-storage/
 - title: Installation
   pages:
     - title: "Prerequisites"

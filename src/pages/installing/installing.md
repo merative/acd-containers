@@ -15,7 +15,7 @@ Annotator for Clinical Data Container Edition is an [operator-based](https://kub
 
 The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
-A new instance of the `Acd` custom resource belonging to the `acd.merative.com` group must be installed. There is no upgrade path from the IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition. Refer to the [Migration]() considerations when planning for and migrating from an IBM ACD instance to a Merative ACD instance.
+A new instance of the `Acd` custom resource belonging to the `acd.merative.com` group must be installed. There is no upgrade path from the IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition. Refer to the [Migration Considerations](/migration/considerations/) when planning for and migrating from an IBM ACD instance to a Merative ACD instance.
 
 Installing ACD has three phases:
 
