@@ -34,7 +34,7 @@
       path: /installing/setup-namespace/
     - title: "Installation"
       path: /installing/installing/
-    - title: "Using image mirroring"
+    - title: "Using Image Mirroring"
       path: /installing/using-image-mirroring/
     - title: "Air-gap Installation"
       path: /installing/air-gap-installation/

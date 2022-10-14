@@ -1,6 +1,6 @@
 ---
-title: "Using image mirroring"
-excerpt: "Using image mirroring"
+title: "Using Image Mirroring"
+excerpt: "Using Image Mirroring"
 categories: installing
 slug: using-image-mirroring
 toc: true
