@@ -1,8 +1,8 @@
 ---
-title: "Migration with Shared File Storage"
-excerpt: "Migration with Shared File Storage."
+title: "Cartridge Redeployment with Shared File Storage"
+excerpt: "Cartridge Redeployment with Shared File Storage."
 categories: migration
-slug: file
+slug: redeploy-file-storage
 toc: true
 ---
 

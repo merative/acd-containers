@@ -1,8 +1,8 @@
 ---
-title: "Migration with Object Storage"
-excerpt: "Migration with Object Storage."
+title: "Migration of Existing Object Storage"
+excerpt: "Migration of Existing Object Storage."
 categories: migration
-slug: cos
+slug: migrate-object-storage
 toc: true
 ---
 
