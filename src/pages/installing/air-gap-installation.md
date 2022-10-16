@@ -6,7 +6,7 @@ slug: air-gap-installation
 toc: true
 ---
 
-_Note:  The air gap environment applies to IBM Annotator for Clinical Data Container Edition._
+_Note:  The air gap environment applies to IBM Watson Annotator for Clinical Data Container Edition._
 
 Since air gap environments do not have access to the public internet, and therefore no access to DockerHub, the following preparation steps are necessary to make the required images accessible to the Red Hat OpenShift Container Platform cluster.
 
@@ -144,7 +144,7 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 7. Proceed with installation
 
-Now that the air gap installation preparation steps are complete, you may continue with the installation. Proceed to [Installing IBM Operator Catalog](../installing/#installing-the-ibm-operator-catalog).
+Now that the air gap installation preparation steps are complete, you may continue with the installation. Proceed to [Installing IBM operator catalog](../installing-ibm/#installing-the-ibm-operator-catalog).
 
 ### Using a portable host
 
@@ -322,4 +322,4 @@ Log into the Red Hat OpenShift Container Platform cluster as a cluster administr
 
 #### 10. Proceed with installation
 
-Now that the air gap installation preparation steps are complete, you may continue with the installation. Proceed to [Installing IBM Operator Catalog](../installing/#installing-the-ibm-operator-catalog).
+Now that the air gap installation preparation steps are complete, you may continue with the installation. Proceed to [Installing IBM operator catalog](../installing-ibm/#installing-the-ibm-operator-catalog).

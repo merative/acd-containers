@@ -6,7 +6,7 @@ slug: troubleshooting
 toc: true
 ---
 
-## Cartridge Deployment Timeout
+## Cartridge deployment timeout
 
 Some large cartridge deployments can exceed the request timeout thresholds. In that event, you may receive the following error response:
 

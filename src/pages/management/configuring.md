@@ -6,15 +6,25 @@ slug: configuring
 toc: true
 ---
 
+## ACD configurable parameters
+
 The following tables lists the configurable parameters available for ACD.
 
+### YAML view
+
 If using the web console, parameters are found under the YAML view:
+
 ![YAML view](../../images/configuration_yaml.png)
 
-Or a subset are found under the Form view:
-![Form view](../../images/configuration_form.png).
+### Form view
 
-If using the CLI, these are configurable via the CSV.
+If using the web console, a subset of available parameters is found under the Form view:
+
+![Form view](../../images/configuration_form.png)
+
+### CLI
+
+If using the CLI, these parameters are configurable via the CSV:
 
 | Parameter | Description | Default |
 | -         | -           | -       |
@@ -36,6 +46,7 @@ If using the CLI, these are configurable via the CSV.
 | `networkPolicy.enabled` | Enable network isolation between pods within and outside of the namespace that ACD is installed into.  Only the top-level ACD service is exposed through port 9443 | true |
 | `networkPolicy.ingress.fromSelectors` | Further restrict ingress access to ACD on port 9443 from other pods or namespaces using fromSelectors and labels.  Requires networkPolicy to be enabled. | |
 
+
 These additional configurable parameters may be provided when file-based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
 
 | Parameter | Description | Default |
@@ -47,6 +58,7 @@ These additional configurable parameters may be provided when file-based storage
  | `configurationStorage.file.volume.storageClassName` | Use an existing persistent volume of this class type |  |
 | `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` | 
 --->
+
 
 These additional configurable parameters must be provided when IBM Cloud Object Store (`COS`) is used for  `configurationStorage.backend`.
 

@@ -1,5 +1,5 @@
 ---
-title: "Setup Namespace"
+title: "Set Up Namespace"
 excerpt: "Setting up Namespace Artifacts."
 categories: installing
 slug: setup
@@ -18,7 +18,7 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 **Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
 
-## Setting up ACD Service optional dependencies
+## Setting up ACD service optional dependencies
 
 ***
 
@@ -49,7 +49,7 @@ If you are deploying more than one instance of ACD, each deployment is required 
 
 We have tested two methods for providing a shared filesystem for storing ACD persistent data.
 
-- [Openshift Container Storage (OCS)](#create-ocs)
+- [OpenShift Container Storage (OCS)](#create-ocs)
 - [NFS](#create-nfs)
 
 Create the shared file system using the platform's tools with encryption enabled. It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany (RWX).

@@ -23,7 +23,7 @@ subcollection: wh-acd
 
 Yes, you can define multiple text blocks within a JSON request submitted to the service.
 
-## Example
+### Example:
 
 ```javascript
 {
@@ -48,7 +48,7 @@ No, only the text field values are counted towards the 50K text limit per reques
 
 ## How can I have my input text returned back in the response?
 
-The input text is not returned in the response by default. However, if you wish to have the input text returned back in the response, you may do so by passing in the `return_analyzed_text=true` query parameter on _/analyze_ API calls.
+The input text is not returned in the response by default. However, if you wish to have the input text returned back in the response, you may do so by passing in the `return_analyzed_text=true` query parameter on _analyze_ API calls.
 
 ## Are the other annotators able to leverage corrected text from the spell checker annotator?
 

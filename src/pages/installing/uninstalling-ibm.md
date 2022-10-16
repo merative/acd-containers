@@ -1,13 +1,13 @@
 ---
-title: "Uninstalling ACD"
-excerpt: "Uninstalling ACD."
+title: "Uninstalling IBM Watson ACD"
+excerpt: "Uninstalling IBM Watson ACD."
 categories: installing
 slug: uninstalling
 toc: true
 ---
-_Note: The following instructions, including the cloudctl command line utility, are for uninstalling IBM Annotator for Clinical Data Container Edition._
+_Note: The following instructions, including the cloudctl command line utility, are for uninstalling IBM Watson Annotator for Clinical Data Container Edition.  For uninstalling Merative Annotator for Clinical Data Container Edition, refer [here](/installing/uninstalling/)._
 
-IBM Annotator for Clinical Data Container Edition should be uninstalled using the same interface that was used to install. The uninstall can be done using either the OpenShift Container Platform web console or the command line.
+IBM Watson Annotator for Clinical Data Container Edition should be uninstalled using the same interface that was used to install. The uninstall can be done using either the OpenShift Container Platform web console or the command line.
 
 The order of the uninstall is important. Delete the ACD service instance first, then delete the operator. If the operator was installed into all namespaces, ensure all ACD service instances are deleted before deleting the operator.
 
@@ -55,7 +55,7 @@ To remove the namespace run the following:
 oc delete namespace <namespace>
 ```
 
-## Uninstalling the IBM Operator catalog
+## Uninstalling the IBM operator catalog
 
 To remove the catalog run the following:
 
@@ -63,4 +63,4 @@ To remove the catalog run the following:
 oc delete catalogsource ibm-operator-catalog -n openshift-marketplace
 ```
 
-**Note:** This catalog resource provides access to many operators, one of which is the Annotator for Clinical Data Container Edition operator. Before deleting the catalog source, ensure you want to remove the full catalog. If you need to reinstall, see [Installing the IBM Operator catalog](/installing/installing/#installing-the-ibm-operator-catalog).
+**Note:** This catalog resource provides access to many operators, one of which is the Annotator for Clinical Data Container Edition operator. Before deleting the catalog source, ensure you want to remove the full catalog. If you need to reinstall, see [Installing the IBM operator catalog](/installing/installing/#installing-the-ibm-operator-catalog).

@@ -27,7 +27,7 @@ To illustrate the basic function of Annotator for Clinical Data, let's look at a
 There were no signs of ulceration
 ```
 
-The resulting concept over ulceration will contain medical codes along with contextual information about the concept - in this example, the concept is negated.
+The resulting concept over `ulceration` will contain medical codes along with contextual information about the concept (note in this example, the concept is negated):
 
 ```
 {
@@ -47,27 +47,27 @@ The resulting concept over ulceration will contain medical codes along with cont
 }
 ```
 
-## Data Isolation
+## Data isolation
 
-### Public Multi-tenant Instances
+### Public multi-tenant instances
 
-**User Configuration Data:** User configuration data is stored in Cloud Object Storage. This data is isolated by tenant at the service layer.
+**User configuration data:** User configuration data is stored in Cloud Object Storage. This data is isolated by tenant at the service layer.
 
-**User Unstructured Text:** Requested analysis of unstructured text is processed in-memory. The input text is not persisted. Requests are isolated at the service layer.
+**User unstructured text:** Requested analysis of unstructured text is processed in-memory. The input text is not persisted. Requests are isolated at the service layer.
 
-### Dedicated Instances
+### Dedicated instances
 
-**User Configuration Data:** User configuration data is stored in Cloud Object Storage. This data is isolated at the service layer.
+**User configuration data:** User configuration data is stored in Cloud Object Storage. This data is isolated at the service layer.
 
-**User Unstructured Text:** Requested analysis of unstructured text is processed in-memory. The input text is not persisted. Requests are isolated at the Kubernetes pod layer.
+**User unstructured text:** Requested analysis of unstructured text is processed in-memory. The input text is not persisted. Requests are isolated at the Kubernetes pod layer.
 
-## Compute Isolation
+## Compute isolation
 
-**Public Multi-tenant Instances:** The service is accessed via public endpoints. The service will access all dependencies via private endpoints. In these instances the control plane of the service is shared across tenants.
+**Public multi-tenant instances:** The service is accessed via public endpoints. The service will access all dependencies via private endpoints. In these instances the control plane of the service is shared across tenants.
 
-**Dedicated Instances:** The service can be accessed via public and/or private endpoints. Review [Public and private network endpoints](/about/overview/) for details. The service will access all dependencies via private endpoints. In these instances the control plane of the service is isolated in separate pods for each tenant.
+**Dedicated instances:** The service can be accessed via public and/or private endpoints. Review [Public and private network endpoints](/about/overview/) for details. The service will access all dependencies via private endpoints. In these instances the control plane of the service is isolated in separate pods for each tenant.
 
-## Available Annotators
+## Available annotators
 
 The following annotators are available for detecting and coding medical concepts within unstructured data.
 
@@ -89,7 +89,7 @@ The concept annotator finds UMLS or custom concepts in unstructured text.
 
 For more information, see [Concepts](/clouddocs/annotator_concept_detection/).
 
-### Concept Value
+### Concept value
 
 The concept value annotator creates composite attributes resulting from a medical concept and an associated value.  It supports scalar values as well as value ranges.  
 
@@ -101,7 +101,7 @@ In this example, the combination of `height` with `6 feet` is an example of how 
 
 For more information, see [Concept Value](/clouddocs/annotator_concept_value/).
 
-## Contextual Annotators
+## Contextual annotators
 
 Contextual annotators use the surrounding context of the document to provide a deeper understanding of concepts.
 
@@ -117,36 +117,36 @@ Identifies spans of text are the object of a hypothetical statement.  For exampl
 
 For more information, see [Hypothetical](/clouddocs/annotator_hypothetical_detection/).
 
-### Concept Disambiguation
+### Concept disambiguation
 
 Determines the validity of UMLS concepts detected in a document.
 
 For more information, see [Disambiguation](/clouddocs/annotator_concept_disambiguation/).
 
-### Spell Check
+### Spell check
 
 Medically aware spell checker that can be integrated into an API call.
 
 For more information, see [Spell Check](/clouddocs/annotator_spell_check/).
 
-### Turn Key Annotators
+### Turn-key annotators
 
  Annotator for Clinical Data provides a set of prebuilt annotators targeted at specific medical domains.
 
 * [Allergy](/clouddocs/annotator_allergy/) _(deprecated)_
 * [Cancer](/clouddocs/annotator_cancer/) _(deprecated)_
 * [Ejection Fraction](/clouddocs/annotator_ejection_fraction/) _(deprecated)_
-* [Lab Values](/clouddocs/annotator_lab_values)
-* [Living Assistance](/clouddocs/annotator_living_assistance/) _(deprecated)_
+* [Lab values](/clouddocs/annotator_lab_values)
+* [Living assistance](/clouddocs/annotator_living_assistance/) _(deprecated)_
 * [Medications](/clouddocs/annotator_medication/)
-* [Named Entities](/clouddocs/annotator_named_entities/)
+* [Named entities](/clouddocs/annotator_named_entities/)
 * [Procedures](/clouddocs/annotator_procedure/)
 * [Sections](/clouddocs/annotator_sections/)
 * [Smoking](/clouddocs/annotator_smoking/) _(deprecated)_
-* [Symptoms & Diseases](/clouddocs/annotator_symptom_disease/)
+* [Symptoms & diseases](/clouddocs/annotator_symptom_disease/)
 
-### Clinical Insights
+### Clinical insights
 
-Clinical insights are a collection of models and cartridge configuration that provide contextual information about key clinical attributes (medication, diagnosis, and procedure) for patient centric clinical notes.
+Clinical insights are a collection of models and cartridge configuration that provide contextual information about key clinical attributes (medication, diagnosis, and procedure) for patient-centric clinical notes.
 
 For more information, see [Clinical Insights](/clouddocs/clinical_insights_overview/).
