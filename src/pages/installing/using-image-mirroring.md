@@ -11,7 +11,7 @@ Setting up container registry repository mirroring enables you to do the followi
 - Configure your OpenShift Container Platform cluster to redirect requests to pull images from a repository on a source image registry and have it resolved by a repository on a mirrored image registry.
 - Identify multiple mirrored repositories for each target repository, to make sure that if one mirror is down, another can be used.
 
-See Red Hat Openshift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
+See Red Hat OpenShift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
 
 Images for IBM Watson Annotator for Clinical Data are available from the IBM Entitled Registry through December, 2022. Images for Merative Annotator for Clinical Data are available from the ACD registry. ACD consumers need to migrate from IBM ACD to Merative ACD by the end of December, 2022. To help ensure all ACD images are available during this migration period, we have mirrored recent [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) of the IBM ACD images from the IBM Entitled Registry to the ACD registry. Credentials for the ACD registry can be used to pull either Merative or IBM ACD images, once mirroring is configured for the IBM ACD images.
 

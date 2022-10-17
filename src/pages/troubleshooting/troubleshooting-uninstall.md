@@ -1,14 +1,14 @@
 ---
 title: "Troubleshooting Uninstall"
-excerpt: "Troubleshooting the IBM ACD Container Edition uninstall issues"
+excerpt: "Troubleshooting the ACD Container Edition uninstall issues"
 categories: troubleshooting
 slug: troubleshooting-uninstall
 toc: true
 ---
 
-## Troubleshooting Uninstall
+## Troubleshooting uninstall
 
-### Removing a Terminating Namespace
+### Removing a terminating namespace
 
 Occasionally some of the custom resources managed by an operator may remain in "Terminating" status waiting on a finalizer to complete. The resources remain in the "Terminating" state even after you have performed all the uninstall steps, or you are not able to uninstall from the web console because the uninstall option is greyed out.
 

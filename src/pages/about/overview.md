@@ -13,7 +13,7 @@ This program is the container version of Annotator for Clinical Data (ACD).
 The program allows a customer to run Annotator for Clinical Data on a cloud of their choice that supports Red Hat OpenShift.
 This documentation discusses how to install Annotator for Clinical Data Container Edition on a Red Hat OpenShift cluster.
 
-Annotator for Clinical Data is an AI-powered service that applies Natural Language Processing (NLP) engines to deliver meaningful insights from unstructured data, purpose-built for healthcare and life sciences domains. Annotator for Clinical Data uses clinical NLP trained models to extract key concepts from natural language text, such as conditions, medications, allergies, and procedures along with their associated medical codes (eg: ICD-10, RxNorm, Snomed, LOINC). These features are enriched with deep contextual insights, along with values for key clinical attributes, in order to provide a more complete view of the data at hand. Potential data sources include a variety of healthcare and life sciences sources, such as clinical notes, discharge summaries, clinical trial protocols, and literature data.
+Annotator for Clinical Data is an AI-powered service that applies Natural Language Processing (NLP) engines to deliver meaningful insights from unstructured data, purpose-built for healthcare and life sciences domains. Annotator for Clinical Data uses clinical NLP trained models to extract key concepts from natural language text, such as conditions, medications, allergies, and procedures along with their associated medical codes (e.g. ICD-10, RxNorm, Snomed, LOINC). These features are enriched with deep contextual insights, along with values for key clinical attributes, in order to provide a more complete view of the data at hand. Potential data sources include a variety of healthcare and life sciences sources, such as clinical notes, discharge summaries, clinical trial protocols, and literature data.
 
 This program supports English-only text for insight extraction.
 
@@ -51,9 +51,10 @@ the service will route your unstructured data through the designated annotators 
 ## Annotator for Clinical Data Container Edition Overview
 
 The container edition of Annotator for Clinical Data is provided as a Kubernetes operator and set of container images that allow you to deploy, configure and manage Annotator for Clinical Data instances on your own Kubernetes cluster.  This documentation provides the [Planning](../../planning/namespace/) and  [Installation](../../installing/prereqs/) instructions to get started.
-Annotator for Clinical Data itself consists of a top level "macro" or orchestration Annotator for Clinical Data service which provides the REST API endpoints and a set of local micro services that provide the analytics or annotators that are invoked with specific parameters and in a specified order during analyze calls.   These are provided as Kubernetes container images and the operator creates and manages the deployment of these.
-The analytics of text is a stateless operation with nothing stored, but configuration is stored in a local shared file system or object storage.
-The following shows this setup with an optional security proxy that can be setup.
+
+Annotator for Clinical Data consists of a top level "macro" or orchestration Annotator for Clinical Data service which provides the REST API endpoints and a set of local micro services that provide the analytics or annotators that are invoked with specific parameters and in a specified order during analyze calls.   These are provided as Kubernetes container images and the operator creates and manages the deployment of these.
+The analytics of text is a stateless operation with nothing stored, however, configuration is stored in a local shared file system or object storage.
+The following shows this setup with an optional security proxy that can be configured.
 
 ![Annotator for Clinical Data Container Edition](../../images/ACD-OCP-HLD.png)
 
