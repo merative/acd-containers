@@ -22,6 +22,19 @@ subcollection: wh-acd
 
 The following sections document the new features and changes that were included for each release of the Annotator for Clinical Data service.
 
+## October 2022
+
+- Added support for defining groups of concept dictionaries for a cartridge that should participate together during longest span processing.
+- Speed improvements to the clinical insight models.
+- Improvements to the adverse drug event detection models.
+- Added support for Clinical Associations, linking associated diagnoses, procedures, and sites in clinical text.
+ 
+## June 2022
+
+- Concept detection, medication, procedure, and symptom disease annotators now support medical code mappings. A Medical Code mapping represents a mapping of a UMLS Concept Identifier (CUI) to a medical code. This mapping provides the medical code for a term identified within the unstructured text.
+- Added support for greedy temporal linking in the temporal models.
+- Added support to symptom disease, procedure, cancer, and allergy annotators to output the complete set of medical codes that concept detection supports.
+ 
 ## February 2022
 
 - Improved medication adverse event model with associatedAdverseEvent modifier links.
