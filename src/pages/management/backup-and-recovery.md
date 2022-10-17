@@ -15,4 +15,4 @@ backups and how many you store or create depends on the [recovery point objectiv
 For example you may want to configure daily backups and storing 30 days of backups to enable recovery to a point in the last month with a potential to loose less than the last days worth of configuration data.
 Store these backups in a different location(s) and test your restore procedures periodically.  This will enable an IT admin based recovery in the event of a disaster.
 In addition, since ACD configuration is usually done via cartridges users of ACD should be encouraged to version and store their cartridges outside of ACD as well to enable self-recovery.
-For example the provided out of the box cartridges are stored in github so you can always recover those by pulling from github and deploying it again.
+For example the provided out-of-the-box cartridges are stored in [GitHub]((https://github.com/merative/acd-cartridges) so you can always recover those by pulling from GitHub and deploying it again.

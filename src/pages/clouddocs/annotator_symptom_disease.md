@@ -49,6 +49,9 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | hccCode | Hierarchical Condition Categories (HCC) code is primarily used by Medicare and Medicaid. |
 | cui | UMLS Concept Unique ID (CUI). CUIs are used to uniquely identify concepts across different UMLS sources. Depending on the source of the symptom/disease information, this value may not be available. |
 | modality | There are three potential values for this feature: positive, negative, and potential.  Positive modality means there is a high probability that the identified text is related to symptoms or diseases.  Negative modality means that the identified text is not a symptom or a disease.  Potential modality means there is some likelihood that the identified text is related to symptoms or diseases. |
+| loincId | LOINC stands for Logical Observations Identifiers, Names, Codes.  The value for this feature comes from UMLS. |
+| nciCode | The [NCI Thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NCI/) covers vocabulary for cancer-related clinical care, translational and basic research, and public information and administrative activities.  The value for this feature comes from UMLS. |
+| meshId | The [MeSH thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MSH/) is a controlled vocabulary used for indexing, cataloging, and searching for biomedical and health-related information and documents.  The value for this feature comes from UMLS. |
 | icd9Code | ICD stands for International Classification of Diseases.  The number 9 is a revision number for this code set. |
 | icd10Code | ICD stands for International Classification of Diseases.  The number 10 is a revision number for this code set. |
 | symptomDiseaseSurfaceForm | The covered text that refers to the sympton or disease identified by the annotation. For example, in text <q>He had a persistent cough.</q>, the symptom is <q>persistent cough</q>. |
@@ -87,25 +90,26 @@ Sample response from the symptom disease annotator for the text: `He has severe 
 
 ```
 {
-  "unstructured": [
-    {
+ "unstructured": [
+   {
       "text": "He has severe cramping and pain in his left leg due to diabetic neuropathy.",
-      "data": {
-        "SymptomDiseaseInd": [
-          {
+     "data": {
+       "SymptomDiseaseInd": [
+         {
             "type": "aci.SymptomDiseaseInd",
             "begin": 7,
             "end": 22,
             "coveredText": "severe cramping",
             "icd9Code": "729.82",
-            "icd10Code": "R25.2",
+            "icd10Code": "R25.2,T75.1",
             "modality": "positive",
             "symptomDiseaseSurfaceForm": "cramping",
+            "nciCode": "C34827",
             "cui": "C0026821",
             "dateInMilliseconds": " ",
             "snomedConceptId": "55300003",
-            "modifiers": [
-              {
+           "modifiers": [
+             {
                 "coveredText": "severe",
                 "end": 13,
                 "type": "aci.ModifierGroupInd",
@@ -113,9 +117,10 @@ Sample response from the symptom disease annotator for the text: `He has severe 
               }
             ],
             "ccsCode": "211",
+            "meshId": "M0014234",
             "symptomDiseaseNormalizedName": "cramp"
           },
-          {
+         {
             "type": "aci.SymptomDiseaseInd",
             "begin": 27,
             "end": 47,
@@ -123,20 +128,20 @@ Sample response from the symptom disease annotator for the text: `He has severe 
             "modality": "positive",
             "symptomDiseaseSurfaceForm": "pain",
             "dateInMilliseconds": " ",
-            "modifiers": [
-              {
-                "coveredText": "his left leg",
+           "modifiers": [
+             {
+                "coveredText": "left leg",
+                "siteNormalizedName": "left leg",
                 "end": 47,
-                "siteNormalizedName": "structure of left lower leg",
-                "type": "aci.SiteInd",
                 "snomedConceptId": "48979004",
-                "begin": 35,
-                "compound": "false"
+                "type": "aci.SiteInd",
+                "compound": "false",
+                "begin": 39
               }
             ],
             "symptomDiseaseNormalizedName": "pain"
           },
-          {
+         {
             "type": "aci.SymptomDiseaseInd",
             "begin": 55,
             "end": 74,
@@ -145,11 +150,13 @@ Sample response from the symptom disease annotator for the text: `He has severe 
             "icd10Code": "E14.4,G63.2,E11.40",
             "modality": "positive",
             "symptomDiseaseSurfaceForm": "diabetic neuropathy",
+            "nciCode": "C26748",
             "cui": "C0011882",
             "dateInMilliseconds": " ",
             "snomedConceptId": "230572002",
             "ccsCode": "50",
-            "symptomDiseaseNormalizedName": "diabetic neuropathy",
+            "meshId": "M0006162",
+            "symptomDiseaseNormalizedName": "neuropathy co-occurrent and due to diabetes mellitus",
             "hccCode": "18"
           }
         ]

@@ -6,11 +6,13 @@ slug: sdks
 toc: true
 ---
 
-IBM Watson Annotator for Clinical Data has software development kits (SDK) in multiple languages for interacting with the ACD Service REST APIs, or to directly call the APIs, see the examples in the exported PDF documentation for <span><a aria-current="" to="https://merative.github.io/acd-containers/apidocs/index.html?shell" href="https://merative.github.io/acd-containers/apidocs/index.html?shell" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">curl</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>.
+Annotator for Clinical Data has software development kits (SDKs) for interacting with the ACD service REST APIs.  Depending on your chosen language that you use to develop applications to take advantage of the functionality provided by ACD, both a Java and Python version of the SDK are available to you.  See below for more SDK details.
 
-To authenticate to IBM Watson Annotator for Clinical Data Container Edition, you pass a **bearer token** in the credentials.  If you have provided secure access to your ACD service instance via the Openshift OAuth service (see [Managing Access to ACD](/security/manage-access/)), you will use the token that you created on the service account as your bearer token.  For access to an unsecured ACD service instance, the bearer token used for the credentials can be a dummy token.  
+Alternatively, curl can be used to directly call the Annotator for Clinical Data REST APIs.  See the examples in the exported PDF documentation for <span><a aria-current="" to="https://merative.github.io/acd-containers/apidocs/index.html?shell" href="https://merative.github.io/acd-containers/apidocs/index.html?shell" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">curl</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>.
 
-## Annotator for Clinical Data SDKs in Github
+To authenticate to Annotator for Clinical Data Container Edition, you pass a **bearer token** in the credentials.  If you have provided secure access to your ACD service instance via the OpenShift OAuth service (see [Managing Access to ACD](/security/manage-access/)), you will use the token that you created on the service account as your bearer token.  For access to an unsecured ACD service instance, the bearer token used for the credentials can be a dummy token.  
+
+## Annotator for Clinical Data SDKs in GitHub
 
 Find details about installing and using the SDKs.
 
@@ -24,10 +26,10 @@ Find details about installing and using the SDKs.
 
 In the following examples, replace:
 
-- `{version}` is the ACD Service API version, e.g. 2021-06-01
+- `{version}` is the ACD service API version, e.g. 2021-06-01
 - `{url}` is either:
-  - OAuth proxy route URL if secured access, e.g. https://proxy-ibm-wh-acd-oauth-proxy.apps.youserver.com/services/clinical_data_annotator/api
-  - Direct route URL if unsecured, e.g. https://route-acd-route.apps.youserver.com/services/clinical_data_annotator/api
+  - OAuth proxy route URL if secured access, e.g. https://<proxy_route_name>-<proxy_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
+  - Direct route URL if unsecured, e.g. https://<route_name>-<acd_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
 - `{token}` is either:
   - bearer token of OAuth proxy route, e.g. `edJhb......M1g`
   - dummy token, e.g. `dummy`
