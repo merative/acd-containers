@@ -47,13 +47,13 @@ The following response is a confirmation of successful deployment:
 
 The License Service is accessible via the ```ibm-licensing-service-instance``` route that is created as part of the License Service setup.
 
-![ibm-licensing-service-instance](../../images/license_route.png) 
+![ibm-licensing-service-instance](../../images/license_route.png)
 
-In order to run the report, the ```ibm-licensing-token``` secret's [token](https://www.ibm.com/docs/en/cpfs?topic=authentication-license-service-api-token#obtaining) must be retrieved and provided on the above service. Once run, the results will show the ACD usage.  For example: 
+In order to run the report, the ```ibm-licensing-token``` secret's [token](https://www.ibm.com/docs/en/cpfs?topic=authentication-license-service-api-token#obtaining) must be retrieved and provided on the above service. Once run, the results will show the ACD usage.  For example:
 
 ![ACD usage](../../images/license_report.png)
 
-   **Note:**  If you upgraded from IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition, your ACD usage report may still indicate "IBM Watson Annotator for Clinical Data Container Edition", however, the License Service is correctly collecting metrics for your Merative ACD usage.   
+   **Note:**  If you upgraded from IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition, your ACD usage report may still indicate "IBM Watson Annotator for Clinical Data Container Edition", however, the License Service is correctly collecting metrics for your Merative ACD usage.
 
 ## Archiving license usage data
 
