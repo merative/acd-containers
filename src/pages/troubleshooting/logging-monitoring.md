@@ -43,7 +43,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 
 ### Enabling JSON logging for OpenShift Container Platform
 
-**Prerequisites**
+#### Prerequisites
 
 1. Access to Red Hat OpenShift Container Platform
 2. In your OpenShift project, make sure that you install below operators:

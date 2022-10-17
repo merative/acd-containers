@@ -46,8 +46,7 @@ If using the CLI, these parameters are configurable via the CSV:
 | `networkPolicy.enabled` | Enable network isolation between pods within and outside of the namespace that ACD is installed into.  Only the top-level ACD service is exposed through port 9443 | true |
 | `networkPolicy.ingress.fromSelectors` | Further restrict ingress access to ACD on port 9443 from other pods or namespaces using fromSelectors and labels.  Requires networkPolicy to be enabled. | |
 
-
-These additional configurable parameters may be provided when file-based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
+These additional configurable parameters may be provided when file-based storage (`file`) is used and `configurationStorage.file.persistent` is `true`:
 
 | Parameter | Description | Default |
 | -         | -           | -       |
@@ -59,8 +58,7 @@ These additional configurable parameters may be provided when file-based storage
 | `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` | 
 --->
 
-
-These additional configurable parameters must be provided when IBM Cloud Object Store (`COS`) is used for  `configurationStorage.backend`.
+These additional configurable parameters must be provided when IBM Cloud Object Store (`COS`) is used for  `configurationStorage.backend`:
 
 | Parameter | Description | Default |
 | -         | -           | -       |
