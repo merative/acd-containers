@@ -135,7 +135,7 @@ For more information, see [Spell Check](/clouddocs/annotator_spell_check/).
 
 * [Allergy](/clouddocs/annotator_allergy/) _(deprecated)_
 * [Cancer](/clouddocs/annotator_cancer/) _(deprecated)_
-* [Ejection Fraction](/clouddocs/annotator_ejection_fraction/) _(deprecated)_
+* [Ejection fraction](/clouddocs/annotator_ejection_fraction/) _(deprecated)_
 * [Lab values](/clouddocs/annotator_lab_values)
 * [Living assistance](/clouddocs/annotator_living_assistance/) _(deprecated)_
 * [Medications](/clouddocs/annotator_medication/)
