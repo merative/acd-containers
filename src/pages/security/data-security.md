@@ -20,4 +20,4 @@ It is the responsibility of the user to ensure that the proper security measures
 * The ACD service is a stateless offering in that it doesn't store any data sent to it for analyzing.
 * Configuration data is stored in the [user-provided storage](/planning/storage/).
 * The prerequisite storage used for ACD configuration must have data encryption enabled.
-* The user is responsible for [Backup and Recovery](/management/backup-and-recovery/) of the configuration storage and must back up solution specific configurations.
+* The user is responsible for [backup and recovery](/management/backup-and-recovery/) of the configuration storage and must back up solution-specific configurations.

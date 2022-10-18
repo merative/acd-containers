@@ -6,7 +6,9 @@ slug: installing
 toc: true
 ---
 
-_Note: The following instructions are for installing IBM Watson Annotator for Clinical Data Container Edition.  For installation instructions for Merative Annotator for Clinical Data Container Edition, please refer [here](/installing/installing/)._
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
+
+_The following instructions are for installing IBM Watson Annotator for Clinical Data Container Edition. For installation instructions for Merative Annotator for Clinical Data Container Edition, please refer [here](/installing/installing/)._
 
 To install IBM Watson Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the [oc](https://docs.openshift.com/container-platform/4.11/welcome/index.html) command line utility, or the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 
