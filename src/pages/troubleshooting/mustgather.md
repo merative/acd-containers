@@ -6,6 +6,8 @@ slug: mustgather
 toc: true
 ---
 
+_Note:  The IBM Cloud Pak MustGather tool applies to IBM Watson Annotator for Clinical Data Container Edition.  For Merative Annotator for Clinical Data support, please [Contact Us](/support/support/)._
+
 To help IBM Support troubleshoot any issues with your IBM ACD instance, use the `oc adm must-gather` command with the Cloud Pak Must-Gather image to capture the must gather logs.
 
 To gather diagnostic logs, run the following commands as Cluster Administrator:
