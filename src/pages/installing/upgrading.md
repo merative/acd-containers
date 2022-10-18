@@ -6,13 +6,13 @@ slug: upgrading
 toc: true
 ---
 
-_Note:  The upgrade path only applies to IBM Watson Annotator for Clinical Data Container Edition._
+_Note:  The upgrade path only applies to IBM Watson Annotator for Clinical Data Container Edition at this time. Upgrades will be available for Merative Annotator for Clinical Data Container Edition sometime after the initial Merative version is published._
 
 The Annotator for Clinical Data Container Edition supports both manual and automatic upgrades of the operator and operand through [Operator Lifecycle Manager (OLM)](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-overview_olm-understanding-olm) integration. OLM operators are limited to upgrades and do not rollback function. An operator upgrade is always done with a new replacement version. Operand upgrades are managed by the operator. An ACD instance is upgraded based on a specific set of related images that align with the ACD operator version.
 
 ## Upgrade paths
 
-The update graph for ACD is expected to grow over time, but is very simple today. The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. Refer here for a list of the [available versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-ibm).
+There is no upgrade from IBM Watson ACD to Merative ACD. See the [Migration](/migration/considerations/) section for details. The update graph for Merative ACD will be provided when available. The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. Refer here for a list of the [prior IBM Watson ACD versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-ibm).
 
 ## Automatic upgrades
 

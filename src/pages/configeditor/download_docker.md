@@ -34,7 +34,9 @@ The ACD Configuration Editor setup we use here should be installed on a dedicate
 
   **NOTE:** The disk where Docker stores its images and where ACD Configuration Editor is installed needs to have 200GB of storage free.  Note: If you are using IBM Cloud with a VM, it may dafault to a 25GB base disk which will not fit the images and the Configuration Editor, so increase that or add a second larger disk and install Docker and its registry to that along with the ACD Configuration Editor.
 
-### Software requirements (refer to the Installation and configuration instructions below)
+### Software requirements
+
+Refer to the [Installation and configuration of prerequisite software](/configeditor/download_docker/#installation-and-configuration-of-prerequisite-software) instructions below.
 
 - Docker Community Edition
 - HTTP Server (or some reverse proxy)

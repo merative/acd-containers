@@ -6,6 +6,8 @@ slug: storage
 toc: true
 ---
 
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022. See [Migration](/migration/considerations/) for more details regarding storage considerations._
+
 Annotator for Clinical Data Container Edition requires a storage medium if a cartridge is going to be deployed to the environment.  The storage medium persists the specific version of each analytic artifact contained in the cartridge and associated metadata.
 
 Two storage mediums are supported:
