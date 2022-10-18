@@ -45,6 +45,9 @@ The value `umls.latest` will reference the latest available version of UMLS with
 | dateInMilliseconds | It is a java.util.Calendar date and is the difference, measured in milliseconds, between the date of the event and midnight, January 1, 1970 UTC. |
 | dateSource | Indicates where in the document or text the date value is identified. For example, <q>sentence</q> is one possible option for dateSource |.
 | snomedConceptId | Numerical code provided by the SNOMED dictionaries that represents the procedure. |
+| loincId | LOINC stands for Logical Observations Identifiers, Names, Codes.  The value for this feature comes from UMLS. |
+| nciCode | The [NCI Thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NCI/) covers vocabulary for cancer-related clinical care, translational and basic research, and public information and administrative activities.  The value for this feature comes from UMLS. |
+| meshId | The [MeSH thesaurus](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/MSH/) is a controlled vocabulary used for indexing, cataloging, and searching for biomedical and health-related information and documents.  The value for this feature comes from UMLS. |
 | cptCode | This code represents the type of procedure that is performed. CPT stands for Current Procedural Terminology. This code a standard terminology used by different members of medical society such as physicians, financial administrators, coders, and other organizations. |
 | cui | UMLS Concept Unique ID (CUI). CUIs are used to uniquely identify concepts across different UMLS sources. Depending on the source of the procedure information, this value may not be available. |
 | procedureSurfaceForm | The covered text that refers to the procedure identified by the annotation. For example, in text <q>He had a blood pressure test.</q>, the procedure is <q>blood pressure</q>. |
@@ -69,10 +72,12 @@ Sample response from the Procedures annotator for the text: `She started chemoth
             "end": 24,
             "coveredText": "chemotherapy",
             "date": "April 8th",
+            "loincId": "LA6172-6,MTHU010425",
+            "nciCode": "C15632",
             "cui": "C3665472",
             "dateSource": "sentence",
-            "dateInMilliseconds": "1554681600000",
-            "snomedConceptId": "367336001",
+            "dateInMilliseconds": "1649376000000",
+            "snomedConceptId": "363688001,367336001",
             "procedureSurfaceForm": "chemotherapy",
             "procedureNormalizedName": "chemotherapy"
           }

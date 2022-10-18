@@ -12,6 +12,10 @@ const LeftNavResourceLinks = ({
 }) => {
   var links = [
     {
+      title: 'Configuration Editor',
+      href: 'https://merative.github.io/acd-containers/configeditor/overview',
+    },
+    {
       title: 'API Reference',
       href: 'https://merative.github.io/acd-containers/apidocs/index.html',
     },

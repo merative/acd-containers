@@ -12,20 +12,20 @@ You can monitor status or troubleshoot issues with your installation in the foll
 * View pod status and logs
 * Log in to a pod to investigate its status
 
-## Configuring a Logging Dashboard
+## Configuring a logging dashboard
 
-Openshift supports many solutions for collection and visualization of logs.  Below  are several examples that illustrate the views required for monitoring and debugging ACD deployments.
+OpenShift supports many solutions for collection and visualization of logs.  Below are several examples that illustrate the views required for monitoring and debugging ACD deployments.
 
-### A Note About Tenant and Correlation Identifiers in ACD Logs
+### A note about tenant and correlation identifiers in ACD logs
 
 ACD outputs its log entries as JSON objects.  Of special note within the JSON structure is the "mdc" object which generally contains two keys.
 
 * correlationId: a UUID used to correlate all log entries for an ACD invocation across all annotators.  This can be helpful in performing root cause analysis when problems occur.
 * tenantId:  The unique identifier for a specific tenant if ACD is being utilized in a multi-tenant manner.  In a single tenant environment it will always be "defaultTenant".
 
-### Using the Openshift Cluster Logging Operator
+### Using the OpenShift cluster logging operator
 
-The Openshift cluster logging operator allows for deploying an Elasticsearch, Fluentd, Kibana (EFK) stack to collect and visualize logs from applications.  Due to the preconfigured nature of the EFK components, the sample views for ACD are limited to basic string queries using Kibana's Lucene query syntax.  For instructions on setting up the logging operator itself, see the [Openshift documentation](https://docs.openshift.com/container-platform/latest/logging/cluster-logging.html) for your Openshift release.
+The OpenShift cluster logging operator allows for deploying an Elasticsearch, Fluentd, Kibana (EFK) stack to collect and visualize logs from applications.  Due to the preconfigured nature of the EFK components, the sample views for ACD are limited to basic string queries using Kibana's Lucene query syntax.  For instructions on setting up the logging operator itself, see the [OpenShift documentation](https://docs.openshift.com/container-platform/latest/logging/cluster-logging.html) for your OpenShift release.
 
 View | Lucene Query
 ----------------------------|-----------------------------
@@ -41,20 +41,21 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 * To view logs filtered by correlationId, include `"\"correlationId\":\"<correlation_id>\""`.
 * In a multi-tenant ACD depoyment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
 
-### Enabling JSON logging for Openshift Container Platform
+### Enabling JSON logging for OpenShift Container Platform
 
-*Prerequisites
-1.Access to Red Hat Openshift Container Platform
-2.In your Openshift project, Make sure that you install below operators.
-  a. Red Hat Openshift logging operator
-  b. Openshift ElasticSearch operator
+#### Prerequisites
+
+1. Access to Red Hat OpenShift Container Platform
+2. In your OpenShift project, make sure that you install below operators:
+  a. Red Hat OpenShift logging operator
+  b. OpenShift Elasticsearch operator
   
 Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging’s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
-Login to your openshift platform to create cluster log forwarder as shown below ![cluster-log-forwarder](../../images/cluster_log_fwd.PNG)
+Log in to your OpenShift platform to create cluster log forwarder as shown below: ![cluster-log-forwarder](../../images/cluster_log_fwd.PNG)
 
-* As shown in the above image once you choose to create cluster log forwader, select the yaml view radio button and paste the below configuration.
+* As shown in the above image, once you choose to create Cluster Log Forwarder, select the yaml view radio button and paste the below configuration:
 
 ```yaml clusterlogforwarder.yaml
 apiVersion: logging.openshift.io/v1
@@ -74,14 +75,14 @@ spec:
       parse: json
 ```
 
-* structuredTypeKey (string, optional) is the name of a message field. The value of that field, if present, is used to construct the index name.
-* The value of structuredTypeKey prefixes with "kubernetes.labels.key". In this case the value of "key" is "app_kubernetes_io/part-of".
-* In the above snippet of code we are making use of structuredTypeKey to create index in Kibana. The new index will be created as app-{app_kubernetes_io/part-of}.
-* In the above case the value of "app_kubernetes_io/part-of" is "ibm-wh-acd". The index will be created as "app-ibm-wh-acd".
-* Once the new index is created using the custom log forwarder, Login to Kibana and create the index pattern with the name matching as app-ibm-wh-acd-* as shown below ![Create-Index-Pattern](../../images/index_pattern.PNG)
-* Once you browse to the dicsover screen select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in the below ![Structured-JSON](../../images/converted_json.png)
-* As the logs are now converted to JSON you can use the fields in the visualizations/dashboards as per the requirement.
-* Here is the Custom Dashboard that can be useful to analyze your data.
+* `structuredTypeKey (string, optional)` is the name of a message field. The value of that field, if present, is used to construct the index name.
+* The value of `structuredTypeKey` prefixes with "kubernetes.labels.key". In this case, the value of "key" is "app_kubernetes_io/part-of".
+* In the above snippet of code, we are making use of `structuredTypeKey` to create index in Kibana. The new index will be created as "app-{app_kubernetes_io/part-of}".
+* In the above case, the value of "app_kubernetes_io/part-of" is "ibm-wh-acd". The index will be created as "app-ibm-wh-acd".
+* Once the new index is created using the Custom Log Forwarder, log in to Kibana and create the index pattern with the name matching as "app-ibm-wh-acd-*" as shown below: ![Create-Index-Pattern](../../images/index_pattern.PNG)
+* Once you browse to the dicsover screen, select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in below: ![Structured-JSON](../../images/converted_json.png)
+* As the logs are now converted to JSON, you can use the fields in the visualizations/dashboards as per the requirement.
+* Here is the Custom Dashboard that can be useful to analyze your data:
 
 ```json Acd_ce_dashboard.json
 [
@@ -189,11 +190,11 @@ spec:
 ]
 ```
 
-Import the acd ce dahsboard as shown below ![Acd CE Dashboard](../../images/Acd_ce_Dashboard.PNG)
+Import the ACD CE dashboard as shown below: ![Acd CE Dashboard](../../images/Acd_ce_Dashboard.PNG)
 
 ### Using IBM Log Analysis on a Red Hat OpenShift on IBM Cloud Cluster (ROKS)
 
-A ROKS cluster can be configured to automatically forward cluster to logs to an instance of the IBM Log Analysis service in the same IBM Cloud account. Instructions for setup can be found in the logging topic of [the ROKS documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-health#openshift_logging).   Once logs are being collected, create the following views for ACD.
+A ROKS cluster can be configured to automatically forward cluster to logs to an instance of the IBM Log Analysis service in the same IBM Cloud account. Instructions for setup can be found in the logging topic of [the ROKS documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-health#openshift_logging).   Once logs are being collected, create the following views for ACD:
 
 View | Log Analysis Query
 ----------------------------|-----------------------------
@@ -211,11 +212,11 @@ ACD runtime exceptions | `app:ibm-wh-acd exception`
 
 ### Other logging solutions
 
-Other log collection and visualization solutions may be used as long as they can be configured with similar views as described above.  This includes native log solutions in supported clouds as well as forwarding to an external log aggregator using the Openshift Cluster Logging Operator's [log forwarding support](https://docs.openshift.com/container-platform/4.7/logging/cluster-logging-external.html)
+Other log collection and visualization solutions may be used as long as they can be configured with similar views as described above.  This includes native log solutions in supported clouds as well as forwarding to an external log aggregator using the OpenShift Cluster Logging Operator's [log forwarding support](https://docs.openshift.com/container-platform/4.7/logging/cluster-logging-external.html)
 
-## View Pod Status and Logs
+## View pod status and logs
 
-All Openshift objects can also be accessed by running the `oc` command-line tool.
+All OpenShift objects can also be accessed by running the `oc` command-line tool.
 
 To list the objects, run the `oc get` command followed by the types of object to retrieve, for example: pods, services, deployments, or secrets. A useful option is the `-w (watch)` option. The watch option keeps the command in a pending state, showing how the pods change over time. It also follows the pods through the initialization, waiting, and running phases.
 
@@ -229,9 +230,9 @@ When a pod is running, you can read the log of that pod by running the following
 
 You can use the `-f (follow)` option to leave the command open and show the log updating in real time.
 
-## Log in to a Pod
+## Log in to a pod
 
-Like any other Docker container when a pod is in running status, you can log in to it to conduct a more detailed investigation. The commands that you use depend on the pod, but the following command should work because bash is generally available:
+Like any other Docker container, when a pod is in running status, you can log in to it to conduct a more detailed investigation. The commands that you use depend on the pod, but the following command should work because bash is generally available:
 
 `kubectl exec -it <pod-name> -n <namespace> /bin/bash`
 

@@ -18,17 +18,27 @@
       path: /planning/tenancy/
     - title: "High Availability"
       path: /planning/hadr/
+- title: "Migration"
+  pages:
+    - title: "Migration Considerations"
+      path: /migration/considerations/
+    - title: "Migration with File Storage"
+      path: /migration/file-storage/
+    - title: "Migration with Object Storage"
+      path: /migration/object-storage/
 - title: Installation
   pages:
     - title: "Prerequisites"
       path: /installing/prereqs/
-    - title: "Setup Namespace"
+    - title: "Set Up Namespace"
       path: /installing/setup-namespace/
     - title: "Installation"
       path: /installing/installing/
+    - title: "Using Image Mirroring"
+      path: /installing/using-image-mirroring/
     - title: "Air-gap Installation"
       path: /installing/air-gap-installation/
-    - title: "Verifying your installation"
+    - title: "Verifying Your Installation"
       path: /installing/verifying/
     - title: "License Tracking"
       path: /installing/license-tracking/
@@ -62,9 +72,9 @@
       path: /troubleshooting/logging-monitoring/
     - title: "Troubleshooting Pull Secrets"
       path: /troubleshooting/troubleshooting-pull-secrets/
-    - title: "Troubleshooting Air-gapped (disconnected) installations"
+    - title: "Troubleshooting Air-gapped (disconnected) Installations"
       path: /troubleshooting/troubleshooting-air-gapped-installations/
-    - title: "Troubleshooting ACD instances"
+    - title: "Troubleshooting ACD Instances"
       path: /troubleshooting/troubleshooting-acd-instances/
     - title: "Troubleshooting the OAuth Proxy"
       path: /troubleshooting/troubleshooting-the-oauth-proxy/
@@ -80,7 +90,7 @@
   pages:
     - title: "Overview"
       path: /usage/overview/
-    - title: "Getting started"
+    - title: "Getting Started"
       path: /usage/getting-started/
     - title: "Software Development Kits"
       path: /usage/sdks/
@@ -94,14 +104,15 @@
       path: /usage/faqs/
     - title: "Known Limitations"
       path: /usage/known_limitations/
+  hasDivider: true
 - title: Annotators
   pages:
     - title: "Allergies (Deprecated)"
       path: /clouddocs/annotator_allergy/
     - title: "Attribute Detection"
-      path: /clouddocs/annotator_attribute_detection/      
+      path: /clouddocs/annotator_attribute_detection/
     - title: "Cancer (Deprecated)"
-      path: /clouddocs/annotator_cancer/      
+      path: /clouddocs/annotator_cancer/
     - title: "Concept Detection"
       path: /clouddocs/annotator_concept_detection/
     - title: "Concept Disambiguation"
@@ -109,7 +120,7 @@
     - title: "Concept Value"
       path: /clouddocs/annotator_concept_value/
     - title: "Ejection Fraction (Deprecated)"
-      path: /clouddocs/annotator_ejection_fraction/      
+      path: /clouddocs/annotator_ejection_fraction/
     - title: "Hypothetical"
       path: /clouddocs/annotator_hypothetical_detection/
     - title: "Lab Values"
@@ -118,20 +129,20 @@
       path: /clouddocs/annotator_living_assistance/
     - title: "Medications"
       path: /clouddocs/annotator_medication/
-    - title: "Named entities"
-      path: /clouddocs/annotator_named_entities/  
+    - title: "Named Entities"
+      path: /clouddocs/annotator_named_entities/
     - title: "Negation"
       path: /clouddocs/annotator_negation_detection/
     - title: "Procedures"
-      path: /clouddocs/annotator_procedure/       
+      path: /clouddocs/annotator_procedure/
     - title: "Relation"
       path: /clouddocs/annotator_relation/
     - title: "Sections"
-      path: /clouddocs/annotator_sections/ 
+      path: /clouddocs/annotator_sections/
     - title: "Smoking (Deprecated)"
-      path: /clouddocs/annotator_smoking/ 
+      path: /clouddocs/annotator_smoking/
     - title: "Spell Check"
-      path: /clouddocs/annotator_spell_check/ 
+      path: /clouddocs/annotator_spell_check/
     - title: "Symptoms & Diseases"
       path: /clouddocs/annotator_symptom_disease/
 - title: Clinical Insights
@@ -170,5 +181,10 @@
       path: /clouddocs/medical_codes/
 - title: Filtering
   pages:
-    - title: "filtering"
-      path: /clouddocs/filtering/  
+    - title: "Filtering"
+      path: /clouddocs/filtering/
+  hasDivider: true
+- title: Contact Us
+  pages:
+    - title: "Contact Us"
+      path: /support/support/

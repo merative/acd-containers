@@ -75,7 +75,7 @@ const Header = ({ children }) => {
 
 const DefaultHeaderText = () => (
   <>
-    Annotator for Clinical Data Container Edition
+    Merative Annotator for Clinical Data Container Edition
   </>
 );
 

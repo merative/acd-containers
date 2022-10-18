@@ -1,6 +1,6 @@
 ---
-title: "Troubleshooting ACD instances"
-excerpt: "Troubleshooting IBM ACD Container Edition instances"
+title: "Troubleshooting ACD Instances"
+excerpt: "Troubleshooting ACD Container Edition Instances"
 categories: troubleshooting
 slug: troubleshooting-acd-instances
 toc: true
@@ -8,19 +8,19 @@ toc: true
 
 ## Troubleshooting ACD instances
 
-### ACD Operator Not Starting
+### ACD operator not starting
 
 To diagnose problems with resources not started as expected follow these steps:
 
-1. Check the logs on the ACD operator pod for errors. For example `ibm-wh-acd-operator-controller-manager-5c58b6b869-q8nwj`
+1. Check the logs on the ACD operator pod for errors. For example `merative-acd-operator-controller-manager-664b45885f-trhsp`
 
    ```
    oc logs <pod> --namespace <namespace> | grep controller
    ```
 
-   See [Logging and Montioring](/troubleshooting/logging-monitoring) for more details.
+   See [Logging and Monitoring](/troubleshooting/logging-monitoring) for more details.
 
-### ACD Operator or ACD Instance Not Starting
+### ACD operator or ACD instance not starting
 
 To diagnose problems with resources not started as expected follow these steps:
 
@@ -40,7 +40,7 @@ To diagnose problems with resources not started as expected follow these steps:
    oc describe deployments <deployment> --namespace <namespace>
    ```
 
-   - `<deployment>` ACD deployment name, for example `ibm-wh-acd-acd`
+   - `<deployment>` ACD deployment name, for example `merative-acd-acd`
    - `<namespace>` namespace where the operator or instance was installed
 
 1. Check for errors or events on the replicasets.
@@ -59,7 +59,7 @@ To diagnose problems with resources not started as expected follow these steps:
    oc describe replicasets <replicaset> --namespace <namespace>
    ```
 
-   - `<replicaset>` ACD replica set name, for example `ibm-wh-acd-acd-749c996465`
+   - `<replicaset>` ACD replica set name, for example `merative-acd-acd-7c8bb688d4`
    - `<namespace>` namespace where the operator or instance was installed
 
 1. Check for errors or events on the pods.
@@ -76,7 +76,7 @@ To diagnose problems with resources not started as expected follow these steps:
    oc describe pods <pod> --namespace <namespace>
    ```
 
-   - `<pod>` ACD pod name, for example `ibm-wh-acd-acd-749c996465-bt6zc`
+   - `<pod>` ACD pod name, for example `merative-acd-acd-544cc7998b-4stpw`
    - `<namespace>` namespace where the operator or instance was installed
 
 1. Check the logs for errors
@@ -85,7 +85,7 @@ To diagnose problems with resources not started as expected follow these steps:
    oc logs <pod> --namespace <namespace>
    ```
 
-   - `<pod>` ACD pod name, for example `ibm-wh-acd-acd-749c996465-bt6zc`
+   - `<pod>` ACD pod name, for example `merative-acd-acd-544cc7998b-4stpw`
    - `<namespace>` namespace where the operator or instance was installed
 
-   See [Logging and Montioring](/troubleshooting/logging-monitoring) for more details.
+   See [Logging and Monitoring](/troubleshooting/logging-monitoring) for more details.
