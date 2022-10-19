@@ -23,7 +23,7 @@ In order to use mirrored images, follow these steps to configure container regis
 
   Log into the Red Hat OpenShift Container Platform cluster as a cluster administrator using the `oc login` command.
 
-1. Create the ACD registry credentials for the Azure ACD registry, if not previously created. See [creating a global pull secret](/installing/installing/#ibm-entitled-registry-pull-secret) for details.
+1. Create the ACD registry credentials for the Azure ACD registry, if not previously created. See [creating a global pull secret](/installing/installing-ibm/#ibm-entitled-registry-pull-secret) for details.
 
   **NOTE**: You can only configure global pull secrets for clusters that have an ImageContentSourcePolicy object. You cannot add a pull secret to a project.
 
