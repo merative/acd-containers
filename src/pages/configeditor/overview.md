@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use.
+**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://ibm.biz/BdfmAB) for terms of use.
 
 ## Welcome to the Annotator for Clinical Data Configuration Editor
 
@@ -64,7 +64,7 @@ Configuration Editor is provided to you as-is and free of charge.  For support o
 
 Acceptance of terms of use is required to use the tool.
 
-[View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
+[View Program Terms](https://ibm.biz/BdfmAB)
 
 <p></p>
 
