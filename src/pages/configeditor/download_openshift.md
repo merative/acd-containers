@@ -51,14 +51,14 @@ For high availability, run 3 replicas of the ACD Configuration Editor on a minim
 
 ## Installing ACD Configuration Editor
 
-1. Copy the ACD Configuration Editor project from the [ACD Container Edition repository](https://github.com/merative/acd-containers/tree/master/ibm-wh-acd-ce).
+1. Download the ACD Configuration Editor project from the [ACD Container Edition repository](https://github.com/merative/acd-containers/tree/master/config-editor).
 2. Change directory to the project:<br/>
-   `cd ibm-wh-acd-ce`
+   `cd merative-acd-ce`
 3. Log in to the OpenShift cluster on the command line:<br/>
    `oc login ...`
 4. Switch to the same namespace that the sandbox instance of ACD is running in.<br/>
 
-   If you used the default namespace during ACD's installation, this is `ibm-wh-acd-operator-system`.<br/>
+   If you used the default namespace during ACD's installation, this is `merative-acd-operator-system`.<br/>
 
    Run the command:<br/>
    `oc project <acd namespace>`<br/>
@@ -68,7 +68,7 @@ For high availability, run 3 replicas of the ACD Configuration Editor on a minim
 
 ```
 helm install whcs-acd-ce-cdc \
-     ibm-wh-acd-ce/cdc/chart/cdc \
+     merative-acd-ce/cdc/chart/cdc \
      --set replicas=1 \
      --set configurationStorage.file.volume.existingClaimName=<pvc name> \
      --namespace <acd namespace>
@@ -79,7 +79,7 @@ helm install whcs-acd-ce-cdc \
 
 6. Verify the Concept Dictionary microservice is running.<br/>
 
-   Find the `ibm-wh-acd-cdc` pod by running the command:<br/>
+   Find the `merative-acd-cdc` pod by running the command:<br/>
    `kubectl get pods -n <acd namespace>`<br/>
 
    Run a health check against the pod using the following command. It should list `"serviceState":"OK"`.
@@ -92,7 +92,7 @@ kubectl exec <pod name> -c ibm-wh-acd-cdc -n <acd namespace> -- curl -sk 'https:
 
 ```
 helm install whcs-acd-ce-crtg \
-     ibm-wh-acd-ce/crtg/chart/crtg \
+     merative-acd-ce/crtg/chart/crtg \
      --set replicas=1 \
      --set configurationStorage.file.volume.existingClaimName="<pvc name>" \
      --namespace <acd namespace>
@@ -103,7 +103,7 @@ helm install whcs-acd-ce-crtg \
 
 8. Verify the Cartridge microservice is running.<br/>
 
-   Find the `ibm-wh-acd-crtg` pod by running the command:<br/>
+   Find the `merative-acd-crtg` pod by running the command:<br/>
    `kubectl get pods -n <acd namespace>`<br/>
 
    Run a health check against the pod using the following command. It should list `"serviceState":"OK"`.
@@ -120,13 +120,13 @@ Accessing ACD Configuration Editor can be set up with no authentication or using
 
 If ACD Configuration Editor is running in a restricted environment and no authentication is needed, a simple OpenShift route can be configured.
 
-1. Download the yaml below and save it as `ibm-wh-acd-acd-ce-macroservice.yaml`
+1. Download the yaml below and save it as `merative-acd-ce-macroservice.yaml`
 
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: ibm-wh-acd-crtg
+  name: merative-acd-crtg
 spec:
   host:
   port:
@@ -135,21 +135,21 @@ spec:
     termination: passthrough
   to:
     kind: Service
-    name: ibm-wh-acd-crtg
+    name: merative-acd-crtg
 ```
 
 2. Create the ACD Configuration Editor route:<br/>
-`oc create -f ibm-wh-acd-acd-ce-macroservice.yaml -n <acd namespace>`
+`oc create -f merative-acd-ce-macroservice.yaml -n <acd namespace>`
 
 ### Option 2: Identity Provider authentication
 
 There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using [OIDC](https://en.wikipedia.org/wiki/OpenID) with [OpenShift OAuth 2.0 Proxy](https://github.com/openshift/oauth-proxy).
 
-1. Create a project/namespace for the proxy and set the current namespace to it. For the remainder of this document, we will use the example `ibm-wh-acd-ce-oauth`.
-   - `oc create namespace ibm-wh-acd-ce-oauth`
-   - `oc project ibm-wh-acd-ce-oauth`
+1. Create a project/namespace for the proxy and set the current namespace to it. For the remainder of this document, we will use the example `merative-acd-ce-oauth`.
+   - `oc create namespace merative-acd-ce-oauth`
+   - `oc project merative-acd-ce-oauth`
 
-2. Download the yaml below and save it as `ibm-wh-acd-ce-oauth.yaml`
+2. Download the yaml below and save it as `merative-acd-ce-oauth.yaml`
 
 ```
 kind: List
@@ -221,7 +221,7 @@ items:
           - --skip-auth-strip-headers=true
           - --skip-provider-button=true
           - --ssl-upstream-insecure-skip-verify=true
-          - --upstream=https://ibm-wh-acd-crtg.ibm-wh-acd-operator-system.svc:443/
+          - --upstream=https://merative-acd-crtg.merative-acd-operator-system.svc:443/
           - --tls-cert-file=/etc/tls/private/tls.crt
           - --tls-key-file=/etc/tls/private/tls.key
           volumeMounts:
@@ -237,10 +237,10 @@ items:
 - where `<client secret>` is the OAuth client secret
 - where `<cookie secret>` is the generated cookie secret
 - where `<oidc issuer url>` is the OIDC issuer URL, e.g. `https://sts.windows.net/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/` for Azure Active Directory
-- where `<hostname`> is the OAuth proxy hostname, e.g. `proxy-ibm-wh-acd-ce-oauth.xxx.us-xxxx.containers.appdomain.cloud` for IBM Cloud
+- where `<hostname`> is the OAuth proxy hostname, e.g. `proxy-merative-acd-ce-oauth.xxx.us-xxxx.containers.appdomain.cloud` for IBM Cloud
 
 3. Create the proxy's deployment, proxy's service, and proxy's route:<br/>
-  `oc create -f ibm-wh-acd-ce-oauth.yaml`<br/>
+  `oc create -f merative-acd-ce-oauth.yaml`<br/>
 
    More options and details for the proxy are available at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).  Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).  More details and options such as secret generation and cookie expiration are defined in the base [OAuth proxy](https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/) docs.
 
@@ -257,7 +257,7 @@ Periodically, refer to this page for updates to the Configuration Editor package
 
 ### Additional Configurations
 
-The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the `ibm-wh-acd-ce/crtg/chart/crtg/values.yaml` file.<br/>
+The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the `merative-acd-ce/crtg/chart/crtg/values.yaml` file.<br/>
 
 Custom properties include:
 
@@ -273,7 +273,7 @@ Custom properties include:
 
 ACD Configuration Editor provides the ability to deploy published cartridges to ACD instances in production environments.  To configure additional custom environments, the following files must be modified and the Cartridge microservice must be redeployed using Helm (see Installing ACD Configuration Editor instructions above).
 
-1. `ibm-wh-acd-ce/crtg/chart/crtg/rev-proxy.conf`
+1. `merative-acd-ce/crtg/chart/crtg/rev-proxy.conf`
 
 ```
 location /<identifier>/ {
@@ -292,7 +292,7 @@ location /<identifier>/ {
 - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
 - where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
 
-2. `ibm-wh-acd-ce/crtg/chart/crtg/values.yaml`
+2. `merative-acd-ce/crtg/chart/crtg/values.yaml`
 
 ```
   - name: "com_ibm_watson_health_car_acd_host_3_label"
@@ -314,7 +314,7 @@ ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_ca
 
 - `_label` which is the name for the host that will be shown in the Configuration Editor
 - `_url` which is what will be shown in the host description in the Configuration Editor
-- `_proxy` which is the proxy you have configured in your `ibm-wh-acd-ce/crtg/chart/crtg/rev-proxy.conf` file mentioned in Step 1 in this section
+- `_proxy` which is the proxy you have configured in your `merative-acd-ce/crtg/chart/crtg/rev-proxy.conf` file mentioned in Step 1 in this section
 - `_phi` which is either true or false based on whether this ACD Host can support protected health information
 - `_auth` which specifies the type of authentication the host requires.  The three possible authentication types are:
 
@@ -332,8 +332,8 @@ To update to a newer version of the ACD Configuration Editor follow these steps:
 
 1. Back up any customizations in:
 
-`ibm-wh-acd-ce/crtg/chart/crtg/rev-proxy.conf`
-`ibm-wh-acd-ce/crtg/chart/crtg/values.yaml`
+`merative-acd-ce/crtg/chart/crtg/rev-proxy.conf`
+`merative-acd-ce/crtg/chart/crtg/values.yaml`
 
 2. Download the latest project and unpack it as above.
 3. Delete the existing Helm deployments:
