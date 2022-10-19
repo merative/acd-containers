@@ -19,14 +19,14 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use.
+**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://ibm.biz/BdfmAB) for terms of use.
 
 ## Welcome to the Annotator for Clinical Data Configuration Editor
 
 In this document, find instructions for:
 
 - Installing Configuration Editor [Using Docker](/configeditor/download_docker/)
-- Installing Configuration Editor [On OpenShift](/configeditor/download_openshift)
+- Installing Configuration Editor [On Red Hat OpenShift](/configeditor/download_openshift)
 
 ### Introduction
 
@@ -47,10 +47,10 @@ The tool allows the domain expert to view Annotator for Clinical Data analytic i
 
 ### Access to the Configuration Editor
 
-The Configuration Editor can be deployed locally to a single Linux system using Docker or can be deployed on OpenShift.  Follow the instructions for these options below:
+The Configuration Editor can be deployed locally to a single Linux system using Docker or can be deployed on Red Hat OpenShift.  Follow the instructions for these options below:
 
 - [Install using Docker](/configeditor/download_docker/)
-- [Install on OpenShift](/configeditor/download_openshift)
+- [Install on Red Hat OpenShift](/configeditor/download_openshift)
 
 Once installed, use the instructions on the Install page to access the Configuration Editor using a browser on the host it was deployed to.
 
@@ -64,7 +64,7 @@ Configuration Editor is provided to you as-is and free of charge.  For support o
 
 Acceptance of terms of use is required to use the tool.
 
-[View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
+[View Program Terms](https://ibm.biz/BdfmAB)
 
 <p></p>
 
