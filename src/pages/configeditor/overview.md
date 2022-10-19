@@ -26,7 +26,7 @@ subcollection: wh-acd
 In this document, find instructions for:
 
 - Installing Configuration Editor [Using Docker](/configeditor/download_docker/)
-- Installing Configuration Editor [On OpenShift](/configeditor/download_openshift)
+- Installing Configuration Editor [On Red Hat OpenShift](/configeditor/download_openshift)
 
 ### Introduction
 
@@ -47,10 +47,10 @@ The tool allows the domain expert to view Annotator for Clinical Data analytic i
 
 ### Access to the Configuration Editor
 
-The Configuration Editor can be deployed locally to a single Linux system using Docker or can be deployed on OpenShift.  Follow the instructions for these options below:
+The Configuration Editor can be deployed locally to a single Linux system using Docker or can be deployed on Red Hat OpenShift.  Follow the instructions for these options below:
 
 - [Install using Docker](/configeditor/download_docker/)
-- [Install on OpenShift](/configeditor/download_openshift)
+- [Install on Red Hat OpenShift](/configeditor/download_openshift)
 
 Once installed, use the instructions on the Install page to access the Configuration Editor using a browser on the host it was deployed to.
 
