@@ -1,6 +1,6 @@
 ---
-title: "Download and install with OpenShift"
-excerpt: "Download and install with OpenShift."
+title: "Install Configuration Editor on Red Hat OpenShift"
+excerpt: "Install on Red Hat OpenShift."
 categories: configeditor
 slug: download_openshift
 toc: true
@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-The following will walk through the steps necessary to set up and configure the Annotator for Clinical Data Configuration Editor running in an existing OpenShift cluster.  Setup includes setting up the Configuration Editor and its required ACD sandbox instance.  This environment can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also be configured to deploy and test against other ACD instances, either running on the same cluster or elsewhere. The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
+The following will walk through the steps necessary to set up and configure the Annotator for Clinical Data Configuration Editor running in an existing Red Hat OpenShift cluster.  Setup includes setting up the Configuration Editor and its required ACD sandbox instance.  This environment can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also be configured to deploy and test against other ACD instances, either running on the same cluster or elsewhere. The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
 
 ![Configuration Editor on Openshift](../../images/ACDCE_on_openshift.png)
 

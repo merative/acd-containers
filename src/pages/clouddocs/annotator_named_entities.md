@@ -1,5 +1,5 @@
 ---
-title: "Named entities"
+title: "Named Entities"
 excerpt: "."
 categories: Annotators
 slug: annotator_named_entities
@@ -17,9 +17,9 @@ subcollection: wh-acd
 
 ---
 
-# Named entities -->
+# Named Entities -->
 
-Annotates spans of text that are named entities - person names, medical institutions, organizations, locations, emails, and phone numbers.
+Annotates spans of text that are named entities: person names, medical institutions, organizations, locations, emails, and phone numbers.
 
 ## Configurations
 
