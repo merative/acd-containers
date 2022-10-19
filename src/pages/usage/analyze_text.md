@@ -22,10 +22,10 @@ Annotator for Clinical Data detects medical concepts within unstructured data. W
 
 How it works:
 
-1. Designate which annotators to employ in analyzing your unstructured data. This designation is defined as an annotator flow. See the Annotator Flows section below for more details.
+1. Designate which annotators to employ in analyzing your unstructured data. This designation is defined as an annotator flow. See the [Annotator flows](/usage/analyze_text/#annotator-flows) section for more details.
 2. Send your unstructured data along with the annotator flow to the service to extract the desired medical concepts.
 
-**Example:** Analyze request referencing a persisted flow
+Example: _analyze_ request referencing a persisted flow:
 
 ```bash
 curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
@@ -35,9 +35,9 @@ curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 "<route_host>/v1/analyze/your_flow_id?version=2020-03-13"
 ```
 
-When referencing a persisted flow in an analyze request, you can send plain text to the service for analysis.
+When referencing a persisted flow in an _analyze_ request, you can send plain text to the service for analysis.
 
-**Example:** Analyze request within flow included
+Example: _analyze_ request within flow included:
 
 ```bash
 curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
@@ -70,11 +70,11 @@ curl -X POST --header "Authorization: Bearer xxxxxxxxxxxxxxx" \
 }" "<route_host>/v1/analyze?version=2020-03-13"
 ```
 
-## Annotator Flows
+## Annotator flows
 
-Annotator flows define which annotators to employ on a given request and the order in which request data flows through the annotators. An annotator flow along with the unstructured data to be analyzed are the two required inputs for the service. Flows can either be defined dynamically as part of the request or persisted via the `/flows` APIs and referenced as a path parameter on an analyze request, e.g. `/analyze/{flow_id}`.
+Annotator flows define which annotators to employ on a given request and the order in which request data flows through the annotators. An annotator flow along with the unstructured data to be analyzed are the two required inputs for the service. Flows can either be defined dynamically as part of the request or persisted via the _flows_ APIs and referenced as a path parameter on an _analyze_ request, e.g. _analyze/{flow_id}_.
 
-The `/analyze/{flow_id}` API supports text/plain requests, whereas the `/analyze` API, where the flow is defined within the request, requires you define both the flow and unstructured data to be analyzed in JSON format.
+The _analyze/{flow_id}_ API supports text/plain requests, whereas the _analyze_ API, where the flow is defined within the request, requires you define both the flow and unstructured data to be analyzed in JSON format.
 
 The following predefined flows are provided with the service:
 
@@ -85,7 +85,7 @@ Table 1. Predefined annotator flows
 
 ### Creating flows
 
-The `/flows` APIs are used to create and manage user-defined flows. Flows define both which annotators are to be employed in analyzed unstructured data as well as the order in which request data is routed through the annotator set. Request data is routed through the designated annotators serially. Many of the annotators are designed to act upon the output of other annotators - e.g. the concept detection annotator will pull in the section name of encompassing section annotations output by the section annotator. In order to take full advantage of this type of annotator cooperation, please follow the annotator ordering guidelines defined in the table below for the applicable annotators in your flow.
+The _flows_ APIs are used to create and manage user-defined flows. Flows define both which annotators are to be employed in analyzed unstructured data as well as the order in which request data is routed through the annotator set. Request data is routed through the designated annotators serially. Many of the annotators are designed to act upon the output of other annotators - e.g. the concept detection annotator will pull in the section name of encompassing section annotations output by the section annotator. In order to take full advantage of this type of annotator cooperation, please follow the annotator ordering guidelines defined in the table below for the applicable annotators in your flow.
 
 | Order | Annotators |
 |----|----|
@@ -99,9 +99,9 @@ The `/flows` APIs are used to create and manage user-defined flows. Flows define
 | 8 | attribute_detection |
 Table 2. Recommended annotator flow ordering
 
-## Unstructured Data Input
+## Unstructured data input
 
-By default, the unstructured data input sent to the service is not returned in the response and the following characters are encoded in the response to protect against cross-site scripting attacks in the event the output is rendered within a browser. If you want the unstructured data input sent back in the response and you do not want the following characters encoded, include the following query parameter on the analyze request `return_analyzed_text=true`.
+By default, the unstructured data input sent to the service is not returned in the response and the following characters are encoded in the response to protect against cross-site scripting attacks in the event the output is rendered within a browser. If you want the unstructured data input sent back in the response and you do not want the following characters encoded, include the following query parameter on the _analyze_ request `return_analyzed_text=true`.
 
 ## Response
 

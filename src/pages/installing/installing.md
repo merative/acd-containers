@@ -5,7 +5,9 @@ categories: installing
 slug: installing
 toc: true
 ---
-_Note: Refer here for installation instructions for [IBM Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
+
+_Refer here for installation instructions for [IBM Watson Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
 
 To install Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console or the `oc` command line utility.
 
@@ -15,7 +17,7 @@ Annotator for Clinical Data Container Edition is an [operator-based](https://kub
 
 The ACD operator uses the custom resource to deploy and manage the entire lifecycle of each ACD instance. Custom resources are presented as YAML configuration documents that define instances of the `Acd` custom resource type.
 
-A new instance of the `Acd` custom resource belonging to the `acd.merative.com` group must be installed. There is no upgrade path from the IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition. Refer to the [Migration Considerations](/migration/considerations/) when planning for and migrating from an IBM ACD instance to a Merative ACD instance.
+A new instance of the `Acd` custom resource belonging to the `acd.merative.com` group must be installed. There is no upgrade path from the IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition. Refer to the [Migration Considerations](/migration/considerations/) when planning for and migrating from an IBM Watson ACD instance to a Merative ACD instance.
 
 Installing ACD has three phases:
 
@@ -26,10 +28,10 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain your ACD registry credentials](https://www.ibm.com/support/pages/ibm-watson-health-product-support-portal) and [verify your access](#verifying-acd-registry-access) to the ACD registry. Note that customers must use their customer id to log in to their `Merative` account. The customer must request the credentials so the ownership and management of the ACD authorization stays with them.
+- [Obtain your ACD registry credentials](https://www.ibm.com/support/pages/ibm-watson-health-product-support-portal) and [verify your access](/installing/installing/#verifying-acd-registry-access) to the ACD registry. Note that customers must use their customer ID to log in to their `Merative` account. The customer must request the credentials so the ownership and management of the ACD authorization stays with them.
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
-- [Setup](/installing/setup-namespace/) your project and project dependencies if required for your environment.
+- [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment.
 
 ## Verifying ACD registry access
 
@@ -50,12 +52,12 @@ docker login acdcontaineredition.azurecr.io --username <username> --password <pa
 
 In order for ACD images to be pulled from the ACD registry, a pull secret must be added to the environment. This can be set up using one of the following:
 
-1. Added to the Openshift global pull secrets
+1. Added to the OpenShift global pull secrets
 1. Added to the ACD operand service account
 
-#### Option 1: Openshift global pull secret installation
+#### Option 1: OpenShift global pull secret installation
 
-To add the pull secret to the Openshift global pull secret:
+To add the pull secret to the OpenShift global pull secret:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`
 
@@ -65,7 +67,7 @@ To add the pull secret to the Openshift global pull secret:
 
    `printf "<username>:<password>" | base64`
 
-1. Edit the `.dockerconfigjson` file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD registry. For example:
+1. Edit the `.dockerconfigjson` file and **ADD** a new JSON object to the existing auths object with the credentials for the ACD registry. For example:
 
    ```
    "acdcontaineredition.azurecr.io": {
@@ -82,9 +84,9 @@ To add the pull secret to the Openshift global pull secret:
 
    `oc get nodes`
 
-1. When the nodes are finish restarting, your cluster is now ready to pull images from the ACD registry.
+1. When the nodes are finished restarting, your cluster is now ready to pull images from the ACD registry.
 
-For more information on Openshift pull secrets refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets)
+For more information on OpenShift pull secrets, refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets).
 
 #### Option 2: Service account pull secret installation
 
@@ -122,13 +124,13 @@ To add the pull secret to individual ACD operand service accounts:
        --all
    ```
 
-## Installing the Merative ACD Operator catalog
+## Installing the Merative ACD operator catalog
 
-Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the ACD Operator Catalog.
+Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the ACD operator catalog.
 
-To add the ACD Operator Catalog:
+To add the ACD operator catalog:
 
-1. Create a file for the ACD Operator Catalog source with the following content, and save as `ACDCatalogSource.yaml`:
+1. Create a file for the ACD operator catalog source with the following content, and save as `ACDCatalogSource.yaml`:
 
    ```yaml ACDCatalogSource.yaml
    apiVersion: operators.coreos.com/v1alpha1
@@ -152,11 +154,11 @@ To add the ACD Operator Catalog:
 
    `oc apply -f ACDCatalogSource.yaml`
 
-The ACD Operator Catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
+The ACD operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
 
-## Installing the ACD Operator
+## Installing the ACD operator
 
-### Install the ACD Operator using the web console
+### Install the ACD operator using the web console
 
 To install the ACD operator through the OpenShift Container Platform web console, do the following:
 
@@ -172,7 +174,7 @@ To install the ACD operator through the OpenShift Container Platform web console
 
 The installation can take a few minutes to complete.
 
-## Installing the ACD Service
+## Installing the ACD service
 
 Instances of ACD can be created after the ACD operator is installed.
 
@@ -182,7 +184,7 @@ If the ACD operator was installed for all namespaces, then it can be used to man
 
 When installing an instance of ACD, ensure you are using a namespace that an ACD operator is managing.
 
-### Install the ACD Service by using the web console
+### Install the ACD service by using the web console
 
 To install the ACD service through the OpenShift Container Platform web console, do the following:
 
@@ -191,5 +193,4 @@ To install the ACD service through the OpenShift Container Platform web console,
 1. Expand the **Project** dropdown and select the project the operator is installed in. Select the **Annotator for Clinical Data** operator link in the **Name** column. If the operator is not shown, it is either not installed or not available for the selected namespace.
 1. In the **Operator Details** dashboard, click the **Annotator for Clinical Data** tab.
 1. Click the **Create Acd** button to open the **Create Acd** panel. You can use this panel to define an `Acd` custom resource.
-
-From here, you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
+    - From here, you can install by using the [Form view](/management/configuring/#form-view). For more advanced configurations or to install an instance using default configuration, see installing by using the [YAML view](/management/configuring/#yaml-view).

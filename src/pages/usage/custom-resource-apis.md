@@ -250,7 +250,7 @@ The Annotator for Clinical Data Container Edition is a Custom Resource Definitio
 
 The Annotation for Clinical Data service supports Kubernetes [Conditions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties). These `Conditions` can be viewed as a snapshot of the current and most up-to-date status of the instance.
 
-The `Iniitialized` condition will be set to `True` when all the pods are created for the desired number of replicas set by the instance specification.
+The `Initialized` condition will be set to `True` when all the pods are created for the desired number of replicas set by the instance specification.
 
 The `Deployed` condition will be set to `InstallSuccessful` when the images for the annotators have been deployed to their respective pods.
 

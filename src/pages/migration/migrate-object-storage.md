@@ -6,7 +6,7 @@ slug: migrate-object-storage
 toc: true
 ---
 
-All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM ACD to Merative ACD by December 31, 2022.
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
 
 - For more information and general considerations, see [Migration Considerations](/migration/considerations/).
 - Refer to [Migration with Shared File Storage](/migration/file-storage/) if using a shared file-based storage medium.

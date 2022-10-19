@@ -1,14 +1,16 @@
 ---
-title: "Installing IBM ACD"
-excerpt: "Installing IBM ACD."
+title: "Installing IBM Watson ACD"
+excerpt: "Installing IBM Watson ACD."
 categories: installing
 slug: installing
 toc: true
 ---
 
-_Note: The following instructions are for installing IBM Annotator for Clinical Data Container Edition._
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
 
-To install IBM Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the [oc](https://docs.openshift.com/container-platform/4.11/welcome/index.html) command line utility, or the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
+_The following instructions are for installing IBM Watson Annotator for Clinical Data Container Edition. For installation instructions for Merative Annotator for Clinical Data Container Edition, please refer [here](/installing/installing/)._
+
+To install IBM Watson Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console, the [oc](https://docs.openshift.com/container-platform/4.11/welcome/index.html) command line utility, or the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 
 ## Overview
 
@@ -25,14 +27,14 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain an entitlement key](https://myibm.ibm.com/products-services/containerlibrary) and [verify registry access](#verifying-acd-registry-access) to the IBM Entitled Registry. Note that customers must use their IBMid to log in to their `myibm` account. The customer must request the entitlement key so the ownership and management of the entitlement stays with them.
+- [Obtain an entitlement key](https://myibm.ibm.com/products-services/containerlibrary) and [verify registry access](/installing/installing-ibm/#verifying-ibm-entitled-registry-access) to the IBM Entitled Registry. Note that customers must use their IBMid to log in to their `myibm` account. The customer must request the entitlement key so the ownership and management of the entitlement stays with them.
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment. If using the CLI to install the ACD operator and ACD service, you will need the [cloudctl](https://github.com/IBM/cloud-pak-cli) command line utility.
 
-## Verifying ACD registry access
+## Verifying IBM Entitled Registry access
 
-A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images. When an entitlement key is obtained from myibm, the username should be `cp` and the password should be the entitlement key.
+A pull secret consists of a username and password used to authenticate the user with the container registry to ensure the user is entitled to pull images. When an entitlement key is obtained from `myibm`, the username should be `cp` and the password should be the entitlement key.
 
 Before setting up the pull secret, verify the entitlement key can access the entitled registry.
 
@@ -50,18 +52,18 @@ Some environments are disconnected and do not have access to the public internet
 
 When deploying in a non air-gapped or connected environment, continue with the following installation. These installation steps require internet access to pull images from the image registries.
 
-### ACD registry pull secret
+### IBM Entitled Registry pull secret
 
-In order for ACD images to be pulled from the ACD registry, a pull secret must be added to the environment. This can be setup using one of the following:
+In order for ACD images to be pulled from the IBM Entitled Registry, a pull secret must be added to the environment. This can be set up using one of the following:
 
-1. Added to the Openshift global pull secrets
+1. Added to the OpenShift global pull secrets
 1. Added to the ACD operand service account
 
-#### Option 1: Openshift global pull secret installation
+#### Option 1: OpenShift global pull secret installation
 
-To add the pull secret to the Openshift global pull secret:
+To add the pull secret to the OpenShift global pull secret:
 
-1. Extract the current global image pull secret from the cluster into a file in the current directory named .dockerconfigjson:
+1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`:
 
    `oc extract secret/pull-secret --namespace openshift-config --to=.`
 
@@ -69,7 +71,7 @@ To add the pull secret to the Openshift global pull secret:
 
    `printf "cp:<acd registry key>" | base64`
 
-1. Edit the .dockerconfigjson file and **ADD** a new JSON object to the exiting auths object with the credentials for the ACD registry. For example:
+1. Edit the `.dockerconfigjson` file and **ADD** a new JSON object to the existing auths object with the credentials for the IBM Entitled Registry. For example:
 
    ```
    "cp.icr.io": {
@@ -86,9 +88,9 @@ To add the pull secret to the Openshift global pull secret:
 
    `oc get nodes`
 
-1. When the nodes are finish restarting, your cluster is now ready to pull images from the registry.
+1. When the nodes are finished restarting, your cluster is now ready to pull images from the registry.
 
-For more information on Openshift pull secrets refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets)
+For more information on OpenShift pull secrets, refer to [Using image pull secrets](https://docs.openshift.com/container-platform/4.7/openshift_images/managing_images/using-image-pull-secrets.html#images-update-global-pull-secret_using-image-pull-secrets).
 
 #### Option 2: Service account pull secret installation
 
@@ -126,17 +128,17 @@ To add the pull secret to individual ACD operand service accounts:
        --all
    ```
 
-## Installing the IBM Operator catalog
+## Installing the IBM operator catalog
 
-Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM Operator Catalog.
+Before you can install the ACD operator and use it to create instances of the ACD service, you must have a catalog source which includes ACD. ACD is available with the IBM operator catalog.
 
-If you have other IBM products installed in your cluster, then you may already have the IBM Operator Catalog available, and you can continue to installing the ACD operator from there.
+If you have other IBM products installed in your cluster, then you may already have the IBM operator catalog available, and you can continue to installing the ACD operator from there.
 
-**Important**: If you operate in an internet-connected Red Hat OpenShift Container Platform cluster, you must migrate your images from Docker to the IBM Container Registry by 30 September 2021. IBM Operator Catalog related images can be sourced from icr.io/cpopen. Refer to [Migrating from Docker to IBM Container Registry](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=clusters-migrating-from-docker-container-registry) for more details.
+**Important**: If you operate in an internet-connected Red Hat OpenShift Container Platform cluster, you must migrate your images from Docker to the IBM Container Registry by 30 September 2021. IBM operator catalog related images can be sourced from `icr.io/cpopen`. Refer to [Migrating from Docker to IBM Container Registry](https://www.ibm.com/docs/en/cloud-paks/1.0?topic=clusters-migrating-from-docker-container-registry) for more details.
 
-To add the IBM Operator Catalog:
+To add the IBM operator catalog:
 
-1. Create a file for the IBM Operator Catalog source with the following content, and save as `IBMCatalogSource.yaml`:
+1. Create a file for the IBM operator catalog source with the following content, and save as `IBMCatalogSource.yaml`:
 
    ```yaml IBMCatalogSource.yaml
    apiVersion: operators.coreos.com/v1alpha1
@@ -160,13 +162,13 @@ To add the IBM Operator Catalog:
 
    `oc apply -f IBMCatalogSource.yaml`
 
-The IBM Operator Catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
+The IBM operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
 
-More information on the IBM Operator Catalog can be found at [Red Hat Catalog Enablement for the IBM Operator Catalog](https://github.com/IBM/cloud-pak/blob/master/reference/operator-catalog-enablement.md)
+More information on the IBM operator catalog can be found at [Red Hat Catalog Enablement for the IBM operator catalog](https://github.com/IBM/cloud-pak/blob/master/reference/operator-catalog-enablement.md)
 
-## Installing the ACD Operator
+## Installing the ACD operator
 
-### Install the ACD Operator using the web console
+### Install the ACD operator using the web console
 
 To install the ACD operator through the OpenShift Container Platform web console, do the following:
 
@@ -182,7 +184,7 @@ To install the ACD operator through the OpenShift Container Platform web console
 
 The installation can take a few minutes to complete.
 
-### Install the ACD Operator using cloudctl
+### Install the ACD operator using cloudctl
 
 ```
 cloudctl case launch \
@@ -193,7 +195,7 @@ cloudctl case launch \
     --tolerance 1
 ```
 
-## Installing the ACD Service
+## Installing the ACD service
 
 Instances of ACD can be created after the ACD operator is installed.
 
@@ -203,7 +205,7 @@ If the ACD operator was installed for all namespaces, then it can be used to man
 
 When installing an instance of ACD, ensure you are using a namespace that an ACD operator is managing.
 
-### Install the ACD Service by using the web console
+### Install the ACD service by using the web console
 
 To install the ACD service through the OpenShift Container Platform web console, do the following:
 
@@ -212,8 +214,7 @@ To install the ACD service through the OpenShift Container Platform web console,
 1. Expand the **Project** dropdown and select the project the operator is installed in. Select the **Annotator for Clinical Data** operator link in the **Name** column. If the operator is not shown, it is either not installed or not available for the selected namespace.
 1. In the **Operator Details** dashboard, click the **Annotator for Clinical Data** tab.
 1. Click the **Create Acd** button to open the **Create Acd** panel. You can use this panel to define an `Acd` custom resource.
-
-From here, you can install by using the form view. For more advanced configurations or to install an instance using default configuration, see installing by using the YAML view.
+    - From here, you can install by using the [Form view](/management/configuring/#form-view). For more advanced configurations or to install an instance using default configuration, see installing by using the [YAML view](/management/configuring/#yaml-view).
 
 ### Install the ACD service using cloudctl
 

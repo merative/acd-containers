@@ -54,6 +54,6 @@ Confirm the ACD operator pod shows Terminating status and then is removed from t
 1. Click the **Delete Project** menu option to open the delete confirmation panel.
 1. Check that the namespace is correct and confirm deletion by entering the project name into the text box. Click **Delete** to delete the project.
 
-## Uninstalling using Command Line
+## Uninstalling using command line
 
 If the `cloudctl` interface was used for install, refer here for instructions on [uninstalling ACD from the command line](/installing/uninstalling-ibm/).

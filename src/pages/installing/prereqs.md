@@ -8,9 +8,9 @@ toc: true
 
 Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
 
-- Red Hat Openshift Container Platform (OCP) 4.7 or later
+- Red Hat OpenShift Container Platform (OCP) 4.7 or later
   - Commencing with OpenShift Container Platform 4.8, Red Hat will denote all even numbered minor releases (e.g. 4.8, 4.10, 4.12) as Extended Update Support (EUS) releases. ACD will support the EUS releases. For more lifecycle policy information please see the [IBM Continuous Delivery Support Lifecycle Policy](https://www.ibm.com/support/pages/ibm-continuous-delivery-support-lifecycle-policy) (IBM CD), and the [Red Hat OpenShift Container Platform Life Cycle Policy](https://access.redhat.com/support/policy/updates/openshift).
-  - NOTE: ACD has been tested and supports OCP on AWS. Red Hat Openshift Service on AWS (ROSA) has not been tested and is not supported at this time.
+  - NOTE: ACD has been tested and supports OCP on AWS. Red Hat OpenShift Service on AWS (ROSA) has not been tested and is not supported at this time.
 - Share storage for ACD configuration storage - This can be:
   - A persistent volume claim against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
     - This is most often used with on-premise, cloud-based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
@@ -19,9 +19,9 @@ Annotator for Clinical Data (ACD) Container Edition has the following prerequisi
     - On IBM Cloud - IBM Cloud Object Storage (COS) with a Regional bucket in the same cloud region as the cluster using Standard Storage Class
     - On AWS - S3 Bucket in the same region
 - Command line tools
-  - [oc](https://docs.openshift.com/container-platform) - Openshift CLI for interacting with the cluster
+  - [oc](https://docs.openshift.com/container-platform) - OpenShift CLI for interacting with the cluster
 - Login credentials and other cluster connection details from your cluster administrator
-- A [dedicated Openshift project (namespace)](/installing/installing/#create-a-project-(namespace)) per ACD deployment
+- A [dedicated OpenShift project (namespace)](/installing/installing/#create-a-project-(namespace)) per ACD deployment
 - Purchased ACD registry credentials for pulling images from the ACD registry
 - A secret for accessing a storage bucket, if [planning to use an object storage bucket](/planning/storage/)
 
@@ -30,7 +30,7 @@ Obtain the connection details for your OpenShift Container Platform cluster from
 - [Plan for your installation](/planning/namespace), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
 - [Install ACD](/installing/installing/#overview), such as creating a namespace, creating secrets, [installing the catalog](/installing/installing/#add-the-acd-operator-to-the-catalog), [installing the operator](/installing/installing/#install-the-acd-operator), and [installing the ACD service](/installing/installing/#install-the-acd-service).<br/>
 
-## Resources Required
+## Resources required
 
 By default, an ACD installation requires the following minimum resources:
 

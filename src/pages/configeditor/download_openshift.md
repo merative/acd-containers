@@ -1,6 +1,6 @@
 ---
-title: "Download and install with OpenShift"
-excerpt: "Download and install with OpenShift."
+title: "Install Configuration Editor on Red Hat OpenShift"
+excerpt: "Install on Red Hat OpenShift."
 categories: configeditor
 slug: download_openshift
 toc: true
@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-The following will walk through the steps necessary to set up and configure the Annotator for Clinical Data Configuration Editor running in an existing Openshift cluster.  Setup includes setting up the Configuration Editor and its required ACD sandbox instance.  This environment can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also be configured to deploy and test against other ACD instances, either running on the same cluster or elsewhere. The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
+The following will walk through the steps necessary to set up and configure the Annotator for Clinical Data Configuration Editor running in an existing Red Hat OpenShift cluster.  Setup includes setting up the Configuration Editor and its required ACD sandbox instance.  This environment can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also be configured to deploy and test against other ACD instances, either running on the same cluster or elsewhere. The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
 
 ![Configuration Editor on Openshift](../../images/ACDCE_on_openshift.png)
 
@@ -54,7 +54,7 @@ For high availability, run 3 replicas of the ACD Configuration Editor on a minim
 1. Copy the ACD Configuration Editor project from the [ACD Container Edition repository](https://github.com/merative/acd-containers/tree/master/ibm-wh-acd-ce).
 2. Change directory to the project:<br/>
    `cd ibm-wh-acd-ce`
-3. Log in to the Openshift cluster on the command line:<br/>
+3. Log in to the OpenShift cluster on the command line:<br/>
    `oc login ...`
 4. Switch to the same namespace that the sandbox instance of ACD is running in.<br/>
 
@@ -118,7 +118,7 @@ Accessing ACD Configuration Editor can be set up with no authentication or using
 
 ### Option 1: No authentication
 
-If ACD Configuration Editor is running in a restricted environment and no authentication is needed, a simple Openshift route can be configured.
+If ACD Configuration Editor is running in a restricted environment and no authentication is needed, a simple OpenShift route can be configured.
 
 1. Download the yaml below and save it as `ibm-wh-acd-acd-ce-macroservice.yaml`
 
@@ -143,7 +143,7 @@ spec:
 
 ### Option 2: Identity Provider authentication
 
-There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using [OIDC](https://en.wikipedia.org/wiki/OpenID) with [Openshift OAuth 2.0 Proxy](https://github.com/openshift/oauth-proxy).
+There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using [OIDC](https://en.wikipedia.org/wiki/OpenID) with [OpenShift OAuth 2.0 Proxy](https://github.com/openshift/oauth-proxy).
 
 1. Create a project/namespace for the proxy and set the current namespace to it. For the remainder of this document, we will use the example `ibm-wh-acd-ce-oauth`.
    - `oc create namespace ibm-wh-acd-ce-oauth`
