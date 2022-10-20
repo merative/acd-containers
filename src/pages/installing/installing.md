@@ -5,7 +5,9 @@ categories: installing
 slug: installing
 toc: true
 ---
-_Note: Refer here for installation instructions for [IBM Watson Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
+
+_Refer here for installation instructions for [IBM Watson Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
 
 To install Annotator for Clinical Data Container Edition, you may use either the OpenShift Container Platform web console or the `oc` command line utility.
 
@@ -26,10 +28,16 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain your ACD registry credentials](https://www.ibm.com/support/pages/ibm-watson-health-product-support-portal) and [verify your access](/installing/installing/#verifying-acd-registry-access) to the ACD registry. Note that customers must use their customer ID to log in to their `Merative` account. The customer must request the credentials so the ownership and management of the ACD authorization stays with them.
+- [Obtain your ACD registry credentials](/installing/installing/#obtain-acd-registry-credentials) and [verify your access](/installing/installing/#verifying-acd-registry-access) to the ACD registry.
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment.
+
+## Obtain ACD registry credentials
+
+When you purchase Annotator for Clinical Data Container Edition, you will receive credentials that give you access to the Azure Active Directory ACD registry.  Credentials for the Azure AD ACD registry are used to pull the ACD images.
+
+**Note:** Customers must use their customer ID to log in to their `Merative` account. The customer must request the credentials so the ownership and management of the ACD authorization stays with them.
 
 ## Verifying ACD registry access
 

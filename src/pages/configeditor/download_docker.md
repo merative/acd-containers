@@ -1,6 +1,6 @@
 ---
-title: "Download and install with Docker"
-excerpt: "Download and install with Docker."
+title: "Install Configuration Editor Using Docker"
+excerpt: "Install Using Docker."
 categories: configeditor
 slug: download_docker
 toc: true
@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-The following will walk through the steps necessary to set up and configure a system with the Annotator for Clinical Data Configuration Editor (ACD Configuration Editor).  This sets up a local copy of the Configuration Editor in an "all-in-one" single system that can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also deploy and test against a remote ACD instance that you have access to.  The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
+The following will walk through the steps necessary to set up and configure a system with the Annotator for Clinical Data Configuration Editor (ACD Configuration Editor) using Docker.  This sets up a local copy of the Configuration Editor in an "all-in-one" single system that can be used to create, edit and preview Annotator for Clinical Data (ACD) cartridges.  The Configuration Editor can also deploy and test against a remote ACD instance that you have access to.  The diagram below shows the flows in and out of the server you'll be setting up.  Ensure any firewalls are open to allow this traffic.
 
 ![Configuration Editor on Docker](../../images/ACDCE_on_docker.png)
 
@@ -27,21 +27,23 @@ The following will walk through the steps necessary to set up and configure a sy
 
 The ACD Configuration Editor setup we use here should be installed on a dedicated system with these requirements:
 
-### System Requirements
+### System requirements
 
 - Hardware: Processor Architecture: x86_64 / amd64 ; vCPU: 4+ ; Memory: 64GB+ ; Storage: 200GB+
 - OS: CentOS 7/8 (RHEL should also work; Ubuntu may work but hasn't been tested)
 
   **NOTE:** The disk where Docker stores its images and where ACD Configuration Editor is installed needs to have 200GB of storage free.  Note: If you are using IBM Cloud with a VM, it may dafault to a 25GB base disk which will not fit the images and the Configuration Editor, so increase that or add a second larger disk and install Docker and its registry to that along with the ACD Configuration Editor.
 
-### Software Requirements (refer to the installation and configuration instructions below)
+### Software requirements
+
+Refer to the [Installation and configuration of prerequisite software](/configeditor/download_docker/#installation-and-configuration-of-prerequisite-software) instructions below.
 
 - Docker Community Edition
 - HTTP Server (or some reverse proxy)
 - Java 8
 - Perl
 
-## Installation and Configuration of Prerequisite Software
+## Installation and configuration of prerequisite software
 
 - Install and configure HTTP proxy
 
@@ -175,7 +177,7 @@ After you are in, you are at the main ACD Configuration Editor catalog page.  In
 
 Periodically, refer to this page for updates to the Configuration Editor packages and see below for update instructions.
 
-## Enabling Outbound Connections (optional)
+## Enabling outbound connections (optional)
 
 If you are going to connect to an external ACD instance, you need to add the standard certifying authorities to the Java trust store used by the services.  Copy the default Java `cacerts` file certificates into the trust store used by the ACD Configuration Editor services and then restart the services with the following command.
 
@@ -209,7 +211,7 @@ ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_ca
 
 As you add new ACD Hosts, you must configure a proxy in your `ssl.conf` file in order to allow requests to the hosts and avoid CORS errors.  The proxy specified in your `ssl.conf` file must match the proxy in your `acd-ce.properties` file for that host.
 
-## Adding Security to HTTP Server (optional)
+## Adding security to HTTP server (optional)
 
 You can use the OIDC module in Apache HTTP server to provide an authentication layer.  You will need an OpenID Connect Provider to do the actual authentication and need to add this Configuration Editor HTTP server as a client to it.  Below are the basic steps to do this.  See the detailed usage and support instructions of this plugin at [https://github.com/zmartzone/mod_auth_openidc](https://github.com/zmartzone/mod_auth_openidc).<br/>
 
@@ -257,7 +259,7 @@ com_ibm_watson_health_car_auth_logout_url=https://us-south.appid.cloud.ibm.com/o
 com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
 ```
 
-## Backing Up Your Data
+## Backing up your data
 
 All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the `/tmp/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
 

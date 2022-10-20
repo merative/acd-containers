@@ -19,18 +19,18 @@ subcollection: wh-acd
 
 <!-- # Overview -->
 
-**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4) for terms of use.
+**Notice:** The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.   See [license](https://ibm.biz/BdfmAB) for terms of use.
 
 ## Welcome to the Annotator for Clinical Data Configuration Editor
 
 In this document, find instructions for:
 
 - Installing Configuration Editor [Using Docker](/configeditor/download_docker/)
-- Installing Configuration Editor [On OpenShift](/configeditor/download_openshift)
+- Installing Configuration Editor [On Red Hat OpenShift](/configeditor/download_openshift)
 
 ### Introduction
 
-Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.
+Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges which are used to configure and customize Annotator for Clinical Data.  It is focused on providing domain-adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.
 
 Each customer's use case and data sets are unique, however, there are common cognitive patterns within health data text that can be captured into artifacts so they can be reused across projects. Configuration Editor allows the domain expert to build a cognitive model, contained in a cartridge, to extract structured data from unstructured text in order to derive valuable insights. The tool provides a mechanism for the domain expert to share cognitive models or pieces of a model with other customer engagements. The tool's purpose is to enable customization, reduce development time, and improve accuracy of building cognitive models that run on Annotator for Clinical Data service.
 
@@ -38,7 +38,7 @@ In a cartridge, there are domain-specific artifacts chosen or created by the dom
 
 The tool allows the domain expert to view Annotator for Clinical Data analytic insights as they are building their cartridge in order for them to refine their model to meet their business needs. Once the cartridge captures desired cognitive insights, the domain expert will customize Annotator for Clinical Data by deploying a snapshot of the cartridge to Annotator for Clinical Data. The deployment of the cartridge snapshot will create 'flow' and 'profile' objects within the Annotator for Clinical Data service. These objects can then be referenced as part of the request when invoking Annotator for Clinical Data service to analyze your unstructured text.
 
-### Feature Summary
+### Feature summary
 
 - Catalog of cartridges
 - Catalog of reusable knowledge artifacts such as Dictionaries, Filters, Clinical Attribute Sets, Derived Concepts and Derived Clinical Attributes.
@@ -47,24 +47,24 @@ The tool allows the domain expert to view Annotator for Clinical Data analytic i
 
 ### Access to the Configuration Editor
 
-The Configuration Editor can be deployed locally to a single Linux system using Docker or can be deployed on OpenShift.  Follow the instructions for these options below:
+The Configuration Editor can be deployed locally to a single Linux system using Docker or can be deployed on Red Hat OpenShift.  Follow the instructions for these options below:
 
 - [Install using Docker](/configeditor/download_docker/)
-- [Install on OpenShift](/configeditor/download_openshift)
+- [Install on Red Hat OpenShift](/configeditor/download_openshift)
 
 Once installed, use the instructions on the Install page to access the Configuration Editor using a browser on the host it was deployed to.
 
-### Learning Materials
+### Learning materials
 
 Videos and other [educational content](/configeditor/learning_materials).
 
-### Support and Questions
+### Support and questions
 
 Configuration Editor is provided to you as-is and free of charge.  For support or questions, please refer to [Support](/support/support/).
 
 Acceptance of terms of use is required to use the tool.
 
-[View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
+[View Program Terms](https://ibm.biz/BdfmAB)
 
 <p></p>
 

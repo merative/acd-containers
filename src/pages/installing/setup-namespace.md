@@ -20,11 +20,7 @@ Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 ## Setting up ACD service optional dependencies
 
-***
-
-### Setting up S3-based Configuration Storage
-
-***
+### Setting up S3-based configuration storage
 
 If the deployment will use S3-based storage, the S3 credentials need to be inserted into the ACD operand namespace as secrets.
 
@@ -37,11 +33,7 @@ oc create secret generic merative-acd-as \
     --from-file=password
 ```
 
-***
-
-### Setting up File-based Storage Configuration Persistent Volume and Claim Setup
-
-***
+### Setting up file-based storage configuration persistent volume and claim setup
 
 If the deployment will use persistent file-based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
@@ -58,7 +50,7 @@ Create the shared file system using the platform's tools with encryption enabled
 
 #### Creating an OCS (cephfs) shared filesystem
 
-1. Install OCS from the Operator Catalog.  This will install the cephfs storage class.  You must provide a block storage class for OCS to use.
+1. Install OCS from the operator catalog.  This will install the cephfs storage class.  You must provide a block storage class for OCS to use.
 
 1. In the ACD namespace, manually create the ACD persistent volume claim from the example "merative-acd-config-storage-cephfs-pvc.yaml" file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
 
@@ -95,9 +87,9 @@ Create the shared file system using the platform's tools with encryption enabled
       oc patch pv <dynamic-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
       ```
 
-1. Continue to the [Shared File System Preparation](#shared-prep) step below.
+1. Continue to the [Shared file system preparation](#shared-prep) step below.
 
-#### OCS Persistent Volume and Claim Removal
+#### OCS persistent volume and claim removal
 
 WARNING: Removing an OCS persistent volume will delete any data stored in that PV.
 
@@ -162,7 +154,7 @@ oc delete pv <dynamic-pv-name>
       volumeName: merative-acd-config-storage-nfs-pv
     ```
 
-#### NFS Persistent Volume and Claim Removal
+#### NFS persistent volume and claim removal
 
 To remove the persistent volume and claim, run the following:
 
@@ -173,7 +165,7 @@ oc delete pv merative-acd-config-storage-nfs-pv
 
 <a name="shared-prep"></a>
 
-### Shared File System Preparation
+### Shared file system preparation
 
 Once the shared file system is created, the top-level directory should be empty and its GID set to 0 (root) with group `rwx` permissions.  This is required to allow the ACD services write access when running with a restricted SCC.  If the shared file system requires a GID other than zero, you must also set the `Supplemental Group ID` parameter in the `File Storage -> PVC` section during the ACD instance creation.  
 
