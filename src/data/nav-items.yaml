@@ -40,8 +40,6 @@
       path: /installing/installing/
     - title: "Using Image Mirroring"
       path: /installing/using-image-mirroring/
-    - title: "Air-gap Installation"
-      path: /installing/air-gap-installation/
     - title: "Verifying Your Installation"
       path: /installing/verifying/
     - title: "License Tracking"
@@ -76,8 +74,6 @@
       path: /troubleshooting/logging-monitoring/
     - title: "Troubleshooting Pull Secrets"
       path: /troubleshooting/troubleshooting-pull-secrets/
-    - title: "Troubleshooting Air-gapped (disconnected) Installations"
-      path: /troubleshooting/troubleshooting-air-gapped-installations/
     - title: "Troubleshooting ACD Instances"
       path: /troubleshooting/troubleshooting-acd-instances/
     - title: "Troubleshooting the OAuth Proxy"

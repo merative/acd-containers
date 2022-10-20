@@ -51,12 +51,14 @@ For high availability, run 3 replicas of the ACD Configuration Editor on a minim
 
 ## Installing ACD Configuration Editor
 
-1. Download the ACD Configuration Editor project from the [ACD Container Edition repository](https://github.com/merative/acd-containers/tree/master/config-editor).
-2. Change directory to the project:<br/>
-   `cd merative-acd-ce`
-3. Log in to the OpenShift cluster on the command line:<br/>
+1. Download the ACD Configuration Editor deployment bundle from the [ACD Container Edition repository](https://github.com/merative/acd-containers/tree/master/config-editor).
+1. Untar the deployment bundle:
+  `tar -xvf config-editor-<timestamp>.tar.gz`
+1. Change directory:<br/>
+   `cd Kubernetes/merative-acd-ce`
+1. Log in to the OpenShift cluster on the command line:<br/>
    `oc login ...`
-4. Switch to the same namespace that the sandbox instance of ACD is running in.<br/>
+1. Switch to the same namespace that the sandbox instance of ACD is running in.<br/>
 
    If you used the default namespace during ACD's installation, this is `merative-acd-operator-system`.<br/>
 
@@ -67,7 +69,7 @@ For high availability, run 3 replicas of the ACD Configuration Editor on a minim
 5. Install the Concept Dictionary microservice using Helm:
 
 ```
-helm install whcs-acd-ce-cdc \
+helm install merative-acd-ce-cdc \
      merative-acd-ce/cdc/chart/cdc \
      --set replicas=1 \
      --set configurationStorage.file.volume.existingClaimName=<pvc name> \
@@ -85,13 +87,13 @@ helm install whcs-acd-ce-cdc \
    Run a health check against the pod using the following command. It should list `"serviceState":"OK"`.
 
 ```
-kubectl exec <pod name> -c ibm-wh-acd-cdc -n <acd namespace> -- curl -sk 'https://localhost:9443/services/concept_dictionary/api/v1/status/health_check'
+kubectl exec <pod name> -c merative-acd-cdc -n <acd namespace> -- curl -sk 'https://localhost:9443/services/concept_dictionary/api/v1/status/health_check'
 ```
 
 7. Install the Cartridge microservice using Helm:
 
 ```
-helm install whcs-acd-ce-crtg \
+helm install merative-acd-ce-crtg \
      merative-acd-ce/crtg/chart/crtg \
      --set replicas=1 \
      --set configurationStorage.file.volume.existingClaimName="<pvc name>" \
@@ -109,7 +111,7 @@ helm install whcs-acd-ce-crtg \
    Run a health check against the pod using the following command. It should list `"serviceState":"OK"`.
 
 ```
-kubectl exec <pod name> -c ibm-wh-acd-crtg -n <acd namespace> -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'
+kubectl exec <pod name> -c merative-acd-crtg -n <acd namespace> -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'
 ```
 
 ## ACD Configuration Editor Authentication
@@ -338,8 +340,8 @@ To update to a newer version of the ACD Configuration Editor follow these steps:
 2. Download the latest project and unpack it as above.
 3. Delete the existing Helm deployments:
 
-`helm delete whcs-acd-ce-crtg`
-`helm delete whcs-acd-ce-cdc`
+`helm delete merative-acd-ce-crtg`
+`helm delete merative-acd-ce-cdc`
 
 4. Merge in any customizations to the new project files.
 
@@ -349,4 +351,4 @@ The Configuration Editor is Java compatible.
 
 ![Java Compatible](../../images/Java.png)
 
-[View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
+[View Program Terms](https://ibm.biz/BdfmAB)
