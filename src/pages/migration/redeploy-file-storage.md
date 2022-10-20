@@ -24,7 +24,6 @@ Plan to do the following when redeploying cartridges to new storage as a migrati
 - Redeploy cartridges to the new ACD instance.
 - Verify cartridges exist and are accessible.
 - Enable access to the new instance and verify.
-- Turn off access to the existing instance.
 - Remove the old instance at a later date.
 
 A set of detailed steps are provided below as an option for migration.
@@ -50,7 +49,11 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   oc project ${target_acd_namespace}
   ```
 
-1. Create a new PersistentVolumeClaim (PVC) and PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace. It should show a status of `Bound`.
+1. Create a new PersistentVolumeClaim (PVC) and PersistentVolume (PV) in the target namespace.
+
+  Create the PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name.
+
+  Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace.
 
   ```
   apiVersion: v1
@@ -72,10 +75,11 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   oc create -f <target_pvc_name>.yaml -n ${target_acd_namespace}
   oc get pvc -n ${target_acd_namespace}
   ```
+  Confirm the PVC shows a status of `Bound`.
 
 1. Create a new ACD instance in the target namespace using the target PVC name.
 
-  Also bring forward the rest of your configured settings from the existing source deployment, such as tenant header, license usage, etc.
+  Bring forward the rest of your configured settings from the existing source deployment, such as tenant header, license usage, etc.
 
   Refer to [Installing ACD](/installing/installing/) for installation steps.
 
@@ -87,14 +91,14 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
 1. Redeploy your cartridges to the new ACD instance so they are persisted to the new storage volume.
 
-  - See [Deploying and updating the ACD-provided cartridges](/usage/getting-started/#deploying-and-updating-the-acd-provided-cartridges) for deploying the provided cartridges.
-  - See [Cartridge deployment](/usage/customizing/#cartridge-deployment) for deploying your custom cartridges.
+    - See [Deploying and updating the ACD-provided cartridges](/usage/getting-started/#deploying-and-updating-the-acd-provided-cartridges) for deploying the provided cartridges.
+    - See [Cartridge deployment](/usage/customizing/#cartridge-deployment) for deploying your custom cartridges.
 
 1. Make OAuth proxy updates for secure access to the target namespace, if configured to use this.
 
-  For ACD deployments (not the Configuration Editor), create a serviceview role in target namespace and grant all service accounts in the proxy namespace access to it. Follow the steps 7 and 8 under [Manage Access](/security/manage-access/).
+    - For ACD deployments (not the Configuration Editor), create a serviceview role in the target namespace and grant all service accounts in the proxy namespace access to it. Follow the steps 7 and 8 under [Manage Access](/security/manage-access/).
 
-  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Follow step 2 under [Manage Access](/security/manage-access/).
+    - Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Follow step 2 under [Manage Access](/security/manage-access/).
 
 1. Uninstall the source ACD instance and source ACD operator at a later date.
 
