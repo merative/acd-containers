@@ -13,7 +13,7 @@ Consider the following as you prepare for and proceed with a migration of your A
 - A new instance of the `Acd` custom resource belonging to the `acd.merative.com` group must be installed.
 - There is no upgrade path from the IBM Watson Annotator for Clinical Data Container Edition to Merative Annotator for Clinical Data Container Edition.
 - Confirm the cluster has enough resources to stand up another acd instance in addition to the existing instance. Add worker nodes or resize the worker pool if necessary.
-- Once the migration is complete, the former `Acd` custom resource belonging to the `wh-acd.ibm.com` group should be deleted.
+- Once the migration is complete and your old ACD instance is removed, the former `Acd` custom resource belonging to the `wh-acd.ibm.com` group should be deleted.
 - For image access:
 
   - Images for IBM Watson Annotator for Clinical Data are available from the IBM Entitled Registry through December 31, 2022.

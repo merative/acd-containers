@@ -36,17 +36,13 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   export source_acd_namespace=<existing_ACD_namespace>
   ```
 
-1. Save the source ACD persistent storage configuration.
+1. Gather and save the source ACD configuration for persistent storage, tenant header, etc. These will be used when creating the target ACD instance.
 
   ```
-  export s3_bucket=ibm.wh.acd.artifactstore.tryitout.south
-  export s3_ endpointUrl= s3.direct.us-south.cloud-object-storage.appdomain.cloud
-  export s3_ location= us-south
-  ```
-
-1. Save the source ACD tenant header configuration.
-  ```
-  export tenantHeader=X-Forwarded-User
+  s3_bucket=<source_acd_s3_bucket>
+  s3_endpointUrl=<source_acd_s3_endpoint_url>
+  s3_location=<source_acd_s3_location>
+  tenantHeader=<source_acd_tenant_header>
   ```
 
 1. Create the target ACD namespace and switch to that namespace as your project.
