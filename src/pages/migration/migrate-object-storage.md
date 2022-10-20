@@ -36,14 +36,15 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   export source_acd_namespace=<existing_ACD_namespace>
   ```
 
-1. Gather and save the source ACD configuration for persistent storage, tenant header, etc. These will be used when creating the target ACD instance.
+1. Gather and save the source ACD configuration for persistent storage, tenant header, etc. These will be used when creating the target ACD instance and input through the OpenShift console during the install step.
 
-  ```
-  s3_bucket=<source_acd_s3_bucket>
-  s3_endpointUrl=<source_acd_s3_endpoint_url>
-  s3_location=<source_acd_s3_location>
-  tenantHeader=<source_acd_tenant_header>
-  ```
+  `s3_bucket`=
+
+  `s3_endpointUrl`=
+
+  `s3_location`=
+
+  `tenantHeader`=
 
 1. Create the target ACD namespace and switch to that namespace as your project.
 

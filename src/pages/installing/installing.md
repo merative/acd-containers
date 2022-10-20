@@ -67,11 +67,15 @@ To add the pull secret to the OpenShift global pull secret:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`
 
-   `oc extract secret/pull-secret --namespace openshift-config --to=.`
+  ```
+  oc extract secret/pull-secret --namespace openshift-config --to=.
+  ```
 
 1. Create a base64 encoded string with the ACD registry credentials, such as the service principal client ID (username) and client secret (password), as it aligns with your access method.
 
-   `printf "<username>:<password>" | base64`
+  ```
+  printf "<username>:<password>" | base64
+  ```
 
 1. Edit the `.dockerconfigjson` file and **ADD** a new JSON object to the existing auths object with the credentials for the ACD registry. For example:
 
@@ -84,11 +88,15 @@ To add the pull secret to the OpenShift global pull secret:
 
 1. Update the global image pull secret with the updated credentials:
 
-   `oc set data secret/pull-secret --namespace openshift-config --from-file=.dockerconfigjson`
+  ```
+  oc set data secret/pull-secret --namespace openshift-config --from-file=.dockerconfigjson
+  ```
 
 1. Monitor the node status using the command:
 
-   `oc get nodes`
+  ```
+  oc get nodes
+  ```
 
 1. When the nodes are finished restarting, your cluster is now ready to pull images from the ACD registry.
 
@@ -156,9 +164,11 @@ To add the ACD operator catalog:
 
 1. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 
-1. Apply the source by using the following command:
+1. Create the source by using the following command:
 
-   `oc apply -f ACDCatalogSource.yaml`
+  ```
+  oc create -f ACDCatalogSource.yaml
+  ```
 
 The ACD operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
 
