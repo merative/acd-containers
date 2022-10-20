@@ -125,29 +125,17 @@ SSLProxyCheckPeerExpire off
 
 ## Installing ACD Configuration Editor
 
-Download the ACD Configuration Editor setup program and place it on the target machine:
-TODO: point to setup script downloadf file(s)
-<a href="./acd-ce.2022-06-16.239.tar" download>acd-ce.2022-06-16.239.tar</a>
+Download the ACD Configuration Editor deployment bundle and place it on the target machine:
 
-Date: June 16th, 2022 : size: 11250063360 sha-256: 292f925a776ee53ae9454284aafbe0cb901390cb15130dc1b6183a165704e265 (using sha256sum -b acd-ce.2022-06-16.239.tar)
+https://github.com/merative/acd-containers/tree/master/config-editor
 
 **Note:** If updating an existing installation, be sure to back up and merge changes into your `acd-ce.properties` file (see Updating the Configuration Editor below).
 
-Older releases:
+Untar the container images by running the command `tar -xvf config-editor-<timestamp>.tar.gz`.
 
-- TODO:  Here ACD CE Tar file old1
-- TODO:  Here ACD CE Tar file old2
+Run the command `cd Docker` to change the directory.
 
-Recent changes to the properties file:
-
-- acd-ce.2022-04-14.219.tar : IBM Cloud East and South ACD Host configurations moved from the Cartridge service properties to the `acd-ce.properties` file.
-- acd-ce.2022-04-14.219.tar : 2 new URLs added for Concept Disambiguation service (cds) to the Cartridge service properties.
-
-Untar the container images by running the command `tar -xvf acd-ce.2022-06-16.239.tar acd-ce`.  This will put the image files into an `acd-ce` subfolder.  You can now run the command `rm acd-ce.2022-06-16.239.tar` to free up the file space.
-
-Run the command `cd acd-ce` to change the directory.
-
-Update the properties in the `acd-ce` directory with the name of the host your users will be accessing the Configuration Editor from (the host name they will enter into the browser) by using the following command against the `ace-ce.properties` file:<br/>
+Update the properties file with the name of the host your users will be accessing the Configuration Editor from (the host name they will enter into the browser) by using the following command against the `ace-ce.properties` file:<br/>
   `sed -i 's/%SERVER%/<hostname>/g' acd-ce.properties`
 
 Note:  If the host name changes (the host used by the browser to get to the system) you'll need to update it in `acd-ce.properties` and restart the acd-ce processes.
@@ -171,7 +159,7 @@ Back up your properties file.  Everytime you update it, the file will be overwri
 Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
   `./run-acd-ce.sh`
 
-This command will stop any running containers, remove any old images, load the downloaded images and start the Docker containers.
+This command will stop any running containers, remove any old images, load the current images and start the Docker containers.
 
 To restart the acd-ce processes with the latest configuration from `acd-ce.properties`, you can use:<br/>
   `./run-acd-ce.sh -restart`
