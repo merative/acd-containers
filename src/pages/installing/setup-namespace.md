@@ -12,7 +12,7 @@ Each deployment of the ACD operator and its dependent resources need to be scope
 
 Create a namespace into which the ACD instance will be installed by creating a [project](https://docs.openshift.com/container-platform/4.7/applications/projects/working-with-projects.html).
 
-When you create a project, a namespace with the same name is also created.
+When you create a project, a namespace with the same name is also created.  In the examples below we'll refer to this namespace as `<your namespace>`.
 
 Ensure you use a namespace that is dedicated to a single instance of ACD.
 
@@ -28,7 +28,7 @@ If the deployment will use S3-based storage, the S3 credentials need to be inser
 echo '<cos_id>' | tr -d '\n' > username
 echo '<cos_secret>' | tr -d '\n' > password
 oc create secret generic merative-acd-as \
-    --namespace <namespace> \
+    --namespace <your namespace> \
     --from-file=username \
     --from-file=password
 ```
@@ -78,7 +78,7 @@ Create the shared file system using the platform's tools with encryption enabled
 1. Determine the name of the generated persistent volume that is bound to your PVC.  The PV name starts with 'pvc-'
 
       ```
-      oc get pvc -n <acd namespace>
+      oc get pvc -n <your namespace>
       ```
 
 1. Patch the generated persistent volume to change the `persistentVolumeReclaimPolicy` to `Retain` so the volume does not get deleted if the PVC is deleted.
