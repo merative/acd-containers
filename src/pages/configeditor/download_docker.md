@@ -158,7 +158,7 @@ You can test what you use here by running:<br/>
 Back up your properties file.  Everytime you update it, the file will be overwritten and you'll want to merge back any changes you made here.<br/>
   `cp acd-ce.properties acd-ce.properties.bak`
 
-Sign on to the container regisry with the credentails provided when purchasing the product.<br/>
+Sign on to the container registry with the credentials provided when the product was purchased.<br/>
   `Docker login <container-registry> -u <application-ID> -p <password>`
 
 Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
@@ -283,8 +283,10 @@ To update to a newer version of the ACD Configuration Editor, follow these steps
   `rm -r certs`
   `rm -r keystore`
   `rm -r truststore`
+5. Sign on to the container registry with the credentials provided when the product was purchased.<br/>
+  `Docker login <container-registry> -u <application-ID> -p <password>`
 
-5. Back in the `acd-ce` directory where the tar file was unpacked to, run `./run-acd-ce.sh` to update all the images and restart the containers with the latest build and your modified properties file.
+6. Back in the `acd-ce` directory where the tar file was unpacked to, run `./run-acd-ce.sh` to update all the images and restart the containers with the latest build and your modified properties file.
 
 ## Notices
 
