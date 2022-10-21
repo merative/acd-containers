@@ -65,14 +65,14 @@ Create the shared file system using the platform's tools with encryption enabled
     kind: PersistentVolumeClaim
     metadata:
       name: merative-acd-config-storage-cephfs-pvc
-      spec:
-        accessModes:
-        - ReadWriteMany
-        resources:
-          requests:
-            storage: 10Gi
-        storageClassName: ocs-storagecluster-cephfs
-        volumeMode: Filesystem
+    spec:
+      accessModes:
+      - ReadWriteMany
+      resources:
+        requests:
+          storage: 10Gi
+      storageClassName: ocs-storagecluster-cephfs
+      volumeMode: Filesystem
       ```
 
 1. Determine the name of the generated persistent volume that is bound to your PVC.  The PV name starts with 'pvc-'

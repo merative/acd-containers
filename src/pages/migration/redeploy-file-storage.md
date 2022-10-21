@@ -60,7 +60,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   kind: PersistentVolumeClaim
   metadata:
     name: <target_pvc_name>
-    spec:
+  spec:
     accessModes:
     - ReadWriteMany
     resources:
