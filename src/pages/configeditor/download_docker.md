@@ -158,6 +158,9 @@ You can test what you use here by running:<br/>
 Back up your properties file.  Everytime you update it, the file will be overwritten and you'll want to merge back any changes you made here.<br/>
   `cp acd-ce.properties acd-ce.properties.bak`
 
+Sign on to the container regisry with the credentails provided when purchasing the product.<br/>
+  `Docker login <container-registry> -u <application-ID> -p <password>`
+
 Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
   `./run-acd-ce.sh`
 
@@ -261,7 +264,7 @@ com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
 
 ## Backing up your data
 
-All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the `/tmp/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
+All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the `%HOME%/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
 
 ## Stopping the Configuration Editor
 
