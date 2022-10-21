@@ -56,4 +56,4 @@ Confirm the ACD operator pod shows Terminating status and then is removed from t
 
 ## Uninstalling using command line
 
-If the `cloudctl` interface was used for install, refer here for instructions on [uninstalling ACD from the command line](/installing/uninstalling-ibm/).
+If the IBM `cloudctl` interface was used for install, refer here for instructions on [uninstalling ACD from the command line](/installing/uninstalling-ibm/).

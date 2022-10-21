@@ -5,7 +5,7 @@ categories: installing
 slug: installing
 toc: true
 ---
-_Note: All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
+_Note: The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition. All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
 
 _Refer here for installation instructions for [IBM Watson Annotator for Clinical Data Container Edition](/installing/installing-ibm/)._
 
@@ -67,11 +67,15 @@ To add the pull secret to the OpenShift global pull secret:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`
 
-   `oc extract secret/pull-secret --namespace openshift-config --to=.`
+  ```
+  oc extract secret/pull-secret --namespace openshift-config --to=.
+  ```
 
 1. Create a base64 encoded string with the ACD registry credentials, such as the service principal client ID (username) and client secret (password), as it aligns with your access method.
 
-   `printf "<username>:<password>" | base64`
+  ```
+  printf "<username>:<password>" | base64
+  ```
 
 1. Edit the `.dockerconfigjson` file and **ADD** a new JSON object to the existing auths object with the credentials for the ACD registry. For example:
 
@@ -84,11 +88,15 @@ To add the pull secret to the OpenShift global pull secret:
 
 1. Update the global image pull secret with the updated credentials:
 
-   `oc set data secret/pull-secret --namespace openshift-config --from-file=.dockerconfigjson`
+  ```
+  oc set data secret/pull-secret --namespace openshift-config --from-file=.dockerconfigjson
+  ```
 
 1. Monitor the node status using the command:
 
-   `oc get nodes`
+  ```
+  oc get nodes
+  ```
 
 1. When the nodes are finished restarting, your cluster is now ready to pull images from the ACD registry.
 
@@ -156,9 +164,11 @@ To add the ACD operator catalog:
 
 1. Log in to your Red Hat OpenShift Container Platform as a cluster administrator by using the `oc` CLI.
 
-1. Apply the source by using the following command:
+1. Create the source by using the following command:
 
-   `oc apply -f ACDCatalogSource.yaml`
+  ```
+  oc create -f ACDCatalogSource.yaml
+  ```
 
 The ACD operator catalog source is added to the OperatorHub catalog, making the ACD operator available to install.
 
@@ -172,7 +182,7 @@ To install the ACD operator through the OpenShift Container Platform web console
 1. Expand the **Operators** dropdown and select **OperatorHub** to open the **OperatorHub** dashboard.
 1. Select the project you want to use as the target namespace for your ACD deployment.
 1. In the **All Items** search box enter `ACD` to locate the operator title.
-1. Click the **ACD** tile to open the install side panel.
+1. Click the **Merative ACD** tile to open the install side panel.
 1. Click the **Install** button to open the **Create Operator Subscription** dashboard.
 1. Select the chosen installation mode that suits your requirements. If the installation mode is **A specific namespace on the cluster**, select the target namespace you created previously.
 1. Select the approval strategy that suits your requirements. If set to **Automatic**, the [Subscription](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-subscription_olm-understanding-olm) resource uses [Operator Lifecycle Manager (OLM)](https://docs.openshift.com/container-platform/4.7/operators/understanding/olm/olm-understanding-olm.html#olm-overview_olm-understanding-olm) to manage and upgrade the operator to ensure that the latest version is always running in the cluster. With **Manual** approval set, a project administrator must manually approve the install plan to enable the upgrade. See the [upgrading](../../installing/upgrading) section for more details.

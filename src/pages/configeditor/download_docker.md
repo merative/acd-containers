@@ -294,4 +294,4 @@ The Configuration Editor is Java compatible.
 
 ![Java Compatible](../../images/Java.png)
 
-[View Program Terms](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-KMNL-BTV7T4)
+[View Program Terms](https://ibm.biz/BdfmAB)
