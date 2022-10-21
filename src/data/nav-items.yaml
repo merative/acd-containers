@@ -22,10 +22,14 @@
   pages:
     - title: "Migration Considerations"
       path: /migration/considerations/
-    - title: "Migration with File Storage"
-      path: /migration/file-storage/
-    - title: "Migration with Object Storage"
-      path: /migration/object-storage/
+    - title: "Cartridge Redeployment with Shared File Storage"
+      path: /migration/redeploy-file-storage/
+    - title: "Backup and Restore with Shared File Storage"
+      path: /migration/restore-file-storage/
+    - title: "Migration of Existing Shared File Storage"
+      path: /migration/migrate-file-storage/
+    - title: "Migration of Existing Object Storage"
+      path: /migration/migrate-object-storage/
 - title: Installation
   pages:
     - title: "Prerequisites"
@@ -36,8 +40,6 @@
       path: /installing/installing/
     - title: "Using Image Mirroring"
       path: /installing/using-image-mirroring/
-    - title: "Air-gap Installation"
-      path: /installing/air-gap-installation/
     - title: "Verifying Your Installation"
       path: /installing/verifying/
     - title: "License Tracking"
@@ -72,8 +74,6 @@
       path: /troubleshooting/logging-monitoring/
     - title: "Troubleshooting Pull Secrets"
       path: /troubleshooting/troubleshooting-pull-secrets/
-    - title: "Troubleshooting Air-gapped (disconnected) Installations"
-      path: /troubleshooting/troubleshooting-air-gapped-installations/
     - title: "Troubleshooting ACD Instances"
       path: /troubleshooting/troubleshooting-acd-instances/
     - title: "Troubleshooting the OAuth Proxy"
