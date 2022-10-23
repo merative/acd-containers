@@ -37,7 +37,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
   ```
   export source_acd_namespace=<existing_ACD_namespace>
-  export source_pvc_name=$(oc get pvc -n ${source_acd_namespace} -o json | yq -r ".items[].spec.volumeName")
+  export source_pvc_name=$(oc get pvc -n ${source_acd_namespace} -o json | yq -r ".items[].metadata.name")
   echo ${source_pvc_name}
   ```
 
