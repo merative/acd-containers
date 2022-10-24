@@ -37,7 +37,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
   ```
   export source_acd_namespace=<existing_ACD_namespace>
-  export source_pvc_name=$(oc get pvc -n ${source_acd_namespace} -o json | yq -r ".items[].metadata.name")
+  export source_pvc_name=$(oc get pvc -n ${source_acd_namespace} -o yaml | yq -r ".items[].metadata.name")
   echo ${source_pvc_name}
   ```
 
@@ -70,7 +70,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   The annotation `openshift.io/sa.scc.uid-range` indicates the user ID range for the project. Replace `<target_project_uid>` with the starting number in the range identified by that annotation.
 
   ```
-  oc get project ${target_acd_namespace} -o json | yq -r .metadata.annotations
+  oc get project ${target_acd_namespace} -o yaml | yq -r .metadata.annotations
   export target_project_uid=<target_project_uid>
   ```
 
