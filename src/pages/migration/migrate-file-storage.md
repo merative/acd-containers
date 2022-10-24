@@ -70,11 +70,10 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   The annotation `openshift.io/sa.scc.uid-range` indicates the user ID range for the project. Replace `<target_project_uid>` with the starting number in the range identified by that annotation.
 
   ```
-  oc get project ${target_acd_namespace} -o yaml | yq -r .metadata.annotations
-  export target_project_uid=<target_project_uid>
+  export target_project_uid=$(oc get project ${target_acd_namespace} -o yaml | yq -r '.metadata.annotations."openshift.io/sa.scc.uid-range" | split("/") | .[0]')
   ```
 
-1. Create a new PersistentVolumeClaim (PVC) using the existing PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace. It will be in `Pending` status.
+2. Create a new PersistentVolumeClaim (PVC) using the existing PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name and `<pv_id>` with the persistent volume name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace.  It will be in `Pending` status.
 
   ```
   apiVersion: v1
@@ -89,6 +88,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
         storage: 10Gi
     storageClassName: ocs-storagecluster-cephfs
     volumeMode: Filesystem
+    volumeName: <pv_id>
   ```
 
   ```
