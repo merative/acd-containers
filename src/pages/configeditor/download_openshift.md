@@ -55,7 +55,7 @@ For high availability, run 3 replicas of the ACD Configuration Editor on a minim
 1. Untar the deployment bundle:
   `tar -xvf config-editor-<timestamp>.tar.gz`
 1. Change directory:<br/>
-   `cd Kubernetes/merative-acd-ce`
+   `cd Kubernetes`
 1. Log in to the OpenShift cluster on the command line:<br/>
    `oc login ...`
 1. Switch to the same namespace that the sandbox instance of ACD is running in.<br/>
