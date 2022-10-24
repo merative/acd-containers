@@ -73,7 +73,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   export target_project_uid=$(oc get project ${target_acd_namespace} -o yaml | yq -r '.metadata.annotations."openshift.io/sa.scc.uid-range" | split("/") | .[0]')
   ```
 
-2. Create a new PersistentVolumeClaim (PVC) using the existing PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name and `<pv_id>` with the persistent volume name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace.  It will be in `Pending` status.
+2. Create a new PersistentVolumeClaim (PVC) using the existing PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name and `<pv_id>` with the persistent volume name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace. It will be in `Pending` status.
 
   ```
   apiVersion: v1
