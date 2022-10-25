@@ -1,5 +1,22 @@
 /* This is where your application styles could go. */
 
+@import '@carbon/styles/css/styles.css';
+
+/* These are overrides from the default carbon styles */
+/* Needed to see the title */
+[class*='Header-module--headerName'] {
+  color: black;
+}
+
+/* Make the external links blue, because it looks cool on black */
+a.cds--side-nav__link > .cds--side-nav__link-text {color: #0062fe;}
+
+/* Make the hover white-ish so it can be read */
+.cds--side-nav__item:not(.cds--side-nav__item--active) > .cds--side-nav__link:hover > span {
+  background-color: var(--cds-background-hover, rgba(141, 141, 141, 0.12));
+  color: var(--cds-text-primary, #e5e5e5);
+}
+
 [class*='PageHeader-module--page-header'] {
   height: auto !important;
   min-height: 13rem;
