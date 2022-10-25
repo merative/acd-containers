@@ -133,7 +133,7 @@ https://github.com/merative/acd-containers/tree/master/config-editor
 
 **Note:** If updating an existing installation, be sure to back up and merge changes into your `acd-ce.properties` file (see Updating the Configuration Editor below).
 
-Untar the container images by running the command `tar -xvf config-editor-<timestamp>.tar.gz`.
+Untar the install files by running the command `tar -xvf config-editor-<timestamp>.tar.gz`.
 
 Run the command `cd Docker` to change the directory.
 
@@ -159,7 +159,7 @@ Back up your properties file.  Everytime you update it, the file will be overwri
   `cp acd-ce.properties acd-ce.properties.bak`
 
 Sign on to the container registry with the credentials provided when the product was purchased.<br/>
-  `Docker login acdcontaineredition.azurecr.io -u <application-ID> -p <password>`
+  `docker login acdcontaineredition.azurecr.io -u <application-ID> -p <password>`
 
 Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
   `./run-acd-ce.sh`
@@ -179,6 +179,8 @@ The first prompt is going to ask for your name and email to identify any configu
 After you are in, you are at the main ACD Configuration Editor catalog page.  Initially, there are no default cartridges.  You can install the base [Clinical Insights](https://github.com/merative/acd-cartridges) cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.
 
 Periodically, refer to this page for updates to the Configuration Editor packages and see below for update instructions.
+
+NOTE:  When analyzing text in the ACD Configuration Editor the first time after installation or a restart, it is common to experience an initial error while the data model is beinging loaded.  Wait a few minutes after the initial error is received and retry the operation.
 
 ## Enabling outbound connections (optional)
 

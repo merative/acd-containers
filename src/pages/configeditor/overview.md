@@ -27,6 +27,7 @@ In this document, find instructions for:
 
 - Installing Configuration Editor [Using Docker](/configeditor/download_docker/)
 - Installing Configuration Editor [On Red Hat OpenShift](/configeditor/download_openshift)
+- [Migrating](/configeditor/migrating_data) exisiting Early Access Program cartridges and artifacts
 
 ### Introduction
 
