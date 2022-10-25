@@ -159,7 +159,7 @@ Back up your properties file.  Everytime you update it, the file will be overwri
   `cp acd-ce.properties acd-ce.properties.bak`
 
 Sign on to the container registry with the credentials provided when the product was purchased.<br/>
-  `Docker login acdcontaineredition.azurecr.io -u <application-ID> -p <password>`
+  `docker login acdcontaineredition.azurecr.io -u <application-ID> -p <password>`
 
 Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
   `./run-acd-ce.sh`
