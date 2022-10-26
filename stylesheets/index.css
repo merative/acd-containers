@@ -8,6 +8,10 @@
   background-color: black;
 }
 
+.cds--header__menu-trigger > svg {
+  fill: var(--cds-icon-primary, white);
+}
+
 /* Make the external links blue, because it looks cool on black */
 a.cds--side-nav__link > .cds--side-nav__link-text {color: #0062fe;}
 
