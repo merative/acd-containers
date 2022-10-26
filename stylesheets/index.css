@@ -26,6 +26,17 @@
   background-color: #222222;
 }
 
+.cds--btn.cds--btn--icon-only.cds--header__action svg {
+  /* fill: var(--cds-icon-secondary, #525252); */
+  fill: var(--cds-icon-secondary, #DDD);
+}
+
+.cds--btn.cds--btn--icon-only.cds--header__action:hover svg,
+.cds--btn.cds--btn--icon-only.cds--header__action:active svg,
+.cds--btn.cds--btn--icon-only.cds--header__action--active svg {
+  /* fill: var(--cds-icon-primary, #161616); */
+  fill: var(--cds-icon-primary, white);
+}
 .cds--header__menu-trigger > svg {
   fill: var(--cds-icon-primary, #DDD  );
 }
