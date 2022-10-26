@@ -55,7 +55,7 @@ const Header = ({ children }) => {
       <HeaderGlobalBar
         className={cx({ [styles.searchIsOpenOnBar]: searchIsOpen })}>
         {isSearchEnabled && <GlobalSearch />}
-        <HeaderGlobalAction
+        {/* <HeaderGlobalAction
           className={cx(styles.headerButton, styles.switcherButton, {
             [styles.switcherButtonOpen]: switcherIsOpen,
           })}
@@ -67,7 +67,7 @@ const Header = ({ children }) => {
             toggleNavState('leftNavIsOpen', 'close');
           }}>
           {switcherIsOpen ? <Close20 /> : <Switcher20 />}
-        </HeaderGlobalAction>
+        </HeaderGlobalAction> */}
       </HeaderGlobalBar>
     </ShellHeader>
   );

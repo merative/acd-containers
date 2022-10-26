@@ -8,8 +8,30 @@
   background-color: black;
 }
 
+.cds--header__action--active {
+  border-right: 1px solid var(--cds-border-subtle);
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid var(--cds-border-subtle);
+  background: var(--cds-layer);
+}
+
+
+.cds--header__action:hover {
+  /* background-color: var(--cds-background-hover, rgba(141, 141, 141, 0.12)); */
+  background-color: var(--cds-background-hover, #333333);
+
+}
+
+.cds--header__action {
+  background-color: #222222;
+}
+
 .cds--header__menu-trigger > svg {
-  fill: var(--cds-icon-primary, white);
+  fill: var(--cds-icon-primary, #DDD  );
+}
+
+.cds--header__menu-trigger:hover > svg {
+  fill: var(--cds-icon-primary, #FFF);
 }
 
 /* Make the external links blue, because it looks cool on black */
@@ -19,6 +41,12 @@ a.cds--side-nav__link > .cds--side-nav__link-text {color: #0062fe;}
 .cds--side-nav__item:not(.cds--side-nav__item--active) > .cds--side-nav__link:hover > span {
   background-color: var(--cds-background-hover, rgba(141, 141, 141, 0.12));
   color: var(--cds-text-primary, #e5e5e5);
+}
+
+/* Hover on white background must turn text black */
+[class*='LeftNav-module--side-nav--white'] .cds--side-nav__item:not(.cds--side-nav__item--active)>.cds--side-nav__link:hover > span{
+  color: black;
+  background-color: var(--cds-background-hover, #EEE);
 }
 
 [class*='PageHeader-module--page-header'] {
