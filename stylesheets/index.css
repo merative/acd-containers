@@ -4,8 +4,8 @@
 
 /* These are overrides from the default carbon styles */
 /* Needed to see the title */
-[class*='Header-module--headerName'] {
-  color: black;
+.cds--header {
+  background-color: black;
 }
 
 /* Make the external links blue, because it looks cool on black */
