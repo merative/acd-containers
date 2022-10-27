@@ -54,44 +54,6 @@ Confirm the ACD operator pod shows Terminating status and then is removed from t
 1. Click the **Delete Project** menu option to open the delete confirmation panel.
 1. Check that the namespace is correct and confirm deletion by entering the project name into the text box. Click **Delete** to delete the project.
 
-## Uninstalling using Command line
+## Uninstalling using command line
 
-### 1. Uninstall the ACD service.
-
-```
-cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory clinicalDataAnnotatorOperator \
-    --action deleteCustomResources \
-    --tolerance 1
-```
-
-### 2. Uninstall the ACD operator.
-
-```
-cloudctl case launch \
-    --case case/ibm-wh-acd \
-    --namespace <target_namespace> \
-    --inventory clinicalDataAnnotatorOperatorSetup \
-    --action uninstallOperator \
-    --tolerance 1
-```
-
-### 3. Delete namespace
-
-To remove the namespace run the following:
-
-```
-oc delete namespace <namespace>
-```
-
-## Uninstalling the IBM Operator catalog
-
-To remove the catalog run the following:
-
-```
-oc delete catalogsource ibm-operator-catalog -n openshift-marketplace
-```
-
-**Note:** This catalog resource provides access to many operators, one of which is the Annotator for Clinical Data Container Edition operator. Before deleting the catalog source, ensure you want to remove the full catalog. If you need to reinstall, see [Installing the IBM Operator catalog](/installing/installing/#installing-the-ibm-operator-catalog).
+If the IBM `cloudctl` interface was used for install, refer here for instructions on [uninstalling ACD from the command line](/installing/uninstalling-ibm/).

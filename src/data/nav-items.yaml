@@ -18,17 +18,29 @@
       path: /planning/tenancy/
     - title: "High Availability"
       path: /planning/hadr/
+- title: "Migration"
+  pages:
+    - title: "Migration Considerations"
+      path: /migration/considerations/
+    - title: "Cartridge Redeployment with Shared File Storage"
+      path: /migration/redeploy-file-storage/
+    - title: "Backup and Restore with Shared File Storage"
+      path: /migration/restore-file-storage/
+    - title: "Migration of Existing Shared File Storage"
+      path: /migration/migrate-file-storage/
+    - title: "Migration of Existing Object Storage"
+      path: /migration/migrate-object-storage/
 - title: Installation
   pages:
     - title: "Prerequisites"
       path: /installing/prereqs/
-    - title: "Setup Namespace"
+    - title: "Set Up Namespace"
       path: /installing/setup-namespace/
     - title: "Installation"
       path: /installing/installing/
-    - title: "Air-gap Installation"
-      path: /installing/air-gap-installation/
-    - title: "Verifying your installation"
+    - title: "Using Image Mirroring"
+      path: /installing/using-image-mirroring/
+    - title: "Verifying Your Installation"
       path: /installing/verifying/
     - title: "License Tracking"
       path: /installing/license-tracking/
@@ -62,9 +74,7 @@
       path: /troubleshooting/logging-monitoring/
     - title: "Troubleshooting Pull Secrets"
       path: /troubleshooting/troubleshooting-pull-secrets/
-    - title: "Troubleshooting Air-gapped (disconnected) installations"
-      path: /troubleshooting/troubleshooting-air-gapped-installations/
-    - title: "Troubleshooting ACD instances"
+    - title: "Troubleshooting ACD Instances"
       path: /troubleshooting/troubleshooting-acd-instances/
     - title: "Troubleshooting the OAuth Proxy"
       path: /troubleshooting/troubleshooting-the-oauth-proxy/
@@ -80,7 +90,7 @@
   pages:
     - title: "Overview"
       path: /usage/overview/
-    - title: "Getting started"
+    - title: "Getting Started"
       path: /usage/getting-started/
     - title: "Software Development Kits"
       path: /usage/sdks/
@@ -94,6 +104,7 @@
       path: /usage/faqs/
     - title: "Known Limitations"
       path: /usage/known_limitations/
+  hasDivider: true
 - title: Annotators
   pages:
     - title: "Allergies (Deprecated)"
@@ -118,7 +129,7 @@
       path: /clouddocs/annotator_living_assistance/
     - title: "Medications"
       path: /clouddocs/annotator_medication/
-    - title: "Named entities"
+    - title: "Named Entities"
       path: /clouddocs/annotator_named_entities/
     - title: "Negation"
       path: /clouddocs/annotator_negation_detection/
@@ -170,5 +181,10 @@
       path: /clouddocs/medical_codes/
 - title: Filtering
   pages:
-    - title: "filtering"
+    - title: "Filtering"
       path: /clouddocs/filtering/
+  hasDivider: true
+- title: Contact Us
+  pages:
+    - title: "Contact Us"
+      path: /support/support/

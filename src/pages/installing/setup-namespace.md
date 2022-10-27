@@ -1,5 +1,5 @@
 ---
-title: "Setup Namespace"
+title: "Set Up Namespace"
 excerpt: "Setting up Namespace Artifacts."
 categories: installing
 slug: setup
@@ -12,36 +12,28 @@ Each deployment of the ACD operator and its dependent resources need to be scope
 
 Create a namespace into which the ACD instance will be installed by creating a [project](https://docs.openshift.com/container-platform/4.7/applications/projects/working-with-projects.html).
 
-When you create a project, a namespace with the same name is also created.
+When you create a project, a namespace with the same name is also created.  In the examples below we'll refer to this namespace as `<your namespace>`.
 
 Ensure you use a namespace that is dedicated to a single instance of ACD.
 
 **Important**: Do not use any of the default or system namespaces to install an instance of ACD (some examples of these are: default, kube-system, kube-public, and openshift-operators).
 
-## Setting up ACD Service optional dependencies
+## Setting up ACD service optional dependencies
 
-***
-
-### Setting up S3-based Configuration Storage
-
-***
+### Setting up S3-based configuration storage
 
 If the deployment will use S3-based storage, the S3 credentials need to be inserted into the ACD operand namespace as secrets.
 
 ```
 echo '<cos_id>' | tr -d '\n' > username
 echo '<cos_secret>' | tr -d '\n' > password
-oc create secret generic ibm-wh-acd-as \
-    --namespace <namespace> \
+oc create secret generic merative-acd-as \
+    --namespace <your namespace> \
     --from-file=username \
     --from-file=password
 ```
 
-***
-
-### Setting up File-based Storage Configuration Persistent Volume and Claim Setup
-
-***
+### Setting up file-based storage configuration persistent volume and claim setup
 
 If the deployment will use persistent file-based storage, the Persistent Volume (PV) and Persistent Volume Claim (PVC) must be created.
 
@@ -49,7 +41,7 @@ If you are deploying more than one instance of ACD, each deployment is required 
 
 We have tested two methods for providing a shared filesystem for storing ACD persistent data.
 
-- [Openshift Container Storage (OCS)](#create-ocs)
+- [OpenShift Container Storage (OCS)](#create-ocs)
 - [NFS](#create-nfs)
 
 Create the shared file system using the platform's tools with encryption enabled. It is recommended to have a minimum of 10 gigabyte of free space within the file system for configuration storage. Access mode must be set to ReadWriteMany (RWX).
@@ -58,35 +50,35 @@ Create the shared file system using the platform's tools with encryption enabled
 
 #### Creating an OCS (cephfs) shared filesystem
 
-1. Install OCS from the Operator Catalog.  This will install the cephfs storage class.  You must provide a block storage class for OCS to use.
+1. Install OCS from the operator catalog.  This will install the cephfs storage class.  You must provide a block storage class for OCS to use.
 
-1. In the ACD namespace, manually create the ACD persistent volume claim from the example ibm-wh-acd-config-storage-cephfs-pvc.yaml file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
+1. In the ACD namespace, manually create the ACD persistent volume claim from the example "merative-acd-config-storage-cephfs-pvc.yaml" file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
 
     ```
-    oc create -n <your namespace> -f ibm-wh-acd-config-storage-cephfs-pvc.yaml
+    oc create -n <your namespace> -f merative-acd-config-storage-cephfs-pvc.yaml
     ```
 
-    <br/>Example PVC file ibm-wh-acd-config-storage-cephfs-pv.yaml
+    <br/>Example:  PVC file "merative-acd-config-storage-cephfs-pv.yaml"
 
-    ```yaml ibm-wh-acd-config-storage-cephfs-pvc.yaml
+    ```yaml merative-acd-config-storage-cephfs-pvc.yaml
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
-      name: ibm-wh-acd-config-storage-cephfs-pvc
-      spec:
-        accessModes:
-        - ReadWriteMany
-        resources:
-          requests:
-            storage: 10Gi
-        storageClassName: ocs-storagecluster-cephfs
-        volumeMode: Filesystem
+      name: merative-acd-config-storage-cephfs-pvc
+    spec:
+      accessModes:
+      - ReadWriteMany
+      resources:
+        requests:
+          storage: 10Gi
+      storageClassName: ocs-storagecluster-cephfs
+      volumeMode: Filesystem
       ```
 
 1. Determine the name of the generated persistent volume that is bound to your PVC.  The PV name starts with 'pvc-'
 
       ```
-      oc get pvc -n <acd namespace>
+      oc get pvc -n <your namespace>
       ```
 
 1. Patch the generated persistent volume to change the `persistentVolumeReclaimPolicy` to `Retain` so the volume does not get deleted if the PVC is deleted.
@@ -95,16 +87,16 @@ Create the shared file system using the platform's tools with encryption enabled
       oc patch pv <dynamic-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
       ```
 
-1. Continue to the [Shared File System Preparation](#shared-prep) step below.
+1. Continue to the [Shared file system preparation](#shared-prep) step below.
 
-#### OCS Persistent Volume and Claim Removal
+#### OCS persistent volume and claim removal
 
 WARNING: Removing an OCS persistent volume will delete any data stored in that PV.
 
 To remove the persistent volume and claim, run the following commands:
 
 ```
-oc delete pvc ibm-wh-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
+oc delete pvc merative-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
 oc delete pv <dynamic-pv-name>
 ```
 
@@ -115,18 +107,18 @@ oc delete pv <dynamic-pv-name>
 1. Create the persistent volume for NFS
 
     ```
-    oc create -f ibm-wh-acd-config-storage-nfs-pv.yaml
+    oc create -f merative-acd-config-storage-nfs-pv.yaml
     ```
 
     Note: The path to the NFS volume must be unique for each ACD instance.
 
-    <br/>Example NFS PV file ibm-wh-acd-config-storage-nfs-pv.yaml
+    <br/>Example:  NFS PV file "merative-acd-config-storage-nfs-pv.yaml"
 
-    ```yaml ibm-wh-acd-config-storage-nfs-pv.yaml
+    ```yaml merative-acd-config-storage-nfs-pv.yaml
     apiVersion: v1
     kind: PersistentVolume
     metadata:
-      name: ibm-wh-acd-config-storage-nfs-pv
+      name: merative-acd-config-storage-nfs-pv
     spec:
       capacity:
         storage: 10Gi
@@ -142,16 +134,16 @@ oc delete pv <dynamic-pv-name>
 1. Create the persistent volume claim for NFS
 
     ```
-    oc create -f ibm-wh-acd-config-storage-nfs-pvc.yaml -n <your namespace>
+    oc create -f merative-acd-config-storage-nfs-pvc.yaml -n <your namespace>
     ```
 
-    <br/>Example NFS PVC file ibm-wh-acd-config-storage-nfs-pvc.yaml
+    <br/>Example:  NFS PVC file "merative-acd-config-storage-nfs-pvc.yaml"
 
-    ```yaml ibm-wh-acd-config-storage-nfs-pvc.yaml
+    ```yaml merative-acd-config-storage-nfs-pvc.yaml
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
-      name: ibm-wh-acd-config-storage-nfs-pvc
+      name: merative-acd-config-storage-nfs-pvc
     spec:
       accessModes:
         - ReadWriteMany
@@ -159,21 +151,21 @@ oc delete pv <dynamic-pv-name>
         requests:
           storage: 10Gi
       volumeMode: Filesystem
-      volumeName: ibm-wh-acd-config-storage-nfs-pv
+      volumeName: merative-acd-config-storage-nfs-pv
     ```
 
-#### NFS Persistent Volume and Claim Removal
+#### NFS persistent volume and claim removal
 
 To remove the persistent volume and claim, run the following:
 
 ```
-oc delete pvc ibm-wh-acd-config-storage-nfs-pvc -n <your namespace>
-oc delete pv ibm-wh-acd-config-storage-nfs-pv
+oc delete pvc merative-acd-config-storage-nfs-pvc -n <your namespace>
+oc delete pv merative-acd-config-storage-nfs-pv
 ```
 
 <a name="shared-prep"></a>
 
-### Shared File System Preparation
+### Shared file system preparation
 
 Once the shared file system is created, the top-level directory should be empty and its GID set to 0 (root) with group `rwx` permissions.  This is required to allow the ACD services write access when running with a restricted SCC.  If the shared file system requires a GID other than zero, you must also set the `Supplemental Group ID` parameter in the `File Storage -> PVC` section during the ACD instance creation.  
 

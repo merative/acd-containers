@@ -34,7 +34,7 @@ You can use the Annotator for Clinical Data Configuration Editor to [customize a
 
 ## Models
 
-Each model contributes contextual features to annotations that are either produced by standard IBM Clinical Data Annotator annotators or from custom annotations you create using the Annotator for Clinical Data Configuration Editor.  The Clinical Insights Models include:
+Each model contributes contextual features to annotations that are either produced by standard Annotator for Clinical Data annotators or from custom annotations you create using the Annotator for Clinical Data Configuration Editor.  The Clinical Insights Models include:
 
 1. [Medication](/clouddocs/clinical_insights_medication/)
 2. [Procedure](/clouddocs/annotator_procedure/)
