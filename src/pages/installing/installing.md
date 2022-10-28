@@ -63,7 +63,21 @@ In order for ACD images to be pulled from the ACD registry, a pull secret must b
 
 #### Option 1: OpenShift global pull secret installation
 
-To add the pull secret to the OpenShift global pull secret:
+Add the pull secret to the OpenShift global pull secret via the OpenShift web console or oc command line.
+
+Adding a global pull secret using the OpenShift web console.  This method is much less error prone.
+
+1. Use the RedHat OpenShift Container Platform web console and select `Workloads -> Secrets` in the `openshift-config` project.
+
+1. Select the `pull-secret` object from the list of secrets.
+
+1. Select `Actions -> Edit Secret` to bring up the secret editor for this secret.
+
+1. Edit an existing credential for your registry if it already exists or Select `Add credentials` at the bottom and fill in the new pull secret credentials.
+
+   ![Example Pull Secret](../../images/merative-pull-secret-example.png)
+
+Adding a global pull secret using the oc command line:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`
 
