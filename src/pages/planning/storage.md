@@ -23,9 +23,11 @@ File-based storage is most often used with on-premise cloud-based clusters based
 
 It is recommended to have a minimum of 10 gigabytes of free space within the file system for configuration storage.
 
+See the [Configuration](../../management/configuring) section for enabling file storage using a persistent volume and the [Setting up file-based storage configuration persistent volume and claim setup](../../installing/setup-namespace/#setting-up-file-based-storage-configuration-persistent-volume-and-claim-setup) section for detailed setup instructions.
+
 ## Object storage configuration
 
-See the [Configuration](../../management/configuring) section for enabling object storage.
+See the [Configuration](../../management/configuring) section for enabling object storage and the [Setting up S3-based configuration storage](../../installing/setup-namespace/#setting-up-s3-based-configuration-storage) section for secret setup using the S3 credentials.
 
 ### IBM Cloud Object Storage (COS)
 
