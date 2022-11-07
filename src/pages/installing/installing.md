@@ -28,7 +28,8 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain your ACD registry credentials](/installing/installing/#obtain-acd-registry-credentials) and [verify your access](/installing/installing/#verifying-acd-registry-access) to the ACD registry.
+- Purchase ACD to [obtain your ACD registry credentials](/installing/installing/#obtain-acd-registry-credentials).
+- Log in to [verify ACD registry access](/installing/installing/#verifying-acd-registry-access).
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment.
@@ -48,11 +49,19 @@ Before setting up the pull secret, verify your credentials can access the ACD re
 Example (Docker with ACD registry credentials):
 
 ```
-docker login acdcontaineredition.azurecr.io --username <username> --password <password>
+docker login acdcontaineredition.azurecr.io --username <username>
 ```
 
 - where `<username>` is the service principal's application (client) ID
-- where `<password>` is the service principal's password (client secret)
+- where `Password:` is the service principal's password (client secret); entered the password when prompted for it
+
+Verify access by pulling that latest catalog image from the registry.
+
+```
+docker pull acdcontaineredition.azurecr.io/acd-ce/merative-acd-operator-catalog:latest
+```
+
+Confirm the image was successfully downloaded.
 
 ### ACD registry pull secret
 
