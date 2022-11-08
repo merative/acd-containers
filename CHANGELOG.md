@@ -6,7 +6,7 @@ See Annotator for Clinical Data [release notes](https://github.com/merative/acd-
 
 ## Releases from Merative
 
-## v2.0 - build TBD
+## v2.0 - build v2.0.202210180304
 
 - Initial release of Merative Annotator for Clinical Data Container Edition
 

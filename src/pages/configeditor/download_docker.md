@@ -164,7 +164,7 @@ Sign on to the container registry with the credentials provided when the product
 Now to start the acd-ce processes (i.e. the Docker containers), run the following command:<br/>
   `./run-acd-ce.sh`
 
-This command will stop any running containers, remove any old images, load the current images and start the Docker containers.
+This command will stop any running containers, remove any old images, load the current images and start the Docker containers.  The command is complete once all the containers are started and you are returned to the command prompt.
 
 To restart the acd-ce processes with the latest configuration from `acd-ce.properties`, you can use:<br/>
   `./run-acd-ce.sh -restart`

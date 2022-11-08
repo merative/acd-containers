@@ -28,7 +28,8 @@ Installing ACD has three phases:
 ## Before you begin
 
 - [Plan for your installation](/planning/namespace/), such as preparing for persistent storage, considering security options, and planning for performance and capacity.
-- [Obtain your ACD registry credentials](/installing/installing/#obtain-acd-registry-credentials) and [verify your access](/installing/installing/#verifying-acd-registry-access) to the ACD registry.
+- Purchase ACD to [obtain your ACD registry credentials](/installing/installing/#obtain-acd-registry-credentials).
+- Log in to [verify ACD registry access](/installing/installing/#verifying-acd-registry-access).
 - Set up your environment according to the [prerequisites](/installing/prereqs/), including setting up your OpenShift Container Platform.
 - Obtain the connection details for your OpenShift Container Platform cluster from your administrator.
 - [Set up](/installing/setup-namespace/) your project and project dependencies if required for your environment.
@@ -48,11 +49,19 @@ Before setting up the pull secret, verify your credentials can access the ACD re
 Example (Docker with ACD registry credentials):
 
 ```
-docker login acdcontaineredition.azurecr.io --username <username> --password <password>
+docker login acdcontaineredition.azurecr.io --username <username>
 ```
 
 - where `<username>` is the service principal's application (client) ID
-- where `<password>` is the service principal's password (client secret)
+- where `Password:` is the service principal's password (client secret); entered the password when prompted for it
+
+Verify access by pulling that latest catalog image from the registry.
+
+```
+docker pull acdcontaineredition.azurecr.io/acd-ce/merative-acd-operator-catalog:latest
+```
+
+Confirm the image was successfully downloaded.
 
 ### ACD registry pull secret
 
@@ -63,7 +72,21 @@ In order for ACD images to be pulled from the ACD registry, a pull secret must b
 
 #### Option 1: OpenShift global pull secret installation
 
-To add the pull secret to the OpenShift global pull secret:
+Add the pull secret to the OpenShift global pull secret via the OpenShift web console or oc command line.
+
+Adding a global pull secret using the OpenShift web console.  This method is much less error prone.
+
+1. Use the RedHat OpenShift Container Platform web console and select `Workloads -> Secrets` in the `openshift-config` project.
+
+1. Select the `pull-secret` object from the list of secrets.
+
+1. Select `Actions -> Edit Secret` to bring up the secret editor for this secret.
+
+1. Edit an existing credential for your registry if it already exists or Select `Add credentials` at the bottom and fill in the new pull secret credentials.
+
+   ![Example Pull Secret](../../images/merative-pull-secret-example.png)
+
+Adding a global pull secret using the oc command line:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`
 
