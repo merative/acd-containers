@@ -51,7 +51,7 @@ ACD runtime exceptions | `kubernetes.container_name:"merative-acd-*" AND excepti
   a. Red Hat OpenShift logging operator
   b. OpenShift Elasticsearch operator
   
-Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging\u2019s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
+Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging's Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
 Log in to your OpenShift platform to create cluster log forwarder as shown below: ![cluster-log-forwarder](../../images/cluster_log_fwd.PNG)
@@ -293,6 +293,8 @@ ACD provides various prometheus metrics to help monitor ACD requests.
 | ibm_clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
 | ibm_clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in characters. |
 | ibm_clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
+
+Note: The labels available for each metric can be displayed by running a query on just the metric name.
 
 ### Example prometheus ACD queries
 
