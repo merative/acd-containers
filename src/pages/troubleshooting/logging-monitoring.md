@@ -40,7 +40,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 * To filter out logs for automated verification testing that occurs during pod startup, add `NOT  "\"correlationId\"\:\"junit-*"` to the query string.
 * If your cluster contains multiple deployments of ACD in different namespaces, add `AND kubernetes.namespace_name:"<namespace>"` to view the logs for only one deployment.
 * To view logs filtered by correlationId, include `"\"correlationId\":\"<correlation_id>\""`.
-* In a multi-tenant ACD depoyment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
+* In a multi-tenant ACD deployment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
 
 ### Enabling JSON logging for OpenShift Container Platform
 
@@ -81,7 +81,7 @@ spec:
 * In the above snippet of code, we are making use of `structuredTypeKey` to create index in Kibana. The new index will be created as "app-{app_kubernetes_io/part-of}".
 * In the above case, the value of "app_kubernetes_io/part-of" is "ibm-wh-acd". The index will be created as "app-ibm-wh-acd".
 * Once the new index is created using the Custom Log Forwarder, log in to Kibana and create the index pattern with the name matching as "app-ibm-wh-acd-*" as shown below: ![Create-Index-Pattern](../../images/index_pattern.PNG)
-* Once you browse to the dicsover screen, select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in below: ![Structured-JSON](../../images/converted_json.png)
+* Once you browse to the discover screen, select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in below: ![Structured-JSON](../../images/converted_json.png)
 * As the logs are now converted to JSON, you can use the fields in the visualizations/dashboards as per the requirement.
 * Here is the Custom Dashboard that can be useful to analyze your data:
 
@@ -209,7 +209,7 @@ ACD runtime exceptions | `app:ibm-wh-acd exception`
 * To filter out logs for automated verification testing that occurs during pod startup, add `-mdc.correlationId:junit` to the query string.
 * If your cluster contains multiple deployments of ACD in different namespaces, add `namespace:<namespace>` to view the logs for only one deployment.
 * To view logs filtered by correlationId, include `mdc.correlationId:<correlation_id>`.
-* In a multi-tenant ACD depoyment, add `mdc.tenantId:<tenant_id>` to see only log entries related to a specific tenant.
+* In a multi-tenant ACD deployment, add `mdc.tenantId:<tenant_id>` to see only log entries related to a specific tenant.
 
 ### Other logging solutions
 
@@ -243,7 +243,7 @@ The command opens a bash session within the pod.
 
 ACD provides various prometheus metrics to help monitor ACD requests.
 
-#### Steps to enable Openshift user-defined monitoring
+#### Steps to enable OpenShift user-defined monitoring
 
 - Read OpenShift monitoring overview
 
