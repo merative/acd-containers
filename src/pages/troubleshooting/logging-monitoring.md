@@ -11,6 +11,7 @@ You can monitor status or troubleshoot issues with your installation in the foll
 * View the ACD logs by configuring a logging dashboard
 * View pod status and logs
 * Log in to a pod to investigate its status
+* Enabling ACD prometheus metrics
 
 ## Configuring a logging dashboard
 
@@ -50,7 +51,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
   a. Red Hat OpenShift logging operator
   b. OpenShift Elasticsearch operator
   
-Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging’s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
+Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging\u2019s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
 Log in to your OpenShift platform to create cluster log forwarder as shown below: ![cluster-log-forwarder](../../images/cluster_log_fwd.PNG)
@@ -237,3 +238,75 @@ Like any other Docker container, when a pod is in running status, you can log in
 `kubectl exec -it <pod-name> -n <namespace> /bin/bash`
 
 The command opens a bash session within the pod.
+
+## Enabling ACD prometheus metrics
+
+ACD provides various prometheus metrics to help monitor ACD requests.
+
+### ACD Metrics
+
+| Metric Name | Type | Description |
+| ----------- | ---- | ----------- |
+| ibm_clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
+| ibm_clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
+| ibm_clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in bytes. |
+| ibm_clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
+
+### Steps to enable Openshift user-defined monitoring
+
+- Read OpenShift monitoring overview<br>
+https://docs.openshift.com/container-platform/4.9/monitoring/monitoring-overview.html
+- Enable OpenShift user-defined monitoring in the ACD namespace<br>
+https://docs.openshift.com/container-platform/4.9/monitoring/enabling-monitoring-for-user-defined-projects.html
+- Review instructions on how to create a PodMonitor object in your ACD namespace<br>
+https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics
+
+- Create the ACD Pod Monitor object using this command and file.
+
+    `oc apply -n <namespace> -f acd-pod-monitor.yaml`
+
+```yaml acd-pod-monitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    k8s-app: prometheus-acd-monitor
+  name: prometheus-acd-monitor
+spec:
+  podMetricsEndpoints:
+    - interval: 30s
+      path: services/clinical_data_annotator/api/v1/metrics
+      port: acd-https
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: merative-acd-acd
+```
+
+### Example prometheus ACD queries
+
+Monitor ACD metrics from the OpenShift web console using `Observe -> Metrics` or your custom Prometheus or Grafana application.
+
+- Request rate by pod (requests per second, 5 minute sample)<br>
+    ```sum by(pod)(rate(ibm_clinical_data_annotator_api_calls_count[5m]))```
+- Request rate by pod with namespace filter<br>
+    Use this filter if you have multiple instances of ACD installed.<br>
+    ```sum by (pod)(rate(ibm_clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))```
+- Total request rate<br>
+    ```sum(rate(ibm_clinical_data_annotator_api_calls_count[5m]))```
+- Average request size<br>
+    ```avg(ibm_clinical_data_annotator_api_request_size_bytes)```
+- Total request size<br>
+    ```sum(ibm_clinical_data_annotator_api_request_size_bytes)```
+- Concurrent requests by pod<br>
+    ```sum by(pod)(ibm_clinical_data_annotator_api_concurrency_count)```
+- Total concurrent requests<br>
+    ```sum(ibm_clinical_data_annotator_api_concurrency_count)```
+- Response count by return code<br>
+    ```sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count)```
+- Total response count with 5xx return codes<br>
+    ```sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count{ibm_acd_api_rc=~"5.."})```
+- Average response time by uri<br>
+    ```avg by (ibm_acd_api_resource)(ibm_clinical_data_annotator_api_time_seconds)```
