@@ -29,12 +29,12 @@ The OpenShift cluster logging operator allows for deploying an Elasticsearch, Fl
 
 View | Lucene Query
 ----------------------------|-----------------------------
-All ACD logs  | `kubernetes.container_name:ibm-wh-acd-*`
-All non-status API calls| `kubernetes.container_name:"ibm-wh-acd-acd" AND "api_time" NOT "\"resource\"\:\"status\""`
-ALL Analyze API calls | `kubernetes.container_name:"ibm-wh-acd-acd" AND "\"resource\":\"analyze\"" AND "\"api_verb\":\"POST\""`
-ACD 5XX responses |   `kubernetes.container_name:"ibm-wh-acd-acd" AND "\"api_rc\":500" OR "\"api_rc\"\:501" OR "\"api_rc\"\:503" OR "\"api_rc\"\:504"`
-ACD 4XX responses (user errors)  | `kubernetes.container_name:"ibm-wh-acd-acd" AND "\"api_rc\":400" OR "\"api_rc\"\:403" OR "\"api_rc\"\:404" OR "\"api_rc\"\:409" OR "\"api_rc\"\:413"`
-ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception`
+All ACD logs  | `kubernetes.container_name:merative-acd-*`
+All non-status API calls| `kubernetes.container_name:"merative-acd-acd" AND "api_time" NOT "\"resource\"\:\"status\""`
+ALL Analyze API calls | `kubernetes.container_name:"merative-acd-acd" AND "\"resource\":\"analyze\"" AND "\"api_verb\":\"POST\""`
+ACD 5XX responses |   `kubernetes.container_name:"merative-acd-acd" AND "\"api_rc\":500" OR "\"api_rc\"\:501" OR "\"api_rc\"\:503" OR "\"api_rc\"\:504"`
+ACD 4XX responses (user errors)  | `kubernetes.container_name:"merative-acd-acd" AND "\"api_rc\":400" OR "\"api_rc\"\:403" OR "\"api_rc\"\:404" OR "\"api_rc\"\:409" OR "\"api_rc\"\:413"`
+ACD runtime exceptions | `kubernetes.container_name:"merative-acd-*" AND exception`
 
 * To filter out logs for automated verification testing that occurs during pod startup, add `NOT  "\"correlationId\"\:\"junit-*"` to the query string.
 * If your cluster contains multiple deployments of ACD in different namespaces, add `AND kubernetes.namespace_name:"<namespace>"` to view the logs for only one deployment.
@@ -49,7 +49,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
 2. In your OpenShift project, make sure that you install below operators:
   a. Red Hat OpenShift logging operator
   b. OpenShift Elasticsearch operator
-  
+
 Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging’s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
@@ -78,8 +78,8 @@ spec:
 * `structuredTypeKey (string, optional)` is the name of a message field. The value of that field, if present, is used to construct the index name.
 * The value of `structuredTypeKey` prefixes with "kubernetes.labels.key". In this case, the value of "key" is "app_kubernetes_io/part-of".
 * In the above snippet of code, we are making use of `structuredTypeKey` to create index in Kibana. The new index will be created as "app-{app_kubernetes_io/part-of}".
-* In the above case, the value of "app_kubernetes_io/part-of" is "ibm-wh-acd". The index will be created as "app-ibm-wh-acd".
-* Once the new index is created using the Custom Log Forwarder, log in to Kibana and create the index pattern with the name matching as "app-ibm-wh-acd-*" as shown below: ![Create-Index-Pattern](../../images/index_pattern.PNG)
+* In the above case, the value of "app_kubernetes_io/part-of" is "merative-acd". The index will be created as "app-merative-acd".
+* Once the new index is created using the Custom Log Forwarder, log in to Kibana and create the index pattern with the name matching as "app-merative-acd-*" as shown below: ![Create-Index-Pattern](../../images/index_pattern.PNG)
 * Once you browse to the dicsover screen, select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in below: ![Structured-JSON](../../images/converted_json.png)
 * As the logs are now converted to JSON, you can use the fields in the visualizations/dashboards as per the requirement.
 * Here is the Custom Dashboard that can be useful to analyze your data:
@@ -198,12 +198,12 @@ A ROKS cluster can be configured to automatically forward cluster to logs to an 
 
 View | Log Analysis Query
 ----------------------------|-----------------------------
-All ACD logs  | `app:ibm-wh-acd`
-All non-status API calls| `app:ibm-wh-acd api_time:* -resource:status`
-ALL Analyze API calls | `app:ibm-wh-acd-acd resource:ANALYZE api_verb:POST`
-ACD 5XX Responses |   `app:ibm-wh-acd api_rc:>499`
-ACD 4XX Responses (user errors)  | `app:ibm-wh-acd api_rc:>399 api_rc:<500`
-ACD runtime exceptions | `app:ibm-wh-acd exception`
+All ACD logs  | `app:merative-acd`
+All non-status API calls| `app:merative-acd api_time:* -resource:status`
+ALL Analyze API calls | `app:merative-acd-acd resource:ANALYZE api_verb:POST`
+ACD 5XX Responses |   `app:merative-acd api_rc:>499`
+ACD 4XX Responses (user errors)  | `app:merative-acd api_rc:>399 api_rc:<500`
+ACD runtime exceptions | `app:merative-acd exception`
 
 * To filter out logs for automated verification testing that occurs during pod startup, add `-mdc.correlationId:junit` to the query string.
 * If your cluster contains multiple deployments of ACD in different namespaces, add `namespace:<namespace>` to view the logs for only one deployment.
