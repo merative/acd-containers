@@ -243,14 +243,19 @@ The command opens a bash session within the pod.
 
 ACD provides various prometheus metrics to help monitor ACD requests.
 
-### Steps to enable Openshift user-defined monitoring
+#### Steps to enable Openshift user-defined monitoring
 
-- Read OpenShift monitoring overview<br>
-https://docs.openshift.com/container-platform/4.9/monitoring/monitoring-overview.html
-- Enable OpenShift user-defined monitoring in the ACD namespace<br>
-https://docs.openshift.com/container-platform/4.9/monitoring/enabling-monitoring-for-user-defined-projects.html
-- Review instructions on how to create a PodMonitor object in your ACD namespace<br>
-https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics
+- Read OpenShift monitoring overview
+
+    https://docs.openshift.com/container-platform/4.9/monitoring/monitoring-overview.html
+
+- Enable OpenShift user-defined monitoring in the ACD namespace
+
+    https://docs.openshift.com/container-platform/4.9/monitoring/enabling-monitoring-for-user-defined-projects.html
+
+- Review instructions on how to create a PodMonitor object in your ACD namespace
+
+    https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics
 
 - Create the ACD Pod Monitor object using this command and file.
 
@@ -258,7 +263,7 @@ https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.ht
     oc apply -n <namespace> -f acd-pod-monitor.yaml
     ```
 
-    Example acd-pod-monitor.yaml file
+    <br/>Example acd-pod-monitor.yaml file
 
     ```yaml acd-pod-monitor.yaml
     apiVersion: monitoring.coreos.com/v1
@@ -292,25 +297,43 @@ https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.ht
 ### Example prometheus ACD queries
 
 Monitor ACD metrics from the OpenShift web console using `Observe -> Metrics` or your custom Prometheus or Grafana application.
-
-- Request rate by pod (requests per second, 5 minute sample)<br>
-    ```sum by(pod)(rate(ibm_clinical_data_annotator_api_calls_count[5m]))```
-- Request rate by pod with namespace filter<br>
-    Use this filter if you have multiple instances of ACD installed.<br>
-    ```sum by (pod)(rate(ibm_clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))```
-- Total request rate<br>
-    ```sum(rate(ibm_clinical_data_annotator_api_calls_count[5m]))```
-- Average request size<br>
-    ```avg(ibm_clinical_data_annotator_api_request_size_bytes)```
-- Total request size<br>
-    ```sum(ibm_clinical_data_annotator_api_request_size_bytes)```
-- Concurrent requests by pod<br>
-    ```sum by(pod)(ibm_clinical_data_annotator_api_concurrency_count)```
-- Total concurrent requests<br>
-    ```sum(ibm_clinical_data_annotator_api_concurrency_count)```
-- Response count by return code<br>
-    ```sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count)```
-- Total response count with 5xx return codes<br>
-    ```sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count{ibm_acd_api_rc=~"5.."})```
-- Average response time by uri<br>
-    ```avg by (ibm_acd_api_resource)(ibm_clinical_data_annotator_api_time_seconds)```
+- Request rate by pod (requests per second, 5 minute sample)
+    ```
+    sum by(pod)(rate(ibm_clinical_data_annotator_api_calls_count[5m]))
+    ```
+- Request rate by pod with namespace filter. Use this filter if you have multiple instances of ACD installed.
+    ```
+    sum by (pod)(rate(ibm_clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))
+    ```
+- Total request rate
+    ```
+    sum(rate(ibm_clinical_data_annotator_api_calls_count[5m]))
+    ```
+- Average request size
+    ```
+    avg(ibm_clinical_data_annotator_api_request_size_bytes)
+    ```
+- Total request size
+    ```
+    sum(ibm_clinical_data_annotator_api_request_size_bytes)
+    ```
+- Concurrent requests by pod
+    ```
+    sum by(pod)(ibm_clinical_data_annotator_api_concurrency_count)
+    ```
+- Total concurrent requests
+    ```
+    sum(ibm_clinical_data_annotator_api_concurrency_count)
+    ```
+- Response count by return code
+    ```
+    sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count)
+    ```
+- Total response count with 5xx return codes
+    ```
+    sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count{ibm_acd_api_rc=~"5.."})
+    ```
+- Average response time by uri
+    ```
+    avg by (ibm_acd_api_resource)(ibm_clinical_data_annotator_api_time_seconds)
+    ```
