@@ -243,15 +243,6 @@ The command opens a bash session within the pod.
 
 ACD provides various prometheus metrics to help monitor ACD requests.
 
-### ACD Metrics
-
-| Metric Name | Type | Description |
-| ----------- | ---- | ----------- |
-| ibm_clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
-| ibm_clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
-| ibm_clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in bytes. |
-| ibm_clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
-
 ### Steps to enable Openshift user-defined monitoring
 
 - Read OpenShift monitoring overview<br>
@@ -263,27 +254,40 @@ https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.ht
 
 - Create the ACD Pod Monitor object using this command and file.
 
-    `oc apply -n <namespace> -f acd-pod-monitor.yaml`
+    ```
+    oc apply -n <namespace> -f acd-pod-monitor.yaml
+    ```
 
-```yaml acd-pod-monitor.yaml
-apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
-metadata:
-  labels:
-    k8s-app: prometheus-acd-monitor
-  name: prometheus-acd-monitor
-spec:
-  podMetricsEndpoints:
-    - interval: 30s
-      path: services/clinical_data_annotator/api/v1/metrics
-      port: acd-https
-      scheme: https
-      tlsConfig:
-        insecureSkipVerify: true
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: merative-acd-acd
-```
+    Example acd-pod-monitor.yaml file
+
+    ```yaml acd-pod-monitor.yaml
+    apiVersion: monitoring.coreos.com/v1
+    kind: PodMonitor
+    metadata:
+    labels:
+        k8s-app: prometheus-acd-monitor
+    name: prometheus-acd-monitor
+    spec:
+    podMetricsEndpoints:
+        - interval: 30s
+        path: services/clinical_data_annotator/api/v1/metrics
+        port: acd-https
+        scheme: https
+        tlsConfig:
+            insecureSkipVerify: true
+    selector:
+        matchLabels:
+        app.kubernetes.io/name: merative-acd-acd
+    ```
+
+### ACD Metrics
+
+| Metric Name | Type | Description |
+| ----------- | ---- | ----------- |
+| ibm_clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
+| ibm_clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
+| ibm_clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in characters. |
+| ibm_clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
 
 ### Example prometheus ACD queries
 
