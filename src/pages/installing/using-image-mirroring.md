@@ -10,11 +10,11 @@ Image mirroring is a technique to pull a container image from one or more regist
 
 - Configure your OpenShift Container Platform cluster to redirect requests to pull images from a repository on a source image registry and have it resolved by a repository on a mirrored image registry.
 - Identify multiple mirrored repositories for each target repository, to make sure that if one mirror is down, another can be used.
-- Enable IBM ACD Container Edition to pull images from the new Merative ACD image registry so IBM ACD will continue to run after December 31, 2022.
+- Enable IBM ACD Container Edition to pull images from the new Merative ACD image registry so IBM ACD will continue to run after March 31, 2023.
 
 See Red Hat OpenShift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
 
-Images for IBM Watson Annotator for Clinical Data (ACD) are available from the IBM Entitled Registry through December, 2022. Images for Merative Annotator for Clinical Data are available from the Merative ACD registry. ACD consumers need to migrate from IBM ACD to Merative ACD by the end of December, 2022. In order to give existing consumers of IBM ACD time to migrate, the most recent versions of IBM ACD images [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) have been mirrored to the Merative ACD registry. ACD consumers using IBM Watson ACD need to either migrate to the Merative ACD or setup mirroring to pull the IBM ACD images from the Merative ACD registry by end of 2022. Credentials for the Merative ACD registry can be used to pull either Merative or IBM ACD images.
+Images for IBM Watson Annotator for Clinical Data (ACD) are available from the IBM Entitled Registry through March 31, 2023. Images for Merative Annotator for Clinical Data are available from the Merative ACD registry. ACD consumers need to migrate from IBM ACD to Merative ACD by March 31, 2023. In order to give existing consumers of IBM ACD time to migrate, the most recent versions of IBM ACD images [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) have been mirrored to the Merative ACD registry. ACD consumers using IBM Watson ACD need to either migrate to the Merative ACD or setup mirroring to pull the IBM ACD images from the Merative ACD registry by March 31, 2023. Credentials for the Merative ACD registry can be used to pull either Merative or IBM ACD images.
 
 In order to use mirrored images, follow these steps to configure container registry and repository image source and mirror locations on your cluster.
 

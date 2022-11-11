@@ -7,7 +7,7 @@ toc: true
 ---
 ## Annotator for Clinical Data (ACD) Container Edition
 
-**PLEASE READ: The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition.  All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022.  Refer to the [Migration](/migration/considerations/) section for more details and instructions.**
+**PLEASE READ: The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition.  All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by March 31, 2023.  Refer to the [Migration](/migration/considerations/) section for more details and instructions.**
 
 ## Details
 
