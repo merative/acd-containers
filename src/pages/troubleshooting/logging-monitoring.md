@@ -273,7 +273,7 @@ ACD provides various prometheus metrics to help monitor ACD requests.
         k8s-app: prometheus-acd-monitor
       name: prometheus-acd-monitor
     spec:
-      podMetricEndpoints:
+      podMetricsEndpoints:
       - interval: 30s
         path: services/clinical_data_annotator/api/v1/metrics
         port: acd-https
