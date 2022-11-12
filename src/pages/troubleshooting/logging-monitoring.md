@@ -269,20 +269,20 @@ ACD provides various prometheus metrics to help monitor ACD requests.
     apiVersion: monitoring.coreos.com/v1
     kind: PodMonitor
     metadata:
-    labels:
+      labels:
         k8s-app: prometheus-acd-monitor
-    name: prometheus-acd-monitor
+      name: prometheus-acd-monitor
     spec:
-    podMetricsEndpoints:
-        - interval: 30s
+      podMetricsEndpoints:
+      - interval: 30s
         path: services/clinical_data_annotator/api/v1/metrics
         port: acd-https
         scheme: https
         tlsConfig:
-            insecureSkipVerify: true
-    selector:
+          insecureSkipVerify: true
+      selector:
         matchLabels:
-        app.kubernetes.io/name: merative-acd-acd
+          app.kubernetes.io/name: merative-acd-acd
     ```
 
 ### ACD Metrics

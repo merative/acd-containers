@@ -6,7 +6,7 @@ slug: namespace
 toc: true
 ---
 
-_Note: All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022.  See [Migration](/migration/considerations/) for more details._
+_Note: All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by March 31, 2023.  See [Migration](/migration/considerations/) for more details._
 
 All Annotator for Clinical Data (ACD) Container Edition resources are namespace-scoped except for the ACD CustomResourceDefinition (CRD) itself. CustomResourceDefinitions are cluster resources and are available to all namespaces.
 
