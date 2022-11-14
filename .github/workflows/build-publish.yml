@@ -1,13 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: ACD-Containers-Build
+name: ACD-Containers-Build-Publish
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master" ]
-  pull_request:
     branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -37,7 +35,7 @@ jobs:
           markdownlint **/*.md
           npm run build
 
-#      - name: Deploy
-#        uses: JamesIves/github-pages-deploy-action@v4
-#        with:
-#          folder: public
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
