@@ -11,6 +11,7 @@ You can monitor status or troubleshoot issues with your installation in the foll
 * View the ACD logs by configuring a logging dashboard
 * View pod status and logs
 * Log in to a pod to investigate its status
+* Enabling ACD prometheus metrics
 
 ## Configuring a logging dashboard
 
@@ -29,17 +30,17 @@ The OpenShift cluster logging operator allows for deploying an Elasticsearch, Fl
 
 View | Lucene Query
 ----------------------------|-----------------------------
-All ACD logs  | `kubernetes.container_name:ibm-wh-acd-*`
-All non-status API calls| `kubernetes.container_name:"ibm-wh-acd-acd" AND "api_time" NOT "\"resource\"\:\"status\""`
-ALL Analyze API calls | `kubernetes.container_name:"ibm-wh-acd-acd" AND "\"resource\":\"analyze\"" AND "\"api_verb\":\"POST\""`
-ACD 5XX responses |   `kubernetes.container_name:"ibm-wh-acd-acd" AND "\"api_rc\":500" OR "\"api_rc\"\:501" OR "\"api_rc\"\:503" OR "\"api_rc\"\:504"`
-ACD 4XX responses (user errors)  | `kubernetes.container_name:"ibm-wh-acd-acd" AND "\"api_rc\":400" OR "\"api_rc\"\:403" OR "\"api_rc\"\:404" OR "\"api_rc\"\:409" OR "\"api_rc\"\:413"`
-ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception`
+All ACD logs  | `kubernetes.container_name:merative-acd-*`
+All non-status API calls| `kubernetes.container_name:"merative-acd-acd" AND "api_time" NOT "\"resource\"\:\"status\""`
+ALL Analyze API calls | `kubernetes.container_name:"merative-acd-acd" AND "\"resource\":\"analyze\"" AND "\"api_verb\":\"POST\""`
+ACD 5XX responses |   `kubernetes.container_name:"merative-acd-acd" AND "\"api_rc\":500" OR "\"api_rc\"\:501" OR "\"api_rc\"\:503" OR "\"api_rc\"\:504"`
+ACD 4XX responses (user errors)  | `kubernetes.container_name:"merative-acd-acd" AND "\"api_rc\":400" OR "\"api_rc\"\:403" OR "\"api_rc\"\:404" OR "\"api_rc\"\:409" OR "\"api_rc\"\:413"`
+ACD runtime exceptions | `kubernetes.container_name:"merative-acd-*" AND exception`
 
 * To filter out logs for automated verification testing that occurs during pod startup, add `NOT  "\"correlationId\"\:\"junit-*"` to the query string.
 * If your cluster contains multiple deployments of ACD in different namespaces, add `AND kubernetes.namespace_name:"<namespace>"` to view the logs for only one deployment.
 * To view logs filtered by correlationId, include `"\"correlationId\":\"<correlation_id>\""`.
-* In a multi-tenant ACD depoyment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
+* In a multi-tenant ACD deployment, add `"\"tenantId\":\"<tenant_id>\""` to see only log entries related to a specific tenant.
 
 ### Enabling JSON logging for OpenShift Container Platform
 
@@ -50,7 +51,7 @@ ACD runtime exceptions | `kubernetes.container_name:"ibm-wh-acd-*" AND exception
   a. Red Hat OpenShift logging operator
   b. OpenShift Elasticsearch operator
   
-Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging’s Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
+Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging's Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
 Log in to your OpenShift platform to create cluster log forwarder as shown below: ![cluster-log-forwarder](../../images/cluster_log_fwd.PNG)
@@ -78,9 +79,9 @@ spec:
 * `structuredTypeKey (string, optional)` is the name of a message field. The value of that field, if present, is used to construct the index name.
 * The value of `structuredTypeKey` prefixes with "kubernetes.labels.key". In this case, the value of "key" is "app_kubernetes_io/part-of".
 * In the above snippet of code, we are making use of `structuredTypeKey` to create index in Kibana. The new index will be created as "app-{app_kubernetes_io/part-of}".
-* In the above case, the value of "app_kubernetes_io/part-of" is "ibm-wh-acd". The index will be created as "app-ibm-wh-acd".
-* Once the new index is created using the Custom Log Forwarder, log in to Kibana and create the index pattern with the name matching as "app-ibm-wh-acd-*" as shown below: ![Create-Index-Pattern](../../images/index_pattern.PNG)
-* Once you browse to the dicsover screen, select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in below: ![Structured-JSON](../../images/converted_json.png)
+* In the above case, the value of "app_kubernetes_io/part-of" is "merative-acd". The index will be created as "app-merative-acd".
+* Once the new index is created using the Custom Log Forwarder, log in to Kibana and create the index pattern with the name matching as "app-merative-acd-*" as shown below: ![Create-Index-Pattern](../../images/index_pattern.PNG)
+* Once you browse to the discover screen, select the index pattern you created above and you will be able to find the logs inside message fields coverted to JSON prefixed as "structured" fields as shown in below: ![Structured-JSON](../../images/converted_json.png)
 * As the logs are now converted to JSON, you can use the fields in the visualizations/dashboards as per the requirement.
 * Here is the Custom Dashboard that can be useful to analyze your data:
 
@@ -198,17 +199,17 @@ A ROKS cluster can be configured to automatically forward cluster to logs to an 
 
 View | Log Analysis Query
 ----------------------------|-----------------------------
-All ACD logs  | `app:ibm-wh-acd`
-All non-status API calls| `app:ibm-wh-acd api_time:* -resource:status`
-ALL Analyze API calls | `app:ibm-wh-acd-acd resource:ANALYZE api_verb:POST`
-ACD 5XX Responses |   `app:ibm-wh-acd api_rc:>499`
-ACD 4XX Responses (user errors)  | `app:ibm-wh-acd api_rc:>399 api_rc:<500`
-ACD runtime exceptions | `app:ibm-wh-acd exception`
+All ACD logs  | `app:merative-acd`
+All non-status API calls| `app:merative-acd api_time:* -resource:status`
+ALL Analyze API calls | `app:merative-acd-acd resource:ANALYZE api_verb:POST`
+ACD 5XX Responses |   `app:merative-acd api_rc:>499`
+ACD 4XX Responses (user errors)  | `app:merative-acd api_rc:>399 api_rc:<500`
+ACD runtime exceptions | `app:merative-acd exception`
 
 * To filter out logs for automated verification testing that occurs during pod startup, add `-mdc.correlationId:junit` to the query string.
 * If your cluster contains multiple deployments of ACD in different namespaces, add `namespace:<namespace>` to view the logs for only one deployment.
 * To view logs filtered by correlationId, include `mdc.correlationId:<correlation_id>`.
-* In a multi-tenant ACD depoyment, add `mdc.tenantId:<tenant_id>` to see only log entries related to a specific tenant.
+* In a multi-tenant ACD deployment, add `mdc.tenantId:<tenant_id>` to see only log entries related to a specific tenant.
 
 ### Other logging solutions
 
@@ -237,3 +238,104 @@ Like any other Docker container, when a pod is in running status, you can log in
 `kubectl exec -it <pod-name> -n <namespace> /bin/bash`
 
 The command opens a bash session within the pod.
+
+## Enabling ACD prometheus metrics
+
+ACD provides various prometheus metrics to help monitor ACD requests.
+
+#### Steps to enable OpenShift user-defined monitoring
+
+- Read OpenShift monitoring overview
+
+    https://docs.openshift.com/container-platform/4.9/monitoring/monitoring-overview.html
+
+- Enable OpenShift user-defined monitoring in the ACD namespace
+
+    https://docs.openshift.com/container-platform/4.9/monitoring/enabling-monitoring-for-user-defined-projects.html
+
+- Review instructions on how to create a PodMonitor object in your ACD namespace
+
+    https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics
+
+- Create the ACD Pod Monitor object using this command and file.
+
+    ```
+    oc apply -n <namespace> -f acd-pod-monitor.yaml
+    ```
+
+    <br/>Example acd-pod-monitor.yaml file
+
+    ```yaml acd-pod-monitor.yaml
+    apiVersion: monitoring.coreos.com/v1
+    kind: PodMonitor
+    metadata:
+      labels:
+        k8s-app: prometheus-acd-monitor
+      name: prometheus-acd-monitor
+    spec:
+      podMetricsEndpoints:
+      - interval: 30s
+        path: services/clinical_data_annotator/api/v1/metrics
+        port: acd-https
+        scheme: https
+        tlsConfig:
+          insecureSkipVerify: true
+      selector:
+        matchLabels:
+          app.kubernetes.io/name: merative-acd-acd
+    ```
+
+### ACD Metrics
+
+| Metric Name | Type | Description |
+| ----------- | ---- | ----------- |
+| ibm_clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
+| ibm_clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
+| ibm_clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in characters. |
+| ibm_clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
+
+Note: The labels available for each metric can be displayed by running a query on just the metric name.
+
+### Example prometheus ACD queries
+
+Monitor ACD metrics from the OpenShift web console using `Observe -> Metrics` or your custom Prometheus or Grafana application.
+- Request rate by pod (requests per second, 5 minute sample)
+    ```
+    sum by(pod)(rate(ibm_clinical_data_annotator_api_calls_count[5m]))
+    ```
+- Request rate by pod with namespace filter. Use this filter if you have multiple instances of ACD installed.
+    ```
+    sum by (pod)(rate(ibm_clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))
+    ```
+- Total request rate
+    ```
+    sum(rate(ibm_clinical_data_annotator_api_calls_count[5m]))
+    ```
+- Average request size
+    ```
+    avg(ibm_clinical_data_annotator_api_request_size_bytes)
+    ```
+- Total request size
+    ```
+    sum(ibm_clinical_data_annotator_api_request_size_bytes)
+    ```
+- Concurrent requests by pod
+    ```
+    sum by(pod)(ibm_clinical_data_annotator_api_concurrency_count)
+    ```
+- Total concurrent requests
+    ```
+    sum(ibm_clinical_data_annotator_api_concurrency_count)
+    ```
+- Response count by return code
+    ```
+    sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count)
+    ```
+- Total response count with 5xx return codes
+    ```
+    sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count{ibm_acd_api_rc=~"5.."})
+    ```
+- Average response time by uri
+    ```
+    avg by (ibm_acd_api_resource)(ibm_clinical_data_annotator_api_time_seconds)
+    ```
