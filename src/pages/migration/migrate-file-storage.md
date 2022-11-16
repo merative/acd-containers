@@ -246,7 +246,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
   For ACD deployments (not the Configuration Editor), create a serviceview role in target namespace and grant all service accounts in the proxy namespace access to it. Follow the steps 7 and 8 under [Manage Access](/security/manage-access/).
 
-  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Follow step 2 under [Manage Access](/security/manage-access/).
+  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Note the service names also changed as part of the migration, for example from `ibm-wh-acd-acd` to `merative-acd-acd`, so be sure to update both the service name and target namespace in the upstream option. Follow step 2 under [Manage Access](/security/manage-access/).
 
 1. Re-enable network access and client traffic to the target namespace.
 
