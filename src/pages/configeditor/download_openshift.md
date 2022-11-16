@@ -244,7 +244,7 @@ items:
 3. Create the proxy's deployment, proxy's service, and proxy's route:<br/>
   `oc create -f merative-acd-ce-oauth.yaml`<br/>
 
-   More options and details for the proxy are available at [OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/docs/).  Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).
+   More options and details for the proxy are available in the [OAuth2 Proxy docs](https://oauth2-proxy.github.io/oauth2-proxy/docs/).  Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).
 
 ### Verification
 
@@ -316,7 +316,7 @@ ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_ca
 
 - `_label` which is the name for the host that will be shown in the Configuration Editor
 - `_url` which is what will be shown in the host description in the Configuration Editor
-- `_proxy` which is the proxy you have configured in your `merative-acd-ce/crtg/chart/crtg/rev-proxy.conf` file mentioned in Step 1 in this section
+- `_proxy` which is the proxy you have configured in your `merative-acd-ce/crtg/chart/crtg/nginx-server.conf` file mentioned in Step 1 in this section
 - `_phi` which is either true or false based on whether this ACD Host can support protected health information
 - `_auth` which specifies the type of authentication the host requires.  The three possible authentication types are:
 
@@ -332,16 +332,13 @@ All configuration data such as cartridges, flows, dictionaries, filters, etc., a
 
 To update to a newer version of the ACD Configuration Editor follow these steps:
 
-1. Back up any customizations in:
-
-`merative-acd-ce/crtg/chart/crtg/rev-proxy.conf`
-`merative-acd-ce/crtg/chart/crtg/values.yaml`
+1. Back up any customizations in the files `merative-acd-ce/crtg/chart/crtg/nginx-server.conf` and `merative-acd-ce/crtg/chart/crtg/values.yaml`.
 
 2. Download the latest project and unpack it as above.
-3. Delete the existing Helm deployments:
+3. Delete the existing Helm deployments using the commands:
 
-`helm delete merative-acd-ce-crtg`
-`helm delete merative-acd-ce-cdc`
+- `helm delete merative-acd-ce-crtg`
+- `helm delete merative-acd-ce-cdc`
 
 4. Merge in any customizations to the new project files.
 
