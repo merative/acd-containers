@@ -12,7 +12,13 @@ Each deployment of the ACD operator and its dependent resources need to be scope
 
 Create a namespace into which the ACD instance will be installed by creating a [project](https://docs.openshift.com/container-platform/4.7/applications/projects/working-with-projects.html).
 
-When you create a project, a namespace with the same name is also created.  In the examples below we'll refer to this namespace as `<your namespace>`.
+When you create a project, a namespace with the same name is also created. In the examples below we'll refer to this namespace as `${acd_namespace}`.
+
+Set an `acd_namespace` variable to make it available for subsequent commands or processes from the command line shell, replacing `<acd_namespace>` with the namespace just created.
+
+```
+export acd_namespace=<acd_namespace>
+```
 
 Ensure you use a namespace that is dedicated to a single instance of ACD.
 
@@ -28,7 +34,7 @@ If the deployment will use S3-based storage, the S3 credentials need to be inser
 echo '<cos_id>' | tr -d '\n' > username
 echo '<cos_secret>' | tr -d '\n' > password
 oc create secret generic merative-acd-as \
-    --namespace <your namespace> \
+    --namespace ${acd_namespace} \
     --from-file=username \
     --from-file=password
 ```
@@ -55,7 +61,7 @@ Create the shared file system using the platform's tools with encryption enabled
 1. In the ACD namespace, manually create the ACD persistent volume claim from the example "merative-acd-config-storage-cephfs-pvc.yaml" file below.  The persistent volume will get dynamically created from the `ocs-storagecluster-cephfs` storage class.
 
     ```
-    oc create -n <your namespace> -f merative-acd-config-storage-cephfs-pvc.yaml
+    oc create -n ${acd_namespace} -f merative-acd-config-storage-cephfs-pvc.yaml
     ```
 
     <br/>Example:  PVC file "merative-acd-config-storage-cephfs-pv.yaml"
@@ -78,7 +84,7 @@ Create the shared file system using the platform's tools with encryption enabled
 1. Determine the name of the generated persistent volume that is bound to your PVC.  The PV name starts with 'pvc-'
 
       ```
-      oc get pvc -n <your namespace>
+      oc get pvc -n ${acd_namespace}
       ```
 
 1. Patch the generated persistent volume to change the `persistentVolumeReclaimPolicy` to `Retain` so the volume does not get deleted if the PVC is deleted.
@@ -96,7 +102,7 @@ WARNING: Removing an OCS persistent volume will delete any data stored in that P
 To remove the persistent volume and claim, run the following commands:
 
 ```
-oc delete pvc merative-acd-config-storage-cephfs-pvc.yaml -n <your namespace>
+oc delete pvc merative-acd-config-storage-cephfs-pvc.yaml -n ${acd_namespace}
 oc delete pv <dynamic-pv-name>
 ```
 
@@ -134,7 +140,7 @@ oc delete pv <dynamic-pv-name>
 1. Create the persistent volume claim for NFS
 
     ```
-    oc create -f merative-acd-config-storage-nfs-pvc.yaml -n <your namespace>
+    oc create -f merative-acd-config-storage-nfs-pvc.yaml -n ${acd_namespace}
     ```
 
     <br/>Example:  NFS PVC file "merative-acd-config-storage-nfs-pvc.yaml"
@@ -159,7 +165,7 @@ oc delete pv <dynamic-pv-name>
 To remove the persistent volume and claim, run the following:
 
 ```
-oc delete pvc merative-acd-config-storage-nfs-pvc -n <your namespace>
+oc delete pvc merative-acd-config-storage-nfs-pvc -n ${acd_namespace}
 oc delete pv merative-acd-config-storage-nfs-pv
 ```
 

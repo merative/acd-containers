@@ -50,7 +50,7 @@ ACD runtime exceptions | `kubernetes.container_name:"merative-acd-*" AND excepti
 2. In your OpenShift project, make sure that you install below operators:
   a. Red Hat OpenShift logging operator
   b. OpenShift Elasticsearch operator
-  
+
 Logs including JSON logs are usually represented as a string inside the message field. That makes it hard for users to query specific fields inside a JSON document. OpenShift Logging's Log Forwarding API enables you to parse JSON logs into a structured object and forward them to either OpenShift Logging-managed Elasticsearch or any other third-party system supported by the Log Forwarding API
 
 * You need to ensure that the OpenShift Logging Operator can parse the JSON data correctly. JSON parsing is possible as of version 5.1 of this operator. You only need to deploy a custom ClusterLogForwarder resource. This will overwrite the Fluentd pods and provide the configuration needed to parse JSON logs.
@@ -223,11 +223,11 @@ To list the objects, run the `oc get` command followed by the types of object to
 
 An example of `oc get`, to list the names and status of the pods in the specified namespace:
 
-`oc get pods -w -n <namespace>`
+`oc get pods -w -n ${acd_namespace}`
 
 When a pod is running, you can read the log of that pod by running the following command:
 
-`oc logs <pod-name> -n <namespace>` where pod-name is the name of the pod you want to query.
+`oc logs <pod-name> -n ${acd_namespace}` where pod-name is the name of the pod you want to query.
 
 You can use the `-f (follow)` option to leave the command open and show the log updating in real time.
 
@@ -235,7 +235,7 @@ You can use the `-f (follow)` option to leave the command open and show the log 
 
 Like any other Docker container, when a pod is in running status, you can log in to it to conduct a more detailed investigation. The commands that you use depend on the pod, but the following command should work because bash is generally available:
 
-`kubectl exec -it <pod-name> -n <namespace> /bin/bash`
+`kubectl exec -it <pod-name> -n ${acd_namespace} /bin/bash`
 
 The command opens a bash session within the pod.
 
@@ -260,7 +260,7 @@ ACD provides various prometheus metrics to help monitor ACD requests.
 - Create the ACD Pod Monitor object using this command and file.
 
     ```
-    oc apply -n <namespace> -f acd-pod-monitor.yaml
+    oc apply -n ${acd_namespace} -f acd-pod-monitor.yaml
     ```
 
     <br/>Example acd-pod-monitor.yaml file
