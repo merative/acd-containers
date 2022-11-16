@@ -137,7 +137,7 @@ To add the pull secret to individual ACD operand service accounts:
        --docker-username=<username> \
        --docker-password=<password> \
        --docker-email=<email_address> \
-       --namespace=<namespace>
+       --namespace=${acd_namespace}
    ```
 
    - `<username>` is the user id for accessing the ACD container registry
@@ -149,7 +149,7 @@ To add the pull secret to individual ACD operand service accounts:
 
    ```
    kubectl patch serviceaccount merative-acd-operand \
-       --namespace <namespace> \
+       --namespace ${acd_namespace} \
        --patch '{"imagePullSecrets": [{"name": "acd-registry-credentials"}]}'
    ```
 
@@ -157,7 +157,7 @@ To add the pull secret to individual ACD operand service accounts:
 
    ```
    kubectl delete pods \
-       --namespace <namespace> \
+       --namespace ${acd_namespace} \
        --all
    ```
 
