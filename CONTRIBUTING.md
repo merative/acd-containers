@@ -70,10 +70,17 @@ git commit -s
 
 ## Setup
 
-Clone the [project](https://github.com/merative/acd-containers) to provide a starting code base.
-
 The project makes use of [Node.js](https://nodejs.org/en/) and [Gatsby](https://www.gatsbyjs.com/docs/) to generate the documentation.
 Please follow the installation instructions starting wtih Node Package Manager from the above links to setup these tools for your development environment.
+
+Clone the [project](https://github.com/merative/acd-containers) to provide a starting code base.
+
+From the base directory run these commands
+```
+npm install
+gatsby develop
+```
+If things worked, the live published output should be published at http://localhost:8000/
 
 ## Testing
 
