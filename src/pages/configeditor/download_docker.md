@@ -142,13 +142,13 @@ Update the properties file with the name of the host your users will be accessin
 
 Note:  If the host name changes (the host used by the browser to get to the system) you'll need to update it in `acd-ce.properties` and restart the acd-ce processes.
 
-In the `acd-ce.properties` file is also the configuration file where configuration data goes. It defaults to `%HOME%/installs/config/`.  You need to change this to a real directory that is read/write for the Docker process user (set below) and should be a directory you will back up.  For example (replace `<user>` with your user name):<br/>
+In the `acd-ce.properties` file is also the configuration file where configuration data goes. It defaults to `%HOME%/acd-ce/installs/config/`.  You need to change this to a real directory that is read/write for the Docker process user (set below) and should be a directory you will back up.  For example (replace `<user>` with your user name):<br/>
   `sed -i 's/%HOME%/\/home\/<user>/g' acd-ce.properties`
 
 Finally, in the `acd-ce.properties` file, is the user and group that Docker will start the containers as.  It is defined near the top on a line that starts with something similar to this:<br/>
   `com_ibm_watson_health_common_docker_user=<userid>:<groupid>;\`
 
-Edit this line in the file.  The `<userid>` should be a user id on your local system that has RWX permission to the `installs/config` target directory defined above.  The group should be set to `0`.
+Edit this line in the file.  The `<userid>` should be a user id on your local system that has RWX permission to the `acd-ce/installs/config` target directory defined above.  The group should be set to `0`.
 
 The user can be a uid (the id of the user, e.g., `1001`, or your own user id which you can get by using the `id` command on Linux).
 
@@ -266,7 +266,7 @@ com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
 
 ## Backing up your data
 
-All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the `%HOME%/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
+All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the `%HOME%/acd-ce/installs/config/artifactstore/` directory on the local machine. This is set in the `acd-ce.properties` file and you can change this as needed.   Back this directory up often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
 
 ## Stopping the Configuration Editor
 
@@ -286,7 +286,7 @@ To update to a newer version of the ACD Configuration Editor, follow these steps
   `rm -r keystore`
   `rm -r truststore`
 5. Sign on to the container registry with the credentials provided when the product was purchased.<br/>
-  `Docker login acdcontaineredition.azurecr.io -u <application-ID> -p <password>`
+  `docker login acdcontaineredition.azurecr.io -u <application-ID> -p <password>`
 
 6. Back in the `acd-ce` directory where the tar file was unpacked to, run `./run-acd-ce.sh` to update all the images and restart the containers with the latest build and your modified properties file.
 

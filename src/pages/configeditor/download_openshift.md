@@ -33,7 +33,7 @@ The ACD Configuration Editor hardware prerequisites are in addition to those req
 |:----------|------------------------|----------|-----------------|
 | ACD Configuration Editor | 3 (In addition to those for ACD Container Edition) | 8 | 32 |
 
-For high availability, run 3 replicas of the ACD Configuration Editor on a minimum of 3 worker nodes (in addition to those for the ACD sandbox instance).  For a development or test environment, 1 or 2 replicas can be configured.
+2 replicas are recommended for the two ACD Configuration Editor deployments, the Cartridge service and Dictionary service.
 
 ### Software Prerequisites
 
@@ -145,7 +145,7 @@ spec:
 
 ### Option 2: Identity Provider authentication
 
-There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using [OIDC](https://en.wikipedia.org/wiki/OpenID) with [OpenShift OAuth 2.0 Proxy](https://github.com/openshift/oauth-proxy).
+There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using [OIDC](https://en.wikipedia.org/wiki/OpenID) with the [standard OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/).
 
 1. Create a project/namespace for the proxy and set the current namespace to it. For the remainder of this document, we will use the example `merative-acd-ce-oauth`.
    - `oc create namespace merative-acd-ce-oauth`
@@ -244,7 +244,7 @@ items:
 3. Create the proxy's deployment, proxy's service, and proxy's route:<br/>
   `oc create -f merative-acd-ce-oauth.yaml`<br/>
 
-   More options and details for the proxy are available at [OpenShift OAuth Proxy](https://github.com/openshift/oauth-proxy#openshift-oauth-proxy).  Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).  More details and options such as secret generation and cookie expiration are defined in the base [OAuth proxy](https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/) docs.
+   More options and details for the proxy are available in the [OAuth2 Proxy docs](https://oauth2-proxy.github.io/oauth2-proxy/docs/).  Information on troubleshooting the OAuth Proxy is found at [Troubleshooting the OAuth Proxy](/troubleshooting/troubleshooting-the-oauth-proxy/).
 
 ### Verification
 
@@ -271,11 +271,11 @@ Custom properties include:
 
 - `com_ibm_watson_health_car_auth_logout_cookies` Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.
 
-## Deploying to Custom ACD Configuration Editor Environments (optional)
+## Deploying Cartridges to ACD Installations (optional)
 
 ACD Configuration Editor provides the ability to deploy published cartridges to ACD instances in production environments.  To configure additional custom environments, the following files must be modified and the Cartridge microservice must be redeployed using Helm (see Installing ACD Configuration Editor instructions above).
 
-1. `merative-acd-ce/crtg/chart/crtg/rev-proxy.conf`
+1. `merative-acd-ce/crtg/chart/crtg/nginx-server.conf`
 
 ```
 location /<identifier>/ {
@@ -292,7 +292,7 @@ location /<identifier>/ {
 ```
 
 - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
-- where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
+- where `<hostname>` is the hostname of the custom ACD instance
 
 2. `merative-acd-ce/crtg/chart/crtg/values.yaml`
 
@@ -304,19 +304,19 @@ location /<identifier>/ {
   - name: "com_ibm_watson_health_car_acd_host_3_proxy"
     value: "<identifier>"
   - name: "com_ibm_watson_health_car_acd_host_3_auth"
-    value: "APIKey"
+    value: "Bearer"
   - name: "com_ibm_watson_health_car_acd_host_3_phi"
     value: "true"
 ```
 
 - where `<identifier>` is the identifier of the custom ACD instance, e.g. `custom-acd`
-- where `<hostname>` is the hostname of the custom ACD instance, e.g. `us-south.wh-acd.cloud.ibm.com`
+- where `<hostname>` is the hostname of the custom ACD instance
 
 ACD Hosts must be indexed in the properties file using `com_ibm_watson_health_car_acd_host_{index}` as the beginning of their property name. The index must start at "3". The properties are:
 
 - `_label` which is the name for the host that will be shown in the Configuration Editor
 - `_url` which is what will be shown in the host description in the Configuration Editor
-- `_proxy` which is the proxy you have configured in your `merative-acd-ce/crtg/chart/crtg/rev-proxy.conf` file mentioned in Step 1 in this section
+- `_proxy` which is the proxy you have configured in your `merative-acd-ce/crtg/chart/crtg/nginx-server.conf` file mentioned in Step 1 in this section
 - `_phi` which is either true or false based on whether this ACD Host can support protected health information
 - `_auth` which specifies the type of authentication the host requires.  The three possible authentication types are:
 
@@ -332,16 +332,13 @@ All configuration data such as cartridges, flows, dictionaries, filters, etc., a
 
 To update to a newer version of the ACD Configuration Editor follow these steps:
 
-1. Back up any customizations in:
-
-`merative-acd-ce/crtg/chart/crtg/rev-proxy.conf`
-`merative-acd-ce/crtg/chart/crtg/values.yaml`
+1. Back up any customizations in the files `merative-acd-ce/crtg/chart/crtg/nginx-server.conf` and `merative-acd-ce/crtg/chart/crtg/values.yaml`.
 
 2. Download the latest project and unpack it as above.
-3. Delete the existing Helm deployments:
+3. Delete the existing Helm deployments using the commands:
 
-`helm delete merative-acd-ce-crtg`
-`helm delete merative-acd-ce-cdc`
+- `helm delete merative-acd-ce-crtg`
+- `helm delete merative-acd-ce-cdc`
 
 4. Merge in any customizations to the new project files.
 
