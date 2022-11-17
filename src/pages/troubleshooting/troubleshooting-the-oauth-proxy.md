@@ -17,13 +17,12 @@ To diagnose problems follow these steps:
 
    - `oc login https://api.yourserver.com:6443  --token <yourtoken>  --insecure-skip-tls-verify=true` - ensure your token is good
    - `oc whoami` - ensure you are the service account
-   - `oc get service merative-acd-acd -n ${acd_namespace}`  - In your ACD target namespace, ensure you can view the service as the service account user.  If role binding is set up correctly, you will see the service info.  If not, you will see an `Error from server (Forbidden)`.
+   - `oc get service merative-acd-acd -n ${acd_namespace}`  
+     - In your ACD target namespace, ensure you can view the service as the service account user.  If role binding is set up correctly, you will see the service info.  If not, you will see an `Error from server (Forbidden)`.
 
-1. Check the proxy logs for access errors
+1. Check the proxy logs for access errors:
 
-   ```
-   oc logs <pod> --namespace ${proxy_namespace}
-   ```
+   `oc logs <pod> --namespace ${proxy_namespace}`
 
    - `<pod>` is the proxy pod name, for example `proxy-749c996465-bt6zc`
    - `${proxy_namespace}` namespace where the proxy was installed

@@ -1,6 +1,9 @@
 # Merative Annotator for Clinical Data Container Edition Documentation
 
-This project contains the documentation for Merative Annotator for Clinical Data Container Edition.  It is built using [gatsby-theme-carbon](https://github.com/carbon-design-system/gatsby-theme-carbon) with [GatsbyJS](https://www.gatsbyjs.com/).
+This project contains the documentation for the Merative Annotator for Clinical Data Container Edition.  
+See the documentation at https://merative.github.io/acd-containers 
+
+It is built using [gatsby-theme-carbon](https://github.com/carbon-design-system/gatsby-theme-carbon) with [GatsbyJS](https://www.gatsbyjs.com/).
 
 ## Contributing to Annotation for Clinical Data Container Edition Documentation
 
