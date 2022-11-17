@@ -360,7 +360,7 @@
      <a href="#openshift-config-editor-auth">ACD Configuration Editor Authentication</a>
     </li>
     <li class="sidebar-item-link" id="sb-openshift-config-editor-deploy">
-     <a href="#openshift-config-editor-deploy">Deploying to Custom Environments (Optional)</a>
+     <a href="#openshift-config-editor-deploy">Deploying Cartridges to ACD Installations (Optional)</a>
     </li>
     <li class="sidebar-item-link" id="sb-openshift-backup-data">
      <a href="#openshift-backup-data">Backing Up Your Data</a>
@@ -387,7 +387,7 @@
     <div class="header-bar"></div>
   </div>
 
-  <body style="margin-left:340px;margin-right:200px;margin-top:0;color:#404040;font-family:Arial,sans-serif;background-color:whitesmoke;">
+  <body style="margin-left:340px;margin-right:200px;margin-top:0;color:#404040;font-family:Arial,sans-serif;background-color:whitesmoke;font-size:16px">
     <h2 id="overview" style="margin-top:0;margin-left:-340px;margin-right:-200px;color:white;background-color:black;height:220px;text-align:center;font-size:400%;font-weight:200;">Annotator for Clinical Data</br></br>Configuration Editor Overview</h2>
 
     <h3 id="overview-welcome">Welcome to the Annotator for Clinical Data Configuration Editor</h3>
@@ -602,13 +602,13 @@ SSLProxyCheckPeerExpire off
 
   <p>Note: If the host name changes (the host used by the browser to get to the system) you'll need to update it in <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> and restart the acd-ce processes.
 
-  <p>In the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file is also the configuration file where configuration data goes. It defaults to <code style="color:black;background-color:whitesmoke">%HOME%/installs/config/</code>.  You need to change this to a real directory that is read/write for the Docker process user (set below) and should be a directory you will back up.  For example (replace <code style="color:black;background-color:whitesmoke">&lt;user&gt;</code> with your user name):<br/>
+  <p>In the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file is also the configuration file where configuration data goes. It defaults to <code style="color:black;background-color:whitesmoke">%HOME%/acd-ce/installs/config/</code>.  You need to change this to a real directory that is read/write for the Docker process user (set below) and should be a directory you will back up.  For example (replace <code style="color:black;background-color:whitesmoke">&lt;user&gt;</code> with your user name):<br/>
   <code style="color:black;background-color:lightgray">sed -i 's/%HOME%/\/home\/&lt;user&gt;/g' acd-ce.properties</code>
    
   <p>Finally, in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file, is the user and group that Docker will start the containers as.  It is defined near the top on a line that starts with something similar to this:
   <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_common_docker_user=<userid>:&lt;groupid&gt;;\</code>
 
-  <p>Edit this line in the file.  The <code style="color:black;background-color:whitesmoke">&lt;userid&gt;</code> should be a user id on your local system that has RWX permission to the <code style="color:black;background-color:whitesmoke">installs/config</code> target directory defined above.  The group should be set to <code style="color:black;background-color:whitesmoke">0</code>.
+  <p>Edit this line in the file.  The <code style="color:black;background-color:whitesmoke">&lt;userid&gt;</code> should be a user id on your local system that has RWX permission to the <code style="color:black;background-color:whitesmoke">acd-ce/installs/config</code> target directory defined above.  The group should be set to <code style="color:black;background-color:whitesmoke">0</code>.
 
   <p>The user can be a uid (the id of the user, e.g. <code style="color:black;background-color:whitesmoke">1001</code>, or your own user id which you can get by using the <code style="color:black;background-color:lightgray">id</code> command on Linux).
 
@@ -749,7 +749,7 @@ com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
 
  <h3 id="docker-backup">Backing up your data</h3>
 
- <p>All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the <code style="color:black;background-color:whitesmoke">%HOME%/installs/config/artifactstore/</code> directory on the local machine. This is set in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file and you can change this as needed.   Back up this directory often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
+ <p>All configuration data such as cartridges, flows, dictionaries, filters, etc., are stored by default in the <code style="color:black;background-color:whitesmoke">%HOME%/acd-ce/installs/config/artifactstore/</code> directory on the local machine. This is set in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file and you can change this as needed.   Back up this directory often and if you have to recover your ACD Configuration Editor machine you can restore this from the point of your last backup.
 
  <h3 id="docker-stopping">Stopping the Configuration Editor</h3>
 
@@ -808,7 +808,7 @@ com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
   </tr>
  </table>
 
- <p>For high availability, run 3 replicas of the ACD Configuration Editor on a minimum of 3 worker nodes (in addition to those for the ACD sandbox instance).  For a development or test environment, 1 or 2 replicas can be configured.
+ <p>2 replicas are recommended for the two ACD Configuration Editor deployments: Cartridge service and Dictionary service.
 
  <h4>Software Prerequisites</h4>
 
@@ -948,7 +948,7 @@ spec:
 
  <h4>Option 2: Identity Provider authentication</h4>
 
- <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://github.com/openshift/oauth-proxy">OpenShift OAuth 2.0 Proxy</a>.</p>
+ <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://oauth2-proxy.github.io/oauth2-proxy/">standard OAuth2 Proxy</a>.</p>
 
  <ol>
  <li>Use the following two commands to create a project/namespace for the proxy and set the current namespace to it. For the remainder of this document, we will use the example <code style="color:black;background-color:whitesmoke">merative-acd-ce-oauth</code>.
@@ -1054,7 +1054,7 @@ items:
  <li>Create the proxy's deployment, proxy's service, and proxy's route:<br/>
  <code style="color:black;background-color:lightgray">oc create -f merative-acd-ce-oauth.yaml</code>
 
- <p>More options and details for the proxy are available at (a href="https://github.com/openshift/oauth-proxy#openshift-oauth-proxy">OpenShift OAuth Proxy</a>.  Information on troubleshooting the OAuth Proxy is found at <a href="/troubleshooting/troubleshooting-the-oauth-proxy/">Troubleshooting the OAuth Proxy</a>.  More details and options such as secret generation and cookie expiration are defined in the base <a href="https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/">OAuth proxy</a> docs.
+ <p>More options and details for the proxy are available in the <a href="https://oauth2-proxy.github.io/oauth2-proxy/docs/">OAuth2 Proxy Docs</a>.  Information on troubleshooting the OAuth Proxy is found at <a href="/troubleshooting/troubleshooting-the-oauth-proxy/">Troubleshooting the OAuth Proxy</a>.
  </li>
  </ol>
 
@@ -1087,12 +1087,12 @@ items:
  <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
  </ul>
 
-<h3 id="openshift-config-editor-deploy">Deploying to custom ACD Configuration Editor environments (optional)</h3>
+<h3 id="openshift-config-editor-deploy">Deploying cartridges to ACD installations(optional)</h3>
 
  <p>ACD Configuration Editor provides the ability to deploy published cartridges to ACD instances in production environments.  To configure additional custom environments, the following files must be modified and the Cartridge microservice must be redeployed using Helm (see Installing ACD Configuration Editor instructions above).
 
  <ol>
- <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/rev-proxy.conf</code>
+ <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/nginx-server.conf</code>
 
   <div class="highlight"><pre class="highlight shell tab-shell">
 <code>
@@ -1110,7 +1110,7 @@ location /<identifier>/ {
 
  <ul>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;identifier&gt;</code> is the identifier of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">custom-acd</code>
-  <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the hostname of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">us-south.wh-acd.cloud.ibm.com</code>
+  <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the hostname of the custom ACD instance
  </ul><br/>
  </li>
 
@@ -1125,14 +1125,14 @@ location /<identifier>/ {
   - name: "com_ibm_watson_health_car_acd_host_3_proxy"
     value: "&lt;identifier&gt;"
   - name: "com_ibm_watson_health_car_acd_host_3_auth"
-    value: "APIKey"
+    value: "Bearer"
   - name: "com_ibm_watson_health_car_acd_host_3_phi"
     value: "true"
 </code></div>
 
  <ul>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;identifier&gt;</code> is the identifier of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">custom-acd</code></li>
-  <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the hostname of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">us-south.wh-acd.cloud.ibm.com</code></li>
+  <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the hostname of the custom ACD instance</li>
  </ul>
 
  <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_{index}</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">3</code>. The properties are:
@@ -1140,7 +1140,7 @@ location /<identifier>/ {
  <ul>
   <li><code style="color:black;background-color:whitesmoke">_label</code> which is the name for the host that will be shown in the Configuration Editor
   <li><code style="color:black;background-color:whitesmoke">_url</code> which is what will be shown in the host description in the Configuration Editor
-  <li><code style="color:black;background-color:whitesmoke">_proxy</code> which is the proxy you have configured in your <code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/rev-proxy.conf</code> file mentioned in Step 1 in this section
+  <li><code style="color:black;background-color:whitesmoke">_proxy</code> which is the proxy you have configured in your <code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/nginx-server.conf</code> file mentioned in Step 1 in this section
   <li><code style="color:black;background-color:whitesmoke">_phi</code> which is either true or false based on whether this ACD Host can support protected health information
   <li><code style="color:black;background-color:whitesmoke">_auth</code> which specifies the type of authentication the host requires.  The three possible authentication types are:
    <ul>
@@ -1163,7 +1163,7 @@ location /<identifier>/ {
 <ol>
 <li>Back up any customizations you made to the following files:
  <ul>
-  <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/rev-proxy.conf</code></li>
+  <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/nginx-server.conf</code></li>
   <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/values.yaml</code></li>
  </ul><br/>
 <li>Download the latest ACD Configuration Editor deployment bundle and untar it (see Installing ACD Configuration Editor section).</li><br/>
