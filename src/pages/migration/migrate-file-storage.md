@@ -136,7 +136,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
 1. If the Configuration Editor is deployed, create a new zero-replica instance of the cartridge and dictionary services in the target namespace using the target PVC name.
 
-  Refer to [Installing ACD Configuration Editor](https://merative.github.io/acd-containers/configeditor/download_openshift/#installing-acd-configuration-editor) for installation steps.
+  Refer to <span><a aria-current="" to="https://merative.github.io/acd-containers/configeditor/index.html#openshift-installing-config-editor" href="https://merative.github.io/acd-containers/configeditor/index.html#openshift-installing-config-editor" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Install CE</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span> for installation steps.
 
   ```
   helm install merative-acd-ce-cdc   merative-acd-ce/cdc/chart/cdc   --set replicas=0   --set configurationStorage.file.volume.existingClaimName=${target_pvc_name}   --namespace ${target_acd_namespace}
@@ -246,7 +246,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
   For ACD deployments (not the Configuration Editor), create a serviceview role in target namespace and grant all service accounts in the proxy namespace access to it. Follow the steps 7 and 8 under [Manage Access](/security/manage-access/).
 
-  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Follow step 2 under [Manage Access](/security/manage-access/).
+  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Note the service names also changed as part of the migration, for example from `ibm-wh-acd-acd` to `merative-acd-acd`, so be sure to update both the service name and target namespace in the upstream option. Follow step 2 under [Manage Access](/security/manage-access/).
 
 1. Re-enable network access and client traffic to the target namespace.
 
