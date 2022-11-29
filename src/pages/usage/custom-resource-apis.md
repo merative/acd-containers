@@ -140,8 +140,9 @@ The `License` property contains two required field:
 
 - `accept` : must be boolean `true` for the ACD pods to successfully start.
 - `use` : the type of license being used.  Can be one of the following values:
-  - `production`
-  - `development`
+  - `Production`
+  - `Development`
+  - `ConfigurationEditor`
 
 #### Example
 
