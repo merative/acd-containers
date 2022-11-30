@@ -844,6 +844,17 @@ com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
   <code style="color:black;background-color:lightgray">cd Kubernetes</code>
   </li><br/>
 
+  <li>Update the `imagePullSecrets` entry in the deployment.yaml files for each service if not using the suggested global pull secret from the operator install.</br>
+  
+    <li>For the concept dictionary service:<br/>
+    <code style="color:black;background-color:lightgray">cd merative-acd-ce/cdc/chart/cdc/templates</code>
+    </li>
+    <li>For the cartridge service:<br/>
+      <code style="color:black;background-color:lightgray">cd merative-acd-ce/crtg/chart/crtg/templates</code>
+    </li>
+
+  </li>
+
   <li>Log in to the OpenShift cluster on the command line:<br/>
   <code style="color:black;background-color:lightgray">oc login ...</code>
   </li><br/>
@@ -873,7 +884,7 @@ helm install merative-acd-ce-cdc \
 
   <ul>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;acd namespace&gt;</code> is the namespace where the ACD sandbox instance is running</li>
-  <li>where <code style="color:black;background-color:whitesmoke">&lt;pvc name&gt;</code> is the persistent volume claim (PVC) the ACD sandbox instance is using
+  <li>where <code style="color:black;background-color:whitesmoke">&lt;pvc name&gt;</code> is the persistent volume claim (PVC) the ACD sandbox instance is using</li>
 
   </ul></li><br/>
   <li>Verify the Concept Dictionary microservice is running.
@@ -1058,9 +1069,11 @@ items:
  </li>
  </ol>
 
+ <p>After configuring a route you may need to update the cartridge service deployment.yaml `com_ibm_watson_health_car_url` environment variable to set the proper hostname for the service.</p>
+
  <h4>Verification</h4>
 
- <p>Go to the following URL to verify authentication and the proxy route: <code style="color:black;background-color:whitesmoke">https://<hostname>/services/cartridge/cartridge-main.html</code>
+ <p>Go to the following URL to verify authentication and the proxy route: <code style="color:black;background-color:whitesmoke">https://&lt;hostname&gt;/services/cartridge/cartridge-main.html</code>
 
  <p>You may get an error about the self-signed certificate in the browser, but you can use advanced option to continue to the site.  In Google Chrome, if there is no button to proceed, click on the advanced warning text and type <code style="color:black;background-color:lightgray">thisisunsafe</code> (all one word lower-case--type it after clicking on the warning) and it should proceed.  This is only needed the first time in.  To fix this, add a trusted CA-issued certificate to the Apache HTTP server.
 
@@ -1096,16 +1109,16 @@ items:
 
   <div class="highlight"><pre class="highlight shell tab-shell">
 <code>
-location /<identifier>/ {
+location /&lt;identifier&gt;/ {
     resolver 8.8.8.8;
     proxy_set_header Authorization $http_authorization;
-    set $prod_dev "<hostname>";
+    set $prod_dev "&lt;hostname&gt;";
     proxy_set_header Host $prod_dev;
     proxy_ssl_server_name on;
-    if ($request_uri ~* "/<identifier>(/.*$)") {
+    if ($request_uri ~* "/&lt;identifier&gt;(/.*$)") {
         set  $path_remainder $1;
     }
-    proxy_pass https://$prod_dev/wh-acd$path_remainder;
+    proxy_pass https://$prod_dev/services/clinical_data_annotator/$path_remainder;
 </code></div>
 
  <ul>
@@ -1121,7 +1134,7 @@ location /<identifier>/ {
   - name: "com_ibm_watson_health_car_acd_host_3_label"
     value: "Annotator for Clinical Data - &lt;identifier&gt;"
   - name: "com_ibm_watson_health_car_acd_host_3_url"
-    value: "https://&lt;hostname&gt;/wh-acd/api"
+    value: "https://&lt;hostname&gt;/services/clniical_data_annotator/api"
   - name: "com_ibm_watson_health_car_acd_host_3_proxy"
     value: "&lt;identifier&gt;"
   - name: "com_ibm_watson_health_car_acd_host_3_auth"
