@@ -12,9 +12,9 @@ The IBM License Service is an available option for monitoring and measuring lice
 ACD license use types include:
   - `Development` for non-production use of ACD in a development or test environment
   - `Production` for installations of ACD running in a production environment
-  - `ConfigurationEditor` for an installation of ACD running as a sandbox instance of the [Configuration Editor](https://merative.github.io/acd-containers/configeditor/index.html)
+  - `ConfigurationEditor` for an installation of ACD running as a sandbox instance for the [Configuration Editor](https://merative.github.io/acd-containers/configeditor/index.html#openshift-overview)
 
-The license use type of `ConfigurationEditor` for the sandbox instance does not count against your purchased virtual processor core (VPC) license metrics because the ACD Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers.
+As a required prerequisite for the Configuration Editor, an ACD installation with the license use type of `ConfigurationEditor` does not apply its metrics towards the purchased virtual processor core (VPC) licenses.
 
 ## Overview
 
