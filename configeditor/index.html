@@ -1069,7 +1069,7 @@ items:
  </li>
  </ol>
 
- <p>After configuring a route you may need to update the cartridge service deployment.yaml `com_ibm_watson_health_car_url` environment variable to set the proper hostname for the service.</p>
+ <p>After configuring a route you may need to update the cartridge service deployment.yaml `com_ibm_watson_health_car_url` environment variable to set the proper hostname for the service.
 
  <h4>Verification</h4>
 
@@ -1131,24 +1131,25 @@ location /&lt;identifier&gt;/ {
 
   <div class="highlight"><pre class="highlight shell tab-shell">
 <code>
-  - name: "com_ibm_watson_health_car_acd_host_3_label"
+  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_label"
     value: "Annotator for Clinical Data - &lt;identifier&gt;"
-  - name: "com_ibm_watson_health_car_acd_host_3_url"
+  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_url"
     value: "https://&lt;hostname&gt;/services/clniical_data_annotator/api"
-  - name: "com_ibm_watson_health_car_acd_host_3_proxy"
+  - name: "com_ibm_watson_health_car_acd_host__&lt;n&gt;_proxy"
     value: "&lt;identifier&gt;"
-  - name: "com_ibm_watson_health_car_acd_host_3_auth"
+  - name: "com_ibm_watson_health_car_acd_host__&lt;n&gt;_auth"
     value: "Bearer"
-  - name: "com_ibm_watson_health_car_acd_host_3_phi"
+  - name: "com_ibm_watson_health_car_acd_host__&lt;n&gt;_phi"
     value: "true"
 </code></div>
 
  <ul>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;identifier&gt;</code> is the identifier of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">custom-acd</code></li>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the hostname of the custom ACD instance</li>
+  <li>where <code style="color:black;background-color:whitesmoke">&lt;n&gt;</code> is the ordinal value of the custom ACD instance starting with 1</li>
  </ul>
 
- <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_{index}</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">3</code>. The properties are:
+ <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_{index}</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">1</code>. The properties are:
 
  <ul>
   <li><code style="color:black;background-color:whitesmoke">_label</code> which is the name for the host that will be shown in the Configuration Editor
@@ -1194,7 +1195,7 @@ location /&lt;identifier&gt;/ {
 
    <h3 id="migrating-overview">Overview</h3>
 
- <p>Customers that were part of the Early Access Program (EAP) can use the following steps to migrate their existing IBM Watson ACD Configuration Editor cartridges and artifacts to their newly installed Merative ACD Configuration Editor instance.
+ <p>Customers that were part of the Early Access Program (EAP) can use the following steps to migrate their existing IBM Watson ACD Configuration Editor cartridges and artifacts to their newly installed Merative ACD Configuration Editor instance.</p>
 
  <ol>
   <li>From the <code style="color:black;background-color:whitesmoke">acd-ce</code> directory, stop the Merative Configuration Editor:<br/>
@@ -1245,7 +1246,7 @@ location /&lt;identifier&gt;/ {
   <li><a href="https://ibm.box.com/s/j91ak6shkc9yv55nb1nk9y18edxkz0qg">Derived Concepts (18 min.)</a><br/>
   Explains how to create derived concepts.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/xl43p1cc4dgql7b7gehhwp4th4due3vt>Derived Clinical Attributes (12 min.)</a><br/>
+  <li><a href="https://ibm.box.com/s/xl43p1cc4dgql7b7gehhwp4th4due3vt">Derived Clinical Attributes (12 min.)</a><br/>
   Explains how to create derived clinical attributes.<br/><br/>
   </li>
   <li><a href="https://ibm.box.com/s/zsfqzwis2dltzlv7rfxfyav7kd9w2oj7">Qualifiers (6 min.)</a><br/>
