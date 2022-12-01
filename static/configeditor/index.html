@@ -1109,7 +1109,7 @@ items:
   <div class="highlight"><pre class="highlight shell tab-shell">
 <code>
 location /&lt;identifier&gt;/ {
-    resolver 8.8.8.8;
+    resolver &lt;dns_host&gt;;
     proxy_set_header Authorization $http_authorization;
     set $acd_host "&lt;hostname&gt;";
     proxy_set_header Host $acd_host;
@@ -1117,11 +1117,12 @@ location /&lt;identifier&gt;/ {
     if ($request_uri ~* "/&lt;identifier&gt;(/.*$)") {
         set  $path_remainder $1;
     }
-    proxy_pass https://$acd_host/services/clinical_data_annotator/$path_remainder;
+    proxy_pass https://$acd_host/services/clinical_data_annotator$path_remainder;
 </code></div>
 
  <ul>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;identifier&gt;</code> is the identifier of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">custom-acd</code>
+  <li>where <code style="color:black;background-color:whitesmoke">&lt;identifier&gt;</code> is the dns resolver for the environment.  If the environemnt has unlimited external access a resolver like Google (8.8.8.8) can be used.  The local resolver can be determined by inspecting the /etc/resolv.conf file on the proxy pod.</li>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the hostname of the custom ACD instance
  </ul><br/>
  </li>
