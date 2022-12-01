@@ -470,7 +470,7 @@
 
     </ul>
 
-    <p style="text-indent:25px;"><b>NOTE:</b> The disk where Docker stores its images and where ACD Configuration Editor is installed needs to have 200GB of storage free.  If you are using IBM Cloud with a VM, it may default to a 25GB base disk which will not fit the images and the Configuration Editor, so increase that or add a second larger disk and install Docker and its registry to that along with the Configuration Editor.</p>
+    <p style="text-indent:25px;"><b>NOTE:</b> The disk where Docker stores its images and where ACD Configuration Editor is installed needs to have 200GB of storage free.</p>
 
     <h4>Software requirements</h4>
 
@@ -675,7 +675,6 @@ com_ibm_watson_health_car_acd_host_1_phi=false;\
   <li><code style="color:black;background-color:whitesmoke">_phi</code> which is either true or false based on whether this ACD Host can support protected health information</li>
   <li><code style="color:black;background-color:whitesmoke">_auth</code> which specifies the type of authentication the host requires. The three possible auth types are:
   <ul>
-  <li>APIKey: Used for IBM Cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_identity_server</code> (by default, <code style="color:black;background-color:whitesmoke">https://iam.cloud.ibm.com/identity/token</code>) in order to request a bearer token using the API Key the user entered.</li>
   <li>Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition, and expire every 24 hours.</li>
   <li>Leaving the field blank: You can leave the auth field blank if your host does not require any authentication.</li>
  </ul>
@@ -1058,7 +1057,7 @@ items:
   <li>where <code style="color:black;background-color:whitesmoke">&lt;client id&gt;</code> is the OAuth client id
   <li>where <code style="color:black;background-color:whitesmoke">&lt;client secret&gt;</code> is the generated cookie secret
   <li>where <code style="color:black;background-color:whitesmoke">&lt;client secret&gt;</code> is the OIDC issuer URL, e.g. <code style="color:black;background-color:whitesmoke">https://sts.windows.net/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/</code> for Azure Active Directory
-  <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the OAuth proxy hostname, e.g. <code style="color:black;background-color:whitesmoke">proxy-merative-acd-ce-oauth.xxx.us-xxxx.containers.appdomain.cloud</code> for IBM Cloud
+  <li>where <code style="color:black;background-color:whitesmoke">&lt;hostname&gt;</code> is the OAuth proxy hostname
  </ul><br/>
  </li>
 
@@ -1112,13 +1111,13 @@ items:
 location /&lt;identifier&gt;/ {
     resolver 8.8.8.8;
     proxy_set_header Authorization $http_authorization;
-    set $prod_dev "&lt;hostname&gt;";
-    proxy_set_header Host $prod_dev;
+    set $acd_host "&lt;hostname&gt;";
+    proxy_set_header Host $acd_host;
     proxy_ssl_server_name on;
     if ($request_uri ~* "/&lt;identifier&gt;(/.*$)") {
         set  $path_remainder $1;
     }
-    proxy_pass https://$prod_dev/services/clinical_data_annotator/$path_remainder;
+    proxy_pass https://$acd_host/services/clinical_data_annotator/$path_remainder;
 </code></div>
 
  <ul>
@@ -1134,7 +1133,7 @@ location /&lt;identifier&gt;/ {
   - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_label"
     value: "Annotator for Clinical Data - &lt;identifier&gt;"
   - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_url"
-    value: "https://&lt;hostname&gt;/services/clniical_data_annotator/api"
+    value: "https://&lt;hostname&gt;/services/clinical_data_annotator/api"
   - name: "com_ibm_watson_health_car_acd_host__&lt;n&gt;_proxy"
     value: "&lt;identifier&gt;"
   - name: "com_ibm_watson_health_car_acd_host__&lt;n&gt;_auth"
