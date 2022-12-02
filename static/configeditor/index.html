@@ -941,7 +941,7 @@
 
     <ul>
     <li>If you used the default namespace during ACD's installation, this is <code style="color:black;background-color:whitesmoke">merative-acd-operator-system</code>.
-    <li>Set an <code style="color:black;background-color:whitesmoke">acd_namespace</code> variable to make it available for subsequent commands from the command line shell:
+    <li>If not already defined, set an <code style="color:black;background-color:whitesmoke">acd_namespace</code> variable to make it available for subsequent commands from the command line shell:
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell" style="padding-top:10px;">
   <code style="font-size:smaller;">export acd_namespace=&lt;acd namespace&gt;</code>
    </pre></div>
@@ -1050,7 +1050,7 @@
  <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://oauth2-proxy.github.io/oauth2-proxy/">standard OAuth2 Proxy</a>.</p>
 
  <ol>
- <li>Use the following commands to create a project/namespace for the proxy and set the current namespace to it. For the remainder of this document, we will use the example <code style="color:black;background-color:whitesmoke">merative-acd-ce-oauth</code>.
+ <li>Use the following commands to create a project/namespace for the proxy and set the current namespace to it. For the remainder of the steps listed here for Option 2, we will use the example namespace <code style="color:black;background-color:whitesmoke">merative-acd-ce-oauth</code>.
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
   <code style="font-size:smaller;">
   oc create namespace merative-acd-ce-oauth
@@ -1148,7 +1148,7 @@
 
  <li>Create the proxy's deployment, proxy's service, and proxy's route:<br/>
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell" style="padding-top:10px;">
-  <code style="font-size:smaller;">oc create -f merative-acd-ce-macroservice.yaml -n &lt;acd namespace&gt;</code>
+  <code style="font-size:smaller;">oc create -f merative-acd-ce-macroservice.yaml</code>
   </pre></div>
 
  <p>More options and details for the proxy are available in the <a href="https://oauth2-proxy.github.io/oauth2-proxy/docs/">OAuth2 Proxy Docs</a>.  Information on troubleshooting the OAuth Proxy is found at <a href="/troubleshooting/troubleshooting-the-oauth-proxy/">Troubleshooting the OAuth Proxy</a>.
@@ -1192,20 +1192,19 @@
 
  <ol>
  <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/nginx-server.conf</code>
-
-  <div class="highlight"><pre class="highlight shell tab-shell">
-<code>
-location /&lt;identifier&gt;/ {
-    resolver &lt;dns_host&gt;;
-    proxy_set_header Authorization $http_authorization;
-    set $acd_host "&lt;hostname&gt;";
-    proxy_set_header Host $acd_host;
-    proxy_ssl_server_name on;
-    if ($request_uri ~* "/&lt;identifier&gt;(/.*$)") {
-        set  $path_remainder $1;
-    }
-    proxy_pass https://$acd_host/services/clinical_data_annotator$path_remainder;
-</code></div>
+  <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
+  <code style="font-size:smaller;">
+  location /&lt;identifier&gt;/ {
+      resolver &lt;dns_host&gt;;
+      proxy_set_header Authorization $http_authorization;
+      set $acd_host "&lt;hostname&gt;";
+      proxy_set_header Host $acd_host;
+      proxy_ssl_server_name on;
+      if ($request_uri ~* "/&lt;identifier&gt;(/.*$)") {
+          set  $path_remainder $1;
+      }
+      proxy_pass https://$acd_host/services/clinical_data_annotator$path_remainder;
+  </code></pre></div>
 
  <ul>
   <li>where <code style="color:black;background-color:whitesmoke">&lt;identifier&gt;</code> is the identifier of the custom ACD instance, e.g. <code style="color:black;background-color:whitesmoke">custom-acd</code>
