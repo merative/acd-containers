@@ -797,14 +797,6 @@
  <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
 
  </ul>
-
- <p>An example configuration is:
-  <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
-  <code style="font-size:smaller;">
-  com_ibm_watson_health_car_auth_enable_logout=true;\
-  com_ibm_watson_health_car_auth_logout_url=https://&lt;your_hostname&gt;/oauth/v4/&lt;my_appid_tenant_id&gt;/cloud_directory/sso/logout?redirect_uri=https%3A%2F%2Fmy-acd-instance%2Fservices%2Fcartridge&client_id=&lt;my_appid_client_id&gt;;\
-  com_ibm_watson_health_car_auth_logout_cookies=mod_auth_openidc_session;
-  </code></pre></div>
  </li></ul>
 
  <h3 id="docker-backup">Backing up your data</h3>
@@ -1225,7 +1217,7 @@
   - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_auth"
     value: "Bearer"
   - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_phi"
-    value: "true"
+    value: "false"
   </code></pre></div>
 
  <ul>
@@ -1243,7 +1235,6 @@
   <li><code style="color:black;background-color:whitesmoke">_phi</code> which is either true or false based on whether this ACD Host can support protected health information</li>
   <li><code style="color:black;background-color:whitesmoke">_auth</code> which specifies the type of authentication the host requires.  The three possible authentication types are:
    <ul>
-    <li>APIKey: Used for cloud hosts. It will prompt the user to enter their API Key, and then use the identity server specified in the properties file in the field <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_identity_server</code> (default is <code style="color:black;background-color:whitesmoke">https://iam.cloud.ibm.com/identity/token</code>) in order to request a bearer token using the API Key the user entered.</li>
     <li>Bearer: Used for an ACD Container Edition host, and will prompt the user for their Bearer token to the ACD Container Edition and expire every 24 hours.</li>
     <li>Leaving the field blank: Used for no authentication if the host does not require any authentication.</li>
   </ul>
