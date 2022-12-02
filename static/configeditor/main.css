@@ -17,6 +17,10 @@ nav {
   margin-block-start: 1rem;
 }
 
+code {
+ font-size: smaller;
+}
+
 .hide {
   display: none;
 }
@@ -56,7 +60,7 @@ color: dimgray;
 }
 
 .sidebar-item-link.active {
-  background-color: lightblue;
+  background-color: lightgray;
 }
 
 .sidebar ul {
