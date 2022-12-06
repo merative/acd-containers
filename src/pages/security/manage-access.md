@@ -10,9 +10,9 @@ toc: true
 ## Managing access to ACD
 
 If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster there are several options to consider to limit access to the ACD service: 
- 1 At a network layer, the firewall / network security group (nsg) can restrict incoming access to the openshift route used to externalize the ACD service to a limited set of networks or systems.   
- 2 Use a client certificate with mutual TLS - see [openshift documentation](https://docs.openshift.com/container-platform/4.9/networking/ingress-operator.html#nw-mutual-tls-auth_configuring-ingress). 
- 3 Provide access to ACD through a reverse proxy that layers on security.  One way to do this is with the OpenShift-provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do role-based access control (RBAC) access to the service.  The rest of this page will document how to set this proxy up for protecting an ACD service. Note, with this option, no direct route to ACD is exposed from the cluster and all traffic flows thorugh the proxy which adds some overhead and another hop to traffic.
+ 1. At a network layer, the firewall / network security group (nsg) can restrict incoming access to the OpenShift route used to externalize the ACD service to a limited set of networks or systems.   
+ 1. Use a client certificate with mutual TLS - see [OpenShift documentation](https://docs.openshift.com/container-platform/4.9/networking/ingress-operator.html#nw-mutual-tls-auth_configuring-ingress). 
+ 1. Provide access to ACD through a reverse proxy that layers on security.  One way to do this is with the OpenShift-provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do role-based access control (RBAC) access to the service.  The rest of this page will document how to set this proxy up for protecting an ACD service. Note, with this option, no direct route to ACD is exposed from the cluster and all traffic flows through the proxy which adds some overhead and another hop to traffic.
 
 In the first 2 options above you'll create a route direct to the ACD service and rely on the network security to secure access.  In this case we recommend these route annotations:
 ```
@@ -22,7 +22,7 @@ In the first 2 options above you'll create a route direct to the ACD service and
           haproxy.router.openshift.io/timeout: 90s
 ```
 
-For the 3rd option follow the steps below to setup a Oauth proxy in a different namespace and expose a route to that.
+For the 3rd option follow the steps below to setup a OAuth proxy in a different namespace and expose a route to that.
 
 
 1. Create a project/namespace for the proxy to run in (the examples below use `acd-oauth-proxy`)
@@ -79,7 +79,7 @@ For the 3rd option follow the steps below to setup a Oauth proxy in a different 
           app: proxy
     # Launch a proxy as a deployment
     # use           - --set-xauthrequest=true option to send back the user info in the response to nginx or client
-    # http2 is disabled due to bugs found at load with http hangup errors
+    # http2 is disabled with the GODEBUG env var due to bugs found when under high load with http hangup errors
     # see https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti
     - apiVersion: apps/v1
       kind: Deployment

@@ -38,7 +38,7 @@ By default, an ACD installation requires the following minimum resources:
 | ----------------------- | ---------------------- | -------- | ---------------- |
 | ACD                     | 3                      | 8 min (16 recommended )       | 64              |
 
-For high availability, run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 CPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 CPU/node may be used.  
+For high availability, run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 CPU/node and 64 GB of memory (or 6+ 8x32 nodes). For a development or test environment, 1 or 2 replicas can be configured and 8 CPU/node may be used with 64 GB of memory per replica.  See [performance and capacity planning](../../planning/perf-and-capacity) for more information.
 
 By default, the ACD pods may use all of the CPUs on a node. If needed, you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring)).
 
