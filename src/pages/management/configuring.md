@@ -28,8 +28,8 @@ If using the CLI, these parameters are configurable via the `Acd` custom resourc
 
 | Parameter | Description | Default |
 | -         | -           | -       |
-| `license.accept` | License Accept | `false` |
-| `license.use` | License Use | `Development` |
+| `license.accept` | License accept | `false` |
+| `license.use` | License use | `Development` |
 | `replicas` | ACD replicas | `3`    |
 | `annotators.advancedCareInsights.enabled` | Advanced care insights annotator enabled | `true` |
 | `annotators.attributeDetection.enabled` | Attribute detection annotator enabled | `true` |
