@@ -75,7 +75,7 @@ The following table lists parameters of the concept_detection service.
 
 | Configuration | Values | Description |
 |:--------------|--------|-------------|
-| Libraries | <ul><li>umls.latest</li><li>umls.2021AA</li><li>umls.2020AA</li><li>umls.2019AA <i>(deprecated - will be removed in 2022)</i></li></ul> | Defines the version of the UMLS library that is used when analyzing unstructured data.* |
+| Libraries | <ul><li>umls.latest</li><li>umls.2022AA</li><li>umls.2021AA</li><li>umls.2020AA <i>(deprecated - will be removed in 2023)</i></li></ul> | Defines the version of the UMLS library that is used when analyzing unstructured data.* |
 | inference_rules | | The name of a derived concept rule set that will be used for deriving additional concepts based on the concepts discovered by the libraries specified. |
 | filters | | The name of a concept filter that is used to remove unwanted concepts. |
 | expanded | true/false | When true, the concept detection annotator will attempt to expand concept coverage beyond the surface forms explicitly listed in the specified library.  For example - if <q>broken collarbone</q> is a surface from for C0159658 (Fracture of clavicle), the expanded option would match textual representations of that concept like <q>broke my collarbone</q>.  This option is <i>false</i> by default. |
