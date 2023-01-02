@@ -1,5 +1,5 @@
 ---
-title: "Temporal Overview (Preview)"
+title: "Temporal Overview"
 excerpt: "Temporal Overview."
 # categories: installing
 slug: temporal_overview
@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 --- -->
 
-<!-- # Temporal Overview (Preview) -->
+<!-- # Temporal Overview -->
 
 Annotator for Clinical Data can detect temporal expressions and link them to related concepts as contextual features. This temporal capability is currently available through [Clinical Insights](/clouddocs/clinical_insights_overview/).  
 
