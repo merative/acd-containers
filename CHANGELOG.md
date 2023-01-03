@@ -2,9 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-See Annotator for Clinical Data [release notes](https://ibm.github.io/acd-containers/clouddocs/release-notes) for latest features.
+See Annotator for Clinical Data [release notes](https://github.com/merative/acd-containers/blob/master/src/pages/clouddocs/release-notes.md) for latest features.
 
-## Releases
+## Releases from Merative
+
+## v2.0 - build v2.0.202210180304
+
+- Initial release of Merative Annotator for Clinical Data Container Edition
+
+## Releases from IBM
 
 ## v2.0 - build v2.0.202206131755
 
@@ -54,6 +60,3 @@ See Annotator for Clinical Data [release notes](https://ibm.github.io/acd-contai
 ## v2.0 - build v2.0.202106231922
 
 - Initial Release of Annotator for Clinical Data Container Edition
-
-[Released]: https://github.com/ibm/repo-template/compare/v0.0.1...HEAD
-[2.0.0]: https://github.com/ibm/repo-template/releases/tag/v0.0.1

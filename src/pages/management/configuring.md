@@ -6,15 +6,30 @@ slug: configuring
 toc: true
 ---
 
+## ACD configurable parameters
+
 The following tables lists the configurable parameters available for ACD.
 
-If using the web console, parameters are found under the ![YAML view](../../images/configuration_yaml.png) or a subset are found under the ![Form view](../../images/configuration_form.png).
+### YAML view
 
-If using the CLI, these are configurable via the CSV.
+If using the web console, parameters are found under the YAML view:
+
+![YAML view](../../images/configuration_yaml.png)
+
+### Form view
+
+If using the web console, a subset of available parameters is found under the Form view:
+
+![Form view](../../images/configuration_form.png)
+
+### CLI
+
+If using the CLI, these parameters are configurable via the `Acd` custom resource:
 
 | Parameter | Description | Default |
 | -         | -           | -       |
-| `license.accept` | License Accept | `false` |
+| `license.accept` | License accept | `false` |
+| `license.use` | License use | `Development` |
 | `replicas` | ACD replicas | `3`    |
 | `annotators.advancedCareInsights.enabled` | Advanced care insights annotator enabled | `true` |
 | `annotators.attributeDetection.enabled` | Attribute detection annotator enabled | `true` |
@@ -32,7 +47,7 @@ If using the CLI, these are configurable via the CSV.
 | `networkPolicy.enabled` | Enable network isolation between pods within and outside of the namespace that ACD is installed into.  Only the top-level ACD service is exposed through port 9443 | true |
 | `networkPolicy.ingress.fromSelectors` | Further restrict ingress access to ACD on port 9443 from other pods or namespaces using fromSelectors and labels.  Requires networkPolicy to be enabled. | |
 
-These additional configurable parameters may be provided when file based storage (`file`) is used and `configurationStorage.file.persistent` is `true`.
+These additional configurable parameters may be provided when file-based storage (`file`) is used and `configurationStorage.file.persistent` is `true`:
 
 | Parameter | Description | Default |
 | -         | -           | -       |
@@ -41,13 +56,32 @@ These additional configurable parameters may be provided when file based storage
 | `configurationStorage.file.volume.supplementalGroup` | Group ID for writeable access to file storage if other than root (0) |  |
 <!---
  | `configurationStorage.file.volume.storageClassName` | Use an existing persistent volume of this class type |  |
-| `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` | 
+| `configurationStorage.file.volume.useDynamicProvisioning` | Use a dynamically provisioned volume | `false` |
 --->
 
-These additional configurable parameters must be provided when IBM Cloud Object Store (`COS`) is used for  `configurationStorage.backend`.
+These additional configurable parameters must be provided when IBM Cloud Object Store (`COS`) is used for  `configurationStorage.backend`:
 
 | Parameter | Description | Default |
 | -         | -           | -       |
 | `configurationStorage.s3.bucket` | IBM Cloud Object bucket (Required) |  |
 | `configurationStorage.s3.endpointUrl` | IBM Cloud Object endpoint (Required) |  |
 | `configurationStorage.s3.location` | IBM Cloud Object region (Required) |  |
+
+To update a configurable parameter using the CLI, do one of the following:
+
+1. Use the `oc patch` command to change the configuration for a specific parameter.
+
+  Examples:
+  ```
+  oc patch acds.acd.merative.com/acd-instance -n ${acd_namespace} --type='merge' --patch "{\"spec\":{\"annotators\":{\"hypotheticalDetection\":{\"enabled\":false}}}}"
+  oc patch acds.acd.merative.com/acd-instance -n ${acd_namespace} --type='merge' --patch "{\"spec\":{\"replicas\":1}}"
+  ```
+
+  **Note:** The `oc scale` command can also be used for [scaling replicas](/management/scaling/).
+
+1. Use the `oc edit` command to change multiple configuration parameters. Edit the specific parameters and save the changes.
+
+  Example:
+  ```
+  oc edit acds.acd.merative.com/acd-instance -n ${acd_namespace}
+  ```

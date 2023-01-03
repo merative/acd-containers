@@ -6,7 +6,7 @@ To contribute code or documentation, please submit a [pull request](https://gith
 
 A good way to familiarize yourself with the codebase and contribution process is
 to look for and tackle low-hanging fruit in the [issue tracker](https://github.com/merative/acd-containers/issues).
-Before embarking on a more ambitious contribution, please quickly [get in touch](#communication) with us.
+Before embarking on a more ambitious contribution, please quickly [reach out to one of us](MAINTAINERS.md).
 
 **Note: We appreciate your effort, and want to avoid a situation where a contribution
 requires extensive rework (by you or by us), sits in backlog for a long time, or
@@ -70,10 +70,17 @@ git commit -s
 
 ## Setup
 
-Clone the [project](https://github.com/merative/acd-containers) to provide a starting code base.
-
 The project makes use of [Node.js](https://nodejs.org/en/) and [Gatsby](https://www.gatsbyjs.com/docs/) to generate the documentation.
 Please follow the installation instructions starting wtih Node Package Manager from the above links to setup these tools for your development environment.
+
+Clone the [project](https://github.com/merative/acd-containers) to provide a starting code base.
+
+From the base directory run these commands
+```
+npm install
+gatsby develop
+```
+If things worked, the live published output should be published at http://localhost:8000/
 
 ## Testing
 

@@ -6,7 +6,7 @@ slug: license
 toc: true
 ---
 
-The IBM Watson Annotator for Clinical Data Container Edition license is available at [LICENSE](https://www14.software.ibm.com/cgi-bin/weblap/lap.pl?li_formnum=L-BDAO-BYHPMD).
+The Annotator for Clinical Data Container Edition license is available at [LICENSE](https://ibm.biz/BdfmAB).
 
 IBM and the IBM logo are trademarks of International Business Machines Corporation, registered in many jurisdictions worldwide.
 Other product and service names might be trademarks of IBM or other companies.

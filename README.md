@@ -1,10 +1,13 @@
-# IBM Watson Annotator for Clinical Data Docs
+# Merative Annotator for Clinical Data Container Edition Documentation
 
-This project contains the documentation for IBM Watson Annotator for Clinical Data Container Edition.
+This project contains the documentation for the Merative Annotator for Clinical Data Container Edition.  
+See the documentation at https://merative.github.io/acd-containers 
 
-## Contributing to Annotation for Clinical Data Container Edition documentation
+It is built using [gatsby-theme-carbon](https://github.com/carbon-design-system/gatsby-theme-carbon) with [GatsbyJS](https://www.gatsbyjs.com/).
 
-The IBM Watson Annotator for Clinical Data Container Edition documentation is under active development.  To help develop the documentation, clone or
+## Contributing to Annotation for Clinical Data Container Edition Documentation
+
+The Merative Annotator for Clinical Data Container Edition documentation is under active development.  To help develop the documentation, clone or
 download the project and build it using Gatsby.
 
 See [CONTRIBUTING.md](/CONTRIBUTING.md) for setting up for development and contributing changes back to the project.
@@ -13,4 +16,4 @@ See [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md) for code of conduct expectations w
 
 ## License
 
-The IBM Watson Annotator for Clinical Data Container Edition Documentation is licensed under the MIT license.  The full license text is available at [LICENSE.txt](LICENSE.txt).
+The Merative Annotator for Clinical Data Container Edition Documentation license is available at [LICENSE](LICENSE).

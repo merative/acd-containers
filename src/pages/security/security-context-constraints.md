@@ -7,11 +7,11 @@ toc: true
 ---
 
 
-## SecurityContextConstraints Requirements
+## SecurityContextConstraints requirements
 
 Security Context Constraints (or SCCs) set limits on what containers in a pod can do on the cluster.  See [Managing security context constraints](https://docs.openshift.com/container-platform/4.7/authentication/managing-security-context-constraints.html) for more details.
 
-By default, the IBM Watson Annotator for Clinical Data ACD operator uses the `restricted` SecurityContextConstraints resource for its pod security.
+By default, the Annotator for Clinical Data ACD operator uses the `restricted` SecurityContextConstraints resource for its pod security.
 If desired, a custom SecurityContextConstraints resource can be created and applied instead. Here is an example:
 
 ```yaml
@@ -58,7 +58,7 @@ volumes:
 
 To cause the ACD operator to use the custom SecurityContextConstraints resource:
 
-1. Find the `acd-sa` ServiceAccount resource in the same namespace as the Operator.
+1. Find the `acd-sa` ServiceAccount resource in the same namespace as the operator.
 
 2. Add the following to the rules in the ClusterRole resource that the ServiceAccount resource is bound to, and apply.
 
