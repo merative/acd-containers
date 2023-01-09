@@ -48,4 +48,4 @@ Sample request to retrieve flows for verifying completion of initial cartridge d
 
 ## Missing Medical Codes
 
-Medical codes are supported as of the 2018AA version of the UMLS library. Ensure you are using the 2018AA or higher version of UMLS. For the [concept detection](/clouddocs/annotator_concept_detection/) and [attribute detection](/clouddocs/annotator_attribute_detection/) annotators, ensure you have specified the optional configuration parameter to return the medical codes in your flow definition.
+For the [concept detection](/clouddocs/annotator_concept_detection/) and [attribute detection](/clouddocs/annotator_attribute_detection/) annotators, ensure you have specified the optional configuration parameter to return the medical codes in your flow definition.
