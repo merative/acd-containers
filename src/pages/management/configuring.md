@@ -8,7 +8,7 @@ toc: true
 
 ## ACD configurable parameters
 
-The following tables lists the configurable parameters available for ACD.
+The following tables lists the configurable parameters available for ACD. Also see [ACD Custom Resource](https://merative.github.io/acd-containers/usage/custom-resource-apis/) for additional details on each configurable property.
 
 ### YAML view
 
