@@ -289,10 +289,10 @@ ACD provides various prometheus metrics to help monitor ACD requests.
 
 | Metric Name | Type | Description |
 | ----------- | ---- | ----------- |
-| ibm_clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
-| ibm_clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
-| ibm_clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in characters. |
-| ibm_clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
+| clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
+| clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
+| clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in characters. |
+| clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
 
 Note: The labels available for each metric can be displayed by running a query on just the metric name.
 
@@ -301,41 +301,41 @@ Note: The labels available for each metric can be displayed by running a query o
 Monitor ACD metrics from the OpenShift web console using `Observe -> Metrics` or your custom Prometheus or Grafana application.
 - Request rate by pod (requests per second, 5 minute sample)
     ```
-    sum by(pod)(rate(ibm_clinical_data_annotator_api_calls_count[5m]))
+    sum by(pod)(rate(clinical_data_annotator_api_calls_count[5m]))
     ```
 - Request rate by pod with namespace filter. Use this filter if you have multiple instances of ACD installed.
     ```
-    sum by (pod)(rate(ibm_clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))
+    sum by (pod)(rate(clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))
     ```
 - Total request rate
     ```
-    sum(rate(ibm_clinical_data_annotator_api_calls_count[5m]))
+    sum(rate(clinical_data_annotator_api_calls_count[5m]))
     ```
 - Average request size
     ```
-    avg(ibm_clinical_data_annotator_api_request_size_bytes)
+    avg(clinical_data_annotator_api_request_size_bytes)
     ```
 - Total request size
     ```
-    sum(ibm_clinical_data_annotator_api_request_size_bytes)
+    sum(clinical_data_annotator_api_request_size_bytes)
     ```
 - Concurrent requests by pod
     ```
-    sum by(pod)(ibm_clinical_data_annotator_api_concurrency_count)
+    sum by(pod)(clinical_data_annotator_api_concurrency_count)
     ```
 - Total concurrent requests
     ```
-    sum(ibm_clinical_data_annotator_api_concurrency_count)
+    sum(clinical_data_annotator_api_concurrency_count)
     ```
 - Response count by return code
     ```
-    sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count)
+    sum by (acd_api_rc)(clinical_data_annotator_api_calls_count)
     ```
 - Total response count with 5xx return codes
     ```
-    sum by (ibm_acd_api_rc)(ibm_clinical_data_annotator_api_calls_count{ibm_acd_api_rc=~"5.."})
+    sum by (acd_api_rc)(clinical_data_annotator_api_calls_count{acd_api_rc=~"5.."})
     ```
 - Average response time by uri
     ```
-    avg by (ibm_acd_api_resource)(ibm_clinical_data_annotator_api_time_seconds)
+    avg by (acd_api_resource)(clinical_data_annotator_api_time_seconds)
     ```
