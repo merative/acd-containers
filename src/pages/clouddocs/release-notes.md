@@ -28,6 +28,11 @@ The following sections document the new features and changes that were included 
 - Added support to control whether the Hypothetical service uses internal triggers.
 - Added support for the ACD debug flag in the ACD Python SDK.
 - Updated the documentation for installing and upgrading the Container Edition.
+- The prometheus metric names and label names for the ACD service have been changed to remove IBM from the names. The new metric names are:   
+   - clinical_data_annotator_api_calls_count    
+   - clinical_data_annotator_api_time_seconds    
+   - clinical_data_annotator_api_request_size_bytes    
+   - clinical_data_annotator_api_concurrency_count
 
 ## October 2022
 
