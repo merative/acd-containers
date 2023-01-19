@@ -4,4 +4,4 @@ This bundle contains the scripts and charts for deploying the Configuration Edit
 
 Each bundle is timestamped for association with published releases of the ACD operator.
 
-See [Configuration Editor](https://merative.github.io/acd-containers/configeditor/overview/index.html) for setting up the deployment.
+See [Configuration Editor](https://merative.github.io/acd-containers/configeditor/index.html) for setting up the deployment.
