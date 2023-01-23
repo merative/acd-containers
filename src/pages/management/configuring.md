@@ -8,7 +8,7 @@ toc: true
 
 ## ACD configurable parameters
 
-The following tables lists the configurable parameters available for ACD.
+The following tables lists the configurable parameters available for ACD. Also see [ACD Custom Resource](https://merative.github.io/acd-containers/usage/custom-resource-apis/) for additional details on each configurable property.
 
 ### YAML view
 
@@ -28,7 +28,8 @@ If using the CLI, these parameters are configurable via the `Acd` custom resourc
 
 | Parameter | Description | Default |
 | -         | -           | -       |
-| `license.accept` | License Accept | `false` |
+| `license.accept` | License accept | `false` |
+| `license.use` | License use | `Development` |
 | `replicas` | ACD replicas | `3`    |
 | `annotators.advancedCareInsights.enabled` | Advanced care insights annotator enabled | `true` |
 | `annotators.attributeDetection.enabled` | Attribute detection annotator enabled | `true` |

@@ -9,8 +9,21 @@ toc: true
 
 ## Managing access to ACD
 
-If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster, you can use the OpenShift-provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do role-based access control (RBAC) access to the service.
-In the example below, we'll use a 4.8 version of the OpenShift OAuth proxy.  See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.  You can update the version to match your OpenShift version.  We set the replica count to 2 which gives some level of high-availability (HA) and distributes the workload some.  You may need to increase the replica count based on load.
+If you have applications that run outside of the cluster and want to provide secure access to the ACD service in the cluster there are several options to consider to limit access to the ACD service: 
+ 1. At a network layer, the firewall / network security group (nsg) can restrict incoming access to the OpenShift route used to externalize the ACD service to a limited set of networks or systems.   
+ 1. Use a client certificate with mutual TLS - see [OpenShift documentation](https://docs.openshift.com/container-platform/4.9/networking/ingress-operator.html#nw-mutual-tls-auth_configuring-ingress). 
+ 1. Provide access to ACD through a reverse proxy that layers on security.  One way to do this is with the OpenShift-provided OAuth service with a [proxy](https://github.com/openshift/oauth-proxy) and a service account to do role-based access control (RBAC) access to the service.  The rest of this page will document how to set this proxy up for protecting an ACD service. Note, with this option, no direct route to ACD is exposed from the cluster and all traffic flows through the proxy which adds some overhead and another hop to traffic.
+
+In the first 2 options above you'll create a route direct to the ACD service and rely on the network security to secure access.  In this case we recommend these route annotations:
+```
+   annotations:
+          haproxy.router.openshift.io/balance: leastconn
+          haproxy.router.openshift.io/disable_cookies: 'true'
+          haproxy.router.openshift.io/timeout: 90s
+```
+
+For the 3rd option follow the steps below to setup a OAuth proxy in a different namespace and expose a route to that.
+
 
 1. Create a project/namespace for the proxy to run in (the examples below use `acd-oauth-proxy`)
 
@@ -22,6 +35,8 @@ In the example below, we'll use a 4.8 version of the OpenShift OAuth proxy.  See
 2. Download the yaml below and save it as "acd-oauth-proxy.yaml".  Edit it with these changes:
    * In the args section, on this line `--upstream=https://merative-acd-acd.<acd_namespace>.svc` change <acd_namespace\> to the namespace your ACD instance is running in (the target service).
    * On this line `--openshift-delegate-urls={"/":{"resource":"services","verb":"get","namespace":<acd_namespace>}}`change <acd_namespace\> again to match your target ACD namespace.
+   * Change the image version to match your OpenShift version. See [instructions here](https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti) for how to pull this image.
+   * Adjust replica count of the proxy as needed based on your load and needs.
 
    ```yaml acd-oauth-proxy.yaml
     kind: List
@@ -39,6 +54,10 @@ In the example below, we'll use a 4.8 version of the OpenShift OAuth proxy.  See
       kind: Route
       metadata:
         name: proxy
+        annotations:
+          haproxy.router.openshift.io/balance: leastconn
+          haproxy.router.openshift.io/disable_cookies: 'true'
+          haproxy.router.openshift.io/timeout: 90s
       spec:
         to:
           kind: Service
@@ -60,6 +79,7 @@ In the example below, we'll use a 4.8 version of the OpenShift OAuth proxy.  See
           app: proxy
     # Launch a proxy as a deployment
     # use           - --set-xauthrequest=true option to send back the user info in the response to nginx or client
+    # http2 is disabled with the GODEBUG env var due to bugs found when under high load with http hangup errors
     # see https://catalog.redhat.com/software/containers/openshift4/ose-oauth-proxy/5cdb2133bed8bd5717d5ae64?container-tabs=gti
     - apiVersion: apps/v1
       kind: Deployment
@@ -80,6 +100,9 @@ In the example below, we'll use a 4.8 version of the OpenShift OAuth proxy.  See
             - name: oauth-proxy
               image: registry.redhat.io/openshift4/ose-oauth-proxy:v4.8
               imagePullPolicy: IfNotPresent
+              env:
+              - name: GODEBUG
+                value: 'http2server=0, http2client=0'
               ports:
               - containerPort: 8443
                 name: public
