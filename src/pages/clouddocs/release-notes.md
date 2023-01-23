@@ -27,12 +27,7 @@ The following sections document the new features and changes that were included 
 - Added support for UMLS 2022AA. UMLS 2019AA has been removed and 2020AA is now deprecated (will be removed in 2023 when we add support for UMLS 2023AA).
 - Added support to control whether the Hypothetical service uses internal triggers.
 - Added support for the ACD debug flag in the ACD Python SDK.
-- Updated the documentation for installing and upgrading the Container Edition.
-- The prometheus metric names and label names for the ACD service have been changed to remove IBM from the names. The new metric names are:   
-   - clinical_data_annotator_api_calls_count    
-   - clinical_data_annotator_api_time_seconds    
-   - clinical_data_annotator_api_request_size_bytes    
-   - clinical_data_annotator_api_concurrency_count
+- The prometheus metric names and label names for the ACD service have been changed to remove IBM from the names. The ACD metric names are documented [here.](https://merative.github.io/acd-containers/troubleshooting/logging-monitoring/#acd-metrics)
 
 ## October 2022
 
