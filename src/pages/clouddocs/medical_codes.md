@@ -23,15 +23,15 @@ Annotator for Clinical Data normalizes medical concepts into many common medical
 
 | Medical Codes | NCI | ICD 9/10 | LOINC | MeSH | RxNorm | SNOMED CT | CPT | CCS | HCC | UMLS CUI |
 |:--------------|:---:|:--------:|:-----:|:----:|:------:|:---------:|:---:|:---:|:---:|:--------:|
-| Allergy | | | | | ✔ | | | | | |
-| Cancer | | ✔ | | | | ✔ | | ✔ | ✔ | ✔ |
+| Allergy | ✔ | | ✔ | ✔ | ✔ | ✔ | | | | ✔ |
+| Cancer | ✔ | ✔ | ✔ | ✔ | | ✔ | | ✔ | ✔ | ✔ |
 | Ejection Fraction | | | | | | | | | | |
 | Lab Value | | | ✔ | | | | | | | |
 | Living Assistance | | | | | | | | | | |
-| Medication | | | | | ✔ | | | | | |
+| Medication | ✔ | | ✔ | ✔ | ✔ | ✔ | | | | ✔ |
 | Named Entities | | | | | | | | | | |
-| Procedure | | | | | | | ✔ | | | ✔ |
-| Symptom Disease | | ✔ | | | | ✔ | | ✔ | ✔ | ✔ |
+| Procedure | ✔ | | ✔ | ✔ | | ✔ | ✔ | | | ✔ |
+| Symptom Disease | ✔ | ✔ | ✔ | ✔ | | ✔ | | ✔ | ✔ | ✔ |
 
 Turn key Annotators
 

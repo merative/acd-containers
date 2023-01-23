@@ -19,7 +19,7 @@ subcollection: wh-acd
 
 # Concept Detection -->
 
-The concept detection service detects medical concepts from unstructured data. The service provides concepts based on the Unified Medical Language System (UMLS). As of the 2018AA version of the UMLS library, the consumers can elect to have a set of [medical codes](/clouddocs/medical_codes/) associated with the UMLS concepts by specifying the optional configuration parameter to return the medical codes. When medical codes are requested, the UMLS concept annotations from concept detection will include the applicable medical codes as metadata within the annotations.
+The concept detection service detects medical concepts from unstructured data. The service provides concepts based on the Unified Medical Language System (UMLS). Consumers can elect to have a set of [medical codes](/clouddocs/medical_codes/) associated with the UMLS concepts by specifying the optional configuration parameter to return the medical codes. When medical codes are requested, the UMLS concept annotations from concept detection will include the applicable medical codes as metadata within the annotations.
 
 ## Expanded Concepts
 
@@ -75,7 +75,7 @@ The following table lists parameters of the concept_detection service.
 
 | Configuration | Values | Description |
 |:--------------|--------|-------------|
-| Libraries | <ul><li>umls.latest</li><li>umls.2021AA</li><li>umls.2020AA</li><li>umls.2019AA <i>(deprecated - will be removed in 2022)</i></li></ul> | Defines the version of the UMLS library that is used when analyzing unstructured data.* |
+| Libraries | <ul><li>umls.latest</li><li>umls.2022AA</li><li>umls.2021AA</li><li>umls.2020AA <i>(deprecated - will be removed in 2023)</i></li></ul> | Defines the version of the UMLS library that is used when analyzing unstructured data.* |
 | inference_rules | | The name of a derived concept rule set that will be used for deriving additional concepts based on the concepts discovered by the libraries specified. |
 | filters | | The name of a concept filter that is used to remove unwanted concepts. |
 | expanded | true/false | When true, the concept detection annotator will attempt to expand concept coverage beyond the surface forms explicitly listed in the specified library.  For example - if <q>broken collarbone</q> is a surface from for C0159658 (Fracture of clavicle), the expanded option would match textual representations of that concept like <q>broke my collarbone</q>.  This option is <i>false</i> by default. |
