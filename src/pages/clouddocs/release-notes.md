@@ -22,6 +22,13 @@ subcollection: wh-acd
 
 The following sections document the new features and changes that were included for each release of the Annotator for Clinical Data service.
 
+## January 2023
+
+- Added support for UMLS 2022AA. UMLS 2019AA has been removed and 2020AA is now deprecated (will be removed in 2023 when we add support for UMLS 2023AA).
+- Added support to control whether the Hypothetical service uses internal triggers.
+- Added support for the ACD debug flag in the ACD Python SDK.
+- The prometheus metric names and label names for the ACD service have been changed to remove IBM from the names. The ACD metric names are documented [here.](https://merative.github.io/acd-containers/troubleshooting/logging-monitoring/#acd-metrics)
+
 ## October 2022
 
 - Added support for defining groups of concept dictionaries for a cartridge that should participate together during longest span processing.

@@ -159,9 +159,9 @@
       path: /clouddocs/clinical_insights_normality/
     - title: "Clinical Insights Cartridge"
       path: /clouddocs/clinical_insights_cartridge/
-- title: Temporal Overview (Preview)
+- title: Temporal Overview
   pages:
-    - title: "Temporal Overview (Preview)"
+    - title: "Temporal Overview"
       path: /clouddocs/temporal_overview/
 - title: Social Determinants of Health (Preview)
   pages:
