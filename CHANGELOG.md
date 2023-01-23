@@ -8,10 +8,11 @@ See Annotator for Clinical Data [release notes](https://github.com/merative/acd-
 
 ### v2.0 - build v2.0.202301181807
 
-- Upgrade support using Openshift Operator Lifecycle Manager
+- Upgrade support using Openshift Operator Lifecycle Manager.
 - Refresh of Annotator for Clinical Data Service and each of its annotators
 - ACD license use type for the Configuration Editor added. See [License Tracking](https://merative.github.io/acd-containers/installing/license-tracking/) documentation.
 - Red Hat OpenShift Container Platform (OCP) 4.8 or later supported.
+- When upgrading, v2.0.202301181807 replaces v2.0.202210180304.
 
 ### v2.0 - build v2.0.202210180304
 
