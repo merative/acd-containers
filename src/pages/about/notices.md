@@ -6,7 +6,6 @@ slug: notices
 toc: true
 ---
 
-![Java Logo](../../images/Java_Compatible.gif)
 
 ## Legal Notices
 
