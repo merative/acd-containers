@@ -12,13 +12,17 @@ The Annotator for Clinical Data Container Edition supports both manual and autom
 
 ## Upgrade paths
 
-There is no upgrade from IBM Watson ACD to Merative ACD. See the [Migration](/migration/considerations/) section for details. The update graph for Merative ACD will be provided when available. The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. Refer here for a list of the [prior IBM Watson ACD versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-ibm).
+There is no upgrade from IBM Watson ACD to Merative ACD. See the [Migration](/migration/considerations/) section for details.
+
+The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. At this point in time, the Merative ACD Operator upgrade chain is very simple, with the initial release and one version that replaces it. See the [Change Log](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-merative) for version details.
+
+Refer here for a list of the [prior IBM Watson ACD versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-ibm).
 
 ## Automatic upgrades
 
 With OLM integration, at operator install time, a subscription is created to an upgrade channel. The channel defines the stream of upgrades available for an operator and is used to roll out the upgrades for channel subscribers.
 
-At the present time, the ACD operator only provides one channel, `v2.0`. When a new patch version becomes available within that channel, i.e. `v2.0.202109011707`, the operator will automatically reconcile the new version and use a rolling update strategy to upgrade both the operator and ACD instance, creating new pods with the new version installed before terminating the pods running the old versions.
+At the present time, the ACD operator only provides one channel, `v2.0`. When a new patch version becomes available within that channel, i.e. `v2.0.202301181807`, the operator will automatically reconcile the new version and use a rolling update strategy to upgrade both the operator and ACD instance, creating new pods with the new version installed before terminating the pods running the old versions.
 
 ## Manual upgrades
 
