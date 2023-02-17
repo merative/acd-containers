@@ -8,7 +8,7 @@ toc: true
 
 Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
 
-- Red Hat OpenShift Container Platform (OCP) 4.7 or later
+- Red Hat OpenShift Container Platform (OCP) 4.10 or later
   - Commencing with OpenShift Container Platform 4.8, Red Hat will denote all even numbered minor releases (e.g. 4.8, 4.10, 4.12) as Extended Update Support (EUS) releases. ACD will support the EUS releases. For more lifecycle policy information please see the [IBM Continuous Delivery Support Lifecycle Policy](https://www.ibm.com/support/pages/ibm-continuous-delivery-support-lifecycle-policy) (IBM CD), and the [Red Hat OpenShift Container Platform Life Cycle Policy](https://access.redhat.com/support/policy/updates/openshift).
   - NOTE: ACD has been tested on and supports OCP on AWS and ROSA.
 - Share storage for ACD configuration storage - This can be:
