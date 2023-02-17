@@ -12,7 +12,7 @@ Image mirroring is a technique to pull a container image from one or more regist
 - Identify multiple mirrored repositories for each target repository, to make sure that if one mirror is down, another can be used.
 - Enable IBM ACD Container Edition to pull images from the new Merative ACD image registry so IBM ACD will continue to run after March 31, 2023.
 
-See Red Hat OpenShift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
+See Red Hat OpenShift's [configuring image registry repository mirroring](https://docs.openshift.com/container-platform/4.10/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration) for additional details.
 
 Images for IBM Watson Annotator for Clinical Data (ACD) are available from the IBM Entitled Registry through March 31, 2023. Images for Merative Annotator for Clinical Data are available from the Merative ACD registry. ACD consumers need to migrate from IBM ACD to Merative ACD by March 31, 2023. In order to give existing consumers of IBM ACD time to migrate, the most recent versions of IBM ACD images [versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases) have been mirrored to the Merative ACD registry. ACD consumers using IBM Watson ACD need to either migrate to the Merative ACD or setup mirroring to pull the IBM ACD images from the Merative ACD registry by March 31, 2023. Credentials for the Merative ACD registry can be used to pull either Merative or IBM ACD images.
 
@@ -113,5 +113,5 @@ In order to use mirrored images, follow these steps to configure container regis
 There are several ways that you can mirror images from one registry to another. Choose the most appropriate method for your environment. These documents may be useful as references.
 
 - Set up a mirrored repository with Red Hat Quay, as described in [Red Hat Quay Repository Mirroring](https://access.redhat.com/documentation/en-us/red_hat_quay/3/html/manage_red_hat_quay/repo-mirroring-in-red-hat-quay). Using Red Hat Quay allows you to copy images from one repository to another and also automatically syncs those repositories repeatedly over time.
-- Use a tool such as skopeo (see example [here](https://docs.openshift.com/container-platform/4.8/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration)) to copy images manually from the source directory to the mirrored repository.
+- Use a tool such as skopeo (see example [here](https://docs.openshift.com/container-platform/4.10/openshift_images/image-configuration.html#images-configuration-registry-mirror_image-configuration)) to copy images manually from the source directory to the mirrored repository.
 - Set up a mirrored repository to a private container registry, as described [here](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-mirroring-images-your-private-container-registry) to mirror images from the IBM Entitled Registry.

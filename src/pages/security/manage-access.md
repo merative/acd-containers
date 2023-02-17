@@ -98,7 +98,7 @@ For the 3rd option follow the steps below to setup a OAuth proxy in a different 
             serviceAccountName: proxy
             containers:
             - name: oauth-proxy
-              image: registry.redhat.io/openshift4/ose-oauth-proxy:v4.8
+              image: registry.redhat.io/openshift4/ose-oauth-proxy:v4.10
               imagePullPolicy: IfNotPresent
               env:
               - name: GODEBUG
