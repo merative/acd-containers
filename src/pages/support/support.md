@@ -12,7 +12,7 @@ To submit feedback or to report an issue with the documentation, open a GitHub i
 
 ## Merative Support Team
 
-To contact the  Merative Support team, open a case using the [Merative Support portal](https://www.ibm.com/support/pages/node/6210395).
+To contact the [Merative Product Support](https://www.merative.com/support) team, see the [ACD Product Support](https://www.merative.com/support/health-insights-product-support-details) page and open a case using the [Merative Product Support portal](https://www.ibm.com/support/pages/node/6210395).
 
 - Only **Authorized Users** may submit issues.
   - All client support issues will be documented within a support case.

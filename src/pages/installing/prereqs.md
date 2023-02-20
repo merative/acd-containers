@@ -8,9 +8,9 @@ toc: true
 
 Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
 
-- Red Hat OpenShift Container Platform (OCP) 4.7 or later
+- Red Hat OpenShift Container Platform (OCP) 4.10 or later
   - Commencing with OpenShift Container Platform 4.8, Red Hat will denote all even numbered minor releases (e.g. 4.8, 4.10, 4.12) as Extended Update Support (EUS) releases. ACD will support the EUS releases. For more lifecycle policy information please see the [IBM Continuous Delivery Support Lifecycle Policy](https://www.ibm.com/support/pages/ibm-continuous-delivery-support-lifecycle-policy) (IBM CD), and the [Red Hat OpenShift Container Platform Life Cycle Policy](https://access.redhat.com/support/policy/updates/openshift).
-  - NOTE: ACD has been tested and supports OCP on AWS. Red Hat OpenShift Service on AWS (ROSA) has not been tested and is not supported at this time.
+  - NOTE: ACD has been tested on and supports OCP on AWS and ROSA.
 - Share storage for ACD configuration storage - This can be:
   - A persistent volume claim against a [ReadWriteMany shared file system](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
     - This is most often used with on-premise, cloud-based clusters based on VMWare or OpenStack with an NFS file system. If using a shared file system ensure it supports
@@ -38,7 +38,7 @@ By default, an ACD installation requires the following minimum resources:
 | ----------------------- | ---------------------- | -------- | ---------------- |
 | ACD                     | 3                      | 8 min (16 recommended )       | 64              |
 
-For high availability, run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 CPU/node and 64 GB of memory. For a development or test environment, 1 or 2 replicas can be configured and 8 CPU/node may be used.  
+For high availability, run 3 replicas of the ACD service on a minimum of 3 worker nodes that have 16 CPU/node and 64 GB of memory (or 6+ 8x32 nodes). For a development or test environment, 1 or 2 replicas can be configured and 8 CPU/node may be used with 64 GB of memory per replica.  See [performance and capacity planning](../../planning/perf-and-capacity) for more information.
 
 By default, the ACD pods may use all of the CPUs on a node. If needed, you can limit the ACD deployment CPU usage (see [Configuration](../../management/configuring)).
 

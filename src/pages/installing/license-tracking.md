@@ -7,7 +7,14 @@ toc: true
 ---
 _Note: For IBM Watson Annotator for Clinical Data Container Edition, the License Service is **required** to be running on your cluster in accordance with the pricing rule for IBM containerized software._
 
-The IBM License Service is an available option for monitoring and measuring license usage of ACD.  License usage is based on a Virtual Processing Core (VPC) metric. For ACD, it is the top-level pod `merative-acd-acd` that will be metered for VPC usage.  The usage will be the capacity of the node where this pod runs. For example, ACD running in a cluster with 16 CPU/node has license usage = 16 VPC. The ACD CPU limit can be adjusted by the number of replicas configured and the size of the nodes where ACD runs. For more information on configuration, see [Configuration](/management/configuring/).
+The IBM License Service is an available option for monitoring and measuring license usage of ACD. License usage is based on a Virtual Processor Core (VPC) metric. For ACD, it is the top-level pod `merative-acd-acd` that will be metered for VPC usage. The usage will be the capacity of the node where this pod runs. For example, ACD running in a cluster with 16 CPU/node has license usage = 16 VPC. The ACD CPU limit can be adjusted by the number of replicas configured and the size of the nodes where ACD runs. For more information on configuration, see [Configuration](/management/configuring/).
+
+ACD license use types include:
+  - `Development` for non-production use of ACD in a development or test environment
+  - `Production` for installations of ACD running in a production environment
+  - `ConfigurationEditor` for an installation of ACD running as a sandbox instance for the <span><a aria-current="" to="https://merative.github.io/acd-containers/configeditor/index.html#openshift-overview" href="https://merative.github.io/acd-containers/configeditor/index.html#openshift-overview" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Configuration Editor</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>
+
+As a required prerequisite for the Configuration Editor, an ACD installation with the license use type of `ConfigurationEditor` does not apply its metrics towards the purchased virtual processor core (VPC) licenses.
 
 ## Overview
 

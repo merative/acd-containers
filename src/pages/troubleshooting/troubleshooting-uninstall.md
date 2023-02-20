@@ -15,7 +15,7 @@ Occasionally some of the custom resources managed by an operator may remain in "
 1. Check that the namespace is stuck in Terminating state upon deletion.
 
     ```
-    oc get namespace <namespace>
+    oc get namespace ${acd_namespace}
     ```
 
     Output:
@@ -28,7 +28,7 @@ Occasionally some of the custom resources managed by an operator may remain in "
 1. Check for the `NamespaceFinalizersRemaining` and `NamespaceContentRemaining` messages in the `STATUS` section of the command output and perform the next step for each of the listed resources.
 
     ```
-    oc get namespace <namespace> -o yaml
+    oc get namespace ${acd_namespace} -o yaml
     ```
 
     Output:
@@ -79,13 +79,13 @@ Occasionally some of the custom resources managed by an operator may remain in "
     2. Get the Object name corresponding to the object kind.
 
         ```
-        oc get  <object-kind> -n  <namespace>
+        oc get  <object-kind> -n  ${acd_namespace}
         ```
 
         Example:
 
         ```
-        oc get acds.wh-acd.ibm.com -n my-acd-namespace
+        oc get acds.wh-acd.ibm.com -n ${acd_namespace}
         ```
 
         Example output:
@@ -98,13 +98,13 @@ Occasionally some of the custom resources managed by an operator may remain in "
     3. Patch the resources.
 
         ```
-        oc patch -n <namespace> <object-kind>/<object-name> --type=merge -p '{"metadata": {"finalizers":null}}'
+        oc patch -n ${acd_namespace} <object-kind>/<object-name> --type=merge -p '{"metadata": {"finalizers":null}}'
         ```
 
         Example:
 
         ```
-        oc patch -n my-acd-namespace \
+        oc patch -n ${acd_namespace} \
         acds.wh-acd.ibm.com/acd-instance \
         --type=merge -p '{"metadata": {"finalizers":null}}'
         ```
@@ -118,7 +118,7 @@ Occasionally some of the custom resources managed by an operator may remain in "
 1. Verify that the namespace is deleted.
 
     ```
-    oc get namespace <namespace>
+    oc get namespace ${acd_namespace}
     ```
 
     Output:

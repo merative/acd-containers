@@ -140,8 +140,9 @@ The `License` property contains two required field:
 
 - `accept` : must be boolean `true` for the ACD pods to successfully start.
 - `use` : the type of license being used.  Can be one of the following values:
-  - `production`
-  - `development`
+  - `Production`
+  - `Development`
+  - `ConfigurationEditor`
 
 #### Example
 
@@ -182,13 +183,13 @@ The `Replicas` property tells the deployment how many replica pods to create for
 
 #### Description
 
-The `Resources` property defines the CPU, ephemeral storage, and memory for limits and requests.
+The `Resources` property defines the CPU, ephemeral storage, and memory for limits and requests for the ACD service.
 
 #### CPU
 
 The default CPU request is 100m.
 
-It is worth noting that you can only request CPU, there is not a limit field, as the Annotator for Clinical Data operator will set the limits CPU to the requests CPU.
+It is worth noting there is no limit set, so the ACD service is guaranteed its requested CPU and can use excess CPU when available.
 
 #### Memory
 
@@ -196,7 +197,7 @@ You are able to set both requests and limits for memory.  The values must follow
 
 #### Ephemeral Storage
 
-You are able to set the values for non-persisted or transient storage.  All data created / managed within the ephemeral storage is only present for the lifetime of the pod.  Transient storage should be used as the sole storage mechanism in a production environment.
+You are able to set the values for non-persisted or transient storage.  All data created / managed within the ephemeral storage is only present for the lifetime of the pod.  Transient storage should not be used as the sole storage mechanism in a production environment.
 
 If this field is not provided, or parts of the resources object are left unset, the default values(s) will be used for the container.
 

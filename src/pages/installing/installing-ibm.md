@@ -6,7 +6,7 @@ slug: installing
 toc: true
 ---
 
-_Note: The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition. All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022._
+_Note: The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition. All Annotator for Clinical Data (ACD) Container Edition consumers will need to migrate their ACD instances from IBM Watson ACD to Merative ACD by March 31, 2023._
 
 _The following instructions are for installing IBM Watson Annotator for Clinical Data Container Edition. For installation instructions for Merative Annotator for Clinical Data Container Edition, please refer [here](/installing/installing/)._
 
@@ -61,7 +61,21 @@ In order for ACD images to be pulled from the IBM Entitled Registry, a pull secr
 
 #### Option 1: OpenShift global pull secret installation
 
-To add the pull secret to the OpenShift global pull secret:
+Add the pull secret to the OpenShift global pull secret via the OpenShift web console or oc command line.
+
+Adding a global pull secret using the OpenShift web console. This method is much less error prone.
+
+1. Use the RedHat OpenShift Container Platform web console and select `Workloads -> Secrets` in the `openshift-config` project.
+
+1. Select the `pull-secret` object from the list of secrets.
+
+1. Select `Actions -> Edit Secret` to bring up the secret editor for this secret.
+
+1. Edit an existing credential for your registry if it already exists or Select `Add credentials` at the bottom and fill in the new pull secret credentials.
+
+   ![Example Pull Secret](../../images/ibm-pull-secret-example.png)
+
+Adding a global pull secret using the oc command line:
 
 1. Extract the current global image pull secret from the cluster into a file in the current directory named `.dockerconfigjson`:
 

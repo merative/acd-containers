@@ -6,7 +6,7 @@ slug: migrate-file-storage
 toc: true
 ---
 
-The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition. All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by December 31, 2022.
+The Merative Annotator for Clinical Data Container Edition is the replacement for the IBM Watson Annotator for Clinical Data Container Edition. All Annotator for Clinical Data (ACD) Container Edition consumers need to migrate their ACD instances from IBM Watson ACD to Merative ACD by March 31, 2023.
 
 - For more information and general considerations, see [Migration Considerations](/migration/considerations/).
 - Additional storage migration options include:
@@ -37,7 +37,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
   ```
   export source_acd_namespace=<existing_ACD_namespace>
-  export source_pvc_name=$(oc get pvc -n ${source_acd_namespace} -o json | yq -r ".items[].spec.volumeName")
+  export source_pvc_name=$(oc get pvc -n ${source_acd_namespace} -o yaml | yq -r ".items[].metadata.name")
   echo ${source_pvc_name}
   ```
 
@@ -70,11 +70,10 @@ _Note:_ References to source ACD or source namespace are referring to your exist
   The annotation `openshift.io/sa.scc.uid-range` indicates the user ID range for the project. Replace `<target_project_uid>` with the starting number in the range identified by that annotation.
 
   ```
-  oc get project ${target_acd_namespace} -o json | yq -r .metadata.annotations
-  export target_project_uid=<target_project_uid>
+  export target_project_uid=$(oc get project ${target_acd_namespace} -o yaml | yq -r '.metadata.annotations."openshift.io/sa.scc.uid-range" | split("/") | .[0]')
   ```
 
-1. Create a new PersistentVolumeClaim (PVC) using the existing PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace. It will be in `Pending` status.
+2. Create a new PersistentVolumeClaim (PVC) using the existing PersistentVolume (PV) in the target namespace. Create a PVC using the OpenShift console, or save the example yaml below as <target_pvc_name>.yaml. Replace `<target_pvc_name>` with the new PVC name and `<pv_id>` with the persistent volume name. Ensure the rest of the configuration matches that of your existing PVC in the source ACD namespace. It will be in `Pending` status.
 
   ```
   apiVersion: v1
@@ -89,6 +88,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
         storage: 10Gi
     storageClassName: ocs-storagecluster-cephfs
     volumeMode: Filesystem
+    volumeName: <pv_id>
   ```
 
   ```
@@ -136,7 +136,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
 1. If the Configuration Editor is deployed, create a new zero-replica instance of the cartridge and dictionary services in the target namespace using the target PVC name.
 
-  Refer to [Installing ACD Configuration Editor](https://merative.github.io/acd-containers/configeditor/download_openshift/#installing-acd-configuration-editor) for installation steps.
+  Refer to <span><a aria-current="" to="https://merative.github.io/acd-containers/configeditor/index.html#openshift-installing-config-editor" href="https://merative.github.io/acd-containers/configeditor/index.html#openshift-installing-config-editor" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Install CE</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span> for installation steps.
 
   ```
   helm install merative-acd-ce-cdc   merative-acd-ce/cdc/chart/cdc   --set replicas=0   --set configurationStorage.file.volume.existingClaimName=${target_pvc_name}   --namespace ${target_acd_namespace}
@@ -246,7 +246,7 @@ _Note:_ References to source ACD or source namespace are referring to your exist
 
   For ACD deployments (not the Configuration Editor), create a serviceview role in target namespace and grant all service accounts in the proxy namespace access to it. Follow the steps 7 and 8 under [Manage Access](/security/manage-access/).
 
-  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Follow step 2 under [Manage Access](/security/manage-access/).
+  Update the proxy deployment upstream option to point to the ACD service (or cartridge service) in the target namespace. Note the service names also changed as part of the migration, for example from `ibm-wh-acd-acd` to `merative-acd-acd`, so be sure to update both the service name and target namespace in the upstream option. Follow step 2 under [Manage Access](/security/manage-access/).
 
 1. Re-enable network access and client traffic to the target namespace.
 
