@@ -5,19 +5,13 @@ categories: Clinical Insights
 slug: clinical_insights_medication
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2020
-lastupdated: "2020-02-11"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Clinical Insights Medication Model -->
+<!-- # Clinical Insights Medication Model -->
 
 The medication model provides information about how a medication annotation applies to the patient and about lifecycle events related to that medication.
 

@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_lab_values
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Lab Values -->
+<!-- # Lab Values -->
 
 The purpose of the Lab Value annotator is to annotate the value associated with lab measurements and tests. The annotator uses lab measurements and test defined in the [Logical Observation Identifiers Names and Codes (LOINC)](https://loinc.org/) database. This database is a universal standard for identifying medical laboratory observations.  
 

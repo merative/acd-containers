@@ -5,6 +5,12 @@ categories: installing
 slug: air-gap-installation
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 _Note:  The air gap environment applies to IBM Watson Annotator for Clinical Data Container Edition._
 

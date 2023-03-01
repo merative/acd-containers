@@ -5,19 +5,13 @@ categories: Clinical Insights
 slug: clinical_insights_cartridge
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2020
-lastupdated: "2020-02-11"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Clinical Insights Cartridge -->
+<!-- # Clinical Insights Cartridge -->
 
 The Clinical Insights Cartridge is a default configuration set that ships with Annotator for Clinical Data that uses the low level insight model scores to promote annotations that apply to the patient to one of the following known [attribute](/clouddocs/annotator_attribute_detection/) types.
 

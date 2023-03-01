@@ -5,6 +5,12 @@ categories: management
 slug: getting-started
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 The ACD service provides a robust set of REST APIs to generate clinical annotations over text and interact with persisted analytic artifacts.  To get started using the ACD service, see the API reference documentation and examples for <span><a aria-current="" to="https://merative.github.io/acd-containers/apidocs/index.html?shell" href="https://merative.github.io/acd-containers/apidocs/index.html?shell" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">curl</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>. The ACD service REST APIs can be called directly using curl or with the [Annotator for Clinical Data Software Development Kits (SDKs)](/usage/sdks/).
 

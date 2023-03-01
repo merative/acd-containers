@@ -5,19 +5,14 @@ categories: Social Determinants of Health (Preview)
 slug: substance_use_illicit_drug
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2021, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2021
-lastupdated: "2021-11-09"
 
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Substance Use Illicit Drug Model (Preview) -->
+<!-- # Substance Use Illicit Drug Model (Preview) -->
 
 The substance use illicit drug model provides information about the illicit drug usage that applies to the patient.
 

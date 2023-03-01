@@ -5,19 +5,13 @@ categories: Clinical Insights
 slug: clinical_insights_normality
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2020
-lastupdated: "2020-02-11"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Clinical Insights Normality Model (Preview) -->
+<!-- # Clinical Insights Normality Model (Preview) -->
 
 The normality model looks for language around certain target concepts (body parts, body substances, diagnostic tests, and organism functions) that indicate a normal or abnormal finding about a patient.
 

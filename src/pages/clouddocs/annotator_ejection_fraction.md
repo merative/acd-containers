@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_ejection_fraction
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Ejection Fraction (Deprecated) -->
+<!-- # Ejection Fraction (Deprecated) -->
 
 The purpose of the Ejection Fraction annotator is to annotate ejection fraction test results. Ejection fraction is a measurement of the percentage of blood leaving your heart each time it contracts. The Ejection Fraction annotation is generally used as input into calculations or models in the cardiac domain.
 

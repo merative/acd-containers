@@ -5,6 +5,12 @@ categories: installing
 slug: uninstalling
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 _Note: The following instructions, including the cloudctl command line utility, are for uninstalling IBM Watson Annotator for Clinical Data Container Edition.  For uninstalling Merative Annotator for Clinical Data Container Edition, refer [here](/installing/uninstalling/)._
 
 IBM Watson Annotator for Clinical Data Container Edition should be uninstalled using the same interface that was used to install. The uninstall can be done using either the OpenShift Container Platform web console or the command line.

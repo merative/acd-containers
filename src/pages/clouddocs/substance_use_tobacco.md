@@ -5,19 +5,14 @@ categories: Social Determinants of Health (Preview)
 slug: substance_use_tobacco
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2021, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2021
-lastupdated: "2021-11-09"
 
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Substance Use Tobacco Model (Preview) -->
+<!-- # Substance Use Tobacco Model (Preview) -->
 
 The substance use tobacco model provides information about tobacco use that applies to the patient.
 

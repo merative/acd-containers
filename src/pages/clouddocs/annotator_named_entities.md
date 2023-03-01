@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_named_entities
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Named Entities -->
+<!-- # Named Entities -->
 
 Annotates spans of text that are named entities: person names, medical institutions, organizations, locations, emails, and phone numbers.
 

@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_relation
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Relation -->
+<!-- # Sections -->
 
 The relation annotator is intended to be used in conjunction with the <a data-scroll="" href="wh-acd?topic=wh-acd-concept_detection#concept_detection">concept detection</a> annotator to identify related concepts in unstructured text. The relationship annotator will identify concepts with a defined relationship in either UMLS or a custom ontology that exist with the same sentence.
 

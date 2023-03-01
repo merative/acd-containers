@@ -5,19 +5,13 @@ categories: Clinical Insights
 slug: clinical_insights_diagnosis
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2020
-lastupdated: "2020-02-11"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Clinical Insights Diagnosis Model -->
+<!-- # Clinical Insights Diagnosis Model -->
 
 The diagnosis model provides usage information and other features about the diagnosis.
 

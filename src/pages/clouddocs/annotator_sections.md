@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_sections
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Sections -->
+<!-- # Sections -->
 
 The section annotator is used to identify the section of a document where concepts are found. For example, a patient's discharge summary may contain a <q>Family History</q> section identifying medical diagnoses of the patient's parents. In some instances, this information may not be relevant for a particular use case. Using the section annotator, annotations identified as belonging to the <q>Family History</q> section may be filtered out.
 

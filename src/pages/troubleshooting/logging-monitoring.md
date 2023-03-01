@@ -5,6 +5,12 @@ categories: troubleshooting
 slug: logging-monitoring
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 You can monitor status or troubleshoot issues with your installation in the following ways:
 

@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_living_assistance
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Living Assistance (Deprecated) -->
+<!-- # Living Assistance (Deprecated) -->
 
 The living assistance annotators identifies text that indicates if a patient needs assistance with daily activities.  There are six living assistance annotators that cover different types of assistance needs:  Bathing, dressing, eating, seeing, toileting, and walking.
 

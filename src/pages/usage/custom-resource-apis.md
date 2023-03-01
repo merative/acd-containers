@@ -5,6 +5,12 @@ categories: APIs
 slug: status
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 The `Acd` resource is a Custom Resource Definition used to deploy and manage an instance of Annotator for Clinical Data service.
 

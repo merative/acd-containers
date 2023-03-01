@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_cancer
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Cancer (Deprecated) -->
+<!-- # Cancer (Deprecated) -->
 
 Detects potential cancer disease terms such as adenocarcinoma carcinomatosis. Extra features that can be found by the annotator include: the actual name of the cancer, measurement, cancer grade, site, date, and modality.
 

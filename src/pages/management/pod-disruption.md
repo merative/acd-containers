@@ -5,6 +5,12 @@ categories: management
 slug: pod-disruption
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 The Pod Disruption Budget (pdb) limits the number of pods that are down simultaneously from voluntary disruptions.  Refer to these links for information on disruptions and Pod Disruption Budgets.
  - [Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)
