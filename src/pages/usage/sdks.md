@@ -5,6 +5,12 @@ categories: usage
 slug: sdks
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 Annotator for Clinical Data has software development kits (SDKs) for interacting with the ACD service REST APIs.  Depending on your chosen language that you use to develop applications to take advantage of the functionality provided by ACD, both a Java and Python version of the SDK are available to you.  See below for more SDK details.
 

@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_negation_detection
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Negation -->
+<!-- # Negation -->
 
 The negation detection annotator identifies the spans of text that are the object of a negation and also identifies the text that triggered the negation. The annotator adds a **negated** field to annotations to indicate if the annotation is negated.
 

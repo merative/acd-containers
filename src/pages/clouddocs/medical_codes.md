@@ -5,19 +5,14 @@ categories: Medical Codes
 slug: medical_codes
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2019, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2019
-lastupdated: "2019-04-16"
 
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Medical Codes -->
+<!-- # Medical Codes -->
 
 Annotator for Clinical Data normalizes medical concepts into many common medical codes.  The following table shows the medical code support for each annotator available in Annotator for Clinical Data.
 

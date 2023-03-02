@@ -5,19 +5,14 @@ categories: Social Determinants of Health (Preview)
 slug: substance_use_overview
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2021, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2021
-lastupdated: "2021-11-09"
 
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Substance Use Overview (Preview) -->
+<!-- # Substance Use Overview (Preview) -->
 
 The substance use feature is a ready-to-use annotation capability within Annotator for Clinical Data that provides contextual information for alcohol use, tobacco use, illicit drug use, and substance abuse treatment identified in unstructured text.  
 

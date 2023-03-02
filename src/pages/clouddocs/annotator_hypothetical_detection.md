@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_hypothetical_detection
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Hypothetical -->
+<!-- # Hypothetical -->
 
 Identifies the spans of text that are the object of a hypothetical statement. For example, a patient's record may include the statement `The doctor discussed the benefits of having an MRI performed`. It would be incorrect to say the patient has had an MRI since the sentence indicates the patient and doctor only talked about having an MRI. This statement would be identified as a hypothetical statement.  Another example could be `the patient's father had diabetes`. This isn't stating the patient has diabetes, just that his father did have it.  This is an example of a family history hypothetical span.
 

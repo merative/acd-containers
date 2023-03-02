@@ -5,18 +5,12 @@ categories: Help
 slug: release-notes
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2019, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-<!-- ---
-
-copyright:
-  years: 2019, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
---- -->
 
 <!-- # Release notes -->
 

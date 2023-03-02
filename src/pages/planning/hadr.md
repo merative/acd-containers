@@ -5,6 +5,12 @@ categories: planning
 slug: hadr
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 Annotator for Clinical Data Container Edition default deployment model distributes replicas across nodes and can also span zones within a region.
 Disruption in the network connectivity may happen within a region.  Recovering from potential disasters that affect an entire region requires planning and preparation.

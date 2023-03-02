@@ -5,19 +5,13 @@ categories: Social Determinants of Health (Preview)
 slug: substance_abuse_treatment
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2021, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2021
-lastupdated: "2021-11-09"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Substance Abuse Treatment Model (Preview) -->
+<!-- # Substance Abuse Treatment Model (Preview) -->
 
 The substance abuse treatment model provides information about any treatment for substance abuse problems (alcohol or illicit drugs) that apply to the patient.
 

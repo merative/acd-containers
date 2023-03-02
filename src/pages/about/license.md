@@ -5,6 +5,12 @@ categories: about
 slug: license
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 The Annotator for Clinical Data Container Edition license is available at [LICENSE](https://ibm.biz/BdfmAB).
 

@@ -5,6 +5,12 @@ categories: installing
 slug: using-image-mirroring
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 Image mirroring is a technique to pull a container image from one or more registries using the same fully qualified image name.  Setting up container registry repository mirroring enables you to do the following:
 
