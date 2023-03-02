@@ -11,7 +11,7 @@ toc: true
 <!-- SPDX-License-Identifier: Apache-2.0                                -->
 <!--                                                                    -->
 
-<!-- # Sections -->
+<!-- # Relation -->
 
 The relation annotator is intended to be used in conjunction with the <a data-scroll="" href="wh-acd?topic=wh-acd-concept_detection#concept_detection">concept detection</a> annotator to identify related concepts in unstructured text. The relationship annotator will identify concepts with a defined relationship in either UMLS or a custom ontology that exist with the same sentence.
 

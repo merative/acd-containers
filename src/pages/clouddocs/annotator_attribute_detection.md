@@ -6,7 +6,7 @@ slug: annotator_attribute_detection
 toc: true
 ---
 <!--                                                                    -->
-<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!-- (C) Copyright Merative US L.P. and others 2015, 2023                -->
 <!--                                                                    -->
 <!-- SPDX-License-Identifier: Apache-2.0                                -->
 <!--                                                                    -->

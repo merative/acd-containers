@@ -6,7 +6,7 @@ slug: clinical_insights_medication
 toc: true
 ---
 <!--                                                                    -->
-<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!-- (C) Copyright Merative US L.P. and others 2020, 2023               -->
 <!--                                                                    -->
 <!-- SPDX-License-Identifier: Apache-2.0                                -->
 <!--                                                                    -->

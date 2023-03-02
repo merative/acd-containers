@@ -11,7 +11,7 @@ toc: true
 <!-- SPDX-License-Identifier: Apache-2.0                                -->
 <!--                                                                    -->
 
-<!-- # Smoking -->
+<!-- # Smoking (Deprecated) -->
 
 The smoking annotator identifies whether the patient is a current or former smoker. Furthermore, it identifies the amount and substance(s) being smoked as well as the rate and duration of the smoking habit.
 
