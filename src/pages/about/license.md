@@ -12,7 +12,7 @@ toc: true
 <!--                                                                    -->
 
 
-The Annotator for Clinical Data Container Edition license is available at [LICENSE](https://ibm.biz/BdfmAB).
+The Annotator for Clinical Data Container Edition license is available at [LICENSE](https://merative.net/ACDLicense).
 
 IBM and the IBM logo are trademarks of International Business Machines Corporation, registered in many jurisdictions worldwide.
 Other product and service names might be trademarks of IBM or other companies.
