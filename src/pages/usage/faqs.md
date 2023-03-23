@@ -66,4 +66,4 @@ At this time, the NLP annotators provided by the service support English text.
 
 ## Which annotator flows are provided and maintained by the service?
 
-The [wh_acd.ibm_clinical_insights_v1.0_standard_flow](/usage/overview/) annotator flow that is part of the [Clinical Insights](/clouddocs/clinical_insights_overview/) capability is provided and maintained by the service.
+The [acd.acd_clinical_insights_v1.0_standard_flow](/usage/overview/) annotator flow that is part of the [Clinical Insights](/clouddocs/clinical_insights_overview/) capability is provided and maintained by the service.
