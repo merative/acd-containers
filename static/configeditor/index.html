@@ -1011,7 +1011,7 @@
 
   <p>Run a health check against the pod using the following command. It should list <code style="color:black;background-color:whitesmoke">"serviceState":"OK"</code>.
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell" style="padding-top:10px;">
-  <code style="font-size:smaller;">kubectl exec &lt;pod name&gt; -c ibm-wh-acd-crtg -n ${acd_namespace} -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'</code>
+  <code style="font-size:smaller;">kubectl exec &lt;pod name&gt; -c merative-acd-crtg -n ${acd_namespace} -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'</code>
   </pre></div>
   </li>
   </ol><br/>
