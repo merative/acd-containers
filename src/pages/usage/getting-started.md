@@ -20,7 +20,7 @@ ACD provides a set of predefined cartridges (containing ACD flow and profile con
 
 The following steps are for the [Clinical Insights](/clouddocs/clinical_insights_overview/) cartridge.
 
-#### 1. Download the zip of the [wh_acd.ibm_clinical_insights_v1.0](https://github.com/merative/acd-cartridges/blob/master/cartridges/wh_acd.ibm_clinical_insights_v1.0.zip).
+#### 1. Download the zip of the [acd.acd_clinical_insights_v1.0](https://github.com/merative/acd-cartridges/blob/master/cartridges/acd.acd_clinical_insights_v1.0.zip).
 
 #### 2. Port-forward to connect to an ACD pod.
 
@@ -48,7 +48,7 @@ curl -k -X POST \
     --header 'Content-Type: application/octet-stream' \
     --header 'Accept: application/json' \
     --header 'X-Watson-UserInfo: bluemix-instance-id=__ibm_supertenant__' \
-    --data-binary @wh_acd.ibm_clinical_insights_v1.0.zip
+    --data-binary @acd.acd_clinical_insights_v1.0.zip
 ```
 
 **NOTE:** Use POST to create it the first time, or PUT to update a previously deployed or partially deployed cartridge.
@@ -61,7 +61,7 @@ curl -k -X POST \
     --header 'Content-Type: application/octet-stream' \
     --header 'Accept: application/json' \
     --header 'X-Forwarded-User: __ibm_supertenant__' \
-    --data-binary @wh_acd.ibm_clinical_insights_v1.0.zip
+    --data-binary @acd.acd_clinical_insights_v1.0.zip
 ```
 
 Note this **ibm_supertenant** is only required when deploying the provided cartridges which are shared across tenants.  Note also if you change the instance to add the OAuth proxy for authentication and mutitenancy later, you do not need to redeploy the clinical insights cartridge. If you update the instance later you will need to use the `X-Forwarded-User` header with a PUT command on curl, however.
@@ -75,7 +75,7 @@ Use GET on the returned `statusLocation` to get status of the POST or PUT of the
 ```
 curl -k -X GET \
     --header 'Accept: application/json' \
-    'https://localhost:9443/services/clinical_data_annotator/api/v1/cartridges/wh_acd.ibm_clinical_insights_v1.0?version=2021-03-15'
+    'https://localhost:9443/services/clinical_data_annotator/api/v1/cartridges/acd.acd_clinical_insights_v1.0?version=2021-03-15'
 ```
 
 #### 4. Use the ACD APIs to get flows and post to analyze to analyze text.
@@ -99,5 +99,5 @@ curl -k -X POST \
     --header 'Accept: application/json' \
     --header 'Authorization: Bearer xxxxxxxxxxxxxxxxxx' \
     -d 'Patient has lung cancer, but did not smoke. She may consider chemotherapy as part of a treatment plan.' \
-    'https://<route_host>/services/clinical_data_annotator/api/v1/analyze/wh_acd.ibm_clinical_insights_v1.0_standard_flow?version=2020-03-31'
+    'https://<route_host>/services/clinical_data_annotator/api/v1/analyze/acd.acd_clinical_insights_v1.0_standard_flow?version=2020-03-31'
 ```
