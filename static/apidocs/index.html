@@ -643,7 +643,7 @@
 <p>List profiles results</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"wh_acd.ibm_clinical_insights_v1.0_profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"acd.acd_clinical_insights_v1.0_profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-04T13:30:15.318Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -908,7 +908,7 @@
 <span class="n">acd_service</span><span class="p">.</span><span class="n">set_service_url</span><span class="p">({</span><span class="n">url</span><span class="p">})</span>
 
 <span class="k">try</span><span class="p">:</span>
-   <span class="n">resp</span> <span class="o">=</span> <span class="n">acd_service</span><span class="p">.</span><span class="n">get_profile</span><span class="p">(</span><span class="s">"wh_acd.ibm_clinical_insights_v1.0_profile"</span><span class="p">)</span>
+   <span class="n">resp</span> <span class="o">=</span> <span class="n">acd_service</span><span class="p">.</span><span class="n">get_profile</span><span class="p">(</span><span class="s">"acd.acd_clinical_insights_v1.0_profile"</span><span class="p">)</span>
    <span class="n">rslt</span> <span class="o">=</span> <span class="n">resp</span><span class="p">.</span><span class="n">result</span>
    <span class="k">print</span><span class="p">(</span><span class="s">"Id:"</span><span class="p">,</span> <span class="n">rslt</span><span class="p">[</span><span class="s">'id'</span><span class="p">])</span>
    <span class="k">print</span><span class="p">(</span><span class="s">"Name:"</span><span class="p">,</span> <span class="n">rslt</span><span class="p">[</span><span class="s">'name'</span><span class="p">])</span>
@@ -1421,7 +1421,7 @@
 <p>List flows results</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"wh_acd.ibm_clinical_insights_v1.0_standard_flow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"acd.acd_clinical_insights_v1.0_standard_flow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default annotator flow for the insight cartridge"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-04T13:30:15.318Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1703,7 +1703,7 @@
 <span class="n">acd</span><span class="o">.</span><span class="na">setServiceUrl</span><span class="o">({</span><span class="n">url</span><span class="o">});</span>
 
 <span class="nc">GetFlowsByIdOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GetFlowsByIdOptions</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-   <span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"wh_acd.ibm_clinical_insights_v1.0_standard_flow"</span><span class="o">)</span>
+   <span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"acd.acd_clinical_insights_v1.0_standard_flow"</span><span class="o">)</span>
    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span><span class="o">&lt;</span><span class="nc">AcdFlow</span><span class="o">&gt;</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">acd</span><span class="o">.</span><span class="na">getFlowsById</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 <span class="nc">AcdFlow</span> <span class="n">flow</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getResult</span><span class="o">();</span>
@@ -1734,7 +1734,7 @@
 <span class="n">acd_service</span><span class="p">.</span><span class="n">set_service_url</span><span class="p">({</span><span class="n">url</span><span class="p">})</span>
 
 <span class="k">try</span><span class="p">:</span>
-   <span class="n">resp</span> <span class="o">=</span> <span class="n">acd_service</span><span class="p">.</span><span class="n">get_flows_by_id</span><span class="p">(</span><span class="s">"wh_acd.ibm_clinical_insights_v1.0_standard_flow"</span><span class="p">)</span>
+   <span class="n">resp</span> <span class="o">=</span> <span class="n">acd_service</span><span class="p">.</span><span class="n">get_flows_by_id</span><span class="p">(</span><span class="s">"acd.acd_clinical_insights_v1.0_standard_flow"</span><span class="p">)</span>
    <span class="n">rslt</span> <span class="o">=</span> <span class="n">resp</span><span class="p">.</span><span class="n">result</span>
    <span class="k">print</span><span class="p">(</span><span class="s">"Id:"</span><span class="p">,</span> <span class="n">rslt</span><span class="p">[</span><span class="s">'id'</span><span class="p">])</span>
    <span class="k">print</span><span class="p">(</span><span class="s">"Name:"</span><span class="p">,</span> <span class="n">rslt</span><span class="p">[</span><span class="s">'name'</span><span class="p">])</span>
@@ -2314,9 +2314,9 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"cartridges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wh_acd.ibm_clinical_insights_v1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acd.acd_clinical_insights_v1.0"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"statusLocation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/v1/cartridges/wh_acd.ibm_clinical_insights_v1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"statusLocation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/v1/cartridges/acd.acd_clinical_insights_v1.0"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-24T18:25:45.835Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-24T18:25:55.847Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -3480,7 +3480,7 @@
 <span class="nt">--header</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
 <span class="nt">--data-binary</span> <span class="s2">"Patient has lung cancer, but did not smoke. She may consider chemotherapy as part of a treatment plan."</span>  <span class="se">\</span>
- <span class="s2">"{url}/v1/analyze/wh_acd.ibm_clinical_insights_v1.0_standard_flow?version={version}"</span>
+ <span class="s2">"{url}/v1/analyze/acd.acd_clinical_insights_v1.0_standard_flow?version={version}"</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="cm">/*
  * Simple analyze call referencing a persisted annotator flow example.
@@ -3497,7 +3497,7 @@
       <span class="n">authenticator</span><span class="o">);</span>
 <span class="n">acd</span><span class="o">.</span><span class="na">setServiceUrl</span><span class="o">({</span><span class="n">url</span><span class="o">});</span>
 
-<span class="nc">String</span> <span class="n">flowId</span> <span class="o">=</span> <span class="s">"wh_acd.ibm_clinical_insights_v1.0_standard_flow"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">flowId</span> <span class="o">=</span> <span class="s">"acd.acd_clinical_insights_v1.0_standard_flow"</span><span class="o">;</span>
 <span class="nc">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">"Patient has lung cancer, but did not smoke. She may consider chemotherapy as part of a treatment plan."</span><span class="o">;</span>
 
 <span class="nc">ContainerGroup</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">acd</span><span class="o">.</span><span class="na">analyzeWithFlow</span><span class="o">(</span><span class="n">flowId</span><span class="o">,</span> <span class="n">text</span><span class="o">);</span>
@@ -3516,7 +3516,7 @@
 <span class="p">)</span>
 <span class="n">acd_service</span><span class="p">.</span><span class="n">set_service_url</span><span class="p">({</span><span class="n">url</span><span class="p">})</span>
 
-<span class="n">flowId</span> <span class="o">=</span> <span class="s">"wh_acd.ibm_clinical_insights_v1.0_standard_flow"</span>
+<span class="n">flowId</span> <span class="o">=</span> <span class="s">"acd.acd_clinical_insights_v1.0_standard_flow"</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s">"Patient has lung cancer, but did not smoke. She may consider chemotherapy as part of a treatment plan."</span>
 
 <span class="k">try</span><span class="p">:</span>
