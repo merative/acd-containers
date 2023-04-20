@@ -32,7 +32,7 @@ Find details about installing and using the SDKs.
 
 In the following examples, replace:
 
-- `{version}` is the ACD service API version, e.g. 2021-06-01
+- `{version}` is the ACD service API version, e.g. 2022-06-01
 - `{url}` is either:
   - OAuth proxy route URL if secured access, e.g. https://<proxy_route_name>-<proxy_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
   - Direct route URL if unsecured, e.g. https://<route_name>-<acd_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
@@ -46,7 +46,7 @@ In the following examples, replace:
 
 ```
 import com.ibm.cloud.sdk.core.security.BearerTokenAuthenticator;
-import com.ibm.watson.health.acd.v1.AnnotatorForClinicalData;
+import com.merative.acd.v1.AnnotatorForClinicalData;
 
 AnnotatorForClinicalData acdService = new AnnotatorForClinicalData({version},
 				"AnnotatorForClinicalData", new BearerTokenAuthenticator({token}));
@@ -57,7 +57,7 @@ acdService.setServiceUrl({url});
 
 ```
 import com.ibm.cloud.sdk.core.security.BearerTokenAuthenticator;
-import com.ibm.watson.health.acd.v1.AnnotatorForClinicalData;
+import com.merative.acd.v1.AnnotatorForClinicalData;
 import com.ibm.cloud.sdk.core.http.HttpConfigOptions;
 
 AnnotatorForClinicalData acdService = new AnnotatorForClinicalData({version},
@@ -73,7 +73,7 @@ acdService.configureClient(options);
 
 ```
 from ibm_cloud_sdk_core.authenticators import BearerTokenAuthenticator
-import ibm_whcs_sdk.annotator_for_clinical_data as acd
+import acd_sdk.annotator_for_clinical_data as acd
 
 acd_service = acd.AnnotatorForClinicalDataV1(
     authenticator=BearerTokenAuthenticator(bearer_token={token}),
@@ -86,7 +86,7 @@ acd_service.set_service_url({url})
 
 ```
 from ibm_cloud_sdk_core.authenticators import BearerTokenAuthenticator
-import ibm_whcs_sdk.annotator_for_clinical_data as acd
+import acd_sdk.annotator_for_clinical_data as acd
 
 acd_service = acd.AnnotatorForClinicalDataV1(
     authenticator=BearerTokenAuthenticator(bearer_token={token}),

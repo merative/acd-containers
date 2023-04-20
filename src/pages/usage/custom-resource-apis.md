@@ -210,10 +210,6 @@ If this field is not provided, or parts of the resources object are left unset, 
 #### Example
 
 ```yaml
-API Version: wh-acd.ibm.com/v1
-Name: acd-instance
-Kind: Acd
-Spec:
   Resources:
     Limits:
       Cpu:                
