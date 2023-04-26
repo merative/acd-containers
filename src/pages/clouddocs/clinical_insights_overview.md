@@ -5,19 +5,13 @@ categories: Clinical Insights
 slug: clinical_insights_overview
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2020, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2020
-lastupdated: "2020-02-11"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Clinical Insights Overview -->
+<!-- # Clinical Insights Overview -->
 
 The clinical insights feature is a ready-to-use annotation capability within Annotator for Clinical Data that provides contextual information for problems, procedures, and medications identified in unstructured text.  It is composed of two parts:
 
@@ -37,7 +31,7 @@ You can use the Annotator for Clinical Data Configuration Editor to [customize a
 Each model contributes contextual features to annotations that are either produced by standard Annotator for Clinical Data annotators or from custom annotations you create using the Annotator for Clinical Data Configuration Editor.  The Clinical Insights Models include:
 
 1. [Medication](/clouddocs/clinical_insights_medication/)
-2. [Procedure](/clouddocs/annotator_procedure/)
+2. [Procedure](/clouddocs/clinical_insights_procedure/)
 3. [Diagnosis](/clouddocs/clinical_insights_diagnosis/)
 4. [Normality - Experimental](/clouddocs/clinical_insights_normality/)
 5. [Temporal - Experimental](/clouddocs/temporal_overview/)

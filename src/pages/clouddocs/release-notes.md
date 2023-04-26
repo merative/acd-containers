@@ -5,25 +5,43 @@ categories: Help
 slug: release-notes
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2019, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-<!-- ---
-
-copyright:
-  years: 2019, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
---- -->
 
 <!-- # Release notes -->
 
 The following sections document the new features and changes that were included for each release of the Annotator for Clinical Data service.
 
+## April 2023
+
+- Fixed an exception in the Concept Detection service that could occur in concept inferencing processing when the text does not contain punctuation. This problem would result in ACD returning a 500 exception.
+- Fixed an exception in the Negation Detection service that could occur if a negation annotation was created without a trigger and a negation filter attempted to filter based on trigger information. This problem would result in ACD returning a 500 exception.
+- Improved the internal processing of ACD when a micro-service is unavailable. This should result in fewer ACD 500 exceptions. 
+- Derived concept changes:
+    - Added support for propagating embedded custom values in a derived concept value.
+    - Added support for propagating medical codes for derived concept values.
+    - Added support for deriving a custom value.
+    - Added support to allow the covered text or preferred name of a selected concept in a derived concept to populate a field on the output annotation.
+- Attribute changes:
+    - Added support for matching an attribute over a derived concept value backed by an ACI Medication or ACI Lab Value annotation.
+    - Added support to find secondary annotations in a derived concept value from the derived from trail (not by matching CUIs).
+    - Added support to allow matching CUI from the derived concept value.
+    - Added support to propagate fields from the derived concept value first and use the secondary annotation as a fallback option.
+    - Added support to promote dimension, frequency, and duration to the attribute if they exist in a derived concept value annotation.
+- Added warning messages when a processed ACD flow contains deprecated services.
+- Updated the documentation to reflect the new Merative ACD product branding.
+- ACD Prometheus metrics changes:
+    - The Prometheus PodMonitor is now created by default. 
+    - The ACD metric clinical_data_annotator_api_calls_count renamed to clinical_data_annotator_api_calls_count_total
+    - See the [documentation](https://merative.github.io/acd-containers/troubleshooting/logging-monitoring/#enabling-and-configuring-acd-prometheus-metrics) for details.
+
 ## January 2023
 
+- Fixed a problem in how filters were processed by the Negation and Hypothetical Detection services.  In a multi-threaded environment this could result in an exception or filters not being processed correctly.
 - Added support for UMLS 2022AA. UMLS 2019AA has been removed and 2020AA is now deprecated (will be removed in 2023 when we add support for UMLS 2023AA).
 - Added support to control whether the Hypothetical service uses internal triggers.
 - Added support for the ACD debug flag in the ACD Python SDK.

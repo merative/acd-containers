@@ -5,6 +5,12 @@ categories: installing
 slug: setup
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 Each deployment of the ACD operator and its dependent resources need to be scoped to a project for proper isolation.
 

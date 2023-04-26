@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_attribute_detection
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2015, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2015, 2019
-lastupdated: "2019-03-07"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Attribute Detection -->
+<!-- # Attribute Detection -->
 
 The attribute detection annotator provides support for domain specific attributes and associated values to be discovered in unstructured clinical text. Attribute values are identified by promoting relevant concept, concept values, and clinical annotations (e.g. procedures) to generate a higher-level concept in which consumers can define the name, possible values, and value ranges to suit the needs of their solution.
 

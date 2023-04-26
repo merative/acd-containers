@@ -6,6 +6,12 @@ See Annotator for Clinical Data [release notes](https://github.com/merative/acd-
 
 ## Releases from Merative
 
+### v2.0 - build v2.0.202304241329
+
+- Refresh of Annotator for Clinical Data Service and each of its annotators.
+- Red Hat OpenShift Container Platform (OCP) 4.10 or later supported.
+- When upgrading, v2.0.202304241329 replaces v2.0.202301181807.
+
 ### v2.0 - build v2.0.202301181807
 
 - Upgrade support using Openshift Operator Lifecycle Manager.

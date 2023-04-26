@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_medication
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Medications -->
+<!-- # Medication -->
 
 The Medications annotator identifies information that is related to medications and how they are administered to the patient (dosage, frequency, route, etc).
 

@@ -5,18 +5,12 @@ categories: Help
 slug: troubleshooting
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2015, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-<!-- ---
-
-copyright:
-  years: 2015, 2019
-lastupdated: "2019-02-20"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
---- -->
 
 <!-- # Troubleshooting -->
 

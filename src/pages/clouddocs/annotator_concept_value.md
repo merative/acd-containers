@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_concept_value
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Concept Value -->
+<!-- # Concept Value -->
 
 The Concept Value annotator is intended to be used in conjunction with the [Concept
 Detection annotator](/clouddocs/annotator_concept_detection/) to identify values within unstructured data associated with concepts.  For example:

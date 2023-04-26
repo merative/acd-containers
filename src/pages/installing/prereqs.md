@@ -5,6 +5,12 @@ categories: installing
 slug: prerequisites
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 Annotator for Clinical Data (ACD) Container Edition has the following prerequisites:
 

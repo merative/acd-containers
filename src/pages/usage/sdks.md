@@ -5,6 +5,12 @@ categories: usage
 slug: sdks
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 Annotator for Clinical Data has software development kits (SDKs) for interacting with the ACD service REST APIs.  Depending on your chosen language that you use to develop applications to take advantage of the functionality provided by ACD, both a Java and Python version of the SDK are available to you.  See below for more SDK details.
 
@@ -16,17 +22,17 @@ To authenticate to Annotator for Clinical Data Container Edition, you pass a **b
 
 Find details about installing and using the SDKs.
 
-- [Java SDK](https://github.com/merative/whcs-java-sdk)
-  - See examples provided in the API Reference for <span><a aria-current="" to="https://merative.github.io/acd-containers/apidocs/index.html?java" href="https://merative.github.io/acd-containers/apidocs/index.html?java" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Java</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>. See also the Java SDK [javadoc](https://merative.github.io/whcs-java-sdk/docs/latest/).
+- [Java SDK](https://github.com/merative/acd-java-sdk)
+  - See examples provided in the API Reference for <span><a aria-current="" to="https://merative.github.io/acd-containers/apidocs/index.html?java" href="https://merative.github.io/acd-containers/apidocs/index.html?java" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Java</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>. See also the Java SDK [javadoc](https://merative.github.io/acd-java-sdk/docs/latest/).
 
-- [Python SDK](https://github.com/merative/whcs-python-sdk)
+- [Python SDK](https://github.com/merative/acd-python-sdk)
   - See examples provided in the API Reference for <span><a aria-current="" to="https://merative.github.io/acd-containers/apidocs/index.html?python" href="https://merative.github.io/acd-containers/apidocs/index.html?python" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Python</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>.
 
 ## Examples
 
 In the following examples, replace:
 
-- `{version}` is the ACD service API version, e.g. 2021-06-01
+- `{version}` is the ACD service API version, e.g. 2022-06-01
 - `{url}` is either:
   - OAuth proxy route URL if secured access, e.g. https://<proxy_route_name>-<proxy_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
   - Direct route URL if unsecured, e.g. https://<route_name>-<acd_namespace>.apps.yourserver.com/services/clinical_data_annotator/api
@@ -40,7 +46,7 @@ In the following examples, replace:
 
 ```
 import com.ibm.cloud.sdk.core.security.BearerTokenAuthenticator;
-import com.ibm.watson.health.acd.v1.AnnotatorForClinicalData;
+import com.merative.acd.v1.AnnotatorForClinicalData;
 
 AnnotatorForClinicalData acdService = new AnnotatorForClinicalData({version},
 				"AnnotatorForClinicalData", new BearerTokenAuthenticator({token}));
@@ -51,7 +57,7 @@ acdService.setServiceUrl({url});
 
 ```
 import com.ibm.cloud.sdk.core.security.BearerTokenAuthenticator;
-import com.ibm.watson.health.acd.v1.AnnotatorForClinicalData;
+import com.merative.acd.v1.AnnotatorForClinicalData;
 import com.ibm.cloud.sdk.core.http.HttpConfigOptions;
 
 AnnotatorForClinicalData acdService = new AnnotatorForClinicalData({version},
@@ -67,7 +73,7 @@ acdService.configureClient(options);
 
 ```
 from ibm_cloud_sdk_core.authenticators import BearerTokenAuthenticator
-import ibm_whcs_sdk.annotator_for_clinical_data as acd
+import acd_sdk.annotator_for_clinical_data as acd
 
 acd_service = acd.AnnotatorForClinicalDataV1(
     authenticator=BearerTokenAuthenticator(bearer_token={token}),
@@ -80,7 +86,7 @@ acd_service.set_service_url({url})
 
 ```
 from ibm_cloud_sdk_core.authenticators import BearerTokenAuthenticator
-import ibm_whcs_sdk.annotator_for_clinical_data as acd
+import acd_sdk.annotator_for_clinical_data as acd
 
 acd_service = acd.AnnotatorForClinicalDataV1(
     authenticator=BearerTokenAuthenticator(bearer_token={token}),

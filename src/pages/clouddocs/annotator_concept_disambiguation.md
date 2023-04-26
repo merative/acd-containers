@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_concept_disambiguation
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Concept Disambiguation -->
+<!-- # Concept Disambiguation -->
 
 The Unified Medical Language System (UMLS) provides broad medical concept coverage.  The version that ships with Annotator for Clinical Data covers approximately 2 million concepts.  The breadth of this information is useful to explore a new medical domain, but it can also create false annotations over spans of text.  Consider a simple acronym like _TEC_.  In a recent version of UMLS, TEC is annotated with nine concepts, that represent seven different ideas - Thymic epithelial cell, Transient erythroblastopenia of childhood, Transluminal extraction catheter, TEC gene/protein, NR4A3 wt Allele, Tubingen electric campimetry, and RHBDF2 wt Allele.  Collisions like this are not uncommon in UMLS.
 

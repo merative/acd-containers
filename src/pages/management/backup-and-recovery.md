@@ -5,6 +5,12 @@ categories: management
 slug: backup-and-recovery
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 ACD stores configuration data in either an object bucket (e.g. S3 IBM COS) or on a Persistent Volume Claim
 from a Persistent Volume (e.g. an NFS file share) that was configured when the ACD operand was created.

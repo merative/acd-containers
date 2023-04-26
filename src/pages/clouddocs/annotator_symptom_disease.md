@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_symptom_disease
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2021
-lastupdated: "2019-09-21"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Symptoms & Diseases -->
+<!-- # Symptoms & Diseases -->
 
 This annotator identifies symptoms and diseases mentioned in the text. It also identifies related text that describes the symptom or disease.
 

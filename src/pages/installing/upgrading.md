@@ -5,6 +5,12 @@ categories: installing
 slug: upgrading
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 _Note:  The upgrade path only applies to IBM Watson Annotator for Clinical Data Container Edition at this time. Upgrades will be available for Merative Annotator for Clinical Data Container Edition sometime after the initial Merative version is published._
 

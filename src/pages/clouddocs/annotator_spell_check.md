@@ -5,19 +5,13 @@ categories: Annotators
 slug: annotator_spell_check
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2011, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2011, 2019
-lastupdated: "2019-04-12"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Spell Check -->
+<!-- # Spell Check -->
 
 This annotator identifies misspelled words and phrases in a document and suggests corrections.  You can use the spell check annotator as a standalone preprocessing step for your data or it can be used as part of a larger annotator flow.
 

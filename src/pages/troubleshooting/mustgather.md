@@ -5,6 +5,12 @@ categories: troubleshooting
 slug: mustgather
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 _Note:  The IBM Cloud Pak MustGather tool applies to IBM Watson Annotator for Clinical Data Container Edition.  For Merative Annotator for Clinical Data support, please [Contact Us](/support/support/)._
 

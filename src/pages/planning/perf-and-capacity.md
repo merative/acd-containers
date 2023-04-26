@@ -5,6 +5,12 @@ categories: planning
 slug: perf-and-capacity
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 ## Planning for performance and capacity of Annotator for Clinical Data
 
 Response time for _analyze_ calls to Annotator for Clinical Data depends on the document size and the flow used as well as the content and the systems that ACD is deployed on, so it is recommended to test with your data and configuration.  For planning purposes, the provided [clinical insights](../../clouddocs/clinical_insights_overview/) flow processes a typical 2K document (about 1 page of clinical text) in about 2 seconds so this can be used as a high-level approximation.

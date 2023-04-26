@@ -5,6 +5,12 @@ categories: troubleshooting
 slug: logging-monitoring
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 You can monitor status or troubleshoot issues with your installation in the following ways:
 
@@ -239,60 +245,89 @@ Like any other Docker container, when a pod is in running status, you can log in
 
 The command opens a bash session within the pod.
 
-## Enabling ACD prometheus metrics
+## Enabling and Configuring ACD prometheus metrics
 
 ACD provides various prometheus metrics to help monitor ACD requests.
 
-#### Steps to enable OpenShift user-defined monitoring
+OpenShift user-defined monitoring must be enabled as a prerequisite to gather ACD metrics.
 
 - Read OpenShift monitoring overview
 
-    https://docs.openshift.com/container-platform/4.9/monitoring/monitoring-overview.html
+    https://docs.openshift.com/container-platform/4.12/monitoring/monitoring-overview.html
 
 - Enable OpenShift user-defined monitoring in the ACD namespace
 
-    https://docs.openshift.com/container-platform/4.9/monitoring/enabling-monitoring-for-user-defined-projects.html
+    https://docs.openshift.com/container-platform/4.12/monitoring/enabling-monitoring-for-user-defined-projects.html
 
-- Review instructions on how to create a PodMonitor object in your ACD namespace
+ACD itself is configured to provide metrics by default.  OpenShift will collect these metrics when user-defined monitoring is enabled as described in the previous steps.
 
-    https://docs.openshift.com/container-platform/4.9/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics
+Modifying the prometheus configuration for an ACD instance.
 
-- Create the ACD Pod Monitor object using this command and file.
-
+- The promethus configuration for an ACD instance can be modified by editing the PodMonitor resource in the ACD namespace.  The polling interval is the most likely parameter to be changed.  Prometheus metrics gathering of a specific ACD instance can also be disabled by deleting the PodMonitor resource in that namespace.
+- NOTE: You must change the prometheus.createPodMonitor parameter in the ACD operator yaml instance to false before the PodMonitor object can be modified or deleted.  This will not delete the PodMonitor resource if it already exists.
+- Example prometheus config section in the Acd resource instance yaml:
     ```
-    oc apply -n ${acd_namespace} -f acd-pod-monitor.yaml
+    "prometheus": {
+      "createPodMonitor": false,
+      "scrape": true
+    },
     ```
-
-    <br/>Example acd-pod-monitor.yaml file
-
-    ```yaml acd-pod-monitor.yaml
+ - The ACD PodMonitor resource can be edited from the OpenShift UI by searching for the PodMonitor resource in the namespace where ACD is installed.
+ - Example default ACD PodMonitor configuration
+    ```
     apiVersion: monitoring.coreos.com/v1
     kind: PodMonitor
     metadata:
+      name: merative-acd-prometheus-monitor
+      namespace: <acd namespace>
       labels:
-        k8s-app: prometheus-acd-monitor
-      name: prometheus-acd-monitor
+        app.kubernetes.io/instance: merative-acd-prometheus-monitor-acd-instance
+        app.kubernetes.io/name: merative-acd-prometheus-monitor
+        app.kubernetes.io/part-of: merative-acd
+        app.kubernetes.io/version: 2.0.0
     spec:
       podMetricsEndpoints:
-      - interval: 30s
-        path: services/clinical_data_annotator/api/v1/metrics
-        port: acd-https
-        scheme: https
-        tlsConfig:
-          insecureSkipVerify: true
-      selector:
-        matchLabels:
-          app.kubernetes.io/name: merative-acd-acd
+        - interval: 60s
+          metricRelabelings:
+            - action: labeldrop
+              regex: job|instance
+          relabelings:
+            - action: keep
+              regex: true;true;acd-https
+              sourceLabels:
+                - __meta_kubernetes_pod_annotation_prometheus_io_scrape
+                - __meta_kubernetes_pod_ready
+                - __meta_kubernetes_pod_container_port_name
+            - action: replace
+              regex: '([^:]+)(?::\d+)?;(\d+)'
+              replacement: '$1:$2'
+              sourceLabels:
+                - __address__
+                - __meta_kubernetes_pod_annotation_prometheus_io_port
+              targetLabel: __address__
+            - action: replace
+              regex: (http|https)
+              sourceLabels:
+                - __meta_kubernetes_pod_annotation_prometheus_io_scheme
+              targetLabel: __scheme__
+            - action: replace
+              regex: (.+)
+              sourceLabels:
+                - __meta_kubernetes_pod_annotation_prometheus_io_path
+              targetLabel: __metrics_path__
+          scheme: http
+      selector: {}
     ```
 
 ### ACD Metrics
 
 | Metric Name | Type | Description |
 | ----------- | ---- | ----------- |
-| clinical_data_annotator_api_calls_count | Counter | The number of API requests. |
+| clinical_data_annotator_api_calls_count_total | Counter | The total number of API requests. |
 | clinical_data_annotator_api_time_seconds | Gauge | The time of an API request in seconds. |
 | clinical_data_annotator_api_request_size_bytes | Gauge | The size of the API request in characters. |
 | clinical_data_annotator_api_concurrency_count | Gauge | The number of concurrent API requests. |
+| clinical_data_annotator_api_queued_time_seconds | Gauge | The queued time of an API request in seconds. |
 
 Note: The labels available for each metric can be displayed by running a query on just the metric name.
 
@@ -301,15 +336,15 @@ Note: The labels available for each metric can be displayed by running a query o
 Monitor ACD metrics from the OpenShift web console using `Observe -> Metrics` or your custom Prometheus or Grafana application.
 - Request rate by pod (requests per second, 5 minute sample)
     ```
-    sum by(pod)(rate(clinical_data_annotator_api_calls_count[5m]))
+    sum by(pod)(rate(clinical_data_annotator_api_calls_count_total[5m]))
     ```
 - Request rate by pod with namespace filter. Use this filter if you have multiple instances of ACD installed.
     ```
-    sum by (pod)(rate(clinical_data_annotator_api_calls_count{namespace="merative-acd-operator-system"}[5m]))
+    sum by (pod)(rate(clinical_data_annotator_api_calls_count_total{namespace="merative-acd-operator-system"}[5m]))
     ```
 - Total request rate
     ```
-    sum(rate(clinical_data_annotator_api_calls_count[5m]))
+    sum(rate(clinical_data_annotator_api_calls_count_total[5m]))
     ```
 - Average request size
     ```
@@ -329,11 +364,11 @@ Monitor ACD metrics from the OpenShift web console using `Observe -> Metrics` or
     ```
 - Response count by return code
     ```
-    sum by (acd_api_rc)(clinical_data_annotator_api_calls_count)
+    sum by (acd_api_rc)(clinical_data_annotator_api_calls_count_total)
     ```
 - Total response count with 5xx return codes
     ```
-    sum by (acd_api_rc)(clinical_data_annotator_api_calls_count{acd_api_rc=~"5.."})
+    sum by (acd_api_rc)(clinical_data_annotator_api_calls_count_total{acd_api_rc=~"5.."})
     ```
 - Average response time by uri
     ```

@@ -5,19 +5,11 @@ excerpt: "Temporal Overview."
 slug: temporal_overview
 toc: true
 ---
-
-
-<!-- ---
-
-copyright:
-  years: 2020
-lastupdated: "2020-10-28"
-
-keywords: annotator clinical data, clinical data, annotation, temporal
-
-subcollection: wh-acd
-
---- -->
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2020, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
 <!-- # Temporal Overview -->
 

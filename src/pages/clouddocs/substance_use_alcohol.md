@@ -5,19 +5,13 @@ categories: Social Determinants of Health (Preview)
 slug: substance_use_alcohol
 toc: true
 ---
-<!-- ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2021, 2023               -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
 
-copyright:
-  years: 2021
-lastupdated: "2021-11-09"
-
-keywords: annotator clinical data, clinical data, annotation
-
-subcollection: wh-acd
-
----
-
-# Substance Use Alcohol Model (Preview) -->
+<!-- # Substance Use Alcohol Model (Preview) -->
 
 The substance use alcohol model provides information about the alcohol usage that applies to the patient.
 

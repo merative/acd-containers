@@ -5,6 +5,12 @@ categories: management
 slug: scaling
 toc: true
 ---
+<!--                                                                    -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023                -->
+<!--                                                                    -->
+<!-- SPDX-License-Identifier: Apache-2.0                                -->
+<!--                                                                    -->
+
 
 The replica count in the ACD deployment determines the number of replicas for each of the ACD deployments, which determines the peak concurrent capacity of the ACD deployment. If the capacity is exceeded, the system will start to queue up requests to protect the container processes from overload. If the queues fill up, the system will return errors to the caller indicating the system is not available.
 

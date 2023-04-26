@@ -401,7 +401,7 @@
 
     <h3 id="overview-welcome">Welcome to the Annotator for Clinical Data Configuration Editor</h3>
 
-    <p><b>Notice:</b> The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers. See <a href="https://ibm.biz/BdfmAB">license</a> for terms of use.</p></br>
+    <p><b>Notice:</b> The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers. See <a href="https://merative.net/ACDLicense">license</a> for terms of use.</p></br>
 
     In this document, find instructions for:
     
@@ -457,7 +457,7 @@
 
     <p>Acceptance of terms of use is required to use the tool.</p>
 
-    <a href="https://ibm.biz/BdfmAB">View Program Terms</a>
+    <a href="https://merative.net/ACDLicense">View Program Terms</a>
 
     <p></p>
 
@@ -697,7 +697,7 @@
 
   <p>In the upper right corner of the ACD Configuration Editor main page, you can click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.<br/><br/>
 
-  <img src="images/ConfigEditorCatalog.png" alt="Configuration Editor Main"><br/><br/>
+  <img src="images/ACDConfigEditorCatalog.png" alt="Configuration Editor Main"><br/><br/>
 
   <p>Periodically, refer to this Configuration Editor documentation for updates to the Configuration Editor packages and see below for <a href="https://merative.github.io/acd-containers/configeditor/index.html#docker-updating" onclick="navTo('sb-docker-overview')">Updating the Configuration Editor</a> instructions.
 
@@ -1011,7 +1011,7 @@
 
   <p>Run a health check against the pod using the following command. It should list <code style="color:black;background-color:whitesmoke">"serviceState":"OK"</code>.
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell" style="padding-top:10px;">
-  <code style="font-size:smaller;">kubectl exec &lt;pod name&gt; -c ibm-wh-acd-crtg -n ${acd_namespace} -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'</code>
+  <code style="font-size:smaller;">kubectl exec &lt;pod name&gt; -c merative-acd-crtg -n ${acd_namespace} -- curl -sk 'https://localhost:9443/services/cartridge/api/v1/status/health_check'</code>
   </pre></div>
   </li>
   </ol><br/>
@@ -1172,7 +1172,7 @@
 
  <p>After you are in, you are at the main ACD Configuration Editor catalog page. Initially, there are no default cartridges so your list will be empty.  You can install the base <a href="https://github.com/merative/acd-cartridges">Clinical Insights</a> cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.<br/><br/>
 
- <img src="images/ConfigEditorCatalog.png" alt="Configuration Editor Main">
+ <img src="images/ACDConfigEditorCatalog.png" alt="Configuration Editor Main">
 
  <p>Periodically, refer to this documentation for updates to the Configuration Editor packages and see below for update instructions.
 
