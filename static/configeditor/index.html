@@ -1,3 +1,9 @@
+<!--                                                                   -->
+<!-- (C) Copyright Merative US L.P. and others 2018, 2023               -->
+<!--                                                                   -->
+<!-- SPDX-License-Identifier: Apache-2.0                               -->
+<!--                                                                   -->
+
 <!doctype html>
 <html>
   <head>
@@ -308,6 +314,9 @@
     <li class="sidebar-item-link" id="sb-overview-learning-materials">
       <a href="#overview-learning-materials">Learning Materials</a>
     </li>
+    <li class="sidebar-item-link" id="sb-overview-acd-docs">
+      <a href="#overview-acd-docs">Annotator for Clinical Data Documentation</a>
+    </li>
     <li class="sidebar-item-link" id="sb-overview-support-and-questions">
       <a href="#overview-support-and-questions">Support and Questions</a>
     </li>
@@ -404,7 +413,7 @@
 
     <h3 id="overview-introduction">Introduction</h3>
 
-    <p>Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges which are used to configure and customize Annotator for Clinical Data.  It is focused on providing domain adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.</p>
+    <p>Annotator for Clinical Data Configuration Editor is used to build knowledge cartridges which are used to configure and customize <span><a aria-current="" to="https://merative.github.io/acd-containers/" href="https://merative.github.io/acd-containers/" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">Annotator for Clinical Data</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>.  It is focused on providing domain adaptation to Annotator for Clinical Data service through the construction of knowledge cartridges.</p>
 
     <p>Each customer's use case and data sets are unique, however, there are common cognitive patterns within health data text that can be captured into artifacts so they can be reused across projects. Configuration Editor allows the domain expert to build a cognitive model, contained in a cartridge, to extract structured data from unstructured text in order to derive valuable insights. The tool provides a mechanism for the domain expert to share cognitive models or pieces of a model with other customer engagements. The tool's purpose is to enable customization, reduce development time, and improve accuracy of building cognitive models that run on Annotator for Clinical Data service.</p>
 
@@ -434,11 +443,15 @@
 
     <h3 id="overview-learning-materials">Learning materials</h3>
  
-    <p>Videos and other <a href="https://merative.github.io/acd-containers/configeditor/index.html#learning-resources-overview" onclick="navTo('sb-learning-resources')">educational content.</a></p>
+    <p>Videos and other <a href="https://merative.github.io/acd-containers/configeditor/index.html#learning-resources-overview" onclick="navTo('sb-learning-resources')">educational content</a>.</p>
+
+    <h3 id="overview-acd-docs">Annotator for Clinical Data documentation</h3>
+
+    <p>For information about Annotator for Clinical Data, click the link to go to the <span><a aria-current="" to="https://merative.github.io/acd-containers/" href="https://merative.github.io/acd-containers/" rel="noopener noreferrer" target="_blank" class="LeftNav-module--outboundLink">documentation</a><svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg></span>. 
 
     <h3 id="overview-support-and-questions">Support and questions</h3>
 
-    <p>Configuration Editor is provided to you as-is and free of charge.  For support or questions, please refer to <a href="https://merative.github.io/acd-containers/support/support/">Support.</a></p>
+    <p>Configuration Editor is provided to you as-is and free of charge.  For support or questions, please refer to <a href="https://merative.github.io/acd-containers/support/support/">Support</a>.</p>
 
     <h3 id="overview-program-terms">Program Terms</h3>
 
@@ -638,7 +651,7 @@
   </pre></div>
    
   <p>Finally, in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file, is the user and group that Docker will start the containers as.  It is defined near the top on a line that starts with something similar to this:
-  <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_common_docker_user=<userid>:&lt;groupid&gt;;\</code>
+  <code style="color:black;background-color:whitesmoke">clinical_data_annotator_common_docker_user=<userid>:&lt;groupid&gt;;\</code>
 
   <p>Edit this line in the file.  The <code style="color:black;background-color:whitesmoke">&lt;userid&gt;</code> should be a user id on your local system that has RWX permission to the <code style="color:black;background-color:whitesmoke">acd-ce/installs/config</code> target directory defined above.  The group should be set to <code style="color:black;background-color:whitesmoke">0</code>.
 
@@ -709,14 +722,14 @@
 
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
   <code style="font-size:smaller;">
-  com_ibm_watson_health_car_acd_host_1_label="Annotator_for_Clinical_Data_Container_Edition";\
-  com_ibm_watson_health_car_acd_host_1_url=https://&lt;your container edition url&gt;;\
-  com_ibm_watson_health_car_acd_host_1_proxy=wh-acd-ce;\
-  com_ibm_watson_health_car_acd_host_1_auth=Bearer;\
-  com_ibm_watson_health_car_acd_host_1_phi=false;\
+  clinical_data_annotator_car_acd_host_1_label="Annotator_for_Clinical_Data_Container_Edition";\
+  clinical_data_annotator_car_acd_host_1_url=https://&lt;your container edition url&gt;;\
+  clinical_data_annotator_car_acd_host_1_proxy=wh-acd-ce;\
+  clinical_data_annotator_car_acd_host_1_auth=Bearer;\
+  clinical_data_annotator_car_acd_host_1_phi=false;\
   </code></pre></div>
 
- <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The possible properties are:
+ <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The possible properties are:
 
  <ul>
   <li><code style="color:black;background-color:whitesmoke">_label</code> which is the name for the host that will be shown in the Configuration Editor</li>
@@ -786,15 +799,15 @@
  <li>The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file.  These properties are:
 
  <ul>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_enable_logout</code> - Set this property as true to enable logout.</li>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable. </li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_enable_logout</code> - Set this property as true to enable logout.</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable. </li>
   <ul>
   <li>Note: Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method <code style="color:black;background-color:whitesmoke">encodeURIComponent</code> or with <a href="https://www.urlencoder.org/">https://www.urlencoder.org/</a>.</li>
 
   <li>Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at <code style="color:black;background-color:whitesmoke">your-acd-config-editor-site/services/cartridge/cartridge-main.html</code>.</li>
   </ul>
 
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
 
  </ul>
  </li></ul>
@@ -1149,7 +1162,7 @@
  </li>
  </ol>
 
- <p>After configuring a route, you may need to update the cartridge service deployment.yaml <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_url</code> environment variable to set the proper hostname for the service.
+ <p>After configuring a route, you may need to update the cartridge service deployment.yaml <code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_url</code> environment variable to set the proper hostname for the service.
 
  <h4>Verification</h4>
 
@@ -1170,14 +1183,14 @@
  <p>Custom properties include:
 
  <ul>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_enable_logout</code> - Set this property as true to enable logout</li>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable.
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_enable_logout</code> - Set this property as true to enable logout</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable.
   <ul>
    <li>Note: Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method <code style="color:black;background-color:whitesmoke">encodeURIComponent</code> or with <a href="https://www.urlencoder.org/">https://www.urlencoder.org/</a>.
 
    <li>Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at <code style="color:black;background-color:whitesmoke">your-acd-config-editor-site/services/cartridge/cartridge-main.html</code>.</li>
  </ul>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
  </ul>
 
 <h3 id="openshift-config-editor-deploy">Deploying cartridges to ACD installations (optional)</h3>
@@ -1210,15 +1223,15 @@
  <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/values.yaml</code>
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
   <code style="font-size:smaller;">
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_label"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_label"
     value: "Annotator for Clinical Data - &lt;identifier&gt;"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_url"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_url"
     value: "https://&lt;hostname&gt;/services/clinical_data_annotator/api"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_proxy"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_proxy"
     value: "&lt;identifier&gt;"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_auth"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_auth"
     value: "Bearer"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_phi"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_phi"
     value: "false"
   </code></pre></div>
 
@@ -1228,7 +1241,7 @@
   <li>where <code style="color:black;background-color:whitesmoke">&lt;n&gt;</code> is the ordinal value of the custom ACD instance starting with 1</li>
  </ul>
 
- <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">1</code>. The properties are:
+ <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">1</code>. The properties are:
 
  <ul>
   <li><code style="color:black;background-color:whitesmoke">_label</code> which is the name for the host that will be shown in the Configuration Editor</li>
@@ -1315,46 +1328,46 @@
   <b>Note:</b> Our name changed since these videos were recorded. The features are still the same.
 
   <ul>
-  <li><a href="https://ibm.box.com/s/hrq96sis1std0yo1z76nnuzt88h0czpg">Annotator for Clinical Data Configuration Editor and UMLS Overview (11 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=5m5FkuZDouA&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=1">Annotator for Clinical Data Configuration Editor and UMLS Overview (11 min.)</a><br/>
   Provides an overview of the Annotator for Clinical Data Configuration Editor and UMLS, which is included with the Configuration Editor.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/ddplnpjqdccasux02mauxiak31758glz">Introduction to Concepts (10 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=p-Efa5QYDj4&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=2">Introduction to Concepts (10 min.)</a><br/>
   Explains how to create, edit, delete concepts and view text analysis results.<br/><br/>
   </li>
-  <li><a href ="https://ibm.box.com/s/nd33ana5pnfsubdyjx6kuoi92d9vlml2">Introduction to Clinical Attributes (10 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=vNYhdwr_mAM&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=3">Introduction to Clinical Attributes (10 min.)</a><br/>
   Explains how to create, edit clinical attribute sets and view text analysis results.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/bohf1rp44hofpmzj9wu27oc1flw23hoi">Introduction to Filter (5 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=tomWF2Vz41w&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=4">Introduction to Filters (5 min.)</a><br/>
   Explains how to create and edit a filter artifact.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/r6rl7s1lq08ngyg1kydx3fymtrfyls6r">Preview analytic results (14 min.)</a><br/>
-  Explains how to preview analyze results, compare two results and save sample text with the cartridge.<br/><br/>
+  <li><a href="https://www.youtube.com/watch?v=m4WKaEidw8s&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=5">Preview: Beyond the Basics (14 min.)</a><br/>
+  Builds on previous learning about Preview. Explains how to preview analyze results, compare two results and save sample text with the cartridge.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/j91ak6shkc9yv55nb1nk9y18edxkz0qg">Derived Concepts (18 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=vPQEqDDsxeM&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=6">Derived Concepts (18 min.)</a><br/>
   Explains how to create derived concepts.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/xl43p1cc4dgql7b7gehhwp4th4due3vt">Derived Clinical Attributes (12 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=O_Oq_mtWY-I&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=7">Derived Clinical Attributes (12 min.)</a><br/>
   Explains how to create derived clinical attributes.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/zsfqzwis2dltzlv7rfxfyav7kd9w2oj7">Qualifiers (6 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=G7q99NKYu94&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=8">Qualifiers (6 min.)</a><br/>
   Explains how to create and use attribute qualifiers.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/3c7o5wyyzx9az91r1a0leepzah4m6jyj">Custom Value and Custom Comparison (13 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=ad4oLIgvaI8&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=9">Custom Value and Custom Comparison (13 min.)</a><br/>
   Explains how to create, edit and use a custom value and custom comparison artifacts.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/407dlwuufbwtd6xq41im2c4pu2dbdw3i">Care Insights Annotators (12 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=DbrGMazBdTs&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=10">Care Insights Annotators (12 min.)</a><br/>
   Explains how to use, interpret, and customize the Care Insights annotators available in the Annotator for Clinical Data.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/2d5mtwxd34iqgg8l8kbm8dayu4hkhu79">Contextual Annotators (9 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=A-gE5t9i0b0&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=11">Contextual Annotators (9 min.)</a><br/>
   Explains how to use and interpret the Contextual annotators.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/2q3zoiym45kcsm52alkkp8s23ppkndzi">Publish, Deploy and Analyze API (8 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=STD87KTztHk&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=12">Publish, Deploy and Analyze API (8 min.)</a><br/>
   Explains how to publish a cartridge, deploy it to Annotator for Clinical Data service and how to call the Annotator for Clinical Data API using the deployed cartridge to analyze unstructured text.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/8w00out2kbgeq1epys4i4hoyvzomeggx">Ontology and Relationship Configuration Overview (21 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=Q6z0pnOF6CQ&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=13">Ontology and Relationship Configuration Overview (21 min.)</a><br/>
   Explains how to create custom ontologies to define relationships between custom concepts. Also covers using custom ontologies and UMLS to explore and detect relationships between concepts.<br/><br/>
   </li>
-  <li><a href="https://ibm.box.com/s/3s4mjlc6pkykkqt5lo3wsz262xy12ef3">Extending ACD Clinical Insights (25 min.)</a><br/>
+  <li><a href="https://www.youtube.com/watch?v=7TV4Dbj0T28&list=PLQUc02nc8Og6YWr07MP-2Lj2h0B_yJCoJ&index=14">Extending ACD Clinical Insights (25 min.)</a><br/>
   Introduces the ACD Clinical Insights cartridge and explains how to extend the cartridge and customize it.
   <ul>
   <li>Introduction (0 - 4:56)</li>
