@@ -21,17 +21,23 @@ The following sections document the new features and changes that were included 
 - Fixed an exception in the Concept Detection service that could occur in concept inferencing processing when the text does not contain punctuation. This problem would result in ACD returning a 500 exception.
 - Fixed an exception in the Negation Detection service that could occur if a negation annotation was created without a trigger and a negation filter attempted to filter based on trigger information. This problem would result in ACD returning a 500 exception.
 - Improved the internal processing of ACD when a micro-service is unavailable. This should result in fewer ACD 500 exceptions. 
-- Added support for propagating embedded custom values in a derived concept value.
-- Added support for propagating medical codes for derived concept values.
-- Added support for deriving a custom value.
-- Added support to allow the covered text or preferred name of a selected concept in a derived concept to populate a field on the output annotation.
-- Added support for matching an attribute over a derived concept value backed by an ACI Medication or ACI Lab Value annotation.
-- Added support to find secondary annotations in a derived concept value from the derived from trail (not by matching CUIs).
-- Added support to allow matching CUI from the derived concept value.
-- Added support to propagate fields from the derived concept value first and use the secondary annotation as a fallback option.
-- Added support to promote dimension, frequency, and duration to the attribute if they exist in a derived concept value annotation.
+- Derived concept changes:
+    - Added support for propagating embedded custom values in a derived concept value.
+    - Added support for propagating medical codes for derived concept values.
+    - Added support for deriving a custom value.
+    - Added support to allow the covered text or preferred name of a selected concept in a derived concept to populate a field on the output annotation.
+- Attribute changes:
+    - Added support for matching an attribute over a derived concept value backed by an ACI Medication or ACI Lab Value annotation.
+    - Added support to find secondary annotations in a derived concept value from the derived from trail (not by matching CUIs).
+    - Added support to allow matching CUI from the derived concept value.
+    - Added support to propagate fields from the derived concept value first and use the secondary annotation as a fallback option.
+    - Added support to promote dimension, frequency, and duration to the attribute if they exist in a derived concept value annotation.
 - Added warning messages when a processed ACD flow contains deprecated services.
 - Updated the documentation to reflect the new Merative ACD product branding.
+- ACD Prometheus metrics changes:
+    - The Prometheus PodMonitor is now created by default. 
+    - The ACD metric clinical_data_annotator_api_calls_count renamed to clinical_data_annotator_api_calls_count_total
+    - See the [documentation](https://merative.github.io/acd-containers/troubleshooting/logging-monitoring/#enabling-and-configuring-acd-prometheus-metrics) for details.
 
 ## January 2023
 
