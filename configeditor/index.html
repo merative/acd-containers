@@ -401,7 +401,7 @@
 
     <h3 id="overview-welcome">Welcome to the Annotator for Clinical Data Configuration Editor</h3>
 
-    <p><b>Notice:</b> The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers. See <a href="https://merative.net/ACDLicense">license</a> for terms of use.</p></br>
+    <p><b>Notice:</b> The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers. See <a href="https://ibm.biz/BdfmAB">license</a> for terms of use.</p></br>
 
     In this document, find instructions for:
     
@@ -457,7 +457,7 @@
 
     <p>Acceptance of terms of use is required to use the tool.</p>
 
-    <a href="https://merative.net/ACDLicense">View Program Terms</a>
+    <a href="https://ibm.biz/BdfmAB">View Program Terms</a>
 
     <p></p>
 
@@ -651,7 +651,7 @@
   </pre></div>
    
   <p>Finally, in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file, is the user and group that Docker will start the containers as.  It is defined near the top on a line that starts with something similar to this:
-  <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_common_docker_user=<userid>:&lt;groupid&gt;;\</code>
+  <code style="color:black;background-color:whitesmoke">clinical_data_annotator_common_docker_user=<userid>:&lt;groupid&gt;;\</code>
 
   <p>Edit this line in the file.  The <code style="color:black;background-color:whitesmoke">&lt;userid&gt;</code> should be a user id on your local system that has RWX permission to the <code style="color:black;background-color:whitesmoke">acd-ce/installs/config</code> target directory defined above.  The group should be set to <code style="color:black;background-color:whitesmoke">0</code>.
 
@@ -722,14 +722,14 @@
 
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
   <code style="font-size:smaller;">
-  com_ibm_watson_health_car_acd_host_1_label="Annotator_for_Clinical_Data_Container_Edition";\
-  com_ibm_watson_health_car_acd_host_1_url=https://&lt;your container edition url&gt;;\
-  com_ibm_watson_health_car_acd_host_1_proxy=wh-acd-ce;\
-  com_ibm_watson_health_car_acd_host_1_auth=Bearer;\
-  com_ibm_watson_health_car_acd_host_1_phi=false;\
+  clinical_data_annotator_car_acd_host_1_label="Annotator_for_Clinical_Data_Container_Edition";\
+  clinical_data_annotator_car_acd_host_1_url=https://&lt;your container edition url&gt;;\
+  clinical_data_annotator_car_acd_host_1_proxy=acd-ce;\
+  clinical_data_annotator_car_acd_host_1_auth=Bearer;\
+  clinical_data_annotator_car_acd_host_1_phi=false;\
   </code></pre></div>
 
- <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The possible properties are:
+ <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The possible properties are:
 
  <ul>
   <li><code style="color:black;background-color:whitesmoke">_label</code> which is the name for the host that will be shown in the Configuration Editor</li>
@@ -799,15 +799,15 @@
  <li>The ACD Configuration Editor can be configured to put a 'Logout' button on the user interface. This button can clear cookies and redirect to an authentication URL to perform logout. In order to configure the ability to logout of your instance, you can configure certain parameters under the Cartridge service in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file.  These properties are:
 
  <ul>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_enable_logout</code> - Set this property as true to enable logout.</li>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable. </li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_enable_logout</code> - Set this property as true to enable logout.</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable. </li>
   <ul>
   <li>Note: Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method <code style="color:black;background-color:whitesmoke">encodeURIComponent</code> or with <a href="https://www.urlencoder.org/">https://www.urlencoder.org/</a>.</li>
 
   <li>Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at <code style="color:black;background-color:whitesmoke">your-acd-config-editor-site/services/cartridge/cartridge-main.html</code>.</li>
   </ul>
 
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
 
  </ul>
  </li></ul>
@@ -1054,7 +1054,7 @@
 
  <h4>Option 2: Identity Provider authentication</h4>
 
- <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://oauth2-proxy.github.io/oauth2-proxy/">standard OAuth2 Proxy</a>.</p>
+ <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://oauth2-proxy.github.io/oauth2-proxy/">standard OAuth2 Proxy</a>.</p>
 
  <ol>
  <li>Use the following commands to create a project/namespace for the proxy and set the current namespace to it. For the remainder of the steps listed here for Option 2, we will use the example namespace <code style="color:black;background-color:whitesmoke">merative-acd-ce-oauth</code>.
@@ -1162,7 +1162,7 @@
  </li>
  </ol>
 
- <p>After configuring a route, you may need to update the cartridge service deployment.yaml <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_url</code> environment variable to set the proper hostname for the service.
+ <p>After configuring a route, you may need to update the cartridge service deployment.yaml <code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_url</code> environment variable to set the proper hostname for the service.
 
  <h4>Verification</h4>
 
@@ -1183,14 +1183,14 @@
  <p>Custom properties include:
 
  <ul>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_enable_logout</code> - Set this property as true to enable logout</li>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable.
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_enable_logout</code> - Set this property as true to enable logout</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_url</code> - Set this property to the URL your authentication method uses to perform logout, if applicable.
   <ul>
    <li>Note: Your "url" property must be encoded to ensure it is correctly pulled into the ACD Configuration Editor. An easy way to perform the encoding is with the Javascript method <code style="color:black;background-color:whitesmoke">encodeURIComponent</code> or with <a href="https://www.urlencoder.org/">https://www.urlencoder.org/</a>.
 
    <li>Your URL will likely need a redirect URL, in which case we recommend redirecting to the Configuration Editor main page, which is at <code style="color:black;background-color:whitesmoke">your-acd-config-editor-site/services/cartridge/cartridge-main.html</code>.</li>
  </ul>
- <li><code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
+ <li><code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_auth_logout_cookies</code> - Set this property to the cookies your authentication method uses to store session information. If there are multiple cookies, comma-separate them. These will be cleared in the logout process.</li>
  </ul>
 
 <h3 id="openshift-config-editor-deploy">Deploying cartridges to ACD installations (optional)</h3>
@@ -1223,15 +1223,15 @@
  <li><code style="color:black;background-color:whitesmoke">merative-acd-ce/crtg/chart/crtg/values.yaml</code>
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell">
   <code style="font-size:smaller;">
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_label"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_label"
     value: "Annotator for Clinical Data - &lt;identifier&gt;"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_url"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_url"
     value: "https://&lt;hostname&gt;/services/clinical_data_annotator/api"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_proxy"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_proxy"
     value: "&lt;identifier&gt;"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_auth"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_auth"
     value: "Bearer"
-  - name: "com_ibm_watson_health_car_acd_host_&lt;n&gt;_phi"
+  - name: "clinical_data_annotator_car_acd_host_&lt;n&gt;_phi"
     value: "false"
   </code></pre></div>
 
@@ -1241,7 +1241,7 @@
   <li>where <code style="color:black;background-color:whitesmoke">&lt;n&gt;</code> is the ordinal value of the custom ACD instance starting with 1</li>
  </ul>
 
- <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">com_ibm_watson_health_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">1</code>. The properties are:
+ <p>ACD Hosts must be indexed in the properties file using <code style="color:black;background-color:whitesmoke">clinical_data_annotator_car_acd_host_&lt;index&gt;</code> as the beginning of their property name. The index must start at <code style="color:black;background-color:whitesmoke">1</code>. The properties are:
 
  <ul>
   <li><code style="color:black;background-color:whitesmoke">_label</code> which is the name for the host that will be shown in the Configuration Editor</li>
