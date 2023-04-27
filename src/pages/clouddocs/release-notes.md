@@ -41,12 +41,12 @@ The following sections document the new features and changes that were included 
 - ACD SDK Version 2 Announcement:
     - Version 2 is now considered the supported version of the ACD SDK.  Migrating from Version 1 to Version 2 is recommended as Version 1 will be deprecated. Code changes are required to migrate from Version 1 to Version 2. Refer to the following for more information:
     - ACD Java SDK
-        - [Readme](https://github.com/merative/acd-java-sdk)
+        - [Readme](https://github.com/merative/acd-java-sdk/blob/master/README.md)
         - [Migration documentation](https://github.com/merative/acd-java-sdk#migrating-from-version-1xx)
         - [API documentation](https://merative.github.io/acd-containers/apidocs/index.html?java#annotator-for-clinical-data-acd)
     - ACD Python SDK
         - [Readme](https://github.com/merative/acd-python-sdk/blob/master/README.md)
-        - [Migrating documentation](https://github.com/merative/acd-python-sdk/blob/master/README.md#migrating-from-version-1xx)
+        - [Migration documentation](https://github.com/merative/acd-python-sdk#migrating-from-version-1xx)
         - [API documentation](https://merative.github.io/acd-containers/apidocs/index.html?python#annotator-for-clinical-data-acd)
 
 ## January 2023
