@@ -401,7 +401,7 @@
 
     <h3 id="overview-welcome">Welcome to the Annotator for Clinical Data Configuration Editor</h3>
 
-    <p><b>Notice:</b> The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers. See <a href="https://merative.net/ACDLicense">license</a> for terms of use.</p></br>
+    <p><b>Notice:</b> The Annotator for Clinical Data Configuration Editor is provided as-is (non-warranted) and at no cost to ACD customers. See <a href="https://ibm.biz/BdfmAB">license</a> for terms of use.</p></br>
 
     In this document, find instructions for:
     
@@ -457,7 +457,7 @@
 
     <p>Acceptance of terms of use is required to use the tool.</p>
 
-    <a href="https://merative.net/ACDLicense">View Program Terms</a>
+    <a href="https://ibm.biz/BdfmAB">View Program Terms</a>
 
     <p></p>
 
@@ -697,7 +697,7 @@
 
   <p>In the upper right corner of the ACD Configuration Editor main page, you can click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.<br/><br/>
 
-  <img src="images/ACDConfigEditorCatalog.png" alt="Configuration Editor Main"><br/><br/>
+  <img src="images/ConfigEditorCatalog.png" alt="Configuration Editor Main"><br/><br/>
 
   <p>Periodically, refer to this Configuration Editor documentation for updates to the Configuration Editor packages and see below for <a href="https://merative.github.io/acd-containers/configeditor/index.html#docker-updating" onclick="navTo('sb-docker-overview')">Updating the Configuration Editor</a> instructions.
 
@@ -724,7 +724,7 @@
   <code style="font-size:smaller;">
   clinical_data_annotator_car_acd_host_1_label="Annotator_for_Clinical_Data_Container_Edition";\
   clinical_data_annotator_car_acd_host_1_url=https://&lt;your container edition url&gt;;\
-  clinical_data_annotator_car_acd_host_1_proxy=wh-acd-ce;\
+  clinical_data_annotator_car_acd_host_1_proxy=acd-ce;\
   clinical_data_annotator_car_acd_host_1_auth=Bearer;\
   clinical_data_annotator_car_acd_host_1_phi=false;\
   </code></pre></div>
@@ -1054,7 +1054,7 @@
 
  <h4>Option 2: Identity Provider authentication</h4>
 
- <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, IBMId, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://oauth2-proxy.github.io/oauth2-proxy/">standard OAuth2 Proxy</a>.</p>
+ <p>There are multiple Identity Providers for providing an authentication layer for ACD Configuration Editor (Azure Active Directory, Google, etc). This section will discuss the configuration using <a href="https://en.wikipedia.org/wiki/OpenID">OIDC</a> with <a href="https://oauth2-proxy.github.io/oauth2-proxy/">standard OAuth2 Proxy</a>.</p>
 
  <ol>
  <li>Use the following commands to create a project/namespace for the proxy and set the current namespace to it. For the remainder of the steps listed here for Option 2, we will use the example namespace <code style="color:black;background-color:whitesmoke">merative-acd-ce-oauth</code>.
@@ -1172,7 +1172,7 @@
 
  <p>After you are in, you are at the main ACD Configuration Editor catalog page. Initially, there are no default cartridges so your list will be empty.  You can install the base <a href="https://github.com/merative/acd-cartridges">Clinical Insights</a> cartridge via an import and extend that cartridge or create your own new cartridge.  In the upper right corner of the page, click the mortar board tutorial link to see Introductory videos and click the "?" icon to view the Getting Started Guide.<br/><br/>
 
- <img src="images/ACDConfigEditorCatalog.png" alt="Configuration Editor Main">
+ <img src="images/ConfigEditorCatalog.png" alt="Configuration Editor Main">
 
  <p>Periodically, refer to this documentation for updates to the Configuration Editor packages and see below for update instructions.
 
