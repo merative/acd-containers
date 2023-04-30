@@ -82,6 +82,8 @@
       path: /troubleshooting/troubleshooting-cartridge-deploy/
     - title: "Troubleshooting Medical Codes"
       path: /troubleshooting/troubleshooting-medical-codes/
+    - title: "Troubleshooting Timeouts"
+      path: /troubleshooting/troubleshooting-timeouts/
     - title: "Troubleshooting Uninstall"
       path: /troubleshooting/troubleshooting-uninstall/
     - title: "MustGather"
