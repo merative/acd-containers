@@ -11,7 +11,7 @@ See [Annotator for Clinical Data Configuration Editor Bundle](https://github.com
 ### v2.0 - build v2.0.202305021827
 
 - Refresh of Annotator for Clinical Data Service and each of its annotators.
-- Refresh of the Annotator for Clinical Data Configuration Editor [bundle](https://github.com/merative/acd-containers/blob/master/config-editor/config-editor-2023050xxxxx.tar).
+- Refresh of the Annotator for Clinical Data Configuration Editor [bundle](https://github.com/merative/acd-containers/blob/master/config-editor/config-editor-20230503081348.tar.gz).
 - When upgrading, v2.0.202305021827 replaces either v2.0.202301181807 or v2.0.202304241329.
 
 ### v2.0 - build v2.0.202304241329
