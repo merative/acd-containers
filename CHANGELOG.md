@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 
 See Annotator for Clinical Data [release notes](https://github.com/merative/acd-containers/blob/master/src/pages/clouddocs/release-notes.md) for latest features.
 
+See [Annotator for Clinical Data Configuration Editor Bundle](https://github.com/merative/acd-containers/tree/master/config-editor) for the full list of Configuration Editor versions available. When upgrading, you are encouraged to keep the ACD Container Edition and the ACD Configuration Editor versions aligned.
+
 ## Releases from Merative
+
+### v2.0 - build v2.0.202305021827
+
+- Refresh of Annotator for Clinical Data Service and each of its annotators.
+- Refresh of the Annotator for Clinical Data Configuration Editor [bundle](https://github.com/merative/acd-containers/blob/master/config-editor/config-editor-2023050xxxxx.tar).
+- When upgrading, v2.0.202305021827 replaces either v2.0.202301181807 or v2.0.202304241329.
 
 ### v2.0 - build v2.0.202304241329
 
