@@ -14,11 +14,11 @@ toc: true
 
 Timeouts can occur during analyze calls if the documents you send to ACD take too long to process.  This can be due to the size of the document or the configuration of the cartridge and its artifacts with the content of the document or a combination of both.  In addition there are various components in the path which can be configured to adjust their timeouts.  
 
-## Openshift Route timeouts
-Openshift uses Routes for ingress access to the ACD or any proxy authentication service you are exposing infront of ACD. The default timeout for this is 30 seconds.  You can adjust this by adding the *haproxy.router.openshift.io/timeout* annotation to the route you are using.  There are other annotations recommended on routes to help balance the traffic across route instances - see the 
+## OpenShift Route timeouts
+OpenShift uses Routes for ingress access to the ACD or any proxy authentication service you are exposing in front of ACD. The default timeout for this is 30 seconds.  You can adjust this by adding the *haproxy.router.openshift.io/timeout* annotation to the route you are using.  There are other annotations recommended on routes to help balance the traffic across route instances - see the 
 [Manage Access](/security/manage-access/) page for details.
 ## Load balancer timeouts
-Ingress controllers on openshift are tied to load balancers that expose the routes to the outside the cluster network.  These are configured in the ingress controller or in the cloud specific load balancer settings.  On AWS OCP if the ingress controller is of type Internal you can set the timeout on the Classic load balancer associated with the domain name in the AWS Console on its Attributes settings.  In OCP 4.11 and later this can be configured in the ingress controller yaml itself - see [ocp docs](https://docs.openshift.com/container-platform/4.11/networking/configuring_ingress_cluster_traffic/configuring-ingress-cluster-traffic-aws.html) for details. 
+Ingress controllers on OpenShift are tied to load balancers that expose the routes outside the cluster network.  These are configured in the ingress controller or in the cloud specific load balancer settings.  On AWS OCP if the ingress controller is of type Internal you can set the timeout on the Classic load balancer associated with the domain name in the AWS Console on its Attributes settings.  In OCP 4.11 and later this can be configured in the ingress controller yaml itself - see [OpenShift documentation](https://docs.openshift.com/container-platform/4.11/networking/configuring_ingress_cluster_traffic/configuring-ingress-cluster-traffic-aws.html) for details. 
 
 ## ACD timeouts
 The default timeout between ACD and its microservices is 60 seconds.  If a annotator in the flow takes longer than this ACD will return a 504 Gateway Timeout error back to the caller.  This timeout can be adjusted by adding this environment variable to the merative-acd-acd deployment 
