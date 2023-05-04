@@ -22,6 +22,7 @@ The following sections document the new features and changes that were included 
 
 ## April 2023
 
+- The naming convention for environment variables has been changed from com_ibm_watson_health_* to clinical_data_annotator_. Any deployment that was setting com_ibm_watson_health_ environment variables should switch to the clinical_data_annotator_* naming convention.
 - The following experimental annotators have been deprecated. They will be removed at some point in the future.
     - Allergy, Bathing Assistance, Cancer, Dressing Assistance, Eating Assistance, Ejection Fraction, Seeing Assistance, Smoking, Toileting Assistance,  and Walking Assistance.
 - Fixed an exception in the Concept Detection service that could occur in concept inferencing processing when the text does not contain punctuation. This problem would result in ACD returning a 500 exception.
