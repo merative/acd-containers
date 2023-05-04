@@ -18,7 +18,8 @@ The following sections document the new features and changes that were included 
 
 ## May 2023
 
-- Fixed a problem introduced in the April release that affected ACD concurrent processing.
+- Fixes a problem introduced in the April release that affected ACD concurrent processing.
+- Fixes an exception introduced in the April release that occurred in the Attribute Detection service processing derived concepts.
 
 ## April 2023
 
