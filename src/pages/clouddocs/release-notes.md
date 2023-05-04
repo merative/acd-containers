@@ -16,8 +16,14 @@ toc: true
 
 The following sections document the new features and changes that were included for each release of the Annotator for Clinical Data service.
 
+## May 2023
+
+- Fixed a problem introduced in the April release that affected ACD concurrent processing.
+
 ## April 2023
 
+- The following experimental annotators have been deprecated. They will be removed at some point in the future.
+    - Allergy, Bathing Assistance, Cancer, Dressing Assistance, Eating Assistance, Ejection Fraction, Seeing Assistance, Smoking, Toileting Assistance,  and Walking Assistance.
 - Fixed an exception in the Concept Detection service that could occur in concept inferencing processing when the text does not contain punctuation. This problem would result in ACD returning a 500 exception.
 - Fixed an exception in the Negation Detection service that could occur if a negation annotation was created without a trigger and a negation filter attempted to filter based on trigger information. This problem would result in ACD returning a 500 exception.
 - Improved the internal processing of ACD when a micro-service is unavailable. This should result in fewer ACD 500 exceptions. 
@@ -32,14 +38,19 @@ The following sections document the new features and changes that were included 
     - Added support to allow matching CUI from the derived concept value.
     - Added support to propagate fields from the derived concept value first and use the secondary annotation as a fallback option.
     - Added support to promote dimension, frequency, and duration to the attribute if they exist in a derived concept value annotation.
-- Added warning messages when a processed ACD flow contains deprecated services.
+- Configuration Editor
+    - Added support to include linked attributes when exporting dictionary concepts.
+    - Integrated attribute search in the dictionary and UMLS concept views
+    - Context menus have been added to concept identifier and type tag fields to allow cut, paste, and delete of individual tags.
+    - A warning message is shown if a flow contains a deprecated service.   
+- Added warning messages logged at runtime when a processed ACD flow contains deprecated services.
 - Updated the documentation to reflect the new Merative ACD product branding.
 - ACD Prometheus metrics changes:
     - The Prometheus PodMonitor is now created by default. 
     - The ACD metric clinical_data_annotator_api_calls_count renamed to clinical_data_annotator_api_calls_count_total
     - See the [documentation](https://merative.github.io/acd-containers/troubleshooting/logging-monitoring/#enabling-and-configuring-acd-prometheus-metrics) for details.
 - ACD SDK Version 2 Announcement:
-    - Version 2 is now considered the supported version of the ACD SDK.  Migrating from Version 1 to Version 2 is recommended as Version 1 will be deprecated. Code changes are required to migrate from Version 1 to Version 2. Refer to the following for more information:
+    - Version 2 is now considered the supported version of the ACD SDK. Code changes are required to migrate from Version 1 to Version 2. Migrating from Version 1 to Version 2 is recommended, as Version 1 will be deprecated.  Refer to the following for more information:
     - ACD Java SDK
         - [Readme](https://github.com/merative/acd-java-sdk/blob/master/README.md)
         - [Migration documentation](https://github.com/merative/acd-java-sdk#migrating-from-version-1xx)
