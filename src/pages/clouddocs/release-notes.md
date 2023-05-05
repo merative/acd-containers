@@ -43,8 +43,8 @@ The following sections document the new features and changes that were included 
 - Configuration Editor
     - Added support to include linked attributes when exporting dictionary concepts.
     - Integrated attribute search in the dictionary and UMLS concept views
-    - Context menus have been added to concept identifier and type tag fields to allow cut, paste, and delete of individual tags.
-    - A warning message is shown if a flow contains a deprecated service.   
+    - Added Context menus to concept identifier and type tag fields to allow cut, paste, and delete of individual tags.
+    - Shows a warning message if a flow contains a deprecated service.   
 - Added warning messages logged at runtime when a processed ACD flow contains deprecated services.
 - Updated the documentation to reflect the new Merative ACD product branding.
 - ACD Prometheus metrics changes:
