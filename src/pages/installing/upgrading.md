@@ -20,7 +20,7 @@ The Annotator for Clinical Data Container Edition supports both manual and autom
 
 There is no upgrade from IBM Watson ACD to Merative ACD. See the [Migration](/migration/considerations/) section for details.
 
-The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions made available as part of a continuous delivery strategy. At this point in time, the Merative ACD Operator upgrade chain is very simple, with the initial release and one version that replaces it. See the [Change Log](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-merative) for version details.
+The major and minor version for ACD continues to be `2.0`. New function and fixes are released as patch versions are made available as part of a continuous delivery strategy. The Merative ACD Operator Catalog provides the initial release and version upgrades that replace it. See the [Change Log](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-merative) for version details.
 
 Refer here for a list of the [prior IBM Watson ACD versions](https://github.com/merative/acd-containers/blob/master/CHANGELOG.md#releases-from-ibm).
 
