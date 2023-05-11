@@ -667,6 +667,17 @@
   <code style="font-size:smaller;">cp acd-ce.properties acd-ce.properties.bak</code>
   </pre></div>
 
+  <p>Create the target directory for the Configuration Editor configuration data (the directory you set in the <code style="color:black;background-color:whitesmoke">acd-ce.properties</code> file above) and set the permissions to the user and group you set in the properties file.  
+    For example (replace <code style="color:black;background-color:whitesmoke">&lt;user&gt;</code> with your user name):
+  <div class="highlight" style="width:950px;"><pre class="highlight shell tab-shell" style="padding-top:10px;">
+  <code style="font-size:smaller;">configdir=/home/&lt;user&gt;/acd-ce/installs/config \ 
+  mkdir -p ${configdir}/certs/keystore   \
+  mkdir -p ${configdir}/certs/truststore \
+  keytool -genkey -alias 'wh-int'  -dname "CN=cluster.internal,O=merative.com,OU=ACD"  -keyalg RSA -keypass wats0n  -keysize 2048  -keystore ${configdir}/certs/keystore/tls.p12  -noprompt -storetype pkcs12 -storepass wats0n -validity 3650 \
+  keytool -exportcert -keystore ${configdir}/certs/keystore/tls.p12 -alias 'wh-int' -storepass wats0n -rfc -file ${configdir}/certs/truststore/trust.cer
+  </code><br/>
+  </pre></div>
+
   <p>Sign on to the container registry with the credentials provided when the product was purchased:
   <div class="highlight" style="width:1000px;"><pre class="highlight shell tab-shell" style="padding-top:10px;">
   <code style="font-size:smaller;">docker login acdcontaineredition.azurecr.io -u &lt;application-ID&gt;</code>
