@@ -25,7 +25,7 @@ Annotator for Clinical Data is an AI-powered service that applies Natural Langua
 
 This program supports English-only text for insight extraction.
 
-[Try it Now](https://acd-try-it-out.mybluemix.net/preview)
+[Try it Now](https://merative.net/tryacd)
 
 ## Features
 
