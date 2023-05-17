@@ -18,7 +18,7 @@ The substance use feature is a ready-to-use annotation capability within Annotat
 
 ![substance_use](../../images/substance_use.png)
 
-The Annotator for Clinical Data [demo application](https://acd-try-it-out.mybluemix.net/preview) allows you to see how substance use is detected.
+The Annotator for Clinical Data [demo application](https://merative.net/tryacd) allows you to see how substance use is detected.
 
 The substance use capability is currently available through [Clinical Insights](/clouddocs/clinical_insights_overview/).  
 

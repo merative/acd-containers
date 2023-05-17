@@ -18,7 +18,7 @@ The clinical insights feature is a ready-to-use annotation capability within Ann
 1. Models that provide domain-specific context for various types of clinical information (medication, diagnosis, procedure, and normality).
 2. Ready-to-use cartridge that answers a simple question - is the given information relevant to the patient?
 
-There is an online [demo application](https://acd-try-it-out.mybluemix.net/preview) for the clinical insights cartridge.
+There is an online [demo application](https://merative.net/tryacd) for the clinical insights cartridge.
 
 ![demo app](../../images/demoApp.png)
 
