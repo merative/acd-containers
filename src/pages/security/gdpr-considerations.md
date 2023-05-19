@@ -23,7 +23,7 @@ with such laws and regulations.
 
 The products, services, and other capabilities
 described herein are not suitable for all client situations and may have restricted
-availability. IBM does not provide legal, accounting, or auditing advice or represent or
+availability. Merative does not provide legal, accounting, or auditing advice or represent or
 warrant that its services or products will ensure that clients are in compliance with
 any law or regulation.
 
@@ -50,7 +50,6 @@ This document is intended to help you in your preparations for GDPR readiness.
 ### Read more about GDPR
 
 - [EU GDPR website](https://gdpr.eu/)
-- [IBM GDPR website](https://www.ibm.com/data-responsibility/gdpr/)
 
 ## Product Configuration for GDPR
 
@@ -76,12 +75,12 @@ Only configuration data (e.g. cartridge artifacts) and metadata (e.g. ACD flow a
 Configuration data of deployed cartridges are persisted in the storage configured for the deployed product.
 Configuration metadata may also reside in the logs collected by pods within the deployment.
 
-### Personal data used for online contact with IBM
+### Personal data used for online contact with Merative
 
-Annotator for Clinical Data Container Edition clients can submit online comments/feedback requests to contact IBM about Annotator for Clinical Data Container Edition in a variety of
+Annotator for Clinical Data Container Edition clients can submit online comments/feedback requests to contact Merative about Annotator for Clinical Data Container Edition in a variety of
 ways, primarily:
 
 - Public issue reporting and feature suggestions via Annotator for Clinical Data Container Edition Git Hub portal
-- Private issue reporting via IBM Support
+- Private issue reporting via Merative Support
 
-Typically, only the client name and email address are used to enable personal replies for the subject of the contact. The use of personal data conforms to the [IBM Online Privacy Statement](https://www.ibm.com/privacy/us/en/).
+Typically, only the client name and email address are used to enable personal replies for the subject of the contact. The use of personal data conforms to the [Merative Privacy Policy](https://www.merative.com/privacy).
